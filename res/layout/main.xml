@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="72px"
+        android:background="#7A8B8B" >
+
+        <TextView
+            android:id="@+id/shortHome"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical|right"
+            android:paddingRight="16dp"
+            android:text="Home"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/verticalLine"
+            android:layout_width="2px"
+            android:layout_height="46px"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="12px"
+            android:background="#444444" />
+
+        <ImageView
+            android:id="@+id/logoUR"
+            android:layout_width="72px"
+            android:layout_height="72px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/ur_logo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textMuseumName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:paddingTop="14px"
+            android:text="@string/museum_name"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textMuseumNameContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:text="@string/museum_name_content"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textMuseumLeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:paddingTop="14px"
+            android:text="@string/museum_leader"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textMuseumLeaderContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:text="@string/museum_leader_content"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textMuseumTopics"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:paddingTop="14px"
+            android:text="@string/museum_topics"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textMuseumTopicsContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:text="@string/museum_topics_content"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textMuseumAdress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:paddingTop="14px"
+            android:text="@string/museum_adress"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textMuseumAdressContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14px"
+            android:paddingRight="14px"
+            android:text="@string/museum_adress_content"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textMuseumLocation"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14px"
+                    android:paddingRight="14px"
+                    android:paddingTop="14px"
+                    android:text="@string/museum_location"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textMuseumLocationContent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14px"
+                    android:paddingRight="14px"
+                    android:text="@string/museum_location_content"
+                    android:textColor="#000000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/textMuseumGoto"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14px"
+                    android:paddingRight="14px"
+                    android:text="@string/museum_goto"
+                    android:textColor="#0000FF"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textMuseumContact"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:paddingLeft="14px"
+                    android:paddingRight="14px"
+                    android:paddingTop="14px"
+                    android:text="@string/museum_contact"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textMuseumContactContent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:paddingLeft="14px"
+                    android:paddingRight="14px"
+                    android:text="@string/museum_contact_content"
+                    android:textColor="#000000"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/startScanningButton"
+            android:layout_width="148px"
+            android:layout_height="48px"
+            android:layout_marginTop="24dp"
+            android:text="Start Scanning"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+</LinearLayout>

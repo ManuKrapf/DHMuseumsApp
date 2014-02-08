@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="72px"
+        android:background="#7A8B8B" >
+
+        <TextView
+            android:id="@+id/shortHome"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical|right"
+            android:paddingRight="20dp"
+            android:text="Scan"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/verticalLine"
+            android:layout_width="2px"
+            android:layout_height="46px"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="12px"
+            android:background="#444444" />
+
+        <ImageView
+            android:id="@+id/logoUR"
+            android:layout_width="72px"
+            android:layout_height="72px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/ur_logo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+        
+        <SurfaceView
+			android:id="@+id/cameraPreview"
+			android:layout_gravity="center_vertical|center_horizontal"
+			android:visibility="visible"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+		</SurfaceView> 
+
+        
+    </LinearLayout>
+
+    
+
+</LinearLayout>
