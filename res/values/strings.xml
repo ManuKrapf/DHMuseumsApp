@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sammlung der Informationstechnik</string>
+    <string name="app_name">IT Sammlung</string>
     <string name="museum_name">Bezeichnung:</string>
     <string name="museum_name_content">Regensburger Sammlung der Informationstechnik im Alten Finanzamt (ReSI im AlFi)</string>
     <string name="museum_leader">Leitung:</string>

@@ -1,27 +1,41 @@
 package dh.computermuseum;
 
 import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-public class ScanActivity extends Activity implements View.OnClickListener {
+import com.metaio.sdk.jni.IMetaioSDKCallback;
+import com.metaio.sdk.*;
+import com.metaio.sdk.jni.IGeometry;
+import com.metaio.sdk.jni.IMetaioSDKCallback;
+import com.metaio.sdk.jni.Vector3d;
+import com.metaio.tools.io.AssetsManager;
+
+public class ScanActivity extends ARViewActivity {
 	SurfaceView surfaceView;
 	SurfaceHolder surfaceHolder;
 	Camera camera;
 	private boolean inPreviewMode = false;
+	
+	private IGeometry mModel;
+	
+	private MetaioSDKCallbackHandler mCallbackHandler;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.scan);
-		initUI();
-		setupClickListener(); 
+		//setContentView(R.layout.scan);
+		//initUI();
+		//setupClickListener();
+		mCallbackHandler = new MetaioSDKCallbackHandler();
 	}
-	
+	/*
 	private void initUI() {
 		initCameraPreview();
 	}
@@ -29,7 +43,7 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 	private void setupClickListener() {
 		surfaceView.setOnClickListener(this);
 	}
-
+	
 	private void initCameraPreview() {
 		surfaceView = (SurfaceView) findViewById(R.id.cameraPreview);
 		surfaceHolder = surfaceView.getHolder();
@@ -48,25 +62,25 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 			default:
 				break;
 		}
-    }
+    }*/
 
 	public void onResume() {
 		super.onResume();
-		camera = Camera.open();
+		/*camera = Camera.open();
 		camera.setDisplayOrientation(90);
-		startCameraPreview();
+		startCameraPreview();*/
 	}
 
 	public void onPause() {
-		if (inPreviewMode) {
+		/*if (inPreviewMode) {
 			camera.stopPreview();
 		}
 		camera.release();
 		camera = null;
-		inPreviewMode = false;
+		inPreviewMode = false;*/
 		super.onPause();
 	}
-
+	/*
 	private void displayCameraPreview(int width, int height) {
 		if (camera != null && surfaceHolder.getSurface() != null) {
 			try {
@@ -96,5 +110,76 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 
 		public void surfaceDestroyed(SurfaceHolder holder) {
 		}
-	};
+	};*/
+
+	@Override
+	protected int getGUILayout() {
+		return R.layout.scan;
+	}
+
+	@Override
+	protected IMetaioSDKCallback getMetaioSDKCallbackHandler() {
+		return mCallbackHandler;
+	}
+
+	@Override
+	protected void loadContents() {
+		try
+		{
+			AssetsManager.extractAllAssets(getApplicationContext(), BuildConfig.DEBUG);
+			// Getting a file path for tracking configuration XML file
+			String trackingConfigFile = AssetsManager.getAssetPath("Assets/TrackingData_MarkerlessFast.xml");
+			
+			Log.d("DEBUG", trackingConfigFile);
+			
+			// Assigning tracking configuration
+			boolean result = metaioSDK.setTrackingConfiguration(trackingConfigFile); 
+			MetaioDebug.log("Tracking data loaded: " + result); 
+	        
+			// Getting a file path for a 3D geometry
+			String metaioManModel = AssetsManager.getAssetPath("Assets/metaioman.md2");			
+			if (metaioManModel != null) 
+			{
+				// Loading 3D geometry
+				mModel = metaioSDK.createGeometry(metaioManModel);
+				if (mModel != null) 
+				{
+					// Set geometry properties
+					mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
+					
+				}
+				else
+					MetaioDebug.log(Log.ERROR, "Error loading geometry: "+metaioManModel);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	protected void onGeometryTouched(IGeometry geometry) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	final class MetaioSDKCallbackHandler extends IMetaioSDKCallback 
+	{
+
+		@Override
+		public void onSDKReady() 
+		{
+			// show GUI
+			runOnUiThread(new Runnable() 
+			{
+				@Override
+				public void run() 
+				{
+					mGUIView.setVisibility(View.VISIBLE);
+				}
+			});
+		}
+	}
+	
 }
