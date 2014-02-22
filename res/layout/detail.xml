@@ -7,12 +7,25 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="72px"
-        android:background="#7A8B8B" >
-
-        <TextView
-            android:id="@+id/shortHome"
+        android:background="#9C004B" >
+        
+       <TextView
+            android:id="@+id/title"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_alignRight="@+id/verticalLine"
+            android:layout_toRightOf="@+id/logoUR"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="30dp"
+            android:text="IT Sammlung"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/shortDetail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/verticalLine"
             android:gravity="center_vertical|right"
             android:paddingRight="18dp"
             android:text="Detail"
