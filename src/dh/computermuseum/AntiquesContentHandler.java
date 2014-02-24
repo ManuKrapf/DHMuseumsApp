@@ -2,6 +2,7 @@ package dh.computermuseum;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
@@ -11,6 +12,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	private ArrayList<Antique> antiques = new ArrayList<Antique>();
 	private String currentValue;
 	private Antique antique;
+	private boolean element;
 	
 	public List<Antique> getAntiques() {
         return antiques;
@@ -18,13 +20,19 @@ public class AntiquesContentHandler implements ContentHandler {
 
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
-		currentValue = new String(ch, start, length);
+		if(element) {
+			currentValue = new String(ch, start, length);
+			element = false;
+		}
 	}
 
 	// searching for main tag
 	public void startElement(String uri, String localName, String qName,
 			Attributes atts) throws SAXException {
-		if (localName.equals("antique")) {
+		
+		element = true;
+		
+		if (localName.equals("item")) {
 			antique = new Antique();
 		}
 	}
@@ -32,22 +40,25 @@ public class AntiquesContentHandler implements ContentHandler {
 	// searching for tags and setting Antiques' values in the testfile.xml
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
-		if (localName.equals("name")) {
+		
+		element = false;
+		
+		if (localName.equals("title")) {
 			antique.setName(currentValue);
 		}
 		if (localName.equals("id")) {
 			antique.setId(Integer.parseInt(currentValue));
 		}
-		if (localName.equals("abstract")) {
+		if (localName.equals("note")) {
 			antique.setDescription(currentValue);
 		}
 		if (localName.equals("date")) {
 			antique.setReleaseDate(currentValue);
 		}
-		if (localName.equals("prod")) {
+		if (localName.equals("comp")) {
 			antique.setProducer(currentValue);
 		}
-		if (localName.equals("antique")) {
+		if (localName.equals("item")) {
 			antiques.add(antique);
 		}
 	}
@@ -73,9 +84,15 @@ public class AntiquesContentHandler implements ContentHandler {
 	}
 
 	public void startDocument() throws SAXException {
+		element = false;
 	}
 
+	@Override
 	public void startPrefixMapping(String prefix, String uri)
 			throws SAXException {
+		
+		
 	}
+
+	
 }

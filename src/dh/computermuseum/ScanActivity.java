@@ -14,7 +14,6 @@ import android.view.View;
 import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.*;
 import com.metaio.sdk.jni.IGeometry;
-import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.jni.Vector3d;
 import com.metaio.tools.io.AssetsManager;
 
@@ -128,27 +127,31 @@ public class ScanActivity extends ARViewActivity {
 		{
 			AssetsManager.extractAllAssets(getApplicationContext(), BuildConfig.DEBUG);
 			// Getting a file path for tracking configuration XML file
-			String trackingConfigFile = AssetsManager.getAssetPath("Assets/TrackingData_MarkerlessFast.xml");
+			String trackingConfigFile = AssetsManager.getAssetPath("arel2/html/resources/TrackingData.zip");
 			
-			Log.d("DEBUG", trackingConfigFile);
+			//Log.d("DEBUG", trackingConfigFile);
 			
 			// Assigning tracking configuration
 			boolean result = metaioSDK.setTrackingConfiguration(trackingConfigFile); 
 			MetaioDebug.log("Tracking data loaded: " + result); 
 	        
 			// Getting a file path for a 3D geometry
-			String metaioManModel = AssetsManager.getAssetPath("Assets/metaioman.md2");			
-			if (metaioManModel != null) 
+			String metaioManModel = AssetsManager.getAssetPath("arel2/bild.jpg");			
+			if (metaioManModel != null)
 			{
+				Log.d("METAIO", "File found!!!");
+				
 				// Loading 3D geometry
-				mModel = metaioSDK.createGeometry(metaioManModel);
+				mModel = metaioSDK.createGeometryFromImage(metaioManModel);
 				if (mModel != null) 
 				{
+					Log.d("METAIO", "Model nicht null");
 					// Set geometry properties
-					mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
+					//mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
 					
 				}
 				else
+					Log.d("METAIO", "METAIOMAN ist eine null!");
 					MetaioDebug.log(Log.ERROR, "Error loading geometry: "+metaioManModel);
 			}
 		}

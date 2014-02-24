@@ -45,7 +45,7 @@ public class DetailActivity extends Activity {
 			XMLReader xmlReader = newSAXParser.getXMLReader();
 			// read XML input file here:
 			BufferedReader br = new BufferedReader(new InputStreamReader(
-					getAssets().open("testfile.xml")));
+					getAssets().open("museum.xml")));
 			InputSource inputSource = new InputSource(br);
 			ach = new AntiquesContentHandler();
 			xmlReader.setContentHandler(ach);
