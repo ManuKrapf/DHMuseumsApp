@@ -3,17 +3,26 @@ package dh.computermuseum;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.*;
+import com.metaio.sdk.jni.ETRACKING_STATE;
 import com.metaio.sdk.jni.IGeometry;
+import com.metaio.sdk.jni.MetaioSDKConstants;
+import com.metaio.sdk.jni.TrackingValues;
+import com.metaio.sdk.jni.TrackingValuesVector;
 import com.metaio.sdk.jni.Vector3d;
 import com.metaio.tools.io.AssetsManager;
 
@@ -22,6 +31,8 @@ public class ScanActivity extends ARViewActivity {
 	SurfaceHolder surfaceHolder;
 	Camera camera;
 	private boolean inPreviewMode = false;
+	
+	Context context = this;
 	
 	private IGeometry mModel;
 	
@@ -40,8 +51,18 @@ public class ScanActivity extends ARViewActivity {
 	}
 	
 	private void setupClickListener() {
-		surfaceView.setOnClickListener(this);
+		TextView scan = (TextView) findViewById(R.id.shortScan);
+		scan.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mModel.setVisible(true);
+				mCallbackHandler.onTrackingEvent(metaioSDK.getTrackingValues());
+			}
+		});
+		//surfaceView.setOnClickListener(this);
 	}
+	
 	
 	private void initCameraPreview() {
 		surfaceView = (SurfaceView) findViewById(R.id.cameraPreview);
@@ -127,7 +148,7 @@ public class ScanActivity extends ARViewActivity {
 		{
 			AssetsManager.extractAllAssets(getApplicationContext(), BuildConfig.DEBUG);
 			// Getting a file path for tracking configuration XML file
-			String trackingConfigFile = AssetsManager.getAssetPath("arel2/html/resources/TrackingData.zip");
+			String trackingConfigFile = AssetsManager.getAssetPath("3dmap/desktop.zip");
 			
 			//Log.d("DEBUG", trackingConfigFile);
 			
@@ -136,24 +157,27 @@ public class ScanActivity extends ARViewActivity {
 			MetaioDebug.log("Tracking data loaded: " + result); 
 	        
 			// Getting a file path for a 3D geometry
-			String metaioManModel = AssetsManager.getAssetPath("arel2/bild.jpg");			
+			String metaioManModel = AssetsManager.getAssetPath("Assets/metaioman.md2");			
 			if (metaioManModel != null)
 			{
 				Log.d("METAIO", "File found!!!");
 				
 				// Loading 3D geometry
-				mModel = metaioSDK.createGeometryFromImage(metaioManModel);
+				mModel = metaioSDK.createGeometry(metaioManModel);
 				if (mModel != null) 
 				{
 					Log.d("METAIO", "Model nicht null");
 					// Set geometry properties
-					//mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
+					mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
 					
 				}
 				else
 					Log.d("METAIO", "METAIOMAN ist eine null!");
 					MetaioDebug.log(Log.ERROR, "Error loading geometry: "+metaioManModel);
 			}
+			
+			mModel.setVisible(true);
+			//mCallbackHandler.onTrackingEvent(metaioSDK.getTrackingValues());
 		}
 		catch (Exception e)
 		{
@@ -183,6 +207,27 @@ public class ScanActivity extends ARViewActivity {
 				}
 			});
 		}
+		/*
+		@Override
+		public void onTrackingEvent(TrackingValuesVector values) {
+			
+			super.onTrackingEvent(values);
+			
+			TrackingValues tv = values.get(0);
+			
+			//ETRACKING_STATE state = ETRACKING_STATE.ETS_FOUND;
+			
+			if(tv.isTrackingState(ETRACKING_STATE.ETS_FOUND)) {
+				mModel.setVisible(true);
+			}
+			
+			CharSequence text = "Tracking Event fired!";
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+			
+		}*/
 	}
 	
 }
