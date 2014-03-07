@@ -68,40 +68,13 @@ public class ScanActivity extends ARViewActivity {
 		{
 			AssetsManager.extractAllAssets(getApplicationContext(), BuildConfig.DEBUG);
 			// Getting a file path for tracking configuration XML file
-			String trackingConfigFile = AssetsManager.getAssetPath("3dmap/3dmaps.zip");
+			String trackingConfigFile = AssetsManager.getAssetPath("trackingdata/Tracking.xml");
 			
 			//Log.d("DEBUG", trackingConfigFile);
 			
 			// Assigning tracking configuration
 			boolean result = metaioSDK.setTrackingConfiguration(trackingConfigFile); 
 			MetaioDebug.log("Tracking data loaded: " + result);
-			
-			//loadModel();
-			
-	        /*
-			// Getting a file path for a 3D geometry
-			String metaioManModel = AssetsManager.getAssetPath("Assets/metaioman.md2");			
-			if (metaioManModel != null)
-			{
-				Log.d("METAIO", "File found!!!");
-				
-				// Loading 3D geometry
-				mModel = metaioSDK.createGeometry(metaioManModel);
-				if (mModel != null) 
-				{
-					Log.d("METAIO", "Model nicht null");
-					// Set geometry properties
-					mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
-					
-				}
-				else {
-					Log.d("METAIO", "METAIOMAN ist eine null!");
-					MetaioDebug.log(Log.ERROR, "Error loading geometry: "+metaioManModel);
-				}
-			}*/
-			
-			//mModel.setVisible(true);
-			//mCallbackHandler.onTrackingEvent(metaioSDK.getTrackingValues());
 		}
 		catch (Exception e)
 		{
@@ -142,41 +115,22 @@ public class ScanActivity extends ARViewActivity {
 			
 			loadModel();
 			
-			//TrackingValues tv = values.get(0);
-			
-			//ETRACKING_STATE state = ETRACKING_STATE.ETS_FOUND;
-			
 			if (values.size() > 0) {
-				
-				String temp = "";
 				
 				if(values.get(0).getState() == ETRACKING_STATE.ETS_FOUND) {
 					Log.d("dhdebug", values.get(0).getCosName()+" is found");
 					
 					if(values.get(0).getCosName().equals("watch_1")) {
 						Log.d("dhdebug", "ID watch: "+values.get(0).getCoordinateSystemID());
-						temp = getDataFromXML(1);
+						showTimeline(getDataFromXML(1));
 					}
 					else if(values.get(0).getCosName().equals("keyboard_2")) {
 						Log.d("dhdebug", "ID tastatur: "+values.get(0).getCoordinateSystemID());
-						temp = getDataFromXML(2);
+						showTimeline(getDataFromXML(2));
 					}
 					else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
-						//text.setVisibility(View.INVISIBLE);
+						hideTimeline();
 					}
-					
-					final String textval = temp;
-					
-					runOnUiThread(new Runnable() 
-					{
-						@Override
-						public void run() 
-						{
-							text.setText(textval);
-						}
-					});
-					
-					//loadModel();
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
@@ -192,19 +146,36 @@ public class ScanActivity extends ARViewActivity {
 				
 			}
 			
-			/*
-			if(tv.isTrackingState(ETRACKING_STATE.ETS_FOUND)) {
-				mModel.setVisible(true);
-			}
-			
-			
-			CharSequence text = "Tracking Event fired!";
-			int duration = Toast.LENGTH_SHORT;
-
-			Toast toast = Toast.makeText(context, text, duration);
-			toast.show();
-			*/
 		}
+	}
+	
+	private void showTimeline(String temp) {
+		
+		final String textval = temp;
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				text.setText(textval);
+				text.setVisibility(View.VISIBLE);
+			}
+		});
+		
+	}
+	
+	private void hideTimeline() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				text.setVisibility(View.INVISIBLE);
+			}
+		});
+		
 	}
 	
 	private void loadModel() {
