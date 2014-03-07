@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="72px"
+        android:layout_height="40dp"
         android:background="#9C004B" >
         
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="fill_parent"
             android:layout_toRightOf="@+id/title"
             android:gravity="center_vertical|right"
-            android:paddingRight="20dp"
+            android:paddingRight="40dp"
             android:text="Scan"
             android:textSize="20dp" />
 
@@ -35,29 +35,156 @@
             android:id="@+id/verticalLine"
             android:layout_width="2px"
             android:layout_height="46px"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="12px"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="630dp"
+            android:layout_marginBottom="2dp"
+            android:layout_centerVertical="true"
             android:background="#444444" />
 
         <ImageView
             android:id="@+id/logoUR"
-            android:layout_width="72px"
-            android:layout_height="72px"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:src="@drawable/ur_logo" />
         
         
-            "
+            
     </RelativeLayout>
-
-    <TextView 
-            android:id="@+id/timeline"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:background="#FFF"
-            android:textColor="#000"
-            android:visibility="visible"
-            />
+	
+    <RelativeLayout
+        android:id="@+id/timelineview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:visibility="invisible" >
+        
+        <RelativeLayout
+            android:id="@+id/infotaglayout"
+            android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="50dp"
+        	android:layout_marginLeft="20dp"
+        	android:layout_marginRight="20dp"
+        	android:layout_marginBottom="40dp"
+        	android:background="#809C004B">
+        	
+            <ImageView 
+                android:id="@+id/tl_image"
+                android:layout_width="80dp"
+	            android:layout_height="80dp"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_centerVertical="true"
+	            android:layout_marginLeft="20dp"
+	            android:visibility="visible"
+                />
+            <VideoView 
+                android:id="@+id/tl_video"
+                android:layout_width="80dp"
+	            android:layout_height="80dp"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_centerVertical="true"
+	            android:layout_marginLeft="20dp"
+	            android:visibility="visible"
+                />
+            <LinearLayout 
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_centerVertical="true"
+        		android:layout_marginLeft="20dp"
+	            android:layout_toRightOf="@+id/tl_video">
+	            
+                <TextView 
+	            android:id="@+id/tl_nametag"
+	            android:layout_width="wrap_content"
+	            android:layout_height="30dp"
+	            android:layout_marginBottom="5dp"
+	            android:textColor="#FFF"
+	            android:textSize="30dp"
+	            android:text="Name"
+	            />
+                <TextView 
+	            android:id="@+id/tl_companytag"
+	            android:layout_width="wrap_content"
+	            android:layout_height="30dp"
+	            android:textColor="#FFF"
+	            android:textSize="20dp"
+	            android:text="Company"
+	            />
+                
+            </LinearLayout>
+            
+            
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+		    android:gravity="bottom"
+            android:layout_below="@+id/infotaglayout">
+		    <ImageView
+		        android:id="@+id/timelineimg"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_centerVertical="true"
+		        android:src="@drawable/timeline_highlight2" />
+		    
+		    <TextView 
+		            android:id="@+id/tl_datetagbefore"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="80dp"
+		            android:layout_centerVertical="true"
+		            android:textColor="#FFF"
+		            android:text="1955"
+		            android:textSize="20dp"
+		            android:textStyle="bold"
+		            android:visibility="visible"
+		            />
+		    <TextView 
+		            android:id="@+id/tl_datetag"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="160dp"
+		            android:layout_centerVertical="true"
+		            android:layout_toRightOf="@+id/tl_datetagbefore"
+		            android:textColor="#FFF"
+		            android:text="1960"
+		            android:textSize="20dp"
+		            android:textStyle="bold"
+		            android:visibility="visible"
+		            />
+		    <TextView 
+		            android:id="@+id/tl_datetagafter1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="150dp"
+		            android:layout_centerVertical="true"
+		            android:layout_toRightOf="@+id/tl_datetag"
+		            android:textColor="#FFF"
+		            android:text="1970"
+		            android:textSize="20dp"
+		            android:textStyle="bold"
+		            android:visibility="visible"
+		            />
+		    <TextView 
+		            android:id="@+id/tl_datetagafter2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="150dp"
+		            android:layout_centerVertical="true"
+		            android:layout_toRightOf="@+id/tl_datetagafter1"
+		            android:textColor="#FFF"
+		            android:text="1980"
+		            android:textSize="20dp"
+		            android:textStyle="bold"
+		            android:visibility="visible"
+		            />
+	    </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -6,6 +6,7 @@ public class Antique {
 	private String desc;
 	private String release;
 	private String producer;
+	private String type;
 
 	public Antique() {
 	}
@@ -48,6 +49,14 @@ public class Antique {
 
 	public String getProducer() {
 		return producer;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getType() {
+		return type;
 	}
 
 	public String toString() {

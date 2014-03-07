@@ -65,5 +65,14 @@ public class Data {
 		}
 		return null;
 	}
+	
+	public Antique getAntique(int id) {
+		for(Antique a : antiques) {
+			if(a.getId() == id) {
+				return a;
+			}
+		}
+		return null;
+	}
 
 }

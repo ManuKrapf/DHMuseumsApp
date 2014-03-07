@@ -13,6 +13,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,14 @@ public class ScanActivity extends ARViewActivity {
 	
 	Context context = this;
 	Data data;
-	TextView text;
+	
+	RelativeLayout layout;
+	TextView name;
+	TextView comp;
+	TextView datebefore;
+	TextView date;
+	TextView dateafter1;
+	TextView dateafter2;
 	
 	private IGeometry mModel;
 	private IGeometry mModel2;
@@ -103,7 +111,13 @@ public class ScanActivity extends ARViewActivity {
 				public void run() 
 				{
 					mGUIView.setVisibility(View.VISIBLE);
-					text = (TextView) findViewById(R.id.timeline);
+					layout = (RelativeLayout) findViewById(R.id.timelineview);
+					name = (TextView) findViewById(R.id.tl_nametag);
+					comp = (TextView) findViewById(R.id.tl_companytag);
+					datebefore = (TextView) findViewById(R.id.tl_datetagbefore);
+					date = (TextView) findViewById(R.id.tl_datetag);
+					dateafter1 = (TextView) findViewById(R.id.tl_datetagafter1);
+					dateafter2 = (TextView) findViewById(R.id.tl_datetagafter2);
 				}
 			});
 		}
@@ -113,7 +127,7 @@ public class ScanActivity extends ARViewActivity {
 			
 			super.onTrackingEvent(values);
 			
-			loadModel();
+			//loadModel();
 			
 			if (values.size() > 0) {
 				
@@ -128,38 +142,51 @@ public class ScanActivity extends ARViewActivity {
 						Log.d("dhdebug", "ID tastatur: "+values.get(0).getCoordinateSystemID());
 						showTimeline(getDataFromXML(2));
 					}
-					else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
-						hideTimeline();
+					else if(values.get(0).getCosName().equals("overhead_3")) {
+						Log.d("dhdebug", "ID overhead: "+values.get(0).getCoordinateSystemID());
+						showTimeline(getDataFromXML(3));
 					}
+					else if(values.get(0).getCosName().equals("display_4")) {
+						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
+						showTimeline(getDataFromXML(4));
+					}
+				}
+				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
+					hideTimeline();
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
 				}
-				
+				/*
 				Log.d("dhdebug", "Values: "+values.size());
 				Log.d("dhdebug", "Name 0: "+values.get(0).getCosName());
 				Log.d("dhdebug", "State 0: "+values.get(0).getState());
 				if(values.size() >= 2) {
 					Log.d("dhdebug", "Name 1: "+values.get(1).getCosName());
 					Log.d("dhdebug", "State 1: "+values.get(1).getState());
-				}
+				}*/
 				
 			}
 			
 		}
 	}
 	
-	private void showTimeline(String temp) {
+	private void showTimeline(Antique temp) {
 		
-		final String textval = temp;
+		final Antique ant = temp;
 		
 		runOnUiThread(new Runnable() 
 		{
 			@Override
 			public void run() 
 			{
-				text.setText(textval);
-				text.setVisibility(View.VISIBLE);
+				layout.setVisibility(View.VISIBLE);
+				name.setText(ant.getName());
+				comp.setText(ant.getProducer());
+				datebefore.setText("1800");
+				date.setText(ant.getReleaseDate());
+				dateafter1.setText("2000");
+				dateafter2.setText("2013");
 			}
 		});
 		
@@ -172,103 +199,19 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
-				text.setVisibility(View.INVISIBLE);
+				layout.setVisibility(View.GONE);
 			}
 		});
 		
 	}
 	
-	private void loadModel() {
+	private Antique getDataFromXML(int id) {
 		
-		try
-		{
-	        
-			if(mModel != null) {
-				metaioSDK.unloadGeometry(mModel);
-			}
-			
-			if(mModel2 != null) {
-				metaioSDK.unloadGeometry(mModel2);
-			}
-			
-			// Getting a file path for a 3D geometry
-			String metaioManModel = AssetsManager.getAssetPath("Assets/metaioman.md2");			
-			if (metaioManModel != null)
-			{
-				Log.d("METAIO", "File 1 found!!!");
-				
-				// Loading 3D geometry
-				mModel = metaioSDK.createGeometry(metaioManModel);
-				if (mModel != null) 
-				{
-					Log.d("METAIO", "Model 1 nicht null");
-					// Set geometry properties
-					mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
-					mModel.setCoordinateSystemID(1);
-					
-				}
-				else {
-					Log.d("METAIO", "METAIOMAN ist eine null!");
-					MetaioDebug.log(Log.ERROR, "Error loading geometry: "+metaioManModel);
-				}
-			}
-			
-			String otherModel = AssetsManager.getAssetPath("arel2/bild.jpg");			
-			if (otherModel != null)
-			{
-				Log.d("METAIO", "File 2 found!!!");
-				
-				
-				
-				// Loading 3D geometry
-				mModel2 = metaioSDK.createGeometryFromImage(otherModel);
-				if (mModel2 != null) 
-				{
-					Log.d("METAIO", "Model 2 nicht null");
-					// Set geometry properties
-					//mModel.setScale(new Vector3d(4.0f, 4.0f, 4.0f));
-					mModel2.setCoordinateSystemID(2);
-					
-				}
-				else {
-					Log.d("METAIO", "METAIOMAN ist eine null!");
-					MetaioDebug.log(Log.ERROR, "Error loading geometry: "+otherModel);
-				}
-			}
-			
-			//mModel.setVisible(true);
-			//mCallbackHandler.onTrackingEvent(metaioSDK.getTrackingValues());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		Antique ant = data.getAntique(id);
+		Log.d("dhdebug", "Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate()+", Type: "+ant.getType());
 		
-	}
-	
-	private String getDataFromXML(int id) {
+		return ant;//"Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate()+", Type: "+ant.getType();
 		
-		String name = "";
-		
-		switch(id) {
-			case 1: name = "Yost No. 15";
-				break;
-			case 2: name = "Toshiba T3200SX";
-				break;
-			case 3: 
-				break;
-			case 4: 
-				break;
-			default: name = "Megacomputer";
-				break;
-		}
-		
-		Antique ant = data.getAntique(name);
-		Log.d("dhdebug", "Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate());
-		
-		return "Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate();
-		
-		//text.setVisibility(View.VISIBLE);
 	}
 	
 }

@@ -12,6 +12,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	private ArrayList<Antique> antiques = new ArrayList<Antique>();
 	private String currentValue;
 	private Antique antique;
+	private String type;
 	private boolean element;
 	
 	public List<Antique> getAntiques() {
@@ -32,8 +33,13 @@ public class AntiquesContentHandler implements ContentHandler {
 		
 		element = true;
 		
+		if (localName.equals("computer")) {
+			type = "computer";
+		}
+		
 		if (localName.equals("item")) {
 			antique = new Antique();
+			antique.setType(type);
 		}
 	}
 
@@ -43,7 +49,7 @@ public class AntiquesContentHandler implements ContentHandler {
 		
 		element = false;
 		
-		if (localName.equals("title")) {
+		if (localName.equals("name")) {
 			antique.setName(currentValue);
 		}
 		if (localName.equals("id")) {
