@@ -48,11 +48,126 @@
             android:src="@drawable/ur_logo" />
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#FFFFFF"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="#444444" >
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Name: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_named"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="47dp"
+	            android:text="Mac I"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_date"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Erschienen: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_dated"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:text="1967"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_comp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Firma: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_company"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="48dp"
+	            android:text="Apple"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+       
+        <TextView
+            android:id="@+id/textView_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Beschreibung: "
+            android:textSize="15dp"
+	        android:textColor="#fff" />
+        
+        <TextView
+            android:id="@+id/textView_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:text="Nach dem PET 2001 (1977) brachte Commodore mehrere Serien von B&#xFC;romaschinen auf den Markt. Vor der CBM 4000er-Serie erschienen die sog. 2000er- und 3000er-Serien, welche allesamt mit verschiedenen Spezifikationen erh&#xE4;ltlich waren. Der CBM 4032 war etwa mit einem 32 KByte Speicher gegen&#xFC;ber dem CBM 4016 (16KByte) ausgestattet. Mit den genannten Serien von B&#xFC;romaschinen verlie&#xDF; Commodore immer mehr den Bereich der Heimcomputer und stieg in den Bereich der professionellen Nutzung ein. Die 4000er-Serie war Teil der dritten Generation von Commodore-B&#xFC;rocomputern. Der CBM 4032 war sowohl in einer THIN- als auch einer FAT-Version erh&#xE4;ltlich. Die THIN-Version hatte &#xE4;hnlich dem Vorg&#xE4;ngermodell CBM 3032 einen 9-Zoll-Monitor, welcher 40 Zeichen anzeigen konnte. Die FAT-Version hingegen besa&#xDF; wie das sp&#xE4;tere Modell CBM 8032 einen 12-Zoll-Monitor und konnte so bis zu 80 Zeichen darstellen. Als Betriebssystem diente in beiden Versionen Commodore Basic 4.0."
+            android:textSize="12dp"
+	        android:textColor="#fff" />
+        
+        <ImageView
+            android:id="@+id/imageView_pic"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"/>
+
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

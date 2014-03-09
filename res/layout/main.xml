@@ -214,10 +214,12 @@
             android:id="@+id/startScanningButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.53"
+            android:layout_weight="0.24"
             android:background="#525252"
-            android:text="Start"
-            android:textSize="15sp" />
+            android:text="Starte AR"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
