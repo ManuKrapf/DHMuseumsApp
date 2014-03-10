@@ -29,6 +29,11 @@ public class DetailActivity extends Activity {
 	private TextView date;
 	private TextView comp;
 	private TextView desc;
+	private TextView os;
+	private TextView mem;
+	private TextView ram;
+	private TextView cpu;
+	private TextView spec;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,12 +55,21 @@ public class DetailActivity extends Activity {
 		date = (TextView) findViewById(R.id.textView_dated);
 		comp = (TextView) findViewById(R.id.textView_company);
 		desc = (TextView) findViewById(R.id.textView_description);
+		os = (TextView) findViewById(R.id.textView_os);
+		mem = (TextView) findViewById(R.id.textView_memory);
+		ram = (TextView) findViewById(R.id.textView_ram);
+		cpu = (TextView) findViewById(R.id.textView_cpu);
+		spec = (TextView) findViewById(R.id.textView_special);
 		
 		name.setText(ant.getName());
 		date.setText(ant.getReleaseDate());
 		comp.setText(ant.getProducer());
 		desc.setText(ant.getDescription());
-		
+		os.setText(ant.getOs());
+		mem.setText(ant.getMemory());
+		ram.setText(ant.getRam());
+		cpu.setText(ant.getCpu());
+		spec.setText(ant.getSpecial());
 	}
 	
 	private void setupClickListener() {

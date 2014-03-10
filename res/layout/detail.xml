@@ -163,8 +163,140 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:visibility="gone"/>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_os"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Betriebssystem: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_os_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_memory"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Hauptspeicher: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_memory_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_ram"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Arbeitsspeicher: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_ram_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_cpu"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Prozessor: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_cpu_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+	        <TextView
+	            android:id="@+id/textView_special"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Besonderheiten: "
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+	        <TextView
+	            android:id="@+id/textView_special_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:textStyle="bold"
+	            android:textSize="15dp"
+	            android:textColor="#fff" />
+
+        </LinearLayout>
 
     </LinearLayout>
+    
+    
     </ScrollView>
 
 </LinearLayout>
