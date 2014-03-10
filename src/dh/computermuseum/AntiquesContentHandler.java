@@ -64,6 +64,21 @@ public class AntiquesContentHandler implements ContentHandler {
 		if (localName.equals("comp")) {
 			antique.setProducer(currentValue);
 		}
+		if (localName.equals("os")) {
+			antique.setOs(currentValue);
+		}
+		if (localName.equals("memory")) {
+			antique.setMemory(currentValue);
+		}
+		if (localName.equals("ram")) {
+			antique.setRam(currentValue);
+		}
+		if (localName.equals("processor")) {
+			antique.setCpu(currentValue);
+		}
+		if (localName.equals("special")) {
+			antique.setSpecial(currentValue);
+		}
 		if (localName.equals("item")) {
 			antiques.add(antique);
 		}

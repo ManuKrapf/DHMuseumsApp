@@ -4,54 +4,49 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:background="#9C004B" >
         
+        <ImageView
+            android:id="@+id/logoUR"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight=".10"
+            android:src="@drawable/ur_logo" />
+        
         <TextView
             android:id="@+id/title"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_alignRight="@+id/verticalLine"
-            android:layout_toRightOf="@+id/logoUR"
+            android:layout_weight=".65"
+            android:layout_marginLeft="20dp"
             android:gravity="center_vertical|left"
-            android:paddingLeft="30dp"
             android:text="IT Sammlung"
             android:textSize="20dp"
             android:textStyle="bold" />
+        
+        <TextView
+            android:id="@+id/verticalLine"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight=".005"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#444444" />
 
         <TextView
             android:id="@+id/shortScan"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_toRightOf="@+id/title"
-            android:gravity="center_vertical|right"
-            android:paddingRight="40dp"
+            android:layout_weight=".20"
+            android:gravity="center"
             android:text="Scan"
             android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/verticalLine"
-            android:layout_width="2px"
-            android:layout_height="46px"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="630dp"
-            android:layout_marginBottom="2dp"
-            android:layout_centerVertical="true"
-            android:background="#444444" />
-
-        <ImageView
-            android:id="@+id/logoUR"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:src="@drawable/ur_logo" />
-        
-        
             
-    </RelativeLayout>
+    </LinearLayout>
 	
     <RelativeLayout
         android:id="@+id/timelineview"
@@ -67,7 +62,7 @@
         	android:layout_marginTop="50dp"
         	android:layout_marginLeft="20dp"
         	android:layout_marginRight="20dp"
-        	android:layout_marginBottom="40dp"
+        	android:layout_marginBottom="5dp"
         	android:background="#809C004B">
         	
             <ImageView 
@@ -88,9 +83,11 @@
 	            android:layout_marginBottom="10dp"
 	            android:layout_centerVertical="true"
 	            android:layout_marginLeft="20dp"
-	            android:visibility="visible"
+	            android:visibility="invisible"
                 />
+            
             <LinearLayout 
+                android:id="@+id/lin_infotexte"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
@@ -101,7 +98,7 @@
                 <TextView 
 	            android:id="@+id/tl_nametag"
 	            android:layout_width="wrap_content"
-	            android:layout_height="30dp"
+	            android:layout_height="35dp"
 	            android:layout_marginBottom="5dp"
 	            android:textColor="#FFF"
 	            android:textSize="30dp"
@@ -118,6 +115,32 @@
                 
             </LinearLayout>
             
+            <LinearLayout 
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+        		android:layout_height="wrap_content"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentRight="true"
+        		android:layout_marginLeft="430dp"
+        		android:layout_marginRight="5dp">
+                
+                <ImageView 
+                    android:id="@+id/showVideoButton"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/video_logo"
+                    android:layout_weight="1"
+                    android:visibility="gone"/>
+                
+                <ImageView
+                    android:id="@+id/showDetailsButton"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/detail_logo"
+                    android:layout_weight="1"/>
+                
+                </LinearLayout>
             
         </RelativeLayout>
         
@@ -129,61 +152,64 @@
 		    <ImageView
 		        android:id="@+id/timelineimg"
 		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
+		        android:layout_height="100dp"
 		        android:layout_centerVertical="true"
 		        android:src="@drawable/timeline_highlight2" />
 		    
-		    <TextView 
-		            android:id="@+id/tl_datetagbefore"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginLeft="80dp"
-		            android:layout_centerVertical="true"
-		            android:textColor="#FFF"
-		            android:text="1955"
-		            android:textSize="20dp"
-		            android:textStyle="bold"
-		            android:visibility="visible"
-		            />
-		    <TextView 
-		            android:id="@+id/tl_datetag"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginLeft="160dp"
-		            android:layout_centerVertical="true"
-		            android:layout_toRightOf="@+id/tl_datetagbefore"
-		            android:textColor="#FFF"
-		            android:text="1960"
-		            android:textSize="20dp"
-		            android:textStyle="bold"
-		            android:visibility="visible"
-		            />
-		    <TextView 
-		            android:id="@+id/tl_datetagafter1"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginLeft="150dp"
-		            android:layout_centerVertical="true"
-		            android:layout_toRightOf="@+id/tl_datetag"
-		            android:textColor="#FFF"
-		            android:text="1970"
-		            android:textSize="20dp"
-		            android:textStyle="bold"
-		            android:visibility="visible"
-		            />
-		    <TextView 
-		            android:id="@+id/tl_datetagafter2"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginLeft="150dp"
-		            android:layout_centerVertical="true"
-		            android:layout_toRightOf="@+id/tl_datetagafter1"
-		            android:textColor="#FFF"
-		            android:text="1980"
-		            android:textSize="20dp"
-		            android:textStyle="bold"
-		            android:visibility="visible"
-		            />
+		    <LinearLayout
+		        android:orientation="horizontal"
+                android:layout_width="fill_parent"
+        		android:layout_height="wrap_content"
+        		android:layout_centerVertical="true">
+			    <TextView 
+			            android:id="@+id/tl_datetagbefore"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center"
+			            android:gravity="center"
+			            android:textColor="#FFF"
+			            android:text="1955"
+			            android:textSize="20dp"
+			            android:textStyle="bold"
+			            />
+			    <TextView 
+			            android:id="@+id/tl_datetag"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center"
+			            android:gravity="center"
+			            android:textColor="#FFF"
+			            android:text="1960"
+			            android:textSize="20dp"
+			            android:textStyle="bold"
+			            />
+			    <TextView 
+			            android:id="@+id/tl_datetagafter1"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center"
+			            android:gravity="center"
+			            android:textColor="#FFF"
+			            android:text="1970"
+			            android:textSize="20dp"
+			            android:textStyle="bold"
+			            />
+			    <TextView 
+			            android:id="@+id/tl_datetagafter2"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center"
+			            android:gravity="center"
+			            android:textColor="#FFF"
+			            android:text="1980"
+			            android:textSize="20dp"
+			            android:textStyle="bold"
+			            />
+		    </LinearLayout>
 	    </RelativeLayout>
     </RelativeLayout>
 

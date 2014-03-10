@@ -16,21 +16,45 @@ import org.xml.sax.XMLReader;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class DetailActivity extends Activity {
-	private AntiquesContentHandler ach;
+	
+	private Data data;
+	private int id;
+	
+	private Antique ant;
+	
+	private TextView name;
+	private TextView date;
+	private TextView comp;
+	private TextView desc;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail);
 	
-		//initXMLParser();
+		data = new Data(this);
+		
+		Bundle extras = getIntent().getExtras();
+		id = extras.getInt("id");
+		ant = data.getAntique(id);
+		
 		initUI();
-		setupClickListener(); 
+		//setupClickListener(); 
 		
 	}
 	
 	private void initUI() {
+		name = (TextView) findViewById(R.id.textView_named);
+		date = (TextView) findViewById(R.id.textView_dated);
+		comp = (TextView) findViewById(R.id.textView_company);
+		desc = (TextView) findViewById(R.id.textView_description);
+		
+		name.setText(ant.getName());
+		date.setText(ant.getReleaseDate());
+		comp.setText(ant.getProducer());
+		desc.setText(ant.getDescription());
 		
 	}
 	
@@ -38,29 +62,4 @@ public class DetailActivity extends Activity {
 		
 	}
 	
-	private void initXMLParser() {
-		try {
-			SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-			SAXParser newSAXParser = saxParserFactory.newSAXParser();
-			XMLReader xmlReader = newSAXParser.getXMLReader();
-			// read XML input file here:
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					getAssets().open("museum.xml")));
-			InputSource inputSource = new InputSource(br);
-			ach = new AntiquesContentHandler();
-			xmlReader.setContentHandler(ach);
-			xmlReader.parse(inputSource);
-			
-			Log.d("XML", ach.getAntiques().toString());
-
-		} catch (FileNotFoundException fnfe) {
-			fnfe.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		} catch (SAXException saxe) {
-			saxe.printStackTrace();
-		} catch (ParserConfigurationException pce) {
-			pce.printStackTrace();
-		}
-	}
 }

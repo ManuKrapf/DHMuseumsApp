@@ -21,7 +21,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
     
     private void initUI() {
-    	buttonScan = (Button)findViewById(R.id.startScanningButton);
+    	buttonScan = (Button) findViewById(R.id.startScanningButton1);
     	textGoto = (TextView) findViewById(R.id.textMuseumGoto);
     }
     
@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     
     public void onClick(View view) {
     	switch (view.getId()) {
-			case  R.id.startScanningButton:
+			case  R.id.startScanningButton1:
 				Intent i = new Intent(MainActivity.this, ScanActivity.class);
 			    startActivity(i);
 				break;

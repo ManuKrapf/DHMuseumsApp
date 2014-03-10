@@ -8,11 +8,15 @@ import android.content.Intent;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +36,11 @@ public class ScanActivity extends ARViewActivity {
 	Context context = this;
 	Data data;
 	
+	int id = 0;
+	
 	RelativeLayout layout;
+	ImageView details;
+	ImageView video;
 	TextView name;
 	TextView comp;
 	TextView datebefore;
@@ -111,7 +119,24 @@ public class ScanActivity extends ARViewActivity {
 				public void run() 
 				{
 					mGUIView.setVisibility(View.VISIBLE);
+					
 					layout = (RelativeLayout) findViewById(R.id.timelineview);
+					
+					details = (ImageView) findViewById(R.id.showDetailsButton);
+					video = (ImageView) findViewById(R.id.showVideoButton);
+					
+					details.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							
+							Intent i = new Intent(ScanActivity.this, DetailActivity.class);
+							i.putExtra("id", id);
+						    startActivity(i);
+							
+						}
+					});
+					
 					name = (TextView) findViewById(R.id.tl_nametag);
 					comp = (TextView) findViewById(R.id.tl_companytag);
 					datebefore = (TextView) findViewById(R.id.tl_datetagbefore);
@@ -137,21 +162,26 @@ public class ScanActivity extends ARViewActivity {
 					if(values.get(0).getCosName().equals("watch_1")) {
 						Log.d("dhdebug", "ID watch: "+values.get(0).getCoordinateSystemID());
 						showTimeline(getDataFromXML(1));
+						id = 1;
 					}
 					else if(values.get(0).getCosName().equals("keyboard_2")) {
 						Log.d("dhdebug", "ID tastatur: "+values.get(0).getCoordinateSystemID());
 						showTimeline(getDataFromXML(2));
+						id = 2;
 					}
 					else if(values.get(0).getCosName().equals("overhead_3")) {
 						Log.d("dhdebug", "ID overhead: "+values.get(0).getCoordinateSystemID());
 						showTimeline(getDataFromXML(3));
+						id = 3;
 					}
 					else if(values.get(0).getCosName().equals("display_4")) {
 						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
 						showTimeline(getDataFromXML(4));
+						id = 4;
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
+					id = 0;
 					hideTimeline();
 				}
 				else {
