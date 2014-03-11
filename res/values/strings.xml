@@ -14,4 +14,13 @@
     <string name="museum_contact">Kontakt:</string>       
     <string name="museum_contact_content">Sabrina Lang\n(sabrina.lang@stud.uni-regensburg.de)</string>  
     <string name="museum_goto"><u>Anfahrt</u></string>    
+    <string name="detail_name">Name: </string>  
+    <string name="detail_date">Erschienen: </string> 
+    <string name="detail_company">Hersteller: </string>
+    <string name="detail_description">Beschreibung: </string>
+    <string name="detail_os">Betriebssystem: </string>  
+    <string name="detail_memory">Hauptspeicher: </string>
+    <string name="detail_ram">Arbeitsspeicher: </string>  
+    <string name="detail_cpu">Prozessor: </string>  
+    <string name="detail_special">Besonderheiten: </string>  
 </resources>
