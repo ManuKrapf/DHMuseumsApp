@@ -24,7 +24,7 @@
             android:layout_weight=".65"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical|left"
-            android:text="IT Sammlung"
+            android:text="@string/app_name"
             android:textSize="20dp"
             android:textStyle="bold" />
         
@@ -43,7 +43,7 @@
             android:layout_height="fill_parent"
             android:layout_weight=".20"
             android:gravity="center"
-            android:text="Scan"
+            android:text="@string/breadcrumbs_scan"
             android:textSize="20dp" />
             
     </LinearLayout>
@@ -102,7 +102,7 @@
 	            android:layout_marginBottom="5dp"
 	            android:textColor="#FFF"
 	            android:textSize="30dp"
-	            android:text="Name"
+	            android:text="@string/detail_name"
 	            />
                 <TextView 
 	            android:id="@+id/tl_companytag"
@@ -110,7 +110,7 @@
 	            android:layout_height="30dp"
 	            android:textColor="#FFF"
 	            android:textSize="20dp"
-	            android:text="Company"
+	            android:text="@string/detail_company"
 	            />
                 
             </LinearLayout>

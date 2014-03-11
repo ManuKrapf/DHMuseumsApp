@@ -216,7 +216,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.24"
             android:background="#525252"
-            android:text="Starte AR"
+            android:text="@string/museum_startAR"
             android:textColor="#fff"
             android:textStyle="bold"
             android:textSize="30sp" />

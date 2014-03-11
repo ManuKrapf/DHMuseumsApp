@@ -13,7 +13,8 @@
     <string name="museum_location_content">Altes Finanzamt\nLandshuter Str. 4\n93047 Regensburg</string>
     <string name="museum_contact">Kontakt:</string>       
     <string name="museum_contact_content">Sabrina Lang\n(sabrina.lang@stud.uni-regensburg.de)</string>  
-    <string name="museum_goto"><u>Anfahrt</u></string>    
+    <string name="museum_goto"><u>Anfahrt</u></string>   
+    <string name="museum_startAR">Starte AR</string>  
     <string name="breadcrumbs_main">Home</string>  
     <string name="breadcrumbs_scan">Scan</string> 
     <string name="breadcrumbs_detail">Detail</string>  
