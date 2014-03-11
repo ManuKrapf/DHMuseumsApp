@@ -17,7 +17,7 @@
             android:layout_toRightOf="@+id/logoUR"
             android:gravity="center_vertical|left"
             android:paddingLeft="30dp"
-            android:text="IT Sammlung"
+            android:text="@string/app_name"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
             android:layout_toRightOf="@+id/verticalLine"
             android:gravity="center_vertical|right"
             android:paddingRight="18dp"
-            android:text="Detail"
+            android:text="@string/breadcrumbs_detail"
             android:textSize="20dp" />
 
         <TextView
@@ -69,7 +69,7 @@
 	            android:id="@+id/textView_name"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Name: "
+	            android:text="@string/detail_name"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -95,7 +95,7 @@
 	            android:id="@+id/textView_date"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Erschienen: "
+	            android:text="@string/detail_date"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -121,7 +121,7 @@
 	            android:id="@+id/textView_comp"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Firma: "
+	            android:text="@string/detail_company"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Beschreibung: "
+            android:text="@string/detail_description"
             android:textSize="15dp"
 	        android:textColor="#fff" />
         
@@ -175,7 +175,7 @@
 	            android:id="@+id/textView_os"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Betriebssystem: "
+	            android:text="@string/detail_os"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -201,7 +201,7 @@
 	            android:id="@+id/textView_memory"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Hauptspeicher: "
+	            android:text="@string/detail_memory"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -227,7 +227,7 @@
 	            android:id="@+id/textView_ram"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Arbeitsspeicher: "
+	            android:text="@string/detail_ram"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -253,7 +253,7 @@
 	            android:id="@+id/textView_cpu"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Prozessor: "
+	            android:text="@string/detail_cpu"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
@@ -279,7 +279,7 @@
 	            android:id="@+id/textView_special"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Besonderheiten: "
+	            android:text="@string/detail_special"
 	            android:textSize="15dp"
 	            android:textColor="#fff" />
 
