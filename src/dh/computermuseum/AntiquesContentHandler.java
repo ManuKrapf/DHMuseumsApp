@@ -37,6 +37,14 @@ public class AntiquesContentHandler implements ContentHandler {
 			type = "computer";
 		}
 		
+		if (localName.equals("components")) {
+			type = "components";
+		}
+		
+		if (localName.equals("storages")) {
+			type = "storages";
+		}
+		
 		if (localName.equals("item")) {
 			antique = new Antique();
 			antique.setType(type);
@@ -48,42 +56,101 @@ public class AntiquesContentHandler implements ContentHandler {
 			throws SAXException {
 		
 		element = false;
-		
-		if (localName.equals("name")) {
-			antique.setName(currentValue);
+		if(type.equalsIgnoreCase("computer")) {
+			if (localName.equals("name")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("id")) {
+				antique.setId(Integer.parseInt(currentValue));
+			}
+			if (localName.equals("note")) {
+				antique.setDescription(currentValue);
+			}
+			if (localName.equals("date")) {
+				antique.setReleaseDate(currentValue);
+			}
+			if (localName.equals("comp")) {
+				antique.setProducer(currentValue);
+			}
+			if (localName.equals("os")) {
+				antique.setOs(currentValue);
+			}
+			if (localName.equals("memory")) {
+				antique.setMemory(currentValue);
+			}
+			if (localName.equals("ram")) {
+				antique.setRam(currentValue);
+			}
+			if (localName.equals("processor")) {
+				antique.setCpu(currentValue);
+			}
+			if (localName.equals("special")) {
+				antique.setSpecial(currentValue);
+			}
+			if (localName.equals("img")) {
+				antique.setImg(currentValue);
+			}
+			if (localName.equals("item")) {
+				antiques.add(antique);
+			}
 		}
-		if (localName.equals("id")) {
-			antique.setId(Integer.parseInt(currentValue));
+		if(type.equalsIgnoreCase("components")) {
+			if (localName.equals("name")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("id")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("date")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("comp")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("special")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("note")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("item")) {
+				antiques.add(antique);
+			}
 		}
-		if (localName.equals("note")) {
-			antique.setDescription(currentValue);
-		}
-		if (localName.equals("date")) {
-			antique.setReleaseDate(currentValue);
-		}
-		if (localName.equals("comp")) {
-			antique.setProducer(currentValue);
-		}
-		if (localName.equals("os")) {
-			antique.setOs(currentValue);
-		}
-		if (localName.equals("memory")) {
-			antique.setMemory(currentValue);
-		}
-		if (localName.equals("ram")) {
-			antique.setRam(currentValue);
-		}
-		if (localName.equals("processor")) {
-			antique.setCpu(currentValue);
-		}
-		if (localName.equals("special")) {
-			antique.setSpecial(currentValue);
-		}
-		if (localName.equals("img")) {
-			antique.setImg(currentValue);
-		}
-		if (localName.equals("item")) {
-			antiques.add(antique);
+		if(type.equalsIgnoreCase("storages")) {
+			if (localName.equals("name")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("id")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("date")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("type")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("capacity")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("material")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("endurance")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("size")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("developer")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("rw-speed")) {
+				antique.setName(currentValue);
+			}
+			if (localName.equals("item")) {
+				antiques.add(antique);
+			}
 		}
 	}
 
@@ -114,9 +181,6 @@ public class AntiquesContentHandler implements ContentHandler {
 	@Override
 	public void startPrefixMapping(String prefix, String uri)
 			throws SAXException {
-		
-		
-	}
-
 	
+	}
 }
