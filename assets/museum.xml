@@ -2,13 +2,220 @@
 <museum>
 <desc>IT Museum</desc>
 	<computer>
-		<item><id>1</id><name>Commodore CBM 4032</name><date>1979</date><comp><value>Commodore</value></comp><os>Commodore Basic 4.0</os><memory></memory><ram>32 KByte</ram><processor>1 MHz MOS 6502</processor><special>Eingebauter Grünmonitor und Tastatur</special><img>Commodore_CBM_4032</img><note><value>Nach dem PET 2001 (1977) brachte Commodore mehrere Serien von Büromaschinen auf den Markt. Vor der CBM 4000er-Serie erschienen die sog. 2000er- und 3000er-Serien, welche allesamt mit verschiedenen Spezifikationen erhältlich waren. Der CBM 4032 war etwa mit einem 32 KByte Speicher gegenüber dem CBM 4016 (16KByte) ausgestattet. Mit den genannten Serien von Büromaschinen verließ Commodore immer mehr den Bereich der Heimcomputer und stieg in den Bereich der professionellen Nutzung ein. Die 4000er-Serie war Teil der dritten Generation von Commodore-Bürocomputern. Der CBM 4032 war sowohl in einer "THIN"- als auch einer "FAT"-Version erhältlich. Die "THIN"-Version hatte ähnlich dem Vorgängermodell CBM 3032 einen 9-Zoll-Monitor, welcher 40 Zeichen anzeigen konnte. Die "FAT"-Version hingegen besaß wie das spätere Modell CBM 8032 einen 12-Zoll-Monitor und konnte so bis zu 80 Zeichen darstellen. Als Betriebssystem diente in beiden Versionen Commodore Basic 4.0.</value></note></item>
-		<item><id>2</id><name>Toshiba T3200SX</name><date>1989</date><comp><value>Toshiba</value></comp><os>Verschiedene</os><memory>40 MB (extern)</memory><ram>1-13 MB</ram><processor>16 MHz Intel 386 SX</processor><special>Eingebauter S/W-Monitor und Tastatur, tragbar</special><img>Toshiba_T3200SX</img><note><value>Der T3200SX von Toshiba war der Versuch, einen tragbaren Computer ohne Leistungseinbußen gegenüber einem Desktop-PC zu bauen. Neben einer hohen Mobilität sollte der T3200SX die Möglichkeiten der 386er-Technologie voll ausschöpfen und selbst anspruchsvollen Programmen genügend Leistung bieten. Der mobile Bürocomputer von Toshiba stellte hohe Ansprüche an seine Ingenieure: Er sollte dieselbe Leistung wie ein sperriger Desktop-PC besitzen und doch ein kompaktes, leicht transportierbares Gerät darstellen, mit dem das Arbeiten unabhängig vom gewählten Standort möglich war. Auch sollte das Gerät über entsprechende Anschlüsse verfügen, um das System um Einrichtungen wie ein Fax oder Modem erweitern zu können. Schon in den 1980er Jahren war die Zukunftssicherheit ein entscheidender Aspekt. So musste der Computer nicht nur für die momentan anspruchsvolleren Programme genügend "Power" besitzen, sondern auch für die Zukunft einsetzbar bleiben. Toshiba schaffte es, all diese Anforderungen im T3200SX zu vereinen und einen wichtigen Schritt in Richtung des heutigen Notebooks zu unternehmen. Ein Vorteil gegenüber anderen Geräten war auch die freie Wahl des Betriebssystems. Alle gängigen Systeme wie MS-DOS, OS/2 oder UNIX konnten zum Einsatz kommen. Dieser Rechner wurde anlässlich der Eröffnung des Toshiba Werkes in Regensburg 1990 der Stadt Regensburg geschenkt. Ende 2007 wurde die Produktion im Werk eingestellt.</value></note></item>
-		<item><id>3</id><name>Mac I</name><date>1983</date><comp><value>Apple Inc.</value></comp><os>Lisa OS</os><memory></memory><ram>128 KByte</ram><processor>Motorola 68000</processor><special>Mikroprozessor, Schnittstellen (Drucker, Modem, Maus, Tastatur, FDD, Audio)</special><img>Mac_I</img><note><value>Nach dem Erfolg des Apple I und II seit 1976 wurde 1984 der erste Macintosh Mac I als Billigrechner der öffentlichkeit vorgestellt. Sein Herzstück ist ein MC68000-Prozessor von der Firma Motorola. Die Datenverarbeitung läuft dank des Motorola MC68000 Hauptprozessors bereits mit 32 bit, während externe Zugriffe (zum Beispiel auf Speicher und Medien) mit 16 bit durchgeführt werden. Der Mac I arbeitet mit einer Taktzahl von umgerechnet 8 MHz und bietet als Speicherkapazität 128 KByte RAM, sowie 64 KByte ROM. Zudem verfügt er über 2 serielle Schnittstellen und 2 Anschlüsse zur Bild- und Tonausgabe. Aufgrund fehlender Harddisk und dem geringen Arbeitsspeicher konnte der Mac I zu einem äußerst niedrigen Preis von 2495 US-Dollar angeboten werden. Ein halbes Jahr nach seiner Einführung wurde dem Gerät mehr RAM spendiert, worauf man den "UR-Mac" 128k und den aufgerüsteten Macintosh 512k nannte. Auf der hier ausgestellten Platine ist eine Speichererweiterung aufgesteckt, die den Speicher von den damals üblichen 512k Standard auf 640k erweiterte. Der Prozessor wurde bis 1986 produziert.</value></note></item>
-		<item><id>4</id><name>Commodore 128D, DA400866</name><date>1985</date><comp><value>Commodore</value></comp><os>Commodore Basic 7.0</os><memory>80 KByte</memory><ram>128 KByte</ram><processor>MOS Technologies 8502, 2.0 MHz/Zilog Z80, 4.0 MHz</processor><special>Kein Diskettenlaufwerk, drei Betriebsarten (C128, C64, CP/M)</special><img>Commodore_128</img><note><value>Der Commodore 128 war der Nachfolger des C64, dem meistverkauften Desktop Computer der 1980er Jahre, der zu seiner Zeit vorwiegend als Spiele- und Softwareprogrammierkonsole genutzt wurde. Allerdings konnte der Commodore 128 nicht an den Erfolg seines Vorgängers anknüpfen, da die marginalen Neuerungen im Vergleich zum C64 den hohen Preis nach Meinung der Kundschaft nicht rechtfertigten. Gründe sah man auch in der mangelnden Innovation und den bereits aufkeimenden Gerüchten über die "Wundermaschine" Amiga. Besondere Bedeutung erfuhr der C128 aufgrund seiner Abwärtskompatibilität zu seinem Vorgängermodell, des C64-Computers, und dessen Software. Die Tastatur des C128 war – im Gegensatz zu seinem späteren Nachfolger C128D – fest in das Gehäuse integriert.</value></note></item>
+		<item>
+			<id>1</id>
+			<name>Commodore CBM 4032</name>
+			<date>1979</date>
+			<comp><value>Commodore</value></comp>
+			<os>Commodore Basic 4.0</os>
+			<memory></memory>
+			<ram>32 KByte</ram>
+			<processor>1 MHz MOS 6502</processor>
+			<special>Eingebauter Grünmonitor und Tastatur</special>
+			<img>Commodore_CBM_4032</img>
+			<note><value>Nach dem PET 2001 (1977) brachte Commodore mehrere Serien von Büromaschinen auf den Markt. Vor der CBM 4000er-Serie erschienen die sog. 2000er- und 3000er-Serien, welche allesamt mit verschiedenen Spezifikationen erhältlich waren. Der CBM 4032 war etwa mit einem 32 KByte Speicher gegenüber dem CBM 4016 (16KByte) ausgestattet. Mit den genannten Serien von Büromaschinen verließ Commodore immer mehr den Bereich der Heimcomputer und stieg in den Bereich der professionellen Nutzung ein. Die 4000er-Serie war Teil der dritten Generation von Commodore-Bürocomputern. Der CBM 4032 war sowohl in einer "THIN"- als auch einer "FAT"-Version erhältlich. Die "THIN"-Version hatte ähnlich dem Vorgängermodell CBM 3032 einen 9-Zoll-Monitor, welcher 40 Zeichen anzeigen konnte. Die "FAT"-Version hingegen besaß wie das spätere Modell CBM 8032 einen 12-Zoll-Monitor und konnte so bis zu 80 Zeichen darstellen. Als Betriebssystem diente in beiden Versionen Commodore Basic 4.0.</value></note>
+		</item>
+		<item>
+			<id>2</id>
+			<name>Toshiba T3200SX</name>
+			<date>1989</date>
+			<comp><value>Toshiba</value></comp>
+			<os>Verschiedene</os>
+			<memory>40 MB (extern)</memory>
+			<ram>1-13 MB</ram>
+			<processor>16 MHz Intel 386 SX</processor>
+			<special>Eingebauter S/W-Monitor und Tastatur, tragbar</special>
+			<img>Toshiba_T3200SX</img><note><value>Der T3200SX von Toshiba war der Versuch, einen tragbaren Computer ohne Leistungseinbußen gegenüber einem Desktop-PC zu bauen. Neben einer hohen Mobilität sollte der T3200SX die Möglichkeiten der 386er-Technologie voll ausschöpfen und selbst anspruchsvollen Programmen genügend Leistung bieten. Der mobile Bürocomputer von Toshiba stellte hohe Ansprüche an seine Ingenieure: Er sollte dieselbe Leistung wie ein sperriger Desktop-PC besitzen und doch ein kompaktes, leicht transportierbares Gerät darstellen, mit dem das Arbeiten unabhängig vom gewählten Standort möglich war. Auch sollte das Gerät über entsprechende Anschlüsse verfügen, um das System um Einrichtungen wie ein Fax oder Modem erweitern zu können. Schon in den 1980er Jahren war die Zukunftssicherheit ein entscheidender Aspekt. So musste der Computer nicht nur für die momentan anspruchsvolleren Programme genügend "Power" besitzen, sondern auch für die Zukunft einsetzbar bleiben. Toshiba schaffte es, all diese Anforderungen im T3200SX zu vereinen und einen wichtigen Schritt in Richtung des heutigen Notebooks zu unternehmen. Ein Vorteil gegenüber anderen Geräten war auch die freie Wahl des Betriebssystems. Alle gängigen Systeme wie MS-DOS, OS/2 oder UNIX konnten zum Einsatz kommen. Dieser Rechner wurde anlässlich der Eröffnung des Toshiba Werkes in Regensburg 1990 der Stadt Regensburg geschenkt. Ende 2007 wurde die Produktion im Werk eingestellt.</value></note>
+		</item>
+		<item>
+			<id>3</id>
+			<name>Mac I</name>
+			<date>1983</date>
+			<comp><value>Apple Inc.</value></comp>
+			<os>Lisa OS</os>
+			<memory></memory>
+			<ram>128 KByte</ram>
+			<processor>Motorola 68000</processor>
+			<special>Mikroprozessor, Schnittstellen (Drucker, Modem, Maus, Tastatur, FDD, Audio)</special>
+			<img>Mac_I</img>
+			<note><value>Nach dem Erfolg des Apple I und II seit 1976 wurde 1984 der erste Macintosh Mac I als Billigrechner der öffentlichkeit vorgestellt. Sein Herzstück ist ein MC68000-Prozessor von der Firma Motorola. Die Datenverarbeitung läuft dank des Motorola MC68000 Hauptprozessors bereits mit 32 bit, während externe Zugriffe (zum Beispiel auf Speicher und Medien) mit 16 bit durchgeführt werden. Der Mac I arbeitet mit einer Taktzahl von umgerechnet 8 MHz und bietet als Speicherkapazität 128 KByte RAM, sowie 64 KByte ROM. Zudem verfügt er über 2 serielle Schnittstellen und 2 Anschlüsse zur Bild- und Tonausgabe. Aufgrund fehlender Harddisk und dem geringen Arbeitsspeicher konnte der Mac I zu einem äußerst niedrigen Preis von 2495 US-Dollar angeboten werden. Ein halbes Jahr nach seiner Einführung wurde dem Gerät mehr RAM spendiert, worauf man den "UR-Mac" 128k und den aufgerüsteten Macintosh 512k nannte. Auf der hier ausgestellten Platine ist eine Speichererweiterung aufgesteckt, die den Speicher von den damals üblichen 512k Standard auf 640k erweiterte. Der Prozessor wurde bis 1986 produziert.</value></note>
+		</item>
+		<item>
+			<id>4</id>
+			<name>Commodore 128D, DA400866</name>
+			<date>1985</date>
+			<comp><value>Commodore</value></comp>
+			<os>Commodore Basic 7.0</os>
+			<memory>80 KByte</memory>
+			<ram>128 KByte</ram>
+			<processor>MOS Technologies 8502, 2.0 MHz/Zilog Z80, 4.0 MHz</processor>
+			<special>Kein Diskettenlaufwerk, drei Betriebsarten (C128, C64, CP/M)</special>
+			<img>Commodore_128</img>
+			<note><value>Der Commodore 128 war der Nachfolger des C64, dem meistverkauften Desktop Computer der 1980er Jahre, der zu seiner Zeit vorwiegend als Spiele- und Softwareprogrammierkonsole genutzt wurde. Allerdings konnte der Commodore 128 nicht an den Erfolg seines Vorgängers anknüpfen, da die marginalen Neuerungen im Vergleich zum C64 den hohen Preis nach Meinung der Kundschaft nicht rechtfertigten. Gründe sah man auch in der mangelnden Innovation und den bereits aufkeimenden Gerüchten über die "Wundermaschine" Amiga. Besondere Bedeutung erfuhr der C128 aufgrund seiner Abwärtskompatibilität zu seinem Vorgängermodell, des C64-Computers, und dessen Software. Die Tastatur des C128 war – im Gegensatz zu seinem späteren Nachfolger C128D – fest in das Gehäuse integriert.</value></note>
+		</item>
 	</computer>
 	<components>
-		<item><id>5</id><name>Votrax Sprachsynthesizer</name><date>1980</date><comp><value>Votrax (International) Inc.</value></comp><special>Sprachsynthsizer zur Generierung künstlicher Sprache</special><note><value>Der Sprachsynthesizer mit phonetischer Tastatur stammt aus dem Hause Votrax Inc. In ihrer Hauptniederlassung in Detroit, Michigan beschäftigte sich die Firma mit der Erzeugung synthetisierter Sprache und spezialisierte sich auf die Entwicklung und Produktion von phonembasierten Sprachsynthesizern und "Text to Speech"-Algorithmen (TTS). Der 1980 entwickelte Sprachsynthesizer war einer der ersten Synthsizer überhaupt, Phoneme wurden einzeln über die Tastatur eingegeben und als kurze Äußerung wiedergegeben. Der integrierte Schaltkreis des 22-pin-Typs arbeitete mit einem revolutionären Chip namens SC-01. Ausgehend von der Eingabe einer gewissen Datenmenge, synthetisiert der Chip ein unbegrenztes Vokabular an kontinuierlicher Sprache auf phonetischer Basis. Dabei besteht dieses TTS-System aus zwei Grundkomponenenten, die ihrerseits wieder in verschiedene Unterkomponenenten gegliedert sind: zum einen konvertiert ein Text-zo-Phonem-Übersetzer den (Text-)Datentrom (ASCII-Folge) in den phonembasierten Code; zum anderen generiert darauf aufbauend ein Phonem-zu-Ton-Übersetzer die synthetisierte Sprache.</value></note></item>
-		<item><id>6</id><name>Tangora</name><date>1986</date><comp><value>IBM</value></comp><special></special><note><value>IBM präsentierte der Öffentlichkeit im Jahr 1986 das Spracherkennungssystem Tangora 4.</value></note></item>
+		<item>
+			<id>5</id>
+			<name>Votrax Sprachsynthesizer</name>
+			<date>1980</date>
+			<comp><value>Votrax (International) Inc.</value></comp>
+			<special>Sprachsynthsizer zur Generierung künstlicher Sprache</special>
+			<note><value>Der Sprachsynthesizer mit phonetischer Tastatur stammt aus dem Hause Votrax Inc. In ihrer Hauptniederlassung in Detroit, Michigan beschäftigte sich die Firma mit der Erzeugung synthetisierter Sprache und spezialisierte sich auf die Entwicklung und Produktion von phonembasierten Sprachsynthesizern und "Text to Speech"-Algorithmen (TTS). Der 1980 entwickelte Sprachsynthesizer war einer der ersten Synthsizer überhaupt, Phoneme wurden einzeln über die Tastatur eingegeben und als kurze Äußerung wiedergegeben. Der integrierte Schaltkreis des 22-pin-Typs arbeitete mit einem revolutionären Chip namens SC-01. Ausgehend von der Eingabe einer gewissen Datenmenge, synthetisiert der Chip ein unbegrenztes Vokabular an kontinuierlicher Sprache auf phonetischer Basis. Dabei besteht dieses TTS-System aus zwei Grundkomponenenten, die ihrerseits wieder in verschiedene Unterkomponenenten gegliedert sind: zum einen konvertiert ein Text-zo-Phonem-Übersetzer den (Text-)Datentrom (ASCII-Folge) in den phonembasierten Code; zum anderen generiert darauf aufbauend ein Phonem-zu-Ton-Übersetzer die synthetisierte Sprache.</value></note>
+		</item>
+		<item>
+			<id>6</id>
+			<name>Tangora</name>
+			<date>1986</date>
+			<comp><value>IBM</value></comp>
+			<special></special>
+			<note><value>IBM präsentierte der Öffentlichkeit im Jahr 1986 das Spracherkennungssystem Tangora 4.</value></note>
+		</item>
 	</components>
+	<storages>
+		<item>
+			<id>7</id>
+			<name>Lochkarte</name>
+			<date>1890</date>
+			<type>Mechanischer Speicher</type>
+			<capacity>Unbekannt</capacity>
+			<material>Papier</material>
+			<endurance>10000 Lesevorgänge</endurance>
+			<size>18,7 cm x 8,3 cm x 0,17 mm </size>
+			<developer>Herman Hollerith</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>8</id>
+			<name>Lochstreifen</name>
+			<date>1937</date>
+			<type>Mechanischer Speicher</type>
+			<capacity>Unbekannt</capacity>
+			<material>Papier / Kunststoff</material>
+			<endurance>10000 Lesevorgänge</endurance>
+			<size>17,4 / 25,4 mm</size>
+			<developer>Henri Fourneaux</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>9</id>
+			<name>Magnetband</name>
+			<date>1951</date>
+			<type>Magnetischer Speicher</type>
+			<capacity>Bis zu 10000 Lochkarten</capacity>
+			<material>Kunststoff</material>
+			<endurance>30 Jahre</endurance>
+			<size>Variabel</size>
+			<developer>AEG / I.G. Farben</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>10</id>
+			<name>Floppy</name>
+			<date>1969</date>
+			<type>Magnetischer Speicher</type>
+			<capacity>80 KB bis 1200 KB</capacity>
+			<material>Biaxial orientierte Polyester-Folie ("boPET")</material>
+			<endurance>5 - 30 Jahre</endurance>
+			<size>200 mm (ca. 8″) - 130 mm (ca. 5,25″)</size>
+			<developer>Alan Shugart (IBM)</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>11</id>
+			<name>Diskette</name>
+			<date>1982</date>
+			<type>Magnetischer Speicher</type>
+			<capacity>180 KB bis 3520 KB (~3,4 MB)</capacity>
+			<material>Biaxial orientierte Polyester-Folie ("boPET")</material>
+			<endurance>5 - 30 Jahre</endurance>
+			<size>80 mm (ca. 3″) - 90 mm (ca. 3,5″)</size>
+			<developer>Alan Shugart (IBM)</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>12</id>
+			<name>Compact Disc</name>
+			<date>1989</date>
+			<type>Optischer Speicher</type>
+			<capacity>Bis zu 900 MB</capacity>
+			<material>Polycarbonat</material>
+			<endurance>10 - 50 Jahre</endurance>
+			<size>12 cm x 1,2 mm</size>
+			<developer>Philips / Sony</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>13</id>
+			<name>ZIP-Laufwerk</name>
+			<date>1994</date>
+			<type>Magnetischer Speicher</type>
+			<capacity>100 - 750 MB</capacity>
+			<material>Biaxial orientierte Polyester-Folie ("boPET")</material>
+			<endurance>10 - 50 Jahre</endurance>
+			<size>98 x 99 x 7 mm</size>
+			<developer>Iomega</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>14</id>
+			<name>USB Massenspeicher</name>
+			<date>1996</date>
+			<type>Elektronischer Speicher</type>
+			<capacity>512 MB bis 4 TB</capacity>
+			<material></material>
+			<endurance>10 - 30 Jahre</endurance>
+			<size>Variabel</size>
+			<developer>Dov Moran</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>15</id>
+			<name>SD Memory Card</name>
+			<date>2001</date>
+			<type>Elektronischer Speicher</type>
+			<capacity>8 MB bis 2 TB (SD, SDHC, SDXC)</capacity>
+			<material></material>
+			<endurance>10 - 30 Jahre</endurance>
+			<size>32,0 x 24,0 x 2,1 mm</size>
+			<developer>SanDisk</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>16</id>
+			<name>Digital Versatile Disc</name>
+			<date>2001</date>
+			<type>Optischer Speicher</type>
+			<capacity>4,7 bis 8,5 GB (SD, SDHC, SDXC)</capacity>
+			<material>Polycarbonat</material>
+			<endurance>~ 10 Jahre</endurance>
+			<size>32,0 x 24,0 x 2,1 mm</size>
+			<developer>DVD Forum</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>17</id>
+			<name>Blu-ray Disk</name>
+			<date>2006</date>
+			<type>Optischer Speicher</type>
+			<capacity>25 bis 50 GB</capacity>
+			<material>Polycarbonat</material>
+			<endurance>30 - 50 Jahre</endurance>
+			<size>12 cm x 1,2 mm</size>
+			<developer>Blu-ray Disc Association</developer>
+			<rw-speed></rw-speed>
+		</item>
+		<item>
+			<id>18</id>
+			<name>Blu-ray Disk</name>
+			<date>2006</date>
+			<type>Optischer Speicher</type>
+			<capacity>25 bis 50 GB</capacity>
+			<material>Polycarbonat</material>
+			<endurance>30 - 50 Jahre</endurance>
+			<size>12 cm x 1,2 mm</size>
+			<developer>Blu-ray Disc Association</developer>
+			<rw-speed></rw-speed>
+		</item>
+	</storages>
 </museum>
