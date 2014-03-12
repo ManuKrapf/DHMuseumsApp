@@ -16,6 +16,7 @@ import org.xml.sax.XMLReader;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailActivity extends Activity {
@@ -34,6 +35,7 @@ public class DetailActivity extends Activity {
 	private TextView ram;
 	private TextView cpu;
 	private TextView spec;
+	private ImageView img;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,11 +57,12 @@ public class DetailActivity extends Activity {
 		date = (TextView) findViewById(R.id.textView_dated);
 		comp = (TextView) findViewById(R.id.textView_company);
 		desc = (TextView) findViewById(R.id.textView_description);
-		os = (TextView) findViewById(R.id.textView_os);
-		mem = (TextView) findViewById(R.id.textView_memory);
-		ram = (TextView) findViewById(R.id.textView_ram);
-		cpu = (TextView) findViewById(R.id.textView_cpu);
-		spec = (TextView) findViewById(R.id.textView_special);
+		os = (TextView) findViewById(R.id.textView_os_name);
+		mem = (TextView) findViewById(R.id.textView_memory_name);
+		ram = (TextView) findViewById(R.id.textView_ram_name);
+		cpu = (TextView) findViewById(R.id.textView_cpu_name);
+		spec = (TextView) findViewById(R.id.textView_special_name);
+		img = (ImageView) findViewById(R.id.imageView_pic);
 		
 		name.setText(ant.getName());
 		date.setText(ant.getReleaseDate());
@@ -70,6 +73,7 @@ public class DetailActivity extends Activity {
 		ram.setText(ant.getRam());
 		cpu.setText(ant.getCpu());
 		spec.setText(ant.getSpecial());
+		img.setImageResource(R.drawable.toshiba_t3200sx);
 	}
 	
 	private void setupClickListener() {

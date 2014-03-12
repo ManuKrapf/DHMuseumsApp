@@ -54,6 +54,42 @@
                     <NumExtensibleFeatures>250</NumExtensibleFeatures>
                 </parameters>
             </SensorCOS>
+            <SensorCOS>
+                <SensorCosID>0c2aae11aed19b7790d84c641ff882de</SensorCosID>
+                <parameters>
+                    <minmatches>0</minmatches>
+                    <numextensiblefeatures>0</numextensiblefeatures>
+                    <mintriangulationangle>6</mintriangulationangle>
+                    <map>tablet.f3b</map>
+                    <MinMatches>15</MinMatches>
+                    <DesiredMatchesRatioExtensible>0.35</DesiredMatchesRatioExtensible>
+                    <NumExtensibleFeatures>250</NumExtensibleFeatures>
+                </parameters>
+            </SensorCOS>
+            <SensorCOS>
+                <SensorCosID>2d0a601252a197067acc94273400290b</SensorCosID>
+                <parameters>
+                    <minmatches>0</minmatches>
+                    <numextensiblefeatures>0</numextensiblefeatures>
+                    <mintriangulationangle>6</mintriangulationangle>
+                    <map>book.f3b</map>
+                    <MinMatches>15</MinMatches>
+                    <DesiredMatchesRatioExtensible>0.35</DesiredMatchesRatioExtensible>
+                    <NumExtensibleFeatures>250</NumExtensibleFeatures>
+                </parameters>
+            </SensorCOS>
+            <SensorCOS>
+                <SensorCosID>7a2965089b30f5c3638c0decef2f8612</SensorCosID>
+                <parameters>
+                    <minmatches>0</minmatches>
+                    <numextensiblefeatures>0</numextensiblefeatures>
+                    <mintriangulationangle>6</mintriangulationangle>
+                    <map>glasses.f3b</map>
+                    <MinMatches>15</MinMatches>
+                    <DesiredMatchesRatioExtensible>0.35</DesiredMatchesRatioExtensible>
+                    <NumExtensibleFeatures>250</NumExtensibleFeatures>
+                </parameters>
+            </SensorCOS>
         </Sensor>
     </Sensors>
     <Connections>
@@ -197,6 +233,132 @@
             <SensorSource trigger="1">
                 <SensorID>FeatureBasedSensorSource_0</SensorID>
                 <SensorCosID>30f1bb6c46d700168d32f98f407c9e0e</SensorCosID>
+                <HandEyeCalibration>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </HandEyeCalibration>
+                <COSOffset>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </COSOffset>
+            </SensorSource>
+        </COS>
+        <COS>
+            <Name>tablet_5</Name>
+            <Fuser type="SmoothingFuser">
+                <Parameters>
+                    <AlphaRotation>0.5</AlphaRotation>
+                    <AlphaTranslation>0.8</AlphaTranslation>
+                    <GammaRotation>0.5</GammaRotation>
+                    <GammaTranslation>0.8</GammaTranslation>
+                    <KeepPoseForNumberOfFrames>0</KeepPoseForNumberOfFrames>
+                </Parameters>
+            </Fuser>
+            <SensorSource trigger="1">
+                <SensorID>FeatureBasedSensorSource_0</SensorID>
+                <SensorCosID>0c2aae11aed19b7790d84c641ff882de</SensorCosID>
+                <HandEyeCalibration>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </HandEyeCalibration>
+                <COSOffset>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </COSOffset>
+            </SensorSource>
+        </COS>
+        <COS>
+            <Name>book_6</Name>
+            <Fuser type="SmoothingFuser">
+                <Parameters>
+                    <AlphaRotation>0.5</AlphaRotation>
+                    <AlphaTranslation>0.8</AlphaTranslation>
+                    <GammaRotation>0.5</GammaRotation>
+                    <GammaTranslation>0.8</GammaTranslation>
+                    <KeepPoseForNumberOfFrames>0</KeepPoseForNumberOfFrames>
+                </Parameters>
+            </Fuser>
+            <SensorSource trigger="1">
+                <SensorID>FeatureBasedSensorSource_0</SensorID>
+                <SensorCosID>2d0a601252a197067acc94273400290b</SensorCosID>
+                <HandEyeCalibration>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </HandEyeCalibration>
+                <COSOffset>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </COSOffset>
+            </SensorSource>
+        </COS>
+        <COS>
+            <Name>glasses_7</Name>
+            <Fuser type="SmoothingFuser">
+                <Parameters>
+                    <AlphaRotation>0.5</AlphaRotation>
+                    <AlphaTranslation>0.8</AlphaTranslation>
+                    <GammaRotation>0.5</GammaRotation>
+                    <GammaTranslation>0.8</GammaTranslation>
+                    <KeepPoseForNumberOfFrames>0</KeepPoseForNumberOfFrames>
+                </Parameters>
+            </Fuser>
+            <SensorSource trigger="1">
+                <SensorID>FeatureBasedSensorSource_0</SensorID>
+                <SensorCosID>7a2965089b30f5c3638c0decef2f8612</SensorCosID>
                 <HandEyeCalibration>
                     <TranslationOffset>
                         <x>0</x>

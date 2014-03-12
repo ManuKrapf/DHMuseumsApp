@@ -179,6 +179,21 @@ public class ScanActivity extends ARViewActivity {
 						showTimeline(getDataFromXML(4));
 						id = 4;
 					}
+					else if(values.get(0).getCosName().equals("tablet_5")) {
+						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
+						showTimeline(getDataFromXML(1));
+						id = 1;
+					}
+					else if(values.get(0).getCosName().equals("book_6")) {
+						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
+						showTimeline(getDataFromXML(2));
+						id = 2;
+					}
+					else if(values.get(0).getCosName().equals("glasses_7")) {
+						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
+						showTimeline(getDataFromXML(3));
+						id = 3;
+					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					id = 0;

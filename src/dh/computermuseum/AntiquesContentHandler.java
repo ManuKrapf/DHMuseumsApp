@@ -79,6 +79,9 @@ public class AntiquesContentHandler implements ContentHandler {
 		if (localName.equals("special")) {
 			antique.setSpecial(currentValue);
 		}
+		if (localName.equals("img")) {
+			antique.setImg(currentValue);
+		}
 		if (localName.equals("item")) {
 			antiques.add(antique);
 		}

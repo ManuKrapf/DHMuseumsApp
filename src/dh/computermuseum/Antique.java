@@ -12,6 +12,7 @@ public class Antique {
 	private String ram;
 	private String cpu;
 	private String special;
+	private String img;
 
 	public Antique() {
 	}
@@ -102,6 +103,14 @@ public class Antique {
 	
 	public String getSpecial() {
 		return special;
+	}
+	
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
+	public String getImg() {
+		return img;
 	}
 
 	public String toString() {

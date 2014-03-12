@@ -17,10 +17,9 @@
     <string name="museum_startAR">Starte AR</string>  
     <string name="breadcrumbs_main">Home</string>  
     <string name="breadcrumbs_scan">Scan</string> 
-    <string name="breadcrumbs_detail">Detail</string>  
-    <string name="detail_name">Name: </string>  
-    <string name="detail_date">Erschienen: </string> 
-    <string name="detail_company">Hersteller: </string>
+    <string name="breadcrumbs_detail">Detail</string>
+    <string name="detail_date">erschienen </string> 
+    <string name="detail_company">von </string>
     <string name="detail_description">Beschreibung: </string>
     <string name="detail_os">Betriebssystem: </string>  
     <string name="detail_memory">Hauptspeicher: </string>

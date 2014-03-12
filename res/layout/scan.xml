@@ -102,7 +102,6 @@
 	            android:layout_marginBottom="5dp"
 	            android:textColor="#FFF"
 	            android:textSize="30dp"
-	            android:text="@string/detail_name"
 	            />
                 <TextView 
 	            android:id="@+id/tl_companytag"
