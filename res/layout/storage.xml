@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCC"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/go_before"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight=".20"
+    	android:layout_marginTop="10dp">
+    	
+        <ImageView
+            android:layout_width="0dp"
+   			android:layout_height="match_parent"
+   			android:layout_weight=".20"
+   			android:src="@drawable/arrow_left"
+            />
+    	
+        <LinearLayout
+        	android:orientation="horizontal"
+        	android:layout_width="0dp"
+    		android:layout_height="match_parent"
+    		android:layout_weight=".70"
+    		android:background="#9C004B">
+    		
+            <ImageView 
+                android:id="@+id/before_image"
+                android:layout_width="0dp"
+    			android:layout_height="match_parent"
+    			android:layout_weight=".40"
+    			android:layout_marginLeft="10dp"
+    			android:src="@drawable/diskette_5_25"
+                />
+            
+           <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+	    		android:layout_height="match_parent"
+	    		android:layout_weight=".60">
+                
+                <TextView 
+	                android:layout_width="match_parent"
+	    			android:layout_height="wrap_content"
+	    			android:gravity="center"
+	    			android:textSize="25sp"
+	    			android:textColor="#FFF"
+	    			android:text="Früher:"
+                />
+                
+                <TextView 
+	                android:id="@+id/before_text"
+	                android:layout_width="match_parent"
+	    			android:layout_height="wrap_content"
+	    			android:layout_marginTop="5dp"
+	    			android:gravity="center"
+	    			android:textSize="30sp"
+	    			android:textStyle="bold"
+	    			android:textColor="#FFF"
+	    			android:text="CD-Rom"
+                />
+                
+            </LinearLayout>
+            
+    	</LinearLayout>
+    	
+        <ImageView 
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight=".10"
+    		/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight=".60"
+    	android:layout_marginTop="10dp"
+    	android:layout_marginBottom="10dp"
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"
+    	android:background="#9C004B">
+        
+        <TextView
+            android:id="@+id/actual_name"
+            android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginTop="5dp"
+	    	android:gravity="center"
+	    	android:textSize="25sp"
+	    	android:textColor="#FFF"
+	    	android:textStyle="bold"
+	    	android:text="Diskette"
+            />
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+           
+	           <TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="entwickelt von "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_dev"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="Toshiba"
+		            />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+            
+            	<TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="erschienen "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_date"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="1945"
+		            />
+            
+        </LinearLayout>
+        
+        <TextView
+            android:layout_width="match_parent"
+    		android:layout_height="1dp"
+    		android:background="#CCC"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp"
+    		android:layout_marginRight="5dp"
+            />
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+            
+            <TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="Typ: "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_type"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="XYZ"
+		            />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+            
+            <TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="Kapazität: "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_capa"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="1 TB"
+		            />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+            
+            <TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="Material: "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_material"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="Plastik"
+		            />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+            
+            <TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="Lebensdauer: "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_life"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="100000 Jahre"
+		            />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+        	android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginLeft="5dp">
+            
+            <TextView
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:text="Größe: "
+		            />
+	           
+            	<TextView
+            	    android:id="@+id/actual_size"
+		            android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:textSize="15sp"
+			    	android:textColor="#FFF"
+			    	android:textStyle="bold"
+			    	android:text="2 m"
+		            />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+   	<LinearLayout
+   	    android:id="@+id/go_after"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight=".20"
+    	android:layout_marginBottom="10dp">
+    	
+   	    <ImageView
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight=".10"
+    		/>
+    	
+        <LinearLayout
+        	android:orientation="horizontal"
+        	android:layout_width="0dp"
+    		android:layout_height="match_parent"
+    		android:layout_weight=".70"
+    		android:background="#9C004B">
+    		
+            <ImageView 
+                android:id="@+id/before_image"
+                android:layout_width="0dp"
+    			android:layout_height="match_parent"
+    			android:layout_weight=".40"
+    			android:layout_marginLeft="10dp"
+    			android:src="@drawable/cdrom"
+                />
+            
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+	    		android:layout_height="match_parent"
+	    		android:layout_weight=".60">
+                
+                <TextView
+	                android:layout_width="match_parent"
+	    			android:layout_height="wrap_content"
+	    			android:gravity="center"
+	    			android:textSize="25sp"
+	    			android:textColor="#FFF"
+	    			android:text="Später:"
+                />
+                
+                <TextView 
+	                android:id="@+id/after_text"
+	                android:layout_width="match_parent"
+	    			android:layout_height="wrap_content"
+	    			android:layout_marginTop="5dp"
+	    			android:gravity="center"
+	    			android:textSize="30sp"
+	    			android:textStyle="bold"
+	    			android:textColor="#FFF"
+	    			android:text="CD-Rom"
+                />
+                
+            </LinearLayout>
+            
+            
+    	</LinearLayout>
+    	
+        <ImageView
+            android:layout_width="0dp"
+   			android:layout_height="match_parent"
+   			android:layout_weight=".20"
+   			android:src="@drawable/arrow_right"
+            />
+        
+    </LinearLayout>
+
+</LinearLayout>

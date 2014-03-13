@@ -211,5 +211,7 @@
 		    </LinearLayout>
 	    </RelativeLayout>
     </RelativeLayout>
+    
+    <include layout="@layout/storage"/>
 
 </LinearLayout>
