@@ -29,4 +29,12 @@
     
     <string name="scan_storages_earlier">Früher:</string>  
     <string name="scan_storages_later">Später:</string>
+    <string name="scan_storages_date">erschienen </string> 
+    <string name="scan_storages_developer">entwickelt von </string>
+    <string name="scan_storages_type">Typ: </string>
+    <string name="scan_storages_capacity">Kapazität: </string>
+    <string name="scan_storages_material">Material: </string>
+    <string name="scan_storages_endurance">Lebensdauer: </string>
+    <string name="scan_storages_size">Größe: </string>
+    
 </resources>
