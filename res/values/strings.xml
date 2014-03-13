@@ -27,6 +27,6 @@
     <string name="detail_cpu">Prozessor: </string>  
     <string name="detail_special">Besonderheiten: </string>  
     
-    <string name="scan_storages_earlier">Früher</string>  
-    <string name="scan_storages_later">Später</string>
+    <string name="scan_storages_earlier">Früher:</string>  
+    <string name="scan_storages_later">Später:</string>
 </resources>
