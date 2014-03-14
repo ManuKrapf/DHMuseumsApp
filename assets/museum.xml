@@ -218,18 +218,5 @@
 			<rw-speed></rw-speed>
 			<img></img>
 		</item>
-		<item>
-			<id>18</id>
-			<name>Blu-ray Disk</name>
-			<date>2006</date>
-			<type>Optischer Speicher</type>
-			<capacity>25 bis 50 GB</capacity>
-			<material>Polycarbonat</material>
-			<endurance>30 - 50 Jahre</endurance>
-			<size>12 cm x 1,2 mm</size>
-			<developer>Blu-ray Disc Association</developer>
-			<rw-speed></rw-speed>
-			<img></img>
-		</item>
 	</storages>
 </museum>

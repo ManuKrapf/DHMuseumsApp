@@ -52,7 +52,6 @@
         layout="@layout/timeline"/>
     
     <include
-        android:id="@+id/storageline"
         layout="@layout/storage"/>
 
 </LinearLayout>

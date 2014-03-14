@@ -298,8 +298,8 @@ public class ScanActivity extends ARViewActivity {
 		}
 		
 		Storage after = null;
-		if(id < 18) {
-			after = data.getStorage(id);
+		if(id < 17) {
+			after = data.getStorage(id+1);
 		}
 		
 		final Storage sbefore = before;
