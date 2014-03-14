@@ -5,8 +5,10 @@ public class Antique {
 	private int id;
 	private String release;
 	private String img;
+	private String type;
 
-	public Antique() {
+	public Antique(String type) {
+		this.type = type;
 	}
 
 	public void setName(String name) {
@@ -39,5 +41,9 @@ public class Antique {
 	
 	public String getImg() {
 		return img;
+	}
+	
+	public String getType() {
+		return type;
 	}
 }

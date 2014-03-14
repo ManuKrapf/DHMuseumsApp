@@ -48,6 +48,16 @@ public class ScanActivity extends ARViewActivity {
 	TextView dateafter1;
 	TextView dateafter2;
 	
+	TextView storageName;
+	TextView storageDev;
+	TextView storageDate;
+	TextView storageType;
+	TextView storageCapa;
+	TextView storageMat;
+	TextView storageLife;
+	TextView storageSize;
+	
+	
 	private IGeometry mModel;
 	private IGeometry mModel2;
 	
@@ -137,12 +147,26 @@ public class ScanActivity extends ARViewActivity {
 						}
 					});
 					
+					// Tag with Timeline
 					name = (TextView) findViewById(R.id.tl_nametag);
 					comp = (TextView) findViewById(R.id.tl_companytag);
 					datebefore = (TextView) findViewById(R.id.tl_datetagbefore);
 					date = (TextView) findViewById(R.id.tl_datetag);
 					dateafter1 = (TextView) findViewById(R.id.tl_datetagafter1);
 					dateafter2 = (TextView) findViewById(R.id.tl_datetagafter2);
+					
+					// Storage line
+					storageName = (TextView) findViewById(R.id.actual_name);
+					storageDev = (TextView) findViewById(R.id.actual_dev);
+					storageDate = (TextView) findViewById(R.id.actual_date);
+					storageType = (TextView) findViewById(R.id.actual_type);
+					storageCapa = (TextView) findViewById(R.id.actual_capa);
+					storageMat = (TextView) findViewById(R.id.actual_material);
+					storageLife = (TextView) findViewById(R.id.actual_life);
+					storageSize = (TextView) findViewById(R.id.actual_size);
+					
+					Log.d("dhdebug", storageName.toString());
+					
 				}
 			});
 		}
@@ -161,43 +185,43 @@ public class ScanActivity extends ARViewActivity {
 					
 					if(values.get(0).getCosName().equals("watch_1")) {
 						Log.d("dhdebug", "ID watch: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(1));
+						//showTimeline(getDataFromXML(1));
 						id = 1;
 					}
 					else if(values.get(0).getCosName().equals("keyboard_2")) {
 						Log.d("dhdebug", "ID tastatur: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(2));
+						//showTimeline(getDataFromXML(2));
 						id = 2;
 					}
 					else if(values.get(0).getCosName().equals("overhead_3")) {
 						Log.d("dhdebug", "ID overhead: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(3));
-						id = 3;
+						showStorageLine(11);
+						id = 11;
 					}
 					else if(values.get(0).getCosName().equals("display_4")) {
 						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(4));
+						//showTimeline(getDataFromXML(4));
 						id = 4;
 					}
 					else if(values.get(0).getCosName().equals("tablet_5")) {
 						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(1));
+						//showTimeline(getDataFromXML(1));
 						id = 1;
 					}
 					else if(values.get(0).getCosName().equals("book_6")) {
 						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(2));
+						//showTimeline(getDataFromXML(2));
 						id = 2;
 					}
 					else if(values.get(0).getCosName().equals("glasses_7")) {
 						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						showTimeline(getDataFromXML(3));
+						//showTimeline(getDataFromXML(3));
 						id = 3;
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					id = 0;
-					hideTimeline();
+					//hideTimeline();
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
@@ -216,6 +240,31 @@ public class ScanActivity extends ARViewActivity {
 		}
 	}
 	
+	private void showStorageLine(int id) {
+		
+		final Storage s = data.getStorage(id);
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				
+				
+				storageName.setText(s.getName());
+				storageDev.setText(s.getDeveloper());
+				storageDate.setText(s.getReleaseDate());
+				storageType.setText(s.getType());
+				storageCapa.setText(s.getCapacity());
+				storageMat.setText(s.getMaterial());
+				storageLife.setText(s.getEndurance());
+				storageSize.setText(s.getSize());
+				
+			}
+		});
+		
+	}
+	/*
 	private void showTimeline(Antique temp) {
 		
 		final Antique ant = temp;
@@ -250,13 +299,23 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private Antique getDataFromXML(int id) {
+	private Antique getDataFromXML(int type, int id) {
+		
+		switch(type) {
+			case 1: Computer c = data.getComputer(id);
+					return c;
+				break;
+			case 2: 
+				break;
+			case 3: 
+				break;
+		}
 		
 		Antique ant = data.getAntique(id);
 		Log.d("dhdebug", "Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate()+", Type: "+ant.getType());
 		
 		return ant;//"Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate()+", Type: "+ant.getType();
 		
-	}
+	}*/
 	
 }

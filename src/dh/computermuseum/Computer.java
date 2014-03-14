@@ -1,19 +1,29 @@
 package dh.computermuseum;
 
 public class Computer extends Antique {
-  private String os;
-  private String memory;
-  private String ram;
-  private String cpu;
-  private String special;
-  private String img;
-  private String description;
+	
+	private String producer;
+	private String os;
+  	private String memory;
+  	private String ram;
+  	private String cpu;
+  	private String special;
+  	private String img;
+  	private String description;
   
-  public Computer() {
-    
-  }
-  
-  public void setOs(String os) {
+  	public Computer() {
+  		super("computer");
+  	}
+  	
+  	public void setProducer(String producer) {
+  		this.producer = producer;
+  	}
+  	
+  	public String getProducer() {
+  		return producer;
+  	}
+  	
+  	public void setOs(String os) {
 		this.os = os;
 	}
 	

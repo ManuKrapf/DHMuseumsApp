@@ -9,15 +9,27 @@ import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 
 public class AntiquesContentHandler implements ContentHandler {
-	private ArrayList<Antique> antiques = new ArrayList<Antique>();
+	
+	//private ArrayList<Antique> antiques = new ArrayList<Antique>();
+	Data data;
 	private String currentValue;
 	private Antique antique;
+	private Computer computer;
+	private Component component;
+	private Storage storage;
 	private String type;
+	private int typeid;
 	private boolean element;
 	
+	public AntiquesContentHandler(Data d) {
+		data = d;
+		type = "";
+	}
+	
+	/*
 	public List<Antique> getAntiques() {
         return antiques;
-    }
+    }*/
 
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
@@ -35,19 +47,29 @@ public class AntiquesContentHandler implements ContentHandler {
 		
 		if (localName.equals("computer")) {
 			type = "computer";
+			typeid = 1;
 		}
 		
 		if (localName.equals("components")) {
 			type = "components";
+			typeid = 2;
 		}
 		
 		if (localName.equals("storages")) {
 			type = "storages";
+			typeid = 3;
 		}
 		
 		if (localName.equals("item")) {
-			antique = new Antique();
-			antique.setType(type);
+			switch(typeid) {
+				case 1: computer = new Computer();
+					break;
+				case 2: component = new Component();
+					break;
+				case 3: storage = new Storage();
+					break;
+				default: antique = new Antique("unknown");
+			}
 		}
 	}
 
@@ -58,98 +80,98 @@ public class AntiquesContentHandler implements ContentHandler {
 		element = false;
 		if(type.equalsIgnoreCase("computer")) {
 			if (localName.equals("name")) {
-				antique.setName(currentValue);
+				computer.setName(currentValue);
 			}
 			if (localName.equals("id")) {
-				antique.setId(Integer.parseInt(currentValue));
+				computer.setId(Integer.parseInt(currentValue));
 			}
 			if (localName.equals("note")) {
-				antique.setDescription(currentValue);
+				computer.setDescription(currentValue);
 			}
 			if (localName.equals("date")) {
-				antique.setReleaseDate(currentValue);
+				computer.setReleaseDate(currentValue);
 			}
 			if (localName.equals("comp")) {
-				antique.setProducer(currentValue);
+				computer.setProducer(currentValue);
 			}
 			if (localName.equals("os")) {
-				antique.setOs(currentValue);
+				computer.setOs(currentValue);
 			}
 			if (localName.equals("memory")) {
-				antique.setMemory(currentValue);
+				computer.setMemory(currentValue);
 			}
 			if (localName.equals("ram")) {
-				antique.setRam(currentValue);
+				computer.setRam(currentValue);
 			}
 			if (localName.equals("processor")) {
-				antique.setCpu(currentValue);
+				computer.setCpu(currentValue);
 			}
 			if (localName.equals("special")) {
-				antique.setSpecial(currentValue);
+				computer.setSpecial(currentValue);
 			}
 			if (localName.equals("img")) {
-				antique.setImg(currentValue);
+				computer.setImg(currentValue);
 			}
 			if (localName.equals("item")) {
-				antiques.add(antique);
+				data.addComupter(computer);
 			}
 		}
 		if(type.equalsIgnoreCase("components")) {
 			if (localName.equals("name")) {
-				antique.setName(currentValue);
+				component.setName(currentValue);
 			}
 			if (localName.equals("id")) {
-				antique.setName(currentValue);
+				component.setId(Integer.parseInt(currentValue));
 			}
 			if (localName.equals("date")) {
-				antique.setName(currentValue);
+				component.setReleaseDate(currentValue);
 			}
 			if (localName.equals("comp")) {
-				antique.setName(currentValue);
+				component.setProducer(currentValue);
 			}
 			if (localName.equals("special")) {
-				antique.setName(currentValue);
+				component.setSpecial(currentValue);
 			}
 			if (localName.equals("note")) {
-				antique.setName(currentValue);
+				component.setDescription(currentValue);
 			}
 			if (localName.equals("item")) {
-				antiques.add(antique);
+				data.addComponents(component);
 			}
 		}
 		if(type.equalsIgnoreCase("storages")) {
 			if (localName.equals("name")) {
-				antique.setName(currentValue);
+				storage.setName(currentValue);
 			}
 			if (localName.equals("id")) {
-				antique.setName(currentValue);
+				storage.setId(Integer.parseInt(currentValue));
 			}
 			if (localName.equals("date")) {
-				antique.setName(currentValue);
+				storage.setReleaseDate(currentValue);
 			}
 			if (localName.equals("type")) {
-				antique.setName(currentValue);
+				storage.setType(currentValue);
 			}
 			if (localName.equals("capacity")) {
-				antique.setName(currentValue);
+				storage.setCapacity(currentValue);
 			}
 			if (localName.equals("material")) {
-				antique.setName(currentValue);
+				storage.setMaterial(currentValue);
 			}
 			if (localName.equals("endurance")) {
-				antique.setName(currentValue);
+				storage.setEndurance(currentValue);
 			}
 			if (localName.equals("size")) {
-				antique.setName(currentValue);
+				storage.setSize(currentValue);
 			}
 			if (localName.equals("developer")) {
-				antique.setName(currentValue);
+				storage.setDeveloper(currentValue);
 			}
 			if (localName.equals("rw-speed")) {
-				antique.setName(currentValue);
+				storage.setRwSpeed(currentValue);
 			}
 			if (localName.equals("item")) {
-				antiques.add(antique);
+				data.addStorage(storage);
 			}
 		}
 	}
