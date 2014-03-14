@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,33 +35,43 @@ import com.metaio.tools.io.AssetsManager;
 public class ScanActivity extends ARViewActivity {
 	
 	Context context = this;
-	Data data;
+	private Data data;
 	
-	int id = 0;
+	private int id = 0;
 	
-	RelativeLayout layout;
-	ImageView details;
-	ImageView video;
-	TextView name;
-	TextView comp;
-	TextView datebefore;
-	TextView date;
-	TextView dateafter1;
-	TextView dateafter2;
+	private RelativeLayout layout;
+	private ImageView details;
+	private ImageView video;
+	private TextView name;
+	private TextView comp;
+	private TextView datebefore;
+	private TextView date;
+	private TextView dateafter1;
+	private TextView dateafter2;
 	
-	TextView storageName;
-	TextView storageDev;
-	TextView storageDate;
-	TextView storageType;
-	TextView storageCapa;
-	TextView storageMat;
-	TextView storageLife;
-	TextView storageSize;
+	private LinearLayout storageline;
+	private ImageView closesl;
 	
+	private LinearLayout gobefore;
+	private ImageView beforeimage;
+	private TextView beforetext;
+	private LinearLayout goafter;
+	private ImageView afterimage;
+	private TextView aftertext;
 	
+	private TextView storageName;
+	private TextView storageDev;
+	private TextView storageDate;
+	private TextView storageType;
+	private TextView storageCapa;
+	private TextView storageMat;
+	private TextView storageLife;
+	private TextView storageSize;
+	
+	/*
 	private IGeometry mModel;
 	private IGeometry mModel2;
-	
+	*/
 	private MetaioSDKCallbackHandler mCallbackHandler;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -156,6 +167,13 @@ public class ScanActivity extends ARViewActivity {
 					dateafter2 = (TextView) findViewById(R.id.tl_datetagafter2);
 					
 					// Storage line
+					storageline = (LinearLayout) findViewById(R.id.storageline);
+					closesl = (ImageView) findViewById(R.id.close);
+					
+					gobefore = (LinearLayout) findViewById(R.id.go_before);
+					beforeimage = (ImageView) findViewById(R.id.before_image);
+					beforetext = (TextView) findViewById(R.id.before_text);
+					
 					storageName = (TextView) findViewById(R.id.actual_name);
 					storageDev = (TextView) findViewById(R.id.actual_dev);
 					storageDate = (TextView) findViewById(R.id.actual_date);
@@ -165,7 +183,39 @@ public class ScanActivity extends ARViewActivity {
 					storageLife = (TextView) findViewById(R.id.actual_life);
 					storageSize = (TextView) findViewById(R.id.actual_size);
 					
-					Log.d("dhdebug", storageName.toString());
+					goafter = (LinearLayout) findViewById(R.id.go_after);
+					afterimage = (ImageView) findViewById(R.id.after_image);
+					aftertext = (TextView) findViewById(R.id.after_text);
+					
+					closesl.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							storageline.setVisibility(View.GONE);
+						}
+					});
+					
+					gobefore.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							
+							showStorageLine(id-1);
+							id = id-1;
+							
+						}
+					});
+					
+					goafter.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							
+							showStorageLine(id+1);
+							id = id+1;
+							
+						}
+					});
 					
 				}
 			});
@@ -242,14 +292,34 @@ public class ScanActivity extends ARViewActivity {
 	
 	private void showStorageLine(int id) {
 		
+		Storage before = null;
+		if(id > 7) {
+			before = data.getStorage(id-1);
+		}
+		
+		Storage after = null;
+		if(id < 18) {
+			after = data.getStorage(id);
+		}
+		
+		final Storage sbefore = before;
 		final Storage s = data.getStorage(id);
+		final Storage safter = after;
 		
 		runOnUiThread(new Runnable() 
 		{
 			@Override
 			public void run() 
 			{
+				storageline.setVisibility(View.VISIBLE);
 				
+				if(sbefore != null) {
+					gobefore.setVisibility(View.VISIBLE);
+					beforetext.setText(sbefore.getName());
+				}
+				else {
+					gobefore.setVisibility(View.INVISIBLE);
+				}
 				
 				storageName.setText(s.getName());
 				storageDev.setText(s.getDeveloper());
@@ -259,6 +329,14 @@ public class ScanActivity extends ARViewActivity {
 				storageMat.setText(s.getMaterial());
 				storageLife.setText(s.getEndurance());
 				storageSize.setText(s.getSize());
+				
+				if(safter != null) {
+					goafter.setVisibility(View.VISIBLE);
+					aftertext.setText(safter.getName());
+				}
+				else {
+					goafter.setVisibility(View.INVISIBLE);
+				}
 				
 			}
 		});
