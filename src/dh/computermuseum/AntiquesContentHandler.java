@@ -132,6 +132,9 @@ public class AntiquesContentHandler implements ContentHandler {
 			if (localName.equals("special")) {
 				component.setSpecial(currentValue);
 			}
+			if (localName.equals("img")) {
+				component.setImg(currentValue);
+			}
 			if (localName.equals("note")) {
 				component.setDescription(currentValue);
 			}
@@ -169,6 +172,9 @@ public class AntiquesContentHandler implements ContentHandler {
 			}
 			if (localName.equals("rw-speed")) {
 				storage.setRwSpeed(currentValue);
+			}
+			if (localName.equals("img")) {
+				storage.setImg(currentValue);
 			}
 			if (localName.equals("item")) {
 				data.addStorage(storage);

@@ -1,35 +1,26 @@
 package dh.computermuseum;
 
-import java.io.IOException;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.hardware.Camera;
-import android.net.Uri;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.*;
 import com.metaio.sdk.jni.ETRACKING_STATE;
 import com.metaio.sdk.jni.IGeometry;
-import com.metaio.sdk.jni.MetaioSDKConstants;
-import com.metaio.sdk.jni.TrackingValues;
+import com.metaio.sdk.jni.Rotation;
 import com.metaio.sdk.jni.TrackingValuesVector;
-import com.metaio.sdk.jni.Vector3d;
 import com.metaio.tools.io.AssetsManager;
 
 public class ScanActivity extends ARViewActivity {
@@ -67,6 +58,8 @@ public class ScanActivity extends ARViewActivity {
 	private TextView storageMat;
 	private TextView storageLife;
 	private TextView storageSize;
+	
+	private IGeometry movie;
 	
 	/*
 	private IGeometry mModel;
@@ -187,8 +180,8 @@ public class ScanActivity extends ARViewActivity {
 					afterimage = (ImageView) findViewById(R.id.after_image);
 					aftertext = (TextView) findViewById(R.id.after_text);
 					
-					Animation fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fadein);
-					Animation fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout);
+					final Animation fadeInAnim = AnimationUtils.loadAnimation(context, R.anim.fadein);
+					final Animation fadeOutAnim = AnimationUtils.loadAnimation(context, R.anim.fadeout);
 					
 					closesl.setOnClickListener(new OnClickListener() {
 						
@@ -207,9 +200,11 @@ public class ScanActivity extends ARViewActivity {
 							id = id-1;
 							
 							// animation fading
-							gobefore.startAnimation(animationFadeIn);
-							gobefore.setStartOffset(500);
-							gobefore.startAnimation(animationFadeOut);
+							gobefore.startAnimation(fadeOutAnim);
+							if(id > 7) {
+								gobefore.startAnimation(fadeInAnim);
+							}
+							
 						}
 					});
 					
@@ -222,9 +217,10 @@ public class ScanActivity extends ARViewActivity {
 							id = id+1;
 							
 							// animation fading
-							goafter.startAnimation(animationFadeIn);
-							goafter.setStartOffset(500);
-							goafter.startAnimation(animationFadeOut);
+							goafter.startAnimation(fadeOutAnim);
+							if(id < 17) {
+								goafter.startAnimation(fadeInAnim);
+							}
 						}
 					});
 					
@@ -256,7 +252,8 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("overhead_3")) {
 						Log.d("dhdebug", "ID overhead: "+values.get(0).getCoordinateSystemID());
-						showStorageLine(11);
+						//showStorageLine(11);
+						loadMovie(values.get(0).getCoordinateSystemID());
 						id = 11;
 					}
 					else if(values.get(0).getCosName().equals("display_4")) {
@@ -281,7 +278,7 @@ public class ScanActivity extends ARViewActivity {
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
-					id = 0;
+					//id = 0;
 					//hideTimeline();
 				}
 				else {
@@ -327,6 +324,12 @@ public class ScanActivity extends ARViewActivity {
 				if(sbefore != null) {
 					gobefore.setVisibility(View.VISIBLE);
 					beforetext.setText(sbefore.getName());
+					
+					Resources res = getResources();
+					String tempImgName = sbefore.getImg();
+					int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
+					Drawable tempImg = res.getDrawable(tempResId);
+					beforeimage.setImageDrawable(tempImg);
 				}
 				else {
 					gobefore.setVisibility(View.INVISIBLE);
@@ -344,6 +347,12 @@ public class ScanActivity extends ARViewActivity {
 				if(safter != null) {
 					goafter.setVisibility(View.VISIBLE);
 					aftertext.setText(safter.getName());
+					
+					Resources res = getResources();
+					String tempImgName = safter.getImg();
+					int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
+					Drawable tempImg = res.getDrawable(tempResId);
+					afterimage.setImageDrawable(tempImg);
 				}
 				else {
 					goafter.setVisibility(View.INVISIBLE);
@@ -351,6 +360,30 @@ public class ScanActivity extends ARViewActivity {
 				
 			}
 		});
+		
+	}
+	
+	private void loadMovie(int cosid) {
+		
+		final String moviePath = AssetsManager.getAssetPath("Assets/videoc128.3g2");
+		
+		if (moviePath != null)
+		{
+			movie = metaioSDK.createGeometryFromMovie(moviePath, true);
+			if (movie != null)
+			{
+				movie.setScale(1.5f);
+				movie.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));//new Rotation(0f, 0f, (float)-Math.PI/2));
+				movie.setTransparency(0.1f);
+				movie.setCoordinateSystemID(cosid);
+				movie.startMovieTexture(true);
+				
+				MetaioDebug.log("Loaded geometry "+moviePath);
+			}
+			else {
+				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+moviePath);
+			}
+		}
 		
 	}
 	/*

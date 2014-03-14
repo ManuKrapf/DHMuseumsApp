@@ -86,7 +86,7 @@
 			<size>18,7 cm x 8,3 cm x 0,17 mm </size>
 			<developer>Herman Hollerith</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>lochkarte</img>
 		</item>
 		<item>
 			<id>8</id>
@@ -99,7 +99,7 @@
 			<size>17,4 / 25,4 mm</size>
 			<developer>Henri Fourneaux</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>lochstreifen</img>
 		</item>
 		<item>
 			<id>9</id>
@@ -112,7 +112,7 @@
 			<size>Variabel</size>
 			<developer>AEG / I.G. Farben</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>magnetband</img>
 		</item>
 		<item>
 			<id>10</id>
@@ -125,7 +125,7 @@
 			<size>200 mm (ca. 8″) - 130 mm (ca. 5,25″)</size>
 			<developer>Alan Shugart (IBM)</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>floppy</img>
 		</item>
 		<item>
 			<id>11</id>
@@ -138,7 +138,7 @@
 			<size>80 mm (ca. 3″) - 90 mm (ca. 3,5″)</size>
 			<developer>Alan Shugart (IBM)</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>diskette</img>
 		</item>
 		<item>
 			<id>12</id>
@@ -151,7 +151,7 @@
 			<size>12 cm x 1,2 mm</size>
 			<developer>Philips / Sony</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>cdrom</img>
 		</item>
 		<item>
 			<id>13</id>
@@ -164,7 +164,7 @@
 			<size>98 x 99 x 7 mm</size>
 			<developer>Iomega</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>zip</img>
 		</item>
 		<item>
 			<id>14</id>
@@ -177,7 +177,7 @@
 			<size>Variabel</size>
 			<developer>Dov Moran</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>usb</img>
 		</item>
 		<item>
 			<id>15</id>
@@ -190,7 +190,7 @@
 			<size>32,0 x 24,0 x 2,1 mm</size>
 			<developer>SanDisk</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>sd</img>
 		</item>
 		<item>
 			<id>16</id>
@@ -203,7 +203,7 @@
 			<size>32,0 x 24,0 x 2,1 mm</size>
 			<developer>DVD Forum</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>dvd</img>
 		</item>
 		<item>
 			<id>17</id>
@@ -216,7 +216,7 @@
 			<size>12 cm x 1,2 mm</size>
 			<developer>Blu-ray Disc Association</developer>
 			<rw-speed></rw-speed>
-			<img></img>
+			<img>bluray</img>
 		</item>
 	</storages>
 </museum>
