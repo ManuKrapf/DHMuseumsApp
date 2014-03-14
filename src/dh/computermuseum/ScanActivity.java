@@ -187,6 +187,9 @@ public class ScanActivity extends ARViewActivity {
 					afterimage = (ImageView) findViewById(R.id.after_image);
 					aftertext = (TextView) findViewById(R.id.after_text);
 					
+					Animation fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fadein);
+					Animation fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout);
+					
 					closesl.setOnClickListener(new OnClickListener() {
 						
 						@Override
@@ -203,6 +206,10 @@ public class ScanActivity extends ARViewActivity {
 							showStorageLine(id-1);
 							id = id-1;
 							
+							// animation fading
+							gobefore.startAnimation(animationFadeIn);
+							gobefore.setStartOffset(500);
+							gobefore.startAnimation(animationFadeOut);
 						}
 					});
 					
@@ -214,6 +221,10 @@ public class ScanActivity extends ARViewActivity {
 							showStorageLine(id+1);
 							id = id+1;
 							
+							// animation fading
+							goafter.startAnimation(animationFadeIn);
+							goafter.setStartOffset(500);
+							goafter.startAnimation(animationFadeOut);
 						}
 					});
 					
