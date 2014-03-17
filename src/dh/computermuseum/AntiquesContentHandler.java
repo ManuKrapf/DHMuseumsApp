@@ -1,8 +1,5 @@
 package dh.computermuseum;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
@@ -31,6 +28,7 @@ public class AntiquesContentHandler implements ContentHandler {
         return antiques;
     }*/
 
+	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
 		if(element) {
@@ -40,6 +38,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	}
 
 	// searching for main tag
+	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes atts) throws SAXException {
 		
@@ -74,6 +73,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	}
 
 	// searching for tags and setting Antiques' values in the testfile.xml
+	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		
@@ -182,26 +182,33 @@ public class AntiquesContentHandler implements ContentHandler {
 		}
 	}
 
+	@Override
 	public void endDocument() throws SAXException {
 	}
 
+	@Override
 	public void endPrefixMapping(String arg0) throws SAXException {
 	}
 
+	@Override
 	public void ignorableWhitespace(char[] ch, int start, int length)
 			throws SAXException {
 	}
 
+	@Override
 	public void processingInstruction(String target, String data)
 			throws SAXException {
 	}
 
+	@Override
 	public void setDocumentLocator(Locator locator) {
 	}
 
+	@Override
 	public void skippedEntity(String name) throws SAXException {
 	}
 
+	@Override
 	public void startDocument() throws SAXException {
 		element = false;
 	}

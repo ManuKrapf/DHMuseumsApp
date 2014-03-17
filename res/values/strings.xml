@@ -37,18 +37,6 @@
     <string name="scan_storages_endurance">Lebensdauer: </string>
     <string name="scan_storages_size">Größe: </string>
     
-    <string name="scan_storages_size_default_name">Diskette</string>
-    <string name="scan_storages_size_default_developer">Toshiba</string>
-    <string name="scan_storages_size_default_date">1945</string>
-    <string name="scan_storages_size_default_type">XYZ</string>
-    <string name="scan_storages_size_default_capacity">1 TB</string>
-    <string name="scan_storages_size_default_material">Plastik</string>
-    <string name="scan_storages_size_default_endurance">100000 Jahre</string>
-    <string name="scan_storages_size_default_size">2 m</string>
-    
-    <string name="scan_storages_size_ealier_default_name">Floppy</string>
-    <string name="scan_storages_size_later_default_name">CD-Rom</string>
-    
     <string name="scan_timeline_default_date_1">1950</string>
     <string name="scan_timeline_default_date_2">1960</string>
     <string name="scan_timeline_default_date_3">1970</string>

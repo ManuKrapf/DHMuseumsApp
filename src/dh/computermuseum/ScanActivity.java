@@ -21,6 +21,7 @@ import com.metaio.sdk.jni.ETRACKING_STATE;
 import com.metaio.sdk.jni.IGeometry;
 import com.metaio.sdk.jni.Rotation;
 import com.metaio.sdk.jni.TrackingValuesVector;
+import com.metaio.sdk.jni.Vector3d;
 import com.metaio.tools.io.AssetsManager;
 
 public class ScanActivity extends ARViewActivity {
@@ -60,6 +61,10 @@ public class ScanActivity extends ARViewActivity {
 	private TextView storageSize;
 	
 	private IGeometry movie;
+	private IGeometry g_tag1;
+	private IGeometry g_tag2;
+	private IGeometry g_tag3;
+	private IGeometry g_tag4;
 	
 	/*
 	private IGeometry mModel;
@@ -67,6 +72,7 @@ public class ScanActivity extends ARViewActivity {
 	*/
 	private MetaioSDKCallbackHandler mCallbackHandler;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -74,10 +80,12 @@ public class ScanActivity extends ARViewActivity {
 		mCallbackHandler = new MetaioSDKCallbackHandler();
 	}
 
+	@Override
 	public void onResume() {
 		super.onResume();
 	}
 
+	@Override
 	public void onPause() {
 		super.onPause();
 	}
@@ -120,8 +128,6 @@ public class ScanActivity extends ARViewActivity {
 	
 	final class MetaioSDKCallbackHandler extends IMetaioSDKCallback 
 	{
-		
-		
 		
 		@Override
 		public void onSDKReady()
@@ -240,41 +246,22 @@ public class ScanActivity extends ARViewActivity {
 				if(values.get(0).getState() == ETRACKING_STATE.ETS_FOUND) {
 					Log.d("dhdebug", values.get(0).getCosName()+" is found");
 					
-					if(values.get(0).getCosName().equals("watch_1")) {
-						Log.d("dhdebug", "ID watch: "+values.get(0).getCoordinateSystemID());
-						//showTimeline(getDataFromXML(1));
-						id = 1;
-					}
-					else if(values.get(0).getCosName().equals("keyboard_2")) {
-						Log.d("dhdebug", "ID tastatur: "+values.get(0).getCoordinateSystemID());
-						//showTimeline(getDataFromXML(2));
-						id = 2;
-					}
-					else if(values.get(0).getCosName().equals("overhead_3")) {
+					if(values.get(0).getCosName().equals("overhead_1")) {
 						Log.d("dhdebug", "ID overhead: "+values.get(0).getCoordinateSystemID());
 						//showStorageLine(11);
 						loadMovie(values.get(0).getCoordinateSystemID());
 						id = 11;
 					}
-					else if(values.get(0).getCosName().equals("display_4")) {
-						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						//showTimeline(getDataFromXML(4));
-						id = 4;
-					}
-					else if(values.get(0).getCosName().equals("tablet_5")) {
-						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						//showTimeline(getDataFromXML(1));
-						id = 1;
-					}
-					else if(values.get(0).getCosName().equals("book_6")) {
-						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
+					else if(values.get(0).getCosName().equals("book_2")) {
+						Log.d("dhdebug", "ID book: "+values.get(0).getCoordinateSystemID());
 						//showTimeline(getDataFromXML(2));
 						id = 2;
 					}
-					else if(values.get(0).getCosName().equals("glasses_7")) {
-						Log.d("dhdebug", "ID display: "+values.get(0).getCoordinateSystemID());
-						//showTimeline(getDataFromXML(3));
-						id = 3;
+					else if(values.get(0).getCosName().equals("yellow_book_3")) {
+						Log.d("dhdebug", "ID yellowbook: "+values.get(0).getCoordinateSystemID());
+						showMBTags(values.get(0).getCoordinateSystemID());
+						//loadMovie(values.get(0).getCoordinateSystemID());
+						id = 11;
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
@@ -363,13 +350,94 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	private void showMBTags(int cosid) {
+		
+		final String tag1 = AssetsManager.getAssetPath("Assets/mbtag_southbridge.png");
+		final String tag2 = AssetsManager.getAssetPath("Assets/mbtag_northbridge.png");
+		final String tag3 = AssetsManager.getAssetPath("Assets/mbtag_ram.png");
+		final String tag4 = AssetsManager.getAssetPath("Assets/mbtag_cpu.png");
+		
+		if (tag1 != null)
+		{
+			g_tag1 = metaioSDK.createGeometryFromImage(tag1, true, true);
+			if (g_tag1 != null)
+			{
+				//g_tag1.setScale(5f);
+				g_tag1.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
+				g_tag1.setTranslation(new Vector3d(100,0,2));
+				//movie.setTransparency(0.1f);
+				g_tag1.setCoordinateSystemID(cosid);
+				
+				MetaioDebug.log("Loaded geometry "+tag1);
+			}
+			else {
+				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag1);
+			}
+		}
+		
+		if (tag2 != null)
+		{
+			g_tag2 = metaioSDK.createGeometryFromImage(tag2, true, true);
+			if (g_tag2 != null)
+			{
+				//movie.setScale(1.5f);
+				g_tag2.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
+				g_tag2.setTranslation(new Vector3d(150,0,10));
+				//movie.setTransparency(0.1f);
+				g_tag2.setCoordinateSystemID(cosid);
+				
+				MetaioDebug.log("Loaded geometry "+tag2);
+			}
+			else {
+				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag2);
+			}
+		}
+		
+		if (tag3 != null)
+		{
+			g_tag3 = metaioSDK.createGeometryFromImage(tag3, true, true);
+			if (g_tag3 != null)
+			{
+				//movie.setScale(1.5f);
+				g_tag3.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
+				g_tag3.setTranslation(new Vector3d(0,0,0));
+				//movie.setTransparency(0.1f);
+				g_tag3.setCoordinateSystemID(cosid);
+				
+				MetaioDebug.log("Loaded geometry "+tag3);
+			}
+			else {
+				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag3);
+			}
+		}
+		
+		if (tag4 != null)
+		{
+			g_tag4 = metaioSDK.createGeometryFromImage(tag4);
+			if (g_tag4 != null)
+			{
+				//movie.setScale(1.5f);
+				g_tag4.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
+				g_tag4.setTranslation(new Vector3d(-120,0,-20));
+				//movie.setTransparency(0.1f);
+				g_tag4.setCoordinateSystemID(cosid);
+				
+				MetaioDebug.log("Loaded geometry "+tag4);
+			}
+			else {
+				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag4);
+			}
+		}
+		
+	}
+	
 	private void loadMovie(int cosid) {
 		
 		final String moviePath = AssetsManager.getAssetPath("Assets/videoc128.3g2");
 		
 		if (moviePath != null)
 		{
-			movie = metaioSDK.createGeometryFromMovie(moviePath, true);
+			movie = metaioSDK.createGeometryFromMovie(moviePath, false, true);
 			if (movie != null)
 			{
 				movie.setScale(1.5f);

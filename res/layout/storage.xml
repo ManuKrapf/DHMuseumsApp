@@ -66,7 +66,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="@string/scan_storages_size_ealier_default_name"
                         android:textColor="#FFF"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -96,7 +95,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text="@string/scan_storages_size_default_name"
                 android:textColor="#FFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -119,7 +117,6 @@
                     android:id="@+id/actual_dev"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_developer"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -143,7 +140,6 @@
                     android:id="@+id/actual_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_date"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -175,7 +171,6 @@
                     android:id="@+id/actual_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_type"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -199,7 +194,6 @@
                     android:id="@+id/actual_capa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_capacity"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -223,7 +217,6 @@
                     android:id="@+id/actual_material"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_material"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -247,7 +240,6 @@
                     android:id="@+id/actual_life"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_endurance"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -271,7 +263,6 @@
                     android:id="@+id/actual_size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/scan_storages_size_default_size"
                     android:textColor="#FFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -304,8 +295,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight=".25"
-                    android:src="@drawable/cdrom" />
+                    android:layout_weight=".25" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -327,7 +317,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="@string/scan_storages_size_later_default_name"
                         android:textColor="#FFF"
                         android:textSize="22sp"
                         android:textStyle="bold" />

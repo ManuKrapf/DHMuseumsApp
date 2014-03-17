@@ -13,7 +13,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private Button buttonScan;
 	private TextView textGoto;
 
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         initUI();
@@ -30,7 +31,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	textGoto.setOnClickListener(this);   	
     }
     
-    public void onClick(View view) {
+    @Override
+	public void onClick(View view) {
     	switch (view.getId()) {
 			case  R.id.startScanningButton1:
 				Intent i = new Intent(MainActivity.this, ScanActivity.class);

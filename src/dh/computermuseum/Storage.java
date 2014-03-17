@@ -18,6 +18,7 @@ public class Storage extends Antique {
 	    this.stype = type;
 	}
 	
+	@Override
 	public String getType() {
 		return stype;
 	}

@@ -44,6 +44,7 @@ public class DetailActivity extends Activity {
 	private TextView spec;
 	private ImageView img;
 	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail);

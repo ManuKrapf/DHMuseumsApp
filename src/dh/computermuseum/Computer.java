@@ -63,10 +63,12 @@ public class Computer extends Antique {
 		return special;
 	}
 	
+	@Override
 	public void setImg(String img) {
 		this.img = img;
 	}
 	
+	@Override
 	public String getImg() {
 		return img;
 	}
