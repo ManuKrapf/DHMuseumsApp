@@ -60,6 +60,14 @@ public class ScanActivity extends ARViewActivity {
 	private TextView storageLife;
 	private TextView storageSize;
 	
+	private LinearLayout innerlifeInfo;
+	private ImageView closeInnerlife;
+	
+	private TextView innerlifeElementName;
+	private TextView innerlifeElementDev;
+	private TextView innerlifeElementDate;
+	private TextView innerlifeElementDesc;
+
 	private IGeometry movie;
 	private IGeometry g_tag1;
 	private IGeometry g_tag2;
@@ -188,6 +196,22 @@ public class ScanActivity extends ARViewActivity {
 					
 					final Animation fadeInAnim = AnimationUtils.loadAnimation(context, R.anim.fadein);
 					final Animation fadeOutAnim = AnimationUtils.loadAnimation(context, R.anim.fadeout);
+					
+					// Component information view
+					innerlifeInfo = (LinearLayout) findViewById(R.id.innerlifeOverview);
+					innerlifeElementName = (TextView) findViewById(R.id.actual_name_innerlife);
+					innerlifeElementDev = (TextView) findViewById(R.id.actual_dev_innerlife);
+					innerlifeElementDate = (TextView) findViewById(R.id.actual_date_innerlife);
+					innerlifeElementDesc = (TextView) findViewById(R.id.actual_desc_innerlife);
+					closeInnerlife = (ImageView) findViewById(R.id.close_innerlife);
+					
+					closeInnerlife.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							innerlifeInfo.setVisibility(View.GONE);
+						}
+					});
 					
 					closesl.setOnClickListener(new OnClickListener() {
 						
@@ -454,6 +478,25 @@ public class ScanActivity extends ARViewActivity {
 		}
 		
 	}
+	
+	private void showInnerlifeComponents(int id) {
+		final InnerlifeComponent iC = data.getInnerlifeComponent(id);
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				innerlifeInfo.setVisibility(View.VISIBLE);
+
+				innerlifeElementName.setText(iC.getName());
+				innerlifeElementDev.setText(iC.getProducer());
+				innerlifeElementDate.setText(iC.getReleaseDate());
+				innerlifeElementDesc.setText(iC.getDescription());
+			}
+		});
+	}
+		
 	/*
 	private void showTimeline(Antique temp) {
 		

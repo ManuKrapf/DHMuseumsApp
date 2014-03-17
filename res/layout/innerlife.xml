@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <LinearLayout
-        android:id="@+id/storageline"
+        android:id="@+id/innerlifeOverview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -26,7 +26,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/close"
+                android:id="@+id/close_innerlife"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="right"
@@ -57,7 +57,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/actual_name"
+                android:id="@+id/actual_name_innerlife"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -81,7 +81,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/actual_dev"
+                    android:id="@+id/actual_dev_innerlife"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" IBM"
@@ -104,7 +104,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/actual_date"
+                    android:id="@+id/actual_date_innerlife"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" 1978"
@@ -144,6 +144,7 @@
                     android:background="#444444" >
 
                     <TextView
+                        android:id="@+id/actual_desc_innerlife"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="8dp"
