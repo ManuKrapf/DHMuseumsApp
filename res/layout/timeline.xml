@@ -115,7 +115,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="1955"
+                android:text="@strings/scan_timeline_default_date_1"
                 android:textColor="#FFF"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -127,7 +127,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="1960"
+                android:text="@strings/scan_timeline_default_date_2"
                 android:textColor="#FFF"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -139,7 +139,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="1970"
+                android:text="@strings/scan_timeline_default_date_3"
                 android:textColor="#FFF"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -151,7 +151,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="1980"
+                android:text="@strings/scan_timeline_default_date_4"
                 android:textColor="#FFF"
                 android:textSize="20dp"
                 android:textStyle="bold" />
