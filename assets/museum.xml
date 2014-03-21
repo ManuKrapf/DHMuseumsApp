@@ -219,4 +219,42 @@
 			<img>bluray</img>
 		</item>
 	</storages>
+	<innerlifecomponents>
+	    <item>
+	        <id>18</id>
+	        <parentid>1</parentid>
+	        <name>RAM</name>
+	        <date>1978</date>
+	        <developer>Kingston</developer>
+	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
+	        <img>sd.jpg</img>
+	    </item>
+	    <item>
+	        <id>19</id>
+	        <parentid>1</parentid>
+	        <name>Motherboard</name>
+	        <date>1979</date>
+	        <developer>IBM</developer>
+	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
+	        <img></img>
+	    </item>
+	    <item>
+	        <id>20</id>
+	        <parentid>1</parentid>
+	        <name>Laufwerk</name>
+	        <date>1980</date>
+	        <developer>Western Digital</developer>
+	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
+	        <img></img>
+	    </item>
+	    <item>
+	        <id>21</id>
+	        <parentid>1</parentid>
+	        <name>CPU</name>
+	        <date>1855</date>
+	        <developer>Intel</developer>
+	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
+	        <img></img>
+	    </item>
+	</innerlifecomponents>
 </museum>

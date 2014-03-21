@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible" >
+        android:visibility="gone" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".90"
                 android:gravity="center"
-                android:src="@drawable/arrow_left"
+                android:background="#669C004B"
                 android:text="Innenleben"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -40,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".50"
-            android:background="#FFF"
             android:orientation="vertical" >
         </LinearLayout>
 

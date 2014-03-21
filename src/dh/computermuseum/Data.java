@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import android.content.Context;
+import android.util.Log;
 
 public class Data {
 	
@@ -23,7 +24,6 @@ public class Data {
 	private ArrayList<Computer> computers;
 	private ArrayList<Component> components;
 	private ArrayList<Storage> storages;
-	private ArrayList<InnerlifeComponent> innerlifeComponents;
 	private AntiquesContentHandler ach;
 	
 	public Data(Context c) {
@@ -31,7 +31,6 @@ public class Data {
 		computers = new ArrayList<Computer>();
 		components = new ArrayList<Component>();
 		storages = new ArrayList<Storage>();
-		innerlifeComponents = new ArrayList<InnerlifeComponent>();
 		initXMLParser();
 	}
 	
@@ -75,7 +74,8 @@ public class Data {
 	}
 	
 	public void addInnerlifeComponent(InnerlifeComponent ic) {
-		innerlifeComponents.add(ic);
+		Computer c = getComputer(ic.getParentId());
+		c.addComponent(ic);
 	}
 	
 	public Computer getComputer(String name) {
@@ -132,8 +132,11 @@ public class Data {
 		return null;
 	}
 	
-	public InnerlifeComponent getInnerlifeComponent(String name) {
-		for(InnerlifeComponent iC : innerlifeComponents) {
+	public InnerlifeComponent getInnerlifeComponent(int parentid, String name) {
+		
+		Computer c = getComputer(parentid);
+		
+		for(InnerlifeComponent iC : c.getComponents()) {
 			if(iC.getName().equals(name)) {
 				return iC;
 			}
@@ -141,31 +144,15 @@ public class Data {
 		return null;
 	}
 	
-	public InnerlifeComponent getInnerlifeComponent(int id) {
-		for(InnerlifeComponent iC : innerlifeComponents) {
+	public InnerlifeComponent getInnerlifeComponent(int parentid, int id) {
+		
+		Computer c = getComputer(parentid);
+		
+		for(InnerlifeComponent iC : c.getComponents()) {
 			if(iC.getId() == id) {
 				return iC;
 			}
 		}
 		return null;
 	}
-	/*
-	public Antique getAntique(String name) {
-		for(Antique a : antiques) {
-			if(a.getName().equals(name)) {
-				return a;
-			}
-		}
-		return null;
-	}
-	
-	public Antique getAntique(int id) {
-		for(Antique a : antiques) {
-			if(a.getId() == id) {
-				return a;
-			}
-		}
-		return null;
-	}
-	*/
 }

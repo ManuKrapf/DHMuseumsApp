@@ -1,161 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/timelineview"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="bottom"
-    android:visibility="gone" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <RelativeLayout
-        android:id="@+id/infotaglayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
-        android:background="#809C004B" >
-
-        <ImageView
-            android:id="@+id/tl_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:visibility="visible" />
-
-        <VideoView
-            android:id="@+id/tl_video"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:visibility="invisible" />
+        android:id="@+id/timelineview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" >
 
         <LinearLayout
-            android:id="@+id/lin_infotexte"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/tl_video"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/tl_nametag"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginBottom="5dp"
-                android:textColor="#FFF"
-                android:textSize="30dp" />
-
-            <TextView
-                android:id="@+id/tl_companytag"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="@string/detail_company"
-                android:textColor="#FFF"
-                android:textSize="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="430dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="20dp"
             android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/showInnerlifeButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/innerlife"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/showVideoButton"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/video_logo"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/showDetailsButton"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/detail_logo" />
         </LinearLayout>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/infotaglayout"
-        android:gravity="bottom" >
-
-        <ImageView
-            android:id="@+id/timelineimg"
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/timeline_highlight2" />
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/infotaglayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:layout_above="@+id/timelinecontainer"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:background="#809C004B" >
 
-            <TextView
-                android:id="@+id/tl_datetagbefore"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/scan_timeline_default_date_1"
-                android:textColor="#FFF"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/tl_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible" />
 
-            <TextView
-                android:id="@+id/tl_datetag"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/scan_timeline_default_date_2"
-                android:textColor="#FFF"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            <VideoView
+                android:id="@+id/tl_video"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible" />
 
-            <TextView
-                android:id="@+id/tl_datetagafter1"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/lin_infotexte"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/scan_timeline_default_date_3"
-                android:textColor="#FFF"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tl_video"
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/tl_datetagafter2"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tl_nametag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#FFF"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tl_companytag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/detail_company"
+                    android:textColor="#FFF"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/timelinecontainer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/timelineimg"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/timeline_highlight2" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/scan_timeline_default_date_4"
-                android:textColor="#FFF"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_centerVertical="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tl_datetagbefore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/scan_timeline_default_date_1"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tl_datetag"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/scan_timeline_default_date_2"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tl_datetagafter1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/scan_timeline_default_date_3"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tl_datetagafter2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/scan_timeline_default_date_4"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
-</RelativeLayout>
+</merge>

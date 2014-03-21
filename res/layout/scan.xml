@@ -53,5 +53,8 @@
     
     <include
         layout="@layout/storage"/>
+    
+    <include
+        layout="@layout/innerlife"/>
 
 </LinearLayout>

@@ -1,5 +1,7 @@
 package dh.computermuseum;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -73,6 +75,12 @@ public class ScanActivity extends ARViewActivity {
 	private IGeometry g_tag2;
 	private IGeometry g_tag3;
 	private IGeometry g_tag4;
+	private IGeometry inner1;
+	private IGeometry inner2;
+	private IGeometry inner3;
+	private IGeometry inner4;
+	
+	private int actinner = 0;
 	
 	/*
 	private IGeometry mModel;
@@ -130,7 +138,45 @@ public class ScanActivity extends ARViewActivity {
 
 	@Override
 	protected void onGeometryTouched(IGeometry geometry) {
-		// TODO Auto-generated method stub
+		
+		Log.d("dhdebug", geometry.toString());
+		
+		if(geometry.equals(inner1)) {
+			Log.d("dhdebug", "geometry is inner 1");
+			setInner(inner1, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
+			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner3, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
+			setInner(inner4, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			actinner = 18;
+			showInnerlifeComponents(1, actinner);
+		}
+		else if(geometry.equals(inner2)) {
+			Log.d("dhdebug", "geometry is inner 2");
+			setInner(inner2, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
+			setInner(inner3, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner4, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
+			setInner(inner1, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			actinner = 19;
+			showInnerlifeComponents(1, actinner);
+		}
+		else if(geometry.equals(inner3)) {
+			Log.d("dhdebug", "geometry is inner 3");
+			setInner(inner3, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
+			setInner(inner4, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner1, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
+			setInner(inner2, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			actinner = 20;
+			showInnerlifeComponents(1, actinner);
+		}
+		else if(geometry.equals(inner4)) {
+			Log.d("dhdebug", "geometry is inner 4");
+			setInner(inner4, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
+			setInner(inner1, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner2, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
+			setInner(inner3, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			actinner = 21;
+			showInnerlifeComponents(1, actinner);
+		}
 		
 	}
 	
@@ -283,9 +329,12 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
 						Log.d("dhdebug", "ID yellowbook: "+values.get(0).getCoordinateSystemID());
-						showMBTags(values.get(0).getCoordinateSystemID());
+						showComputerTimeline(getComputer(1));
+						//showStorageLine(11);
+						//showMBTags(values.get(0).getCoordinateSystemID());
+						//initInnerlife(1, values.get(0).getCoordinateSystemID());
 						//loadMovie(values.get(0).getCoordinateSystemID());
-						id = 11;
+						id = 1;
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
@@ -479,8 +528,43 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void showInnerlifeComponents(int id) {
-		final InnerlifeComponent iC = data.getInnerlifeComponent(id);
+	private void initInnerlife(int id, int cosid) {
+		
+		Computer c = data.getComputer(id);
+		//ArrayList<InnerlifeComponent> list = c.getComponents();
+		
+		final String innerfile1 = AssetsManager.getAssetPath("Assets/sd.jpg");//+c.getComponent(1).getImg());
+		final String innerfile2 = AssetsManager.getAssetPath("Assets/cdrom.jpg");
+		final String innerfile3 = AssetsManager.getAssetPath("Assets/dvd.jpg");
+		final String innerfile4 = AssetsManager.getAssetPath("Assets/usb.jpg");
+		
+		if(innerfile1 != null && inner1 == null) {
+			inner1 = metaioSDK.createGeometryFromImage(innerfile1);
+			setInner(inner1, 1.3f, new Vector3d(0,0,0), cosid);
+		}
+		if(innerfile2 != null && inner2 == null) {
+			inner2 = metaioSDK.createGeometryFromImage(innerfile2);
+			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), cosid);
+		}
+		if(innerfile3 != null && inner3 == null) {
+			inner3 = metaioSDK.createGeometryFromImage(innerfile3);
+			setInner(inner3, 0.5f, new Vector3d(0,0,-100), cosid);
+		}
+		if(innerfile4 != null && inner4 == null) {
+			inner4 = metaioSDK.createGeometryFromImage(innerfile4);
+			setInner(inner4, 0.8f, new Vector3d(200,0,-20), cosid);
+		}
+		
+		if(actinner == 0) {
+			actinner = 18;
+		}
+		
+		showInnerlifeComponents(id, actinner);
+	}
+	
+	private void showInnerlifeComponents(int parentid, int id) {
+		
+		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, id);
 		
 		runOnUiThread(new Runnable() 
 		{
@@ -496,11 +580,37 @@ public class ScanActivity extends ARViewActivity {
 			}
 		});
 	}
+	
+	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
 		
-	/*
-	private void showTimeline(Antique temp) {
+		//inner1 = metaioSDK.createGeometryFromImage(innerfile1);
+		if (ig != null)
+		{
+			ig.setScale(scale);
+			ig.setRotation(new Rotation(0f, (float) -Math.PI/4, 0f)); //(float) Math.PI/2
+			ig.setTranslation(v);
+			//movie.setTransparency(0.1f);
+			ig.setCoordinateSystemID(cosid);
+			
+			//MetaioDebug.log("Loaded geometry "+innerfile1);
+		}
+		else {
+			MetaioDebug.log(Log.ERROR, "Error loading geometry: ");//+innerfile1);
+		}
+	}
+	
+	private void unloadInners() {
 		
-		final Antique ant = temp;
+	}
+	
+	private Computer getComputer(int id) {
+		return data.getComputer(id);
+	}
+		
+	
+	private void showComputerTimeline(Computer temp) {
+		
+		final Computer c = temp;
 		
 		runOnUiThread(new Runnable() 
 		{
@@ -508,10 +618,10 @@ public class ScanActivity extends ARViewActivity {
 			public void run() 
 			{
 				layout.setVisibility(View.VISIBLE);
-				name.setText(ant.getName());
-				comp.setText(ant.getProducer());
+				name.setText(c.getName());
+				comp.setText(c.getProducer());
 				datebefore.setText("1800");
-				date.setText(ant.getReleaseDate());
+				date.setText(c.getReleaseDate());
 				dateafter1.setText("2000");
 				dateafter2.setText("2013");
 			}
@@ -531,7 +641,7 @@ public class ScanActivity extends ARViewActivity {
 		});
 		
 	}
-	
+	/*
 	private Antique getDataFromXML(int type, int id) {
 		
 		switch(type) {

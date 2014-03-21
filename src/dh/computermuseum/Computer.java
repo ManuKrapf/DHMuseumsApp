@@ -1,5 +1,7 @@
 package dh.computermuseum;
 
+import java.util.ArrayList;
+
 public class Computer extends Antique {
 	
 	private String producer;
@@ -10,9 +12,11 @@ public class Computer extends Antique {
   	private String special;
   	private String img;
   	private String description;
+  	private ArrayList<InnerlifeComponent> components;
   
   	public Computer() {
   		super("computer");
+  		components = new ArrayList<InnerlifeComponent>();
   	}
   	
   	public void setProducer(String producer) {
@@ -79,5 +83,17 @@ public class Computer extends Antique {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public void addComponent(InnerlifeComponent ic) {
+		components.add(ic);
+	}
+	
+	public ArrayList<InnerlifeComponent> getComponents() {
+		return components;
+	}
+	
+	public InnerlifeComponent getComponent(int index) {
+		return components.get(index-1);
 	}
 }

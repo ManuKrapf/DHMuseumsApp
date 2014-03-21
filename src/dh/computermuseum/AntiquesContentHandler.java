@@ -14,6 +14,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	private Computer computer;
 	private Component component;
 	private Storage storage;
+	private InnerlifeComponent inner;
 	private String type;
 	private int typeid;
 	private boolean element;
@@ -58,6 +59,10 @@ public class AntiquesContentHandler implements ContentHandler {
 			type = "storages";
 			typeid = 3;
 		}
+		if(localName.equals("innerlifecomponents")) {
+			type = "innerlifecomponents";
+			typeid = 4;
+		}
 		
 		if (localName.equals("item")) {
 			switch(typeid) {
@@ -66,6 +71,8 @@ public class AntiquesContentHandler implements ContentHandler {
 				case 2: component = new Component();
 					break;
 				case 3: storage = new Storage();
+					break;
+				case 4: inner = new InnerlifeComponent();
 					break;
 				default: antique = new Antique("unknown");
 			}
@@ -178,6 +185,32 @@ public class AntiquesContentHandler implements ContentHandler {
 			}
 			if (localName.equals("item")) {
 				data.addStorage(storage);
+			}
+		}
+		if(type.equalsIgnoreCase("innerlifecomponents")) {
+			if (localName.equals("name")) {
+				inner.setName(currentValue);
+			}
+			if (localName.equals("id")) {
+				inner.setId(Integer.parseInt(currentValue));
+			}
+			if (localName.equals("parentid")) {
+				inner.setParentId(Integer.parseInt(currentValue));
+			}
+			if (localName.equals("date")) {
+				inner.setReleaseDate(currentValue);
+			}
+			if (localName.equals("developer")) {
+				inner.setDeveloper(currentValue);
+			}
+			if (localName.equals("desc")) {
+				inner.setDescription(currentValue);
+			}
+			if (localName.equals("img")) {
+				inner.setImg(currentValue);
+			}
+			if (localName.equals("item")) {
+				data.addInnerlifeComponent(inner);
 			}
 		}
 	}

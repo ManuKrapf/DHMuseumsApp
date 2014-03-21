@@ -1,19 +1,28 @@
 package dh.computermuseum;
 
 public class InnerlifeComponent extends Antique {
-	private String producer;
+	private int parentId;
+	private String developer;
 	private String desc;
 
 	public InnerlifeComponent() {
   		super("innerlifeComponent");
   	}
 	
-	public void setProducer(String producer) {
-		this.producer = producer;
+	public void setParentId(int id) {
+		parentId = id;
+	}
+	
+	public int getParentId() {
+		return parentId;
+	}
+	
+	public void setDeveloper(String developer) {
+		this.developer = developer;
 	}
 	
 	public String getProducer() {
-		return producer;
+		return developer;
 	}
 
 	public void setDescription(String desc) {
