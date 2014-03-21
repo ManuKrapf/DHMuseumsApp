@@ -69,6 +69,13 @@ public class ScanActivity extends ARViewActivity {
 	private TextView innerlifeElementDev;
 	private TextView innerlifeElementDate;
 	private TextView innerlifeElementDesc;
+	
+	private LinearLayout componentInfo;
+	
+	private TextView componentElementName;
+	private TextView componentElementDev;
+	private TextView componentElementDate;
+	private TextView componentElementDesc;
 
 	private IGeometry movie;
 	private IGeometry g_tag1;
@@ -243,13 +250,20 @@ public class ScanActivity extends ARViewActivity {
 					final Animation fadeInAnim = AnimationUtils.loadAnimation(context, R.anim.fadein);
 					final Animation fadeOutAnim = AnimationUtils.loadAnimation(context, R.anim.fadeout);
 					
-					// Component information view
+					// Innerlife information view
 					innerlifeInfo = (LinearLayout) findViewById(R.id.innerlifeOverview);
 					innerlifeElementName = (TextView) findViewById(R.id.actual_name_innerlife);
 					innerlifeElementDev = (TextView) findViewById(R.id.actual_dev_innerlife);
 					innerlifeElementDate = (TextView) findViewById(R.id.actual_date_innerlife);
 					innerlifeElementDesc = (TextView) findViewById(R.id.actual_desc_innerlife);
 					closeInnerlife = (ImageView) findViewById(R.id.close_innerlife);
+					
+					// Component information view
+					componentInfo = (LinearLayout) findViewById(R.id.componentOverview);
+					componentElementName = (TextView) findViewById(R.id.actual_name_component);
+					componentElementDev = (TextView) findViewById(R.id.actual_name_component);
+					componentElementDate = (TextView) findViewById(R.id.actual_name_component);
+					componentElementDesc = (TextView) findViewById(R.id.actual_name_component);
 					
 					closeInnerlife.setOnClickListener(new OnClickListener() {
 						
@@ -329,12 +343,13 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
 						Log.d("dhdebug", "ID yellowbook: "+values.get(0).getCoordinateSystemID());
-						showComputerTimeline(getComputer(1));
+						//showComputerTimeline(getComputer(1));
 						//showStorageLine(11);
 						//showMBTags(values.get(0).getCoordinateSystemID());
 						//initInnerlife(1, values.get(0).getCoordinateSystemID());
 						//loadMovie(values.get(0).getCoordinateSystemID());
-						id = 1;
+						showComponentView(data.getComponent(5));
+						id = 5;
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
@@ -641,6 +656,40 @@ public class ScanActivity extends ARViewActivity {
 		});
 		
 	}
+	
+	private void showComponentView(Component temp) {
+		
+		final Component c = temp;
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				componentInfo.setVisibility(View.VISIBLE);
+				
+				componentElementName.setText(c.getName());
+				componentElementDev.setText(c.getProducer());
+				componentElementDate.setText(c.getReleaseDate());
+				componentElementDesc.setText(c.getDescription());
+			}
+		});
+		
+	}
+	
+	private void hideComponentView() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				componentInfo.setVisibility(View.GONE);
+			}
+		});
+		
+	}
+	
 	/*
 	private Antique getDataFromXML(int type, int id) {
 		
