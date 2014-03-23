@@ -31,7 +31,6 @@
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/video_logo"
-                android:onClick="onVideoButtonClick"
                 android:visibility="visible" />
 
             <ImageView

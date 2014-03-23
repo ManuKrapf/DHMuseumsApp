@@ -32,18 +32,21 @@ public class ScanActivity extends ARViewActivity {
 	private Data data;
 	
 	private int id = 0;
+	private int actinner = 0;
 	
-	private RelativeLayout layout;
-	private ImageView details;
-	private ImageView video;
+	// Timeline View
+	private RelativeLayout timeline;
+	private ImageView detailsButton;
+	private ImageView videoButton;
 	private ImageView innerButton;
-	private TextView name;
-	private TextView comp;
-	private TextView datebefore;
-	private TextView date;
-	private TextView dateafter1;
-	private TextView dateafter2;
+	private TextView timelineName;
+	private TextView timelineComp;
+	private TextView timelineDatebefore;
+	private TextView timelineDate;
+	private TextView timelineDateafter1;
+	private TextView timelineDateafter2;
 	
+	// Storages View
 	private LinearLayout storageline;
 	private ImageView closesl;
 	
@@ -63,6 +66,7 @@ public class ScanActivity extends ARViewActivity {
 	private TextView storageLife;
 	private TextView storageSize;
 	
+	// Innerlife View
 	private LinearLayout innerlifeInfo;
 	private ImageView closeInnerlife;
 	
@@ -71,13 +75,15 @@ public class ScanActivity extends ARViewActivity {
 	private TextView innerlifeElementDate;
 	private TextView innerlifeElementDesc;
 	
+	// Component View
 	private LinearLayout componentInfo;
 	
 	private TextView componentElementName;
 	private TextView componentElementDev;
 	private TextView componentElementDate;
 	private TextView componentElementDesc;
-
+	
+	// Geometrys
 	private IGeometry movie;
 	private IGeometry g_tag1;
 	private IGeometry g_tag2;
@@ -88,12 +94,6 @@ public class ScanActivity extends ARViewActivity {
 	private IGeometry inner3;
 	private IGeometry inner4;
 	
-	private int actinner = 0;
-	
-	/*
-	private IGeometry mModel;
-	private IGeometry mModel2;
-	*/
 	private MetaioSDKCallbackHandler mCallbackHandler;
 
 	@Override
@@ -103,8 +103,8 @@ public class ScanActivity extends ARViewActivity {
 		data = new Data(this);
 		mCallbackHandler = new MetaioSDKCallbackHandler();
 		
-		video = (ImageView) mGUIView.findViewById(R.id.showVideoButton);
 	}
+	// TODO LifeCycle Methoden ausbauen das kein unnötiger speicher verbraucht wird
 
 	@Override
 	public void onResume() {
@@ -145,9 +145,10 @@ public class ScanActivity extends ARViewActivity {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	protected void onGeometryTouched(IGeometry geometry) {
+		// TODO actinner und Methode für innerlife noch dynamisch setzen
 		
 		Log.d("dhdebug", geometry.toString());
 		
@@ -210,11 +211,6 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	public void onVideoButtonClick(View v) {
-		movie.setVisible(true);
-		movie.startMovieTexture(true);
-	}
-	
 	final class MetaioSDKCallbackHandler extends IMetaioSDKCallback 
 	{
 		
@@ -229,13 +225,13 @@ public class ScanActivity extends ARViewActivity {
 				{
 					mGUIView.setVisibility(View.VISIBLE);
 					
-					layout = (RelativeLayout) findViewById(R.id.timelineview);
+					timeline = (RelativeLayout) findViewById(R.id.timelineview);
 					
-					details = (ImageView) findViewById(R.id.showDetailsButton);
-					//video = (ImageView) findViewById(R.id.showVideoButton);
+					detailsButton = (ImageView) findViewById(R.id.showDetailsButton);
+					videoButton = (ImageView) findViewById(R.id.showVideoButton);
 					innerButton = (ImageView) findViewById(R.id.showInnerlifeButton);
 					
-					details.setOnClickListener(new OnClickListener() {
+					detailsButton.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
@@ -246,32 +242,32 @@ public class ScanActivity extends ARViewActivity {
 							
 						}
 					});
-					/*
-					video.setOnClickListener(new OnClickListener() {
+					
+					videoButton.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
-							loadMovie(id);
+							movie.setVisible(true);
+							movie.startMovieTexture(true);
 						}
-					});*/
+					});
 					
 					innerButton.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
-							
-							hideTimeline();
-							initInnerlife(1, 3);
+							hideComputerTimeline();
+							showInnerlifeComponents(id, 18);
 						}
 					});
 					
 					// Tag with Timeline
-					name = (TextView) findViewById(R.id.tl_nametag);
-					comp = (TextView) findViewById(R.id.tl_companytag);
-					datebefore = (TextView) findViewById(R.id.tl_datetagbefore);
-					date = (TextView) findViewById(R.id.tl_datetag);
-					dateafter1 = (TextView) findViewById(R.id.tl_datetagafter1);
-					dateafter2 = (TextView) findViewById(R.id.tl_datetagafter2);
+					timelineName = (TextView) findViewById(R.id.tl_nametag);
+					timelineComp = (TextView) findViewById(R.id.tl_companytag);
+					timelineDatebefore = (TextView) findViewById(R.id.tl_datetagbefore);
+					timelineDate = (TextView) findViewById(R.id.tl_datetag);
+					timelineDateafter1 = (TextView) findViewById(R.id.tl_datetagafter1);
+					timelineDateafter2 = (TextView) findViewById(R.id.tl_datetagafter2);
 					
 					// Storage line
 					storageline = (LinearLayout) findViewById(R.id.storageline);
@@ -370,56 +366,207 @@ public class ScanActivity extends ARViewActivity {
 			
 			super.onTrackingEvent(values);
 			
-			//loadModel();
-			
 			if (values.size() > 0) {
+				// TODO Tracking Objekte noch austauschen
 				
 				if(values.get(0).getState() == ETRACKING_STATE.ETS_FOUND) {
 					Log.d("dhdebug", values.get(0).getCosName()+" is found");
 					
 					if(values.get(0).getCosName().equals("overhead_1")) {
-						Log.d("dhdebug", "ID overhead: "+values.get(0).getCoordinateSystemID());
-						//showStorageLine(11);
-						loadMovie(values.get(0).getCoordinateSystemID());
-						id = 11;
+						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
+						id = 1;
+						showCase(1, values.get(0).getCoordinateSystemID());
 					}
 					else if(values.get(0).getCosName().equals("book_2")) {
-						Log.d("dhdebug", "ID book: "+values.get(0).getCoordinateSystemID());
-						//showTimeline(getDataFromXML(2));
+						Log.d("dhdebug", "CosID book: "+values.get(0).getCoordinateSystemID());
 						id = 2;
+						showCase(2, values.get(0).getCoordinateSystemID());
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
-						Log.d("dhdebug", "ID yellowbook: "+values.get(0).getCoordinateSystemID());
-						showComputerTimeline(getComputer(1));
-						//showStorageLine(11);
-						//showMBTags(values.get(0).getCoordinateSystemID());
-						//initInnerlife(1, values.get(0).getCoordinateSystemID());
-						loadMovie(values.get(0).getCoordinateSystemID());
-						//showComponentView(data.getComponent(5));
+						Log.d("dhdebug", "CosID yellowbook: "+values.get(0).getCoordinateSystemID());
 						id = 5;
+						showCase(2, values.get(0).getCoordinateSystemID());
+						
+						// Case 1
+						/*
+						showComputerTimeline(data.getComputer(1));
+						loadMovie(values.get(0).getCoordinateSystemID());
+						initInnerlife(data.getComputer(1), values.get(0).getCoordinateSystemID());
+						*/
+						
+						// Case 2
+						//showStorageLine(11);
+						
+						// Case 3
+						//showMBTags(values.get(0).getCoordinateSystemID());
+						
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
-					//id = 0;
-					//hideTimeline();
-					hideComponentView();
+					id = 0;
+					hideComputerTimeline();
+					hideComponentView(); // TODO soll das wirklich ausgeblendet werden???
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
 				}
-				/*
-				Log.d("dhdebug", "Values: "+values.size());
-				Log.d("dhdebug", "Name 0: "+values.get(0).getCosName());
-				Log.d("dhdebug", "State 0: "+values.get(0).getState());
-				if(values.size() >= 2) {
-					Log.d("dhdebug", "Name 1: "+values.get(1).getCosName());
-					Log.d("dhdebug", "State 1: "+values.get(1).getState());
-				}*/
 				
 			}
 			
 		}
 	}
+	
+	private void showCase(int ocase, int cosid) {
+		
+		switch(ocase) {
+			case 1: showComputerTimeline(data.getComputer(id));
+				loadMovie(cosid);
+				initInnerlife(data.getComputer(id), cosid);
+				break;
+			case 2: showStorageLine(id);
+				break;
+			case 3: showMBTags(cosid);
+				break;
+			default:
+		}
+		
+	}
+	
+	// Case 1: Timeline for computers
+	
+	private void showComputerTimeline(Computer temp) {
+		
+		final Computer c = temp;
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				timeline.setVisibility(View.VISIBLE);
+				timelineName.setText(c.getName());
+				timelineComp.setText(c.getProducer());
+				timelineDatebefore.setText("1800");
+				timelineDate.setText(c.getReleaseDate());
+				timelineDateafter1.setText("2000");
+				timelineDateafter2.setText("2013");
+			}
+		});
+		
+	}
+	
+	private void hideComputerTimeline() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				timeline.setVisibility(View.GONE);
+			}
+		});
+		
+	}
+	
+	// Case 1.1: show a movie on the screen of the computer
+	
+	private void loadMovie(int cosid) {
+		// TODO VideoFile noch aus xml abrufen und Position des Videos noch dynamisch setzen
+		
+		final String moviePath = AssetsManager.getAssetPath("Assets/videoc128.3g2");
+		
+		if (moviePath != null)
+		{
+			movie = metaioSDK.createGeometryFromMovie(moviePath, false);
+			if (movie != null)
+			{
+				movie.setScale(1.5f);
+				movie.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
+				movie.setTransparency(0.1f);
+				movie.setCoordinateSystemID(cosid);
+				//movie.startMovieTexture(true);
+				movie.setVisible(false);
+				
+				MetaioDebug.log("Loaded geometry "+moviePath);
+			}
+			else {
+				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+moviePath);
+			}
+		}
+		
+	}
+	
+	// Case 1.2: show the innerlife components of the computer
+	
+	private void initInnerlife(Computer c, int cosid) {
+		
+		// TODO Images aus xml einbinden
+		final String innerfile1 = AssetsManager.getAssetPath("Assets/sd.jpg");//+c.getComponent(1).getImg());
+		final String innerfile2 = AssetsManager.getAssetPath("Assets/cdrom.jpg");
+		final String innerfile3 = AssetsManager.getAssetPath("Assets/dvd.jpg");
+		final String innerfile4 = AssetsManager.getAssetPath("Assets/usb.jpg");
+		
+		if(innerfile1 != null && inner1 == null) {
+			inner1 = metaioSDK.createGeometryFromImage(innerfile1);
+			setInner(inner1, 1.3f, new Vector3d(0,0,0), cosid);
+		}
+		if(innerfile2 != null && inner2 == null) {
+			inner2 = metaioSDK.createGeometryFromImage(innerfile2);
+			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), cosid);
+		}
+		if(innerfile3 != null && inner3 == null) {
+			inner3 = metaioSDK.createGeometryFromImage(innerfile3);
+			setInner(inner3, 0.5f, new Vector3d(0,0,-100), cosid);
+		}
+		if(innerfile4 != null && inner4 == null) {
+			inner4 = metaioSDK.createGeometryFromImage(innerfile4);
+			setInner(inner4, 0.8f, new Vector3d(200,0,-20), cosid);
+		}
+		// TODO actinner dynamisch setzen
+		if(actinner == 0) {
+			actinner = 18;
+		}
+		
+		showInnerlifeComponents(id, actinner);
+	}
+	
+	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
+		
+		//inner1 = metaioSDK.createGeometryFromImage(innerfile1);
+		if (ig != null)
+		{
+			ig.setScale(scale);
+			ig.setRotation(new Rotation(0f, (float) -Math.PI/4, 0f)); //(float) Math.PI/2
+			ig.setTranslation(v);
+			ig.setCoordinateSystemID(cosid);
+			
+			//MetaioDebug.log("Loaded geometry "+innerfile1);
+		}
+		else {
+			MetaioDebug.log(Log.ERROR, "Error loading geometry: ");//+innerfile1);
+		}
+	}
+	
+	private void showInnerlifeComponents(int parentid, int id) {
+		
+		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, id);
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				innerlifeInfo.setVisibility(View.VISIBLE);
+
+				innerlifeElementName.setText(iC.getName());
+				innerlifeElementDev.setText(iC.getProducer());
+				innerlifeElementDate.setText(iC.getReleaseDate());
+				innerlifeElementDesc.setText(iC.getDescription());
+			}
+		});
+	}
+	
+	// Case 2: Storages in chronological order
 	
 	private void showStorageLine(int id) {
 		
@@ -486,7 +633,10 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	// Case 3: Tags for components of a board
+	
 	private void showMBTags(int cosid) {
+		// TODO setze Bilder für Tags dynamisch
 		
 		final String tag1 = AssetsManager.getAssetPath("Assets/mbtag_southbridge.png");
 		final String tag2 = AssetsManager.getAssetPath("Assets/mbtag_northbridge.png");
@@ -496,209 +646,43 @@ public class ScanActivity extends ARViewActivity {
 		if (tag1 != null && g_tag1 == null)
 		{
 			g_tag1 = metaioSDK.createGeometryFromImage(tag1, true, true);
-			if (g_tag1 != null)
-			{
-				//g_tag1.setScale(5f);
-				g_tag1.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
-				g_tag1.setTranslation(new Vector3d(100,0,2));
-				//movie.setTransparency(0.1f);
-				g_tag1.setCoordinateSystemID(cosid);
-				
-				MetaioDebug.log("Loaded geometry "+tag1);
-			}
-			else {
-				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag1);
-			}
+			setMBTag(g_tag1, new Vector3d(100,0,2), cosid);
 		}
 		
 		if (tag2 != null && g_tag2 == null)
 		{
 			g_tag2 = metaioSDK.createGeometryFromImage(tag2, true, true);
-			if (g_tag2 != null)
-			{
-				//movie.setScale(1.5f);
-				g_tag2.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
-				g_tag2.setTranslation(new Vector3d(150,0,10));
-				//movie.setTransparency(0.1f);
-				g_tag2.setCoordinateSystemID(cosid);
-				
-				MetaioDebug.log("Loaded geometry "+tag2);
-			}
-			else {
-				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag2);
-			}
+			setMBTag(g_tag2, new Vector3d(150,0,10), cosid);
 		}
 		
 		if (tag3 != null && g_tag3 == null)
 		{
 			g_tag3 = metaioSDK.createGeometryFromImage(tag3, true, true);
-			if (g_tag3 != null)
-			{
-				//movie.setScale(1.5f);
-				g_tag3.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
-				g_tag3.setTranslation(new Vector3d(0,0,0));
-				//movie.setTransparency(0.1f);
-				g_tag3.setCoordinateSystemID(cosid);
-				
-				MetaioDebug.log("Loaded geometry "+tag3);
-			}
-			else {
-				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag3);
-			}
+			setMBTag(g_tag3, new Vector3d(0,0,0), cosid);
 		}
 		
 		if (tag4 != null  && g_tag4 == null)
 		{
-			g_tag4 = metaioSDK.createGeometryFromImage(tag4);
-			if (g_tag4 != null)
-			{
-				//movie.setScale(1.5f);
-				g_tag4.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
-				g_tag4.setTranslation(new Vector3d(-120,0,-20));
-				//movie.setTransparency(0.1f);
-				g_tag4.setCoordinateSystemID(cosid);
-				
-				MetaioDebug.log("Loaded geometry "+tag4);
-			}
-			else {
-				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+tag4);
-			}
+			g_tag4 = metaioSDK.createGeometryFromImage(tag4, true, true);
+			setMBTag(g_tag4, new Vector3d(-120,0,-20), cosid);
 		}
 		
 	}
 	
-	private void loadMovie(int cosid) {
+	private void setMBTag(IGeometry ig, Vector3d v, int cosid) {
 		
-		final String moviePath = AssetsManager.getAssetPath("Assets/videoc128.3g2");
-		
-		if (moviePath != null)
-		{
-			movie = metaioSDK.createGeometryFromMovie(moviePath, false);
-			if (movie != null)
-			{
-				movie.setScale(1.5f);
-				movie.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));//new Rotation(0f, 0f, (float)-Math.PI/2));
-				movie.setTransparency(0.1f);
-				movie.setCoordinateSystemID(cosid);
-				//movie.startMovieTexture(true);
-				movie.setVisible(false);
-				
-				MetaioDebug.log("Loaded geometry "+moviePath);
-			}
-			else {
-				MetaioDebug.log(Log.ERROR, "Error loading geometry: "+moviePath);
-			}
-		}
-		
-	}
-	
-	private void initInnerlife(int id, int cosid) {
-		
-		Computer c = data.getComputer(id);
-		//ArrayList<InnerlifeComponent> list = c.getComponents();
-		
-		final String innerfile1 = AssetsManager.getAssetPath("Assets/sd.jpg");//+c.getComponent(1).getImg());
-		final String innerfile2 = AssetsManager.getAssetPath("Assets/cdrom.jpg");
-		final String innerfile3 = AssetsManager.getAssetPath("Assets/dvd.jpg");
-		final String innerfile4 = AssetsManager.getAssetPath("Assets/usb.jpg");
-		
-		if(innerfile1 != null && inner1 == null) {
-			inner1 = metaioSDK.createGeometryFromImage(innerfile1);
-			setInner(inner1, 1.3f, new Vector3d(0,0,0), cosid);
-		}
-		if(innerfile2 != null && inner2 == null) {
-			inner2 = metaioSDK.createGeometryFromImage(innerfile2);
-			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), cosid);
-		}
-		if(innerfile3 != null && inner3 == null) {
-			inner3 = metaioSDK.createGeometryFromImage(innerfile3);
-			setInner(inner3, 0.5f, new Vector3d(0,0,-100), cosid);
-		}
-		if(innerfile4 != null && inner4 == null) {
-			inner4 = metaioSDK.createGeometryFromImage(innerfile4);
-			setInner(inner4, 0.8f, new Vector3d(200,0,-20), cosid);
-		}
-		
-		if(actinner == 0) {
-			actinner = 18;
-		}
-		
-		showInnerlifeComponents(id, actinner);
-	}
-	
-	private void showInnerlifeComponents(int parentid, int id) {
-		
-		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, id);
-		
-		runOnUiThread(new Runnable() 
-		{
-			@Override
-			public void run() 
-			{
-				innerlifeInfo.setVisibility(View.VISIBLE);
-
-				innerlifeElementName.setText(iC.getName());
-				innerlifeElementDev.setText(iC.getProducer());
-				innerlifeElementDate.setText(iC.getReleaseDate());
-				innerlifeElementDesc.setText(iC.getDescription());
-			}
-		});
-	}
-	
-	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
-		
-		//inner1 = metaioSDK.createGeometryFromImage(innerfile1);
 		if (ig != null)
 		{
-			ig.setScale(scale);
-			ig.setRotation(new Rotation(0f, (float) -Math.PI/4, 0f)); //(float) Math.PI/2
+			//movie.setScale(1.5f);
+			ig.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
 			ig.setTranslation(v);
-			//movie.setTransparency(0.1f);
 			ig.setCoordinateSystemID(cosid);
 			
-			//MetaioDebug.log("Loaded geometry "+innerfile1);
+			MetaioDebug.log("Loaded geometry ");
 		}
 		else {
-			MetaioDebug.log(Log.ERROR, "Error loading geometry: ");//+innerfile1);
+			MetaioDebug.log(Log.ERROR, "Error loading geometry: ");
 		}
-	}
-	
-	private Computer getComputer(int id) {
-		return data.getComputer(id);
-	}
-		
-	
-	private void showComputerTimeline(Computer temp) {
-		
-		final Computer c = temp;
-		
-		runOnUiThread(new Runnable() 
-		{
-			@Override
-			public void run() 
-			{
-				layout.setVisibility(View.VISIBLE);
-				name.setText(c.getName());
-				comp.setText(c.getProducer());
-				datebefore.setText("1800");
-				date.setText(c.getReleaseDate());
-				dateafter1.setText("2000");
-				dateafter2.setText("2013");
-			}
-		});
-		
-	}
-	
-	private void hideTimeline() {
-		
-		runOnUiThread(new Runnable() 
-		{
-			@Override
-			public void run() 
-			{
-				layout.setVisibility(View.GONE);
-			}
-		});
 		
 	}
 	
@@ -734,25 +718,5 @@ public class ScanActivity extends ARViewActivity {
 		});
 		
 	}
-	
-	/*
-	private Antique getDataFromXML(int type, int id) {
-		
-		switch(type) {
-			case 1: Computer c = data.getComputer(id);
-					return c;
-				break;
-			case 2: 
-				break;
-			case 3: 
-				break;
-		}
-		
-		Antique ant = data.getAntique(id);
-		Log.d("dhdebug", "Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate()+", Type: "+ant.getType());
-		
-		return ant;//"Antique: ID: "+ant.getId()+", Name: "+ant.getName()+", Date: "+ant.getReleaseDate()+", Type: "+ant.getType();
-		
-	}*/
 	
 }
