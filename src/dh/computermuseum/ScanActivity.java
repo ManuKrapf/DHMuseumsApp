@@ -36,6 +36,7 @@ public class ScanActivity extends ARViewActivity {
 	private RelativeLayout layout;
 	private ImageView details;
 	private ImageView video;
+	private ImageView innerButton;
 	private TextView name;
 	private TextView comp;
 	private TextView datebefore;
@@ -101,6 +102,8 @@ public class ScanActivity extends ARViewActivity {
 		
 		data = new Data(this);
 		mCallbackHandler = new MetaioSDKCallbackHandler();
+		
+		video = (ImageView) mGUIView.findViewById(R.id.showVideoButton);
 	}
 
 	@Override
@@ -184,7 +187,32 @@ public class ScanActivity extends ARViewActivity {
 			actinner = 21;
 			showInnerlifeComponents(1, actinner);
 		}
+		else if(geometry.equals(g_tag1)) {
+			Log.d("dhdebug", "geometry is g_tag1");
+			showComponentView(data.getComponent(5));
+			id = 5;
+		}
+		else if(geometry.equals(g_tag2)) {
+			Log.d("dhdebug", "geometry is g_tag2");
+			showComponentView(data.getComponent(6));
+			id = 6;
+		}
+		else if(geometry.equals(g_tag3)) {
+			Log.d("dhdebug", "geometry is g_tag3");
+			showComponentView(data.getComponent(5));
+			id = 5;
+		}
+		else if(geometry.equals(g_tag4)) {
+			Log.d("dhdebug", "geometry is g_tag4");
+			showComponentView(data.getComponent(6));
+			id = 6;
+		}
 		
+	}
+	
+	public void onVideoButtonClick(View v) {
+		movie.setVisible(true);
+		movie.startMovieTexture(true);
 	}
 	
 	final class MetaioSDKCallbackHandler extends IMetaioSDKCallback 
@@ -204,7 +232,8 @@ public class ScanActivity extends ARViewActivity {
 					layout = (RelativeLayout) findViewById(R.id.timelineview);
 					
 					details = (ImageView) findViewById(R.id.showDetailsButton);
-					video = (ImageView) findViewById(R.id.showVideoButton);
+					//video = (ImageView) findViewById(R.id.showVideoButton);
+					innerButton = (ImageView) findViewById(R.id.showInnerlifeButton);
 					
 					details.setOnClickListener(new OnClickListener() {
 						
@@ -215,6 +244,24 @@ public class ScanActivity extends ARViewActivity {
 							i.putExtra("id", id);
 						    startActivity(i);
 							
+						}
+					});
+					/*
+					video.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							loadMovie(id);
+						}
+					});*/
+					
+					innerButton.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							
+							hideTimeline();
+							initInnerlife(1, 3);
 						}
 					});
 					
@@ -261,9 +308,9 @@ public class ScanActivity extends ARViewActivity {
 					// Component information view
 					componentInfo = (LinearLayout) findViewById(R.id.componentOverview);
 					componentElementName = (TextView) findViewById(R.id.actual_name_component);
-					componentElementDev = (TextView) findViewById(R.id.actual_name_component);
-					componentElementDate = (TextView) findViewById(R.id.actual_name_component);
-					componentElementDesc = (TextView) findViewById(R.id.actual_name_component);
+					componentElementDev = (TextView) findViewById(R.id.actual_dev_component);
+					componentElementDate = (TextView) findViewById(R.id.actual_date_component);
+					componentElementDesc = (TextView) findViewById(R.id.actual_desc_component);
 					
 					closeInnerlife.setOnClickListener(new OnClickListener() {
 						
@@ -343,18 +390,19 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
 						Log.d("dhdebug", "ID yellowbook: "+values.get(0).getCoordinateSystemID());
-						//showComputerTimeline(getComputer(1));
+						showComputerTimeline(getComputer(1));
 						//showStorageLine(11);
 						//showMBTags(values.get(0).getCoordinateSystemID());
 						//initInnerlife(1, values.get(0).getCoordinateSystemID());
-						//loadMovie(values.get(0).getCoordinateSystemID());
-						showComponentView(data.getComponent(5));
+						loadMovie(values.get(0).getCoordinateSystemID());
+						//showComponentView(data.getComponent(5));
 						id = 5;
 					}
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					//id = 0;
 					//hideTimeline();
+					hideComponentView();
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
@@ -445,7 +493,7 @@ public class ScanActivity extends ARViewActivity {
 		final String tag3 = AssetsManager.getAssetPath("Assets/mbtag_ram.png");
 		final String tag4 = AssetsManager.getAssetPath("Assets/mbtag_cpu.png");
 		
-		if (tag1 != null)
+		if (tag1 != null && g_tag1 == null)
 		{
 			g_tag1 = metaioSDK.createGeometryFromImage(tag1, true, true);
 			if (g_tag1 != null)
@@ -463,7 +511,7 @@ public class ScanActivity extends ARViewActivity {
 			}
 		}
 		
-		if (tag2 != null)
+		if (tag2 != null && g_tag2 == null)
 		{
 			g_tag2 = metaioSDK.createGeometryFromImage(tag2, true, true);
 			if (g_tag2 != null)
@@ -481,7 +529,7 @@ public class ScanActivity extends ARViewActivity {
 			}
 		}
 		
-		if (tag3 != null)
+		if (tag3 != null && g_tag3 == null)
 		{
 			g_tag3 = metaioSDK.createGeometryFromImage(tag3, true, true);
 			if (g_tag3 != null)
@@ -499,7 +547,7 @@ public class ScanActivity extends ARViewActivity {
 			}
 		}
 		
-		if (tag4 != null)
+		if (tag4 != null  && g_tag4 == null)
 		{
 			g_tag4 = metaioSDK.createGeometryFromImage(tag4);
 			if (g_tag4 != null)
@@ -525,14 +573,15 @@ public class ScanActivity extends ARViewActivity {
 		
 		if (moviePath != null)
 		{
-			movie = metaioSDK.createGeometryFromMovie(moviePath, false, true);
+			movie = metaioSDK.createGeometryFromMovie(moviePath, false);
 			if (movie != null)
 			{
 				movie.setScale(1.5f);
 				movie.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));//new Rotation(0f, 0f, (float)-Math.PI/2));
 				movie.setTransparency(0.1f);
 				movie.setCoordinateSystemID(cosid);
-				movie.startMovieTexture(true);
+				//movie.startMovieTexture(true);
+				movie.setVisible(false);
 				
 				MetaioDebug.log("Loaded geometry "+moviePath);
 			}
@@ -612,10 +661,6 @@ public class ScanActivity extends ARViewActivity {
 		else {
 			MetaioDebug.log(Log.ERROR, "Error loading geometry: ");//+innerfile1);
 		}
-	}
-	
-	private void unloadInners() {
-		
 	}
 	
 	private Computer getComputer(int id) {

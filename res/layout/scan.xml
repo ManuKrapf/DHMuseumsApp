@@ -56,5 +56,8 @@
     
     <include
         layout="@layout/innerlife"/>
+    
+    <include
+        layout="@layout/component"/>
 
 </LinearLayout>
