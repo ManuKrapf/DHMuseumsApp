@@ -65,6 +65,11 @@
              android:padding="16dp"
              android:textSize="16sp"
             />
+            
+        <dh.computermuseum.GIFView
+		android:id="@+id/gifView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>
