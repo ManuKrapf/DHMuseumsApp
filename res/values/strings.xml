@@ -19,6 +19,7 @@
     <string name="breadcrumbs_scan">Scan</string> 
     <string name="breadcrumbs_detail">Detail</string>
     <string name="breadcrumbs_help">Help</string>
+    <string name="help_text">Mit Hilfe dieser App sollen einige ausgewählte Ausstellungsstücke der Regensburger IT-Sammlung augmentiert werden, das heißt die Realität soll digital erweitert werden. Augmentiert werden relevante Informationsmaterial zu einzelnen Objekten, sobald diese von der Kamera des Smartphones erfasst werden. Anhand dieses weiterführenden Daten sollen die informationstechnischen Antiquitäten in Szene gesetzt werden, sodass das Interesse der Museumsbesucher steigt.</string>
     <string name="detail_date">erschienen </string> 
     <string name="detail_company">von </string>
     <string name="detail_description">Beschreibung: </string>
