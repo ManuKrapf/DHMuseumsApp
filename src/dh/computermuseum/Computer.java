@@ -13,6 +13,7 @@ public class Computer extends Antique {
   	private String img;
   	private String description;
   	private ArrayList<InnerlifeComponent> components;
+  	private CompVideo video;
   
   	public Computer() {
   		super("computer");
@@ -95,5 +96,52 @@ public class Computer extends Antique {
 	
 	public InnerlifeComponent getComponent(int index) {
 		return components.get(index-1);
+	}
+	
+	public void setVideo(String path) {
+		video = new CompVideo(path);
+	}
+	
+	public CompVideo getVideo() {
+		return video;
+	}
+	
+	public class CompVideo {
+		
+		private String path;
+		private float x;
+		private float y;
+		private float z;
+		
+		public CompVideo(String p, float _x, float _y, float _z) {
+			this.path = p;
+			this.x = _x;
+			this.y = _y;
+			this.z = _z;
+		}
+		
+		public CompVideo(String p) {
+			this.path = p;
+		}
+		
+		public String getPath() {
+			return path;
+		}
+		
+		public void setX(float val) {
+			this.x = val;
+		}
+		
+		public void setY(float val) {
+			this.y = val;
+		}
+		
+		public void setZ(float val) {
+			this.z = val;
+		}
+		
+		public float[] getPos() {
+			return new float[] {x, y, z};
+		}
 	}
 }

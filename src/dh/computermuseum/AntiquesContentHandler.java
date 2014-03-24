@@ -5,6 +5,8 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 
+import dh.computermuseum.Computer.CompVideo;
+
 public class AntiquesContentHandler implements ContentHandler {
 	
 	//private ArrayList<Antique> antiques = new ArrayList<Antique>();
@@ -18,6 +20,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	private String type;
 	private int typeid;
 	private boolean element;
+	//private CompVideo tempvideo;
 	
 	public AntiquesContentHandler(Data d) {
 		data = d;
@@ -77,6 +80,7 @@ public class AntiquesContentHandler implements ContentHandler {
 				default: antique = new Antique("unknown");
 			}
 		}
+		
 	}
 
 	// searching for tags and setting Antiques' values in the testfile.xml
@@ -118,6 +122,18 @@ public class AntiquesContentHandler implements ContentHandler {
 			}
 			if (localName.equals("img")) {
 				computer.setImg(currentValue);
+			}
+			if (localName.equals("path")) {
+				computer.setVideo(currentValue);
+			}
+			if (localName.equals("xpos")) {
+				computer.getVideo().setX(Float.parseFloat(currentValue));
+			}
+			if (localName.equals("ypos")) {
+				computer.getVideo().setY(Float.parseFloat(currentValue));
+			}
+			if (localName.equals("zpos")) {
+				computer.getVideo().setZ(Float.parseFloat(currentValue));
 			}
 			if (localName.equals("item")) {
 				data.addComupter(computer);

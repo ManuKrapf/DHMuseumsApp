@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
         android:id="@+id/timelineview"
@@ -8,11 +8,12 @@
         android:visibility="visible" >
 
         <LinearLayout
+            android:id="@+id/buttonscontainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <ImageView
@@ -47,11 +48,10 @@
             android:id="@+id/infotaglayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/timelinecontainer"
-            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/buttonscontainer"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="#809C004B" >
 
             <ImageView
@@ -109,64 +109,98 @@
 
             <ImageView
                 android:id="@+id/timelineimg"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/timeline_highlight2" />
+                android:src="@drawable/timeline" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:orientation="horizontal" >
+                android:layout_centerVertical="true">
 
-                <TextView
-                    android:id="@+id/tl_datetagbefore"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/scan_timeline_default_date_1"
-                    android:textColor="#FFF"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/tl_datetag"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/scan_timeline_default_date_2"
-                    android:textColor="#FFF"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tl_datetagbefore"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/scan_timeline_default_date_1"
+                        android:textColor="#FFF"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tl_datetagafter1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/scan_timeline_default_date_3"
-                    android:textColor="#FFF"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tl_datetag"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/scan_timeline_default_date_2"
+                        android:textColor="#FFF"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tl_datetagafter2"
-                    android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/tl_datetagafter"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/scan_timeline_default_date_3"
+                        android:textColor="#FFF"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/scan_timeline_default_date_4"
-                    android:textColor="#FFF"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tl_nametagbefore"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Commodore C64"
+                        android:textColor="#FFF"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tl_nametag2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Comodore C128"
+                        android:textColor="#FFF"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tl_nametagafter"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Toshiba C1234"
+                        android:textColor="#FFF"
+                        android:textSize="15sp" />
+                </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>

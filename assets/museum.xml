@@ -13,6 +13,12 @@
 			<processor>1 MHz MOS 6502</processor>
 			<special>Eingebauter Grünmonitor und Tastatur</special>
 			<img>Commodore_CBM_4032</img>
+			<video>
+			    <path>videoc128.3g2</path>
+			    <xpos>0</xpos>
+			    <ypos>0</ypos>
+			    <zpos>0</zpos>
+			</video>
 			<note><value>Nach dem PET 2001 (1977) brachte Commodore mehrere Serien von Büromaschinen auf den Markt. Vor der CBM 4000er-Serie erschienen die sog. 2000er- und 3000er-Serien, welche allesamt mit verschiedenen Spezifikationen erhältlich waren. Der CBM 4032 war etwa mit einem 32 KByte Speicher gegenüber dem CBM 4016 (16KByte) ausgestattet. Mit den genannten Serien von Büromaschinen verließ Commodore immer mehr den Bereich der Heimcomputer und stieg in den Bereich der professionellen Nutzung ein. Die 4000er-Serie war Teil der dritten Generation von Commodore-Bürocomputern. Der CBM 4032 war sowohl in einer "THIN"- als auch einer "FAT"-Version erhältlich. Die "THIN"-Version hatte ähnlich dem Vorgängermodell CBM 3032 einen 9-Zoll-Monitor, welcher 40 Zeichen anzeigen konnte. Die "FAT"-Version hingegen besaß wie das spätere Modell CBM 8032 einen 12-Zoll-Monitor und konnte so bis zu 80 Zeichen darstellen. Als Betriebssystem diente in beiden Versionen Commodore Basic 4.0.</value></note>
 		</item>
 		<item>
@@ -236,7 +242,7 @@
 	        <date>1979</date>
 	        <developer>IBM</developer>
 	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img></img>
+	        <img>cdrom.jpg</img>
 	    </item>
 	    <item>
 	        <id>20</id>
@@ -245,7 +251,7 @@
 	        <date>1980</date>
 	        <developer>Western Digital</developer>
 	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img></img>
+	        <img>dvd.jpg</img>
 	    </item>
 	    <item>
 	        <id>21</id>
@@ -254,7 +260,7 @@
 	        <date>1855</date>
 	        <developer>Intel</developer>
 	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img></img>
+	        <img>usb.jpg</img>
 	    </item>
 	</innerlifecomponents>
 </museum>

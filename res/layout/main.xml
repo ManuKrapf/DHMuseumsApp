@@ -216,27 +216,29 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5">
+            
+            <ImageView
+            android:id="@+id/helpButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:layout_gravity="center"
+            android:background="#525252"
+            android:src="@drawable/help"
+            android:layout_marginBottom="8dp" />
 
         <Button
             android:id="@+id/startScanningButton1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.25"
             android:background="#525252"
             android:text="@string/museum_startAR"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:textSize="30sp" />
-        
-        <ImageView
-            android:id="@+id/helpButton"
-            android:layout_width="64dp"
-            android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:layout_gravity="center"
-            android:background="#8C777777"
-            android:src="@drawable/help" />
-        
+            android:textSize="30sp"
+            android:layout_marginBottom="8dp" />
+      
         </LinearLayout>
 
     </LinearLayout>

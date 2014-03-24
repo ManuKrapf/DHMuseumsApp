@@ -132,6 +132,22 @@ public class Data {
 		return null;
 	}
 	
+	public int[] getInnerlifeComponentsIDs(int parentid) {
+		ArrayList<InnerlifeComponent> iC = null;
+		for(Computer c : computers) {
+			if(c.getId() == parentid) {
+				iC = c.getComponents();
+				int[] temp = new int[iC.size()];
+				for(int i = 0; i < iC.size(); i++) {
+					temp[i] = iC.get(i).getId();
+				}
+				return temp;
+			}
+		}
+		return null;
+		
+	}
+	
 	public InnerlifeComponent getInnerlifeComponent(int parentid, String name) {
 		
 		Computer c = getComputer(parentid);

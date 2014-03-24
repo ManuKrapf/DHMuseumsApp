@@ -26,6 +26,8 @@ import com.metaio.sdk.jni.TrackingValuesVector;
 import com.metaio.sdk.jni.Vector3d;
 import com.metaio.tools.io.AssetsManager;
 
+import dh.computermuseum.Computer.CompVideo;
+
 public class ScanActivity extends ARViewActivity {
 	
 	Context context = this;
@@ -33,6 +35,7 @@ public class ScanActivity extends ARViewActivity {
 	
 	private int id = 0;
 	private int actinner = 0;
+	private int[] innerIds = null;
 	
 	// Timeline View
 	private RelativeLayout timeline;
@@ -43,8 +46,10 @@ public class ScanActivity extends ARViewActivity {
 	private TextView timelineComp;
 	private TextView timelineDatebefore;
 	private TextView timelineDate;
-	private TextView timelineDateafter1;
-	private TextView timelineDateafter2;
+	private TextView timelineDateafter;
+	private TextView timelineNamebefore;
+	private TextView timelineName2;
+	private TextView timelineNameafter;
 	
 	// Storages View
 	private LinearLayout storageline;
@@ -148,7 +153,6 @@ public class ScanActivity extends ARViewActivity {
 	
 	@Override
 	protected void onGeometryTouched(IGeometry geometry) {
-		// TODO actinner und Methode für innerlife noch dynamisch setzen
 		
 		Log.d("dhdebug", geometry.toString());
 		
@@ -158,8 +162,8 @@ public class ScanActivity extends ARViewActivity {
 			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
 			setInner(inner3, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
 			setInner(inner4, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
-			actinner = 18;
-			showInnerlifeComponents(1, actinner);
+			actinner = innerIds[0];
+			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(inner2)) {
 			Log.d("dhdebug", "geometry is inner 2");
@@ -167,8 +171,8 @@ public class ScanActivity extends ARViewActivity {
 			setInner(inner3, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
 			setInner(inner4, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
 			setInner(inner1, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
-			actinner = 19;
-			showInnerlifeComponents(1, actinner);
+			actinner = innerIds[1];
+			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(inner3)) {
 			Log.d("dhdebug", "geometry is inner 3");
@@ -176,8 +180,8 @@ public class ScanActivity extends ARViewActivity {
 			setInner(inner4, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
 			setInner(inner1, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
 			setInner(inner2, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
-			actinner = 20;
-			showInnerlifeComponents(1, actinner);
+			actinner = innerIds[2];
+			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(inner4)) {
 			Log.d("dhdebug", "geometry is inner 4");
@@ -185,8 +189,8 @@ public class ScanActivity extends ARViewActivity {
 			setInner(inner1, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
 			setInner(inner2, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
 			setInner(inner3, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
-			actinner = 21;
-			showInnerlifeComponents(1, actinner);
+			actinner = innerIds[3];
+			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(g_tag1)) {
 			Log.d("dhdebug", "geometry is g_tag1");
@@ -257,6 +261,7 @@ public class ScanActivity extends ARViewActivity {
 						@Override
 						public void onClick(View v) {
 							hideComputerTimeline();
+							movie.setVisible(false);
 							showInnerlifeComponents(id, 18);
 						}
 					});
@@ -266,8 +271,10 @@ public class ScanActivity extends ARViewActivity {
 					timelineComp = (TextView) findViewById(R.id.tl_companytag);
 					timelineDatebefore = (TextView) findViewById(R.id.tl_datetagbefore);
 					timelineDate = (TextView) findViewById(R.id.tl_datetag);
-					timelineDateafter1 = (TextView) findViewById(R.id.tl_datetagafter1);
-					timelineDateafter2 = (TextView) findViewById(R.id.tl_datetagafter2);
+					timelineDateafter = (TextView) findViewById(R.id.tl_datetagafter);
+					timelineNamebefore = (TextView) findViewById(R.id.tl_nametagbefore);
+					timelineName2 = (TextView) findViewById(R.id.tl_nametag2);
+					timelineNameafter = (TextView) findViewById(R.id.tl_nametagafter);
 					
 					// Storage line
 					storageline = (LinearLayout) findViewById(R.id.storageline);
@@ -313,6 +320,10 @@ public class ScanActivity extends ARViewActivity {
 						@Override
 						public void onClick(View v) {
 							innerlifeInfo.setVisibility(View.GONE);
+							inner1.setVisible(false);
+							inner2.setVisible(false);
+							inner3.setVisible(false);
+							inner4.setVisible(false);
 						}
 					});
 					
@@ -379,13 +390,13 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("book_2")) {
 						Log.d("dhdebug", "CosID book: "+values.get(0).getCoordinateSystemID());
-						id = 2;
-						showCase(2, values.get(0).getCoordinateSystemID());
+						id = 1;
+						showCase(1, values.get(0).getCoordinateSystemID());
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
 						Log.d("dhdebug", "CosID yellowbook: "+values.get(0).getCoordinateSystemID());
-						id = 5;
-						showCase(2, values.get(0).getCoordinateSystemID());
+						id = 1;
+						showCase(1, values.get(0).getCoordinateSystemID());
 						
 						// Case 1
 						/*
@@ -404,6 +415,8 @@ public class ScanActivity extends ARViewActivity {
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					id = 0;
+					// TODO überprüfen was alles entfernt werden muss wenn objekt nicht mehr getrackt wird
+					metaioSDK.unloadGeometry(movie);
 					hideComputerTimeline();
 					hideComponentView(); // TODO soll das wirklich ausgeblendet werden???
 				}
@@ -420,6 +433,7 @@ public class ScanActivity extends ARViewActivity {
 		
 		switch(ocase) {
 			case 1: showComputerTimeline(data.getComputer(id));
+				innerIds = data.getInnerlifeComponentsIDs(id);
 				loadMovie(cosid);
 				initInnerlife(data.getComputer(id), cosid);
 				break;
@@ -443,13 +457,16 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
+				// TODO Name und Date für Before and After dynamisch setzen
 				timeline.setVisibility(View.VISIBLE);
 				timelineName.setText(c.getName());
 				timelineComp.setText(c.getProducer());
 				timelineDatebefore.setText("1800");
 				timelineDate.setText(c.getReleaseDate());
-				timelineDateafter1.setText("2000");
-				timelineDateafter2.setText("2013");
+				timelineDateafter.setText("2000");
+				timelineNamebefore.setText("Commodore C64");
+				timelineName2.setText(c.getName());
+				timelineNameafter.setText("Toshiba T3200SX");
 			}
 		});
 		
@@ -471,9 +488,12 @@ public class ScanActivity extends ARViewActivity {
 	// Case 1.1: show a movie on the screen of the computer
 	
 	private void loadMovie(int cosid) {
-		// TODO VideoFile noch aus xml abrufen und Position des Videos noch dynamisch setzen
+		// TODO Position des Videos noch besser anpassen
 		
-		final String moviePath = AssetsManager.getAssetPath("Assets/videoc128.3g2");
+		CompVideo video = data.getComputer(id).getVideo();
+		float[] pos = video.getPos();
+		
+		final String moviePath = AssetsManager.getAssetPath("Assets/"+video.getPath()); //videoc128.3g2");
 		
 		if (moviePath != null)
 		{
@@ -483,6 +503,7 @@ public class ScanActivity extends ARViewActivity {
 				movie.setScale(1.5f);
 				movie.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
 				movie.setTransparency(0.1f);
+				movie.setTranslation(new Vector3d(pos[0],pos[1],pos[2]));
 				movie.setCoordinateSystemID(cosid);
 				//movie.startMovieTexture(true);
 				movie.setVisible(false);
@@ -500,11 +521,10 @@ public class ScanActivity extends ARViewActivity {
 	
 	private void initInnerlife(Computer c, int cosid) {
 		
-		// TODO Images aus xml einbinden
-		final String innerfile1 = AssetsManager.getAssetPath("Assets/sd.jpg");//+c.getComponent(1).getImg());
-		final String innerfile2 = AssetsManager.getAssetPath("Assets/cdrom.jpg");
-		final String innerfile3 = AssetsManager.getAssetPath("Assets/dvd.jpg");
-		final String innerfile4 = AssetsManager.getAssetPath("Assets/usb.jpg");
+		final String innerfile1 = AssetsManager.getAssetPath("Assets/"+c.getComponent(1).getImg());
+		final String innerfile2 = AssetsManager.getAssetPath("Assets/"+c.getComponent(2).getImg());
+		final String innerfile3 = AssetsManager.getAssetPath("Assets/"+c.getComponent(3).getImg());
+		final String innerfile4 = AssetsManager.getAssetPath("Assets/"+c.getComponent(4).getImg());
 		
 		if(innerfile1 != null && inner1 == null) {
 			inner1 = metaioSDK.createGeometryFromImage(innerfile1);
@@ -522,19 +542,19 @@ public class ScanActivity extends ARViewActivity {
 			inner4 = metaioSDK.createGeometryFromImage(innerfile4);
 			setInner(inner4, 0.8f, new Vector3d(200,0,-20), cosid);
 		}
-		// TODO actinner dynamisch setzen
+		
 		if(actinner == 0) {
-			actinner = 18;
+			actinner = innerIds[0];
 		}
 		
-		showInnerlifeComponents(id, actinner);
+		//showInnerlifeComponents(id, actinner);
 	}
 	
 	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
 		
-		//inner1 = metaioSDK.createGeometryFromImage(innerfile1);
 		if (ig != null)
 		{
+			ig.setVisible(false);
 			ig.setScale(scale);
 			ig.setRotation(new Rotation(0f, (float) -Math.PI/4, 0f)); //(float) Math.PI/2
 			ig.setTranslation(v);
@@ -550,6 +570,11 @@ public class ScanActivity extends ARViewActivity {
 	private void showInnerlifeComponents(int parentid, int id) {
 		
 		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, id);
+		
+		inner1.setVisible(true);
+		inner2.setVisible(true);
+		inner3.setVisible(true);
+		inner4.setVisible(true);
 		
 		runOnUiThread(new Runnable() 
 		{
