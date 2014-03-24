@@ -12,7 +12,7 @@
 			<ram>32 KByte</ram>
 			<processor>1 MHz MOS 6502</processor>
 			<special>Eingebauter Grünmonitor und Tastatur</special>
-			<img>Commodore_CBM_4032</img>
+			<img>commodore_cbm_4032</img>
 			<video>
 			    <path>videoc128.3g2</path>
 			    <xpos>0</xpos>
@@ -31,7 +31,8 @@
 			<ram>1-13 MB</ram>
 			<processor>16 MHz Intel 386 SX</processor>
 			<special>Eingebauter S/W-Monitor und Tastatur, tragbar</special>
-			<img>Toshiba_T3200SX</img><note><value>Der T3200SX von Toshiba war der Versuch, einen tragbaren Computer ohne Leistungseinbußen gegenüber einem Desktop-PC zu bauen. Neben einer hohen Mobilität sollte der T3200SX die Möglichkeiten der 386er-Technologie voll ausschöpfen und selbst anspruchsvollen Programmen genügend Leistung bieten. Der mobile Bürocomputer von Toshiba stellte hohe Ansprüche an seine Ingenieure: Er sollte dieselbe Leistung wie ein sperriger Desktop-PC besitzen und doch ein kompaktes, leicht transportierbares Gerät darstellen, mit dem das Arbeiten unabhängig vom gewählten Standort möglich war. Auch sollte das Gerät über entsprechende Anschlüsse verfügen, um das System um Einrichtungen wie ein Fax oder Modem erweitern zu können. Schon in den 1980er Jahren war die Zukunftssicherheit ein entscheidender Aspekt. So musste der Computer nicht nur für die momentan anspruchsvolleren Programme genügend "Power" besitzen, sondern auch für die Zukunft einsetzbar bleiben. Toshiba schaffte es, all diese Anforderungen im T3200SX zu vereinen und einen wichtigen Schritt in Richtung des heutigen Notebooks zu unternehmen. Ein Vorteil gegenüber anderen Geräten war auch die freie Wahl des Betriebssystems. Alle gängigen Systeme wie MS-DOS, OS/2 oder UNIX konnten zum Einsatz kommen. Dieser Rechner wurde anlässlich der Eröffnung des Toshiba Werkes in Regensburg 1990 der Stadt Regensburg geschenkt. Ende 2007 wurde die Produktion im Werk eingestellt.</value></note>
+			<img>toshiba_t3200sx</img>
+			<note><value>Der T3200SX von Toshiba war der Versuch, einen tragbaren Computer ohne Leistungseinbußen gegenüber einem Desktop-PC zu bauen. Neben einer hohen Mobilität sollte der T3200SX die Möglichkeiten der 386er-Technologie voll ausschöpfen und selbst anspruchsvollen Programmen genügend Leistung bieten. Der mobile Bürocomputer von Toshiba stellte hohe Ansprüche an seine Ingenieure: Er sollte dieselbe Leistung wie ein sperriger Desktop-PC besitzen und doch ein kompaktes, leicht transportierbares Gerät darstellen, mit dem das Arbeiten unabhängig vom gewählten Standort möglich war. Auch sollte das Gerät über entsprechende Anschlüsse verfügen, um das System um Einrichtungen wie ein Fax oder Modem erweitern zu können. Schon in den 1980er Jahren war die Zukunftssicherheit ein entscheidender Aspekt. So musste der Computer nicht nur für die momentan anspruchsvolleren Programme genügend "Power" besitzen, sondern auch für die Zukunft einsetzbar bleiben. Toshiba schaffte es, all diese Anforderungen im T3200SX zu vereinen und einen wichtigen Schritt in Richtung des heutigen Notebooks zu unternehmen. Ein Vorteil gegenüber anderen Geräten war auch die freie Wahl des Betriebssystems. Alle gängigen Systeme wie MS-DOS, OS/2 oder UNIX konnten zum Einsatz kommen. Dieser Rechner wurde anlässlich der Eröffnung des Toshiba Werkes in Regensburg 1990 der Stadt Regensburg geschenkt. Ende 2007 wurde die Produktion im Werk eingestellt.</value></note>
 		</item>
 		<item>
 			<id>3</id>

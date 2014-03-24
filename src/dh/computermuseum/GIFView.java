@@ -1,3 +1,12 @@
+package dh.computermuseum;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Movie;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.View;
+
 public class GIFView extends View {
 
     private Movie mMovie;
@@ -8,7 +17,7 @@ public class GIFView extends View {
         setFocusable(true);
 
         java.io.InputStream is;
-        is = context.getResources().openRawResource(R.drawable.girl_dances);
+        is = context.getResources().openRawResource(R.drawable.help_scan);
         mMovie = Movie.decodeStream(is); 
     }
 
@@ -17,7 +26,7 @@ public class GIFView extends View {
         setFocusable(true);
 
         java.io.InputStream is;
-        is = context.getResources().openRawResource(R.drawable.girl_dances);
+        is = context.getResources().openRawResource(R.drawable.help_scan);
         mMovie = Movie.decodeStream(is);
     }
 
@@ -26,7 +35,7 @@ public class GIFView extends View {
         setFocusable(true);
 
         java.io.InputStream is;
-        is = context.getResources().openRawResource(R.drawable.girl_dances);
+        is = context.getResources().openRawResource(R.drawable.help_scan);
         mMovie = Movie.decodeStream(is);
     }
 

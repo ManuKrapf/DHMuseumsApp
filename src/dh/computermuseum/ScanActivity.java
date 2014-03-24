@@ -37,6 +37,9 @@ public class ScanActivity extends ARViewActivity {
 	private int actinner = 0;
 	private int[] innerIds = null;
 	
+	private boolean beforeactive = false;
+	private boolean afteractive = false;
+	
 	// Timeline View
 	private RelativeLayout timeline;
 	private ImageView detailsButton;
@@ -47,9 +50,12 @@ public class ScanActivity extends ARViewActivity {
 	private TextView timelineDatebefore;
 	private TextView timelineDate;
 	private TextView timelineDateafter;
-	private TextView timelineNamebefore;
-	private TextView timelineName2;
-	private TextView timelineNameafter;
+	
+	private RelativeLayout timelineOtherView;
+	private TextView timelineTagOther;
+	private TextView timelineNameOther;
+	private ImageView timelineImgOther;
+	private ImageView timelineFindOther;
 	
 	// Storages View
 	private LinearLayout storageline;
@@ -270,11 +276,54 @@ public class ScanActivity extends ARViewActivity {
 					timelineName = (TextView) findViewById(R.id.tl_nametag);
 					timelineComp = (TextView) findViewById(R.id.tl_companytag);
 					timelineDatebefore = (TextView) findViewById(R.id.tl_datetagbefore);
-					timelineDate = (TextView) findViewById(R.id.tl_datetag);
+					timelineDate = (TextView) findViewById(R.id.tl_datetag2);
 					timelineDateafter = (TextView) findViewById(R.id.tl_datetagafter);
-					timelineNamebefore = (TextView) findViewById(R.id.tl_nametagbefore);
-					timelineName2 = (TextView) findViewById(R.id.tl_nametag2);
-					timelineNameafter = (TextView) findViewById(R.id.tl_nametagafter);
+					
+					timelineDatebefore.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							if(timelineOtherView.getVisibility() == View.GONE || afteractive) {
+								showOtherView(id, "Früher: ");
+								beforeactive = true;
+								afteractive = false;
+							}
+							else {
+								hideOtherView();
+								beforeactive = false;
+							}
+						}
+					});
+					
+					timelineDateafter.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							if(timelineOtherView.getVisibility() == View.GONE || beforeactive) {
+								showOtherView(id+1, "Später: ");
+								afteractive = true;
+								beforeactive = false;
+							}
+							else {
+								hideOtherView();
+								afteractive = false;
+							}
+						}
+					});
+					
+					timelineOtherView = (RelativeLayout) findViewById(R.id.timelineshowother);
+					timelineTagOther = (TextView) findViewById(R.id.tlother_tag);
+					timelineNameOther = (TextView) findViewById(R.id.tlother_name);
+					timelineImgOther = (ImageView) findViewById(R.id.tlother_img);
+					timelineFindOther = (ImageView) findViewById(R.id.tlother_find);
+					
+					timelineFindOther.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							hideComputerTimeline();
+						}
+					});
 					
 					// Storage line
 					storageline = (LinearLayout) findViewById(R.id.storageline);
@@ -432,7 +481,8 @@ public class ScanActivity extends ARViewActivity {
 	private void showCase(int ocase, int cosid) {
 		
 		switch(ocase) {
-			case 1: showComputerTimeline(data.getComputer(id));
+			case 1: hideOtherView();
+				showComputerTimeline(data.getComputer(id));
 				innerIds = data.getInnerlifeComponentsIDs(id);
 				loadMovie(cosid);
 				initInnerlife(data.getComputer(id), cosid);
@@ -464,9 +514,6 @@ public class ScanActivity extends ARViewActivity {
 				timelineDatebefore.setText("1800");
 				timelineDate.setText(c.getReleaseDate());
 				timelineDateafter.setText("2000");
-				timelineNamebefore.setText("Commodore C64");
-				timelineName2.setText(c.getName());
-				timelineNameafter.setText("Toshiba T3200SX");
 			}
 		});
 		
@@ -483,6 +530,47 @@ public class ScanActivity extends ARViewActivity {
 			}
 		});
 		
+	}
+	
+	private void showOtherView(int id, String s) {
+		
+		final Computer c = data.getComputer(id);
+		final String str = s;
+		
+		if(c != null) {
+			
+			runOnUiThread(new Runnable() 
+			{
+				@Override
+				public void run() 
+				{
+			
+					timelineOtherView.setVisibility(View.VISIBLE);
+					
+					timelineTagOther.setText(str);
+					timelineNameOther.setText(c.getName());
+					
+					Resources res = getResources();
+					String tempImgName = c.getImg();
+					int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
+					Drawable tempImg = res.getDrawable(tempResId);
+					timelineImgOther.setImageDrawable(tempImg);
+					
+				}
+			});
+		}
+		
+	}
+	
+	private void hideOtherView() {
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				timelineOtherView.setVisibility(View.GONE);
+			}
+		});
 	}
 	
 	// Case 1.1: show a movie on the screen of the computer
