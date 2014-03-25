@@ -62,35 +62,57 @@
 		</item>
 	</computer>
 	<components>
-		<item>
-			<id>5</id>
-			<name>Votrax Sprachsynthesizer</name>
-			<date>1980</date>
-			<comp><value>Votrax (International) Inc.</value></comp>
-			<special>Sprachsynthsizer zur Generierung künstlicher Sprache</special>
-			<img></img>
+	    <item>
+	        <id>5</id>
+			<name>Motherboard</name>
+			<date>1995</date>
+			<comp>ASRock</comp>
+			<special>nothing</special>
+			<img>noimg</img>
+			<note>Ein Motherboard ist bla bla bla...</note>
 			<tags>
 			    <tag>
-			        <tagname>SoutBridge</tagname>
+			        <tagid>1</tagid>
+			        <tagname>Southbridge</tagname>
+			        <tagpos>
+			            <tagx>100</tagx>
+			            <tagy>0</tagy>
+			            <tagz>2</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_southbridge.png</tagimg>
+			    </tag>
+			    <tag>
+			        <tagid>2</tagid>
+			        <tagname>Northbridge</tagname>
+			        <tagpos>
+			            <tagx>150</tagx>
+			            <tagy>0</tagy>
+			            <tagz>10</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_northbridge.png</tagimg>
+			    </tag>
+			    <tag>
+			        <tagid>3</tagid>
+			        <tagname>RAM</tagname>
 			        <tagpos>
 			            <tagx>0</tagx>
 			            <tagy>0</tagy>
 			            <tagz>0</tagz>
 			        </tagpos>
-			        <tagimg></tagimg>
+			        <tagimg>mbtag_ram.png</tagimg>
+			    </tag>
+			    <tag>
+			        <tagid>4</tagid>
+			        <tagname>CPU</tagname>
+			        <tagpos>
+			            <tagx>-120</tagx>
+			            <tagy>0</tagy>
+			            <tagz>-20</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_cpu.png</tagimg>
 			    </tag>
 			</tags>
-			<note><value>Der Sprachsynthesizer mit phonetischer Tastatur stammt aus dem Hause Votrax Inc. In ihrer Hauptniederlassung in Detroit, Michigan beschäftigte sich die Firma mit der Erzeugung synthetisierter Sprache und spezialisierte sich auf die Entwicklung und Produktion von phonembasierten Sprachsynthesizern und "Text to Speech"-Algorithmen (TTS). Der 1980 entwickelte Sprachsynthesizer war einer der ersten Synthsizer überhaupt, Phoneme wurden einzeln über die Tastatur eingegeben und als kurze Äußerung wiedergegeben. Der integrierte Schaltkreis des 22-pin-Typs arbeitete mit einem revolutionären Chip namens SC-01. Ausgehend von der Eingabe einer gewissen Datenmenge, synthetisiert der Chip ein unbegrenztes Vokabular an kontinuierlicher Sprache auf phonetischer Basis. Dabei besteht dieses TTS-System aus zwei Grundkomponenenten, die ihrerseits wieder in verschiedene Unterkomponenenten gegliedert sind: zum einen konvertiert ein Text-zo-Phonem-Übersetzer den (Text-)Datentrom (ASCII-Folge) in den phonembasierten Code; zum anderen generiert darauf aufbauend ein Phonem-zu-Ton-Übersetzer die synthetisierte Sprache.</value></note>
-		</item>
-		<item>
-			<id>6</id>
-			<name>Tangora</name>
-			<date>1986</date>
-			<comp><value>IBM</value></comp>
-			<special></special>
-			<img></img>
-			<note><value>IBM präsentierte der Öffentlichkeit im Jahr 1986 das Spracherkennungssystem Tangora 4.</value></note>
-		</item>
+	    </item>
 	</components>
 	<storages>
 		<item>

@@ -5,7 +5,7 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 
-import dh.computermuseum.Computer.CompVideo;
+import dh.computermuseum.Component.Tag;
 
 public class AntiquesContentHandler implements ContentHandler {
 	
@@ -20,7 +20,7 @@ public class AntiquesContentHandler implements ContentHandler {
 	private String type;
 	private int typeid;
 	private boolean element;
-	//private CompVideo tempvideo;
+	private Tag temptag;
 	
 	public AntiquesContentHandler(Data d) {
 		data = d;
@@ -65,6 +65,10 @@ public class AntiquesContentHandler implements ContentHandler {
 		if(localName.equals("innerlifecomponents")) {
 			type = "innerlifecomponents";
 			typeid = 4;
+		}
+		
+		if(localName.equals("tag")) {
+			temptag = component.new Tag();
 		}
 		
 		if (localName.equals("item")) {
@@ -160,6 +164,28 @@ public class AntiquesContentHandler implements ContentHandler {
 			}
 			if (localName.equals("note")) {
 				component.setDescription(currentValue);
+			}
+			if (localName.equals("tagid")) {
+				temptag.setId(Integer.parseInt(currentValue));
+			}
+			if (localName.equals("tagname")) {
+				temptag.setName(currentValue);
+			}
+			if (localName.equals("tagimg")) {
+				temptag.setImg(currentValue);
+			}
+			if (localName.equals("tagx")) {
+				temptag.setX(Float.parseFloat(currentValue));
+			}
+			if (localName.equals("tagy")) {
+				temptag.setY(Float.parseFloat(currentValue));
+			}
+			if (localName.equals("tagz")) {
+				temptag.setZ(Float.parseFloat(currentValue));
+			}
+			if (localName.equals("tag")) {
+				component.addTag(temptag);
+				temptag = null;
 			}
 			if (localName.equals("item")) {
 				data.addComponents(component);

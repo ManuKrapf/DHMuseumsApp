@@ -27,6 +27,7 @@ import com.metaio.sdk.jni.TrackingValuesVector;
 import com.metaio.sdk.jni.Vector3d;
 import com.metaio.tools.io.AssetsManager;
 
+import dh.computermuseum.Component.Tag;
 import dh.computermuseum.Computer.CompVideo;
 
 public class ScanActivity extends ARViewActivity {
@@ -37,12 +38,14 @@ public class ScanActivity extends ARViewActivity {
 	private int id = 0;
 	private int actinner = 0;
 	private int[] innerIds = null;
+	private int tagid = 0;
 	
 	private boolean beforeactive = false;
 	private boolean afteractive = false;
 	private boolean findcomputer = false;
 	
 	// Timeline View
+	private RelativeLayout timelinecontainer;
 	private RelativeLayout timeline;
 	private ImageView detailsButton;
 	private ImageView videoButton;
@@ -116,24 +119,6 @@ public class ScanActivity extends ARViewActivity {
 		
 		data = new Data(this);
 		mCallbackHandler = new MetaioSDKCallbackHandler();
-		
-		//hideAllViews();
-	}
-	
-	private void hideAllViews() {
-		
-		runOnUiThread(new Runnable() 
-		{
-			@Override
-			public void run() 
-			{
-				timeline.setVisibility(View.GONE);
-				timelineOtherView.setVisibility(View.GONE);
-				storageline.setVisibility(View.GONE);
-				innerlifeInfo.setVisibility(View.GONE);
-				componentInfo.setVisibility(View.GONE);
-			}
-		});
 		
 	}
 	
@@ -222,23 +207,23 @@ public class ScanActivity extends ARViewActivity {
 		}
 		else if(geometry.equals(g_tag1)) {
 			Log.d("dhdebug", "geometry is g_tag1");
-			showComponentView(data.getComponent(5));
-			id = 5;
+			tagid = 1;
+			showComponentTagView();
 		}
 		else if(geometry.equals(g_tag2)) {
 			Log.d("dhdebug", "geometry is g_tag2");
-			showComponentView(data.getComponent(6));
-			id = 6;
+			tagid = 2;
+			showComponentTagView();
 		}
 		else if(geometry.equals(g_tag3)) {
 			Log.d("dhdebug", "geometry is g_tag3");
-			showComponentView(data.getComponent(5));
-			id = 5;
+			tagid = 3;
+			showComponentTagView();
 		}
 		else if(geometry.equals(g_tag4)) {
 			Log.d("dhdebug", "geometry is g_tag4");
-			showComponentView(data.getComponent(6));
-			id = 6;
+			tagid = 4;
+			showComponentTagView();
 		}
 		
 	}
@@ -257,6 +242,7 @@ public class ScanActivity extends ARViewActivity {
 				{
 					mGUIView.setVisibility(View.VISIBLE);
 					
+					timelinecontainer = (RelativeLayout) findViewById(R.id.timelineviewcontainer);
 					timeline = (RelativeLayout) findViewById(R.id.timelineview2);
 					
 					detailsButton = (ImageView) findViewById(R.id.showDetailsButton2);
@@ -460,9 +446,6 @@ public class ScanActivity extends ARViewActivity {
 				}
 			});
 			
-			timeline.setVisibility(View.GONE);
-			timelineOtherView.setVisibility(View.GONE);
-			
 		}
 		
 		@Override
@@ -488,8 +471,8 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
 						Log.d("dhdebug", "CosID yellowbook: "+values.get(0).getCoordinateSystemID());
-						id = 1;
-						showCase(1, values.get(0).getCoordinateSystemID());
+						id = 5;
+						showCase(3, values.get(0).getCoordinateSystemID());
 						
 						// Case 1
 						/*
@@ -509,7 +492,7 @@ public class ScanActivity extends ARViewActivity {
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					id = 0;
 					// TODO überprüfen was alles entfernt werden muss wenn objekt nicht mehr getrackt wird
-					metaioSDK.unloadGeometry(movie);
+					//metaioSDK.unloadGeometry(movie);
 					hideComputerTimeline();
 					hideComponentView(); // TODO soll das wirklich ausgeblendet werden???
 					if(!findcomputer) {
@@ -544,6 +527,13 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	private void unloadCase(int ocase) {
+		
+		// TODO unload unused cases
+		
+	}
+	
+	// TODO Show und Hide timelineviewcontainer bei anderen Cases
 	// Case 1: Timeline for computers
 	
 	private void showComputerTimeline(Computer temp) {
@@ -557,7 +547,7 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
-				// TODO Date für Before and After dynamisch setzen
+				timelinecontainer.setVisibility(View.VISIBLE);
 				timeline.setVisibility(View.VISIBLE);
 				timelineName.setText(c.getName());
 				timelineComp.setText(c.getProducer());
@@ -588,6 +578,7 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
+				timelinecontainer.setVisibility(View.GONE);
 				timeline.setVisibility(View.GONE);
 			}
 		});
@@ -606,7 +597,8 @@ public class ScanActivity extends ARViewActivity {
 				@Override
 				public void run() 
 				{
-			
+					
+					timelinecontainer.setVisibility(View.VISIBLE);
 					timelineOtherView.setVisibility(View.VISIBLE);
 					
 					timelineTagOther.setText(str);
@@ -630,6 +622,7 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
+				timelinecontainer.setVisibility(View.GONE);
 				timelineOtherView.setVisibility(View.GONE);
 			}
 		});
@@ -811,35 +804,41 @@ public class ScanActivity extends ARViewActivity {
 	// Case 3: Tags for components of a board
 	
 	private void showMBTags(int cosid) {
-		// TODO setze Bilder für Tags dynamisch
 		
-		final String tag1 = AssetsManager.getAssetPath("Assets/mbtag_southbridge.png");
-		final String tag2 = AssetsManager.getAssetPath("Assets/mbtag_northbridge.png");
-		final String tag3 = AssetsManager.getAssetPath("Assets/mbtag_ram.png");
-		final String tag4 = AssetsManager.getAssetPath("Assets/mbtag_cpu.png");
+		ArrayList<Tag> tags = data.getTags(id);
+		float [] pos = null;
+		
+		final String tag1 = AssetsManager.getAssetPath("Assets/"+tags.get(0).getImg());
+		final String tag2 = AssetsManager.getAssetPath("Assets/"+tags.get(1).getImg());
+		final String tag3 = AssetsManager.getAssetPath("Assets/"+tags.get(2).getImg());
+		final String tag4 = AssetsManager.getAssetPath("Assets/"+tags.get(3).getImg());
 		
 		if (tag1 != null && g_tag1 == null)
 		{
+			pos = tags.get(0).getPos();
 			g_tag1 = metaioSDK.createGeometryFromImage(tag1, true, true);
-			setMBTag(g_tag1, new Vector3d(100,0,2), cosid);
+			setMBTag(g_tag1, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(100,0,2)
 		}
 		
 		if (tag2 != null && g_tag2 == null)
 		{
+			pos = tags.get(1).getPos();
 			g_tag2 = metaioSDK.createGeometryFromImage(tag2, true, true);
-			setMBTag(g_tag2, new Vector3d(150,0,10), cosid);
+			setMBTag(g_tag2, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(150,0,10)
 		}
 		
 		if (tag3 != null && g_tag3 == null)
 		{
+			pos = tags.get(2).getPos();
 			g_tag3 = metaioSDK.createGeometryFromImage(tag3, true, true);
-			setMBTag(g_tag3, new Vector3d(0,0,0), cosid);
+			setMBTag(g_tag3, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(0,0,0)
 		}
 		
 		if (tag4 != null  && g_tag4 == null)
 		{
+			pos = tags.get(3).getPos();
 			g_tag4 = metaioSDK.createGeometryFromImage(tag4, true, true);
-			setMBTag(g_tag4, new Vector3d(-120,0,-20), cosid);
+			setMBTag(g_tag4, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(-120,0,-20)
 		}
 		
 	}
@@ -848,7 +847,6 @@ public class ScanActivity extends ARViewActivity {
 		
 		if (ig != null)
 		{
-			//movie.setScale(1.5f);
 			ig.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
 			ig.setTranslation(v);
 			ig.setCoordinateSystemID(cosid);
@@ -861,27 +859,34 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void showComponentView(Component temp) {
+	private void showComponentTagView() {
 		
-		final Component c = temp;
+		Log.d("dhdebug", "showing CView");
 		
-		runOnUiThread(new Runnable() 
+		final Component c = data.getComponent(id);
+		final Tag t = c.getTag(tagid);
+		
+		runOnUiThread(new Runnable()
 		{
 			@Override
 			public void run() 
 			{
 				componentInfo.setVisibility(View.VISIBLE);
 				
-				componentElementName.setText(c.getName());
+				componentElementName.setText(t.getName());
 				componentElementDev.setText(c.getProducer());
 				componentElementDate.setText(c.getReleaseDate());
 				componentElementDesc.setText(c.getDescription());
+				
+				Log.d("dhdebug", "CView Vis: "+componentInfo.getVisibility());
 			}
 		});
 		
 	}
 	
 	private void hideComponentView() {
+		
+		Log.d("dhdebug", "hiding CView");
 		
 		runOnUiThread(new Runnable() 
 		{

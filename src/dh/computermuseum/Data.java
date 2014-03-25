@@ -14,6 +14,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import dh.computermuseum.Component.Tag;
 import android.content.Context;
 import android.util.Log;
 
@@ -109,6 +110,15 @@ public class Data {
 		for(Component c : components) {
 			if(c.getId() == id) {
 				return c;
+			}
+		}
+		return null;
+	}
+	
+	public ArrayList<Tag> getTags(int id) {
+		for(Component c : components) {
+			if(c.getId() == id) {
+				return c.getTags();
 			}
 		}
 		return null;
