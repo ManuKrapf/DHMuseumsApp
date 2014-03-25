@@ -8,7 +8,7 @@
 			<date>1979</date>
 			<comp><value>Commodore</value></comp>
 			<os>Commodore Basic 4.0</os>
-			<memory></memory>
+			<memory>0</memory>
 			<ram>32 KByte</ram>
 			<processor>1 MHz MOS 6502</processor>
 			<special>Eingebauter Grünmonitor und Tastatur</special>
@@ -69,6 +69,17 @@
 			<comp><value>Votrax (International) Inc.</value></comp>
 			<special>Sprachsynthsizer zur Generierung künstlicher Sprache</special>
 			<img></img>
+			<tags>
+			    <tag>
+			        <tagname>SoutBridge</tagname>
+			        <tagpos>
+			            <tagx>0</tagx>
+			            <tagy>0</tagy>
+			            <tagz>0</tagz>
+			        </tagpos>
+			        <tagimg></tagimg>
+			    </tag>
+			</tags>
 			<note><value>Der Sprachsynthesizer mit phonetischer Tastatur stammt aus dem Hause Votrax Inc. In ihrer Hauptniederlassung in Detroit, Michigan beschäftigte sich die Firma mit der Erzeugung synthetisierter Sprache und spezialisierte sich auf die Entwicklung und Produktion von phonembasierten Sprachsynthesizern und "Text to Speech"-Algorithmen (TTS). Der 1980 entwickelte Sprachsynthesizer war einer der ersten Synthsizer überhaupt, Phoneme wurden einzeln über die Tastatur eingegeben und als kurze Äußerung wiedergegeben. Der integrierte Schaltkreis des 22-pin-Typs arbeitete mit einem revolutionären Chip namens SC-01. Ausgehend von der Eingabe einer gewissen Datenmenge, synthetisiert der Chip ein unbegrenztes Vokabular an kontinuierlicher Sprache auf phonetischer Basis. Dabei besteht dieses TTS-System aus zwei Grundkomponenenten, die ihrerseits wieder in verschiedene Unterkomponenenten gegliedert sind: zum einen konvertiert ein Text-zo-Phonem-Übersetzer den (Text-)Datentrom (ASCII-Folge) in den phonembasierten Code; zum anderen generiert darauf aufbauend ein Phonem-zu-Ton-Übersetzer die synthetisierte Sprache.</value></note>
 		</item>
 		<item>

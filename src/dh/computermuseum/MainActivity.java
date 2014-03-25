@@ -2,6 +2,8 @@ package dh.computermuseum;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setupClickListener();      
     }
     
+    public void onResume() {
+    	super.onResume();
+    	buttonScan.setBackgroundColor(Color.parseColor("#525252"));
+		buttonScan.setTextColor(Color.WHITE);
+		buttonHelp.setBackgroundColor(Color.parseColor("#525252"));
+    }
+    
     private void initUI() {
     	buttonScan = (Button) findViewById(R.id.startScanningButton1);
     	textGoto = (TextView) findViewById(R.id.textMuseumGoto);
@@ -40,6 +49,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	switch (view.getId()) {
 			case  R.id.startScanningButton1:
 				Intent intentScan = new Intent(MainActivity.this, ScanActivity.class);
+				Drawable d = buttonScan.getBackground();
+				buttonScan.setBackgroundColor(Color.CYAN);
+				buttonScan.setTextColor(Color.BLACK);
 			    startActivity(intentScan);
 				break;
 			case  R.id.textMuseumGoto:
@@ -48,6 +60,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				break;
 			case  R.id.helpButton:
 				Intent intentHelp = new Intent(MainActivity.this, HelpActivity.class);
+				buttonHelp.setBackgroundColor(Color.CYAN);
 			    startActivity(intentHelp);
 				break;
 			default:

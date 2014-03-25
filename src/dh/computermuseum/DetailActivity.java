@@ -15,6 +15,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,11 +29,7 @@ public class DetailActivity extends Activity {
 	private int id;
 	private String type;
 	
-	private HashMap<String, Integer> types;
-	
 	private Computer computer;
-	private Component component;
-	private Storage storage;
 	
 	private TextView name;
 	private TextView date;
@@ -53,13 +51,6 @@ public class DetailActivity extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		id = extras.getInt("id");
-		type = extras.getString("type");
-		
-		types = new HashMap<String, Integer>();
-		
-		types.put("computer", 1);
-		types.put("component", 2);
-		types.put("storage", 3);
 		
 		init();
 		
@@ -68,19 +59,8 @@ public class DetailActivity extends Activity {
 	private void init() {
 		
 		initUI();
-		
-		switch(types.get(type)) {
-			case 1: computer = new Computer();
-					initComputer();
-				break;
-			case 2: component = new Component();
-					initComponent();
-				break;
-			case 3: storage = new Storage();
-					initStorage();
-				break;
-			default: 
-		}
+		computer = data.getComputer(id);
+		initComputer();
 		
 	}
 	
@@ -108,19 +88,11 @@ public class DetailActivity extends Activity {
 		cpu.setText(computer.getCpu());
 		spec.setText(computer.getSpecial());
 		
-		img.setImageResource(R.drawable.toshiba_t3200sx);
-	}
-	
-	private void initComponent() {
-		name.setText(component.getName());
-		date.setText(component.getReleaseDate());
-		comp.setText(component.getProducer());
-		desc.setText(component.getDescription());
-		spec.setText(component.getSpecial());
-	}
-	
-	private void initStorage() {
-		//TO-DO
+		Resources res = getResources();
+		String tempImgName = computer.getImg();
+		int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
+		Drawable tempImg = res.getDrawable(tempResId);
+		img.setImageDrawable(tempImg);
 	}
 	
 }

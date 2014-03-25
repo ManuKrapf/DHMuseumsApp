@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.*;
@@ -39,6 +40,7 @@ public class ScanActivity extends ARViewActivity {
 	
 	private boolean beforeactive = false;
 	private boolean afteractive = false;
+	private boolean findcomputer = false;
 	
 	// Timeline View
 	private RelativeLayout timeline;
@@ -56,6 +58,7 @@ public class ScanActivity extends ARViewActivity {
 	private TextView timelineNameOther;
 	private ImageView timelineImgOther;
 	private ImageView timelineFindOther;
+	private ImageView timelineCloseOther;
 	
 	// Storages View
 	private LinearLayout storageline;
@@ -114,7 +117,26 @@ public class ScanActivity extends ARViewActivity {
 		data = new Data(this);
 		mCallbackHandler = new MetaioSDKCallbackHandler();
 		
+		//hideAllViews();
 	}
+	
+	private void hideAllViews() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				timeline.setVisibility(View.GONE);
+				timelineOtherView.setVisibility(View.GONE);
+				storageline.setVisibility(View.GONE);
+				innerlifeInfo.setVisibility(View.GONE);
+				componentInfo.setVisibility(View.GONE);
+			}
+		});
+		
+	}
+	
 	// TODO LifeCycle Methoden ausbauen das kein unnötiger speicher verbraucht wird
 
 	@Override
@@ -235,9 +257,9 @@ public class ScanActivity extends ARViewActivity {
 				{
 					mGUIView.setVisibility(View.VISIBLE);
 					
-					timeline = (RelativeLayout) findViewById(R.id.timelineview);
+					timeline = (RelativeLayout) findViewById(R.id.timelineview2);
 					
-					detailsButton = (ImageView) findViewById(R.id.showDetailsButton);
+					detailsButton = (ImageView) findViewById(R.id.showDetailsButton2);
 					videoButton = (ImageView) findViewById(R.id.showVideoButton);
 					innerButton = (ImageView) findViewById(R.id.showInnerlifeButton);
 					
@@ -279,12 +301,13 @@ public class ScanActivity extends ARViewActivity {
 					timelineDate = (TextView) findViewById(R.id.tl_datetag2);
 					timelineDateafter = (TextView) findViewById(R.id.tl_datetagafter);
 					
+					// TODO Bei Click auf leeres Element nicht ausblenden
 					timelineDatebefore.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
 							if(timelineOtherView.getVisibility() == View.GONE || afteractive) {
-								showOtherView(id, "Früher: ");
+								showOtherView(id-1, "Früher: ");
 								beforeactive = true;
 								afteractive = false;
 							}
@@ -316,12 +339,29 @@ public class ScanActivity extends ARViewActivity {
 					timelineNameOther = (TextView) findViewById(R.id.tlother_name);
 					timelineImgOther = (ImageView) findViewById(R.id.tlother_img);
 					timelineFindOther = (ImageView) findViewById(R.id.tlother_find);
+					timelineCloseOther = (ImageView) findViewById(R.id.tlother_close2);
 					
 					timelineFindOther.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
 							hideComputerTimeline();
+							
+							findcomputer = true;
+							CharSequence text = "Suche das eingeblendete Ausstellungsstück!";
+
+							Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+							toast.show();
+							
+						}
+					});
+					
+					timelineCloseOther.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							hideOtherView();
+							findcomputer = false;
 						}
 					});
 					
@@ -419,6 +459,10 @@ public class ScanActivity extends ARViewActivity {
 					
 				}
 			});
+			
+			timeline.setVisibility(View.GONE);
+			timelineOtherView.setVisibility(View.GONE);
+			
 		}
 		
 		@Override
@@ -468,6 +512,9 @@ public class ScanActivity extends ARViewActivity {
 					metaioSDK.unloadGeometry(movie);
 					hideComputerTimeline();
 					hideComponentView(); // TODO soll das wirklich ausgeblendet werden???
+					if(!findcomputer) {
+						hideOtherView();
+					}
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
@@ -482,6 +529,7 @@ public class ScanActivity extends ARViewActivity {
 		
 		switch(ocase) {
 			case 1: hideOtherView();
+				findcomputer = false;
 				showComputerTimeline(data.getComputer(id));
 				innerIds = data.getInnerlifeComponentsIDs(id);
 				loadMovie(cosid);
@@ -500,20 +548,34 @@ public class ScanActivity extends ARViewActivity {
 	
 	private void showComputerTimeline(Computer temp) {
 		
-		final Computer c = temp;
+		final Computer cbefore = data.getComputer(id-1);
+ 		final Computer c = temp;
+ 		final Computer cafter = data.getComputer(id+1);
 		
 		runOnUiThread(new Runnable() 
 		{
 			@Override
 			public void run() 
 			{
-				// TODO Name und Date für Before and After dynamisch setzen
+				// TODO Date für Before and After dynamisch setzen
 				timeline.setVisibility(View.VISIBLE);
 				timelineName.setText(c.getName());
 				timelineComp.setText(c.getProducer());
-				timelineDatebefore.setText("1800");
 				timelineDate.setText(c.getReleaseDate());
-				timelineDateafter.setText("2000");
+				
+				if(cbefore != null) {
+					timelineDatebefore.setText(cbefore.getReleaseDate());
+				}
+				else {
+					timelineDatebefore.setText("");
+				}
+				
+				if(cafter != null) {
+					timelineDateafter.setText(cafter.getReleaseDate());
+				}
+				else {
+					timelineDateafter.setText("");
+				}
 			}
 		});
 		
