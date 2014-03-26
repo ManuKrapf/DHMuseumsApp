@@ -61,17 +61,26 @@
         <TextView 
              android:layout_width="match_parent"
              android:layout_height="0dp"
-             android:text="Helptext"
+             android:text="@string/help_text1"
              android:padding="16dp"
              android:textSize="16sp"
-             android:layout_weight="0.5"
+             android:layout_weight="1"
             />
             
         <dh.computermuseum.GIFView
 		android:id="@+id/gifView"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_weight="0.5" />
+		android:layout_weight="1" />
+        
+        <TextView 
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:text="@string/help_text1"
+             android:padding="16dp"
+             android:textSize="16sp"
+             android:layout_weight="1"
+            />
     </LinearLayout>
 
 </LinearLayout>

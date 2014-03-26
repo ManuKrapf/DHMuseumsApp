@@ -27,3 +27,18 @@
 			<img></img>
 			<note><value>IBM präsentierte der Öffentlichkeit im Jahr 1986 das Spracherkennungssystem Tangora 4.</value></note>
 		</item>
+		
+
+
+						// Case 1
+						/*
+						showComputerTimeline(data.getComputer(1));
+						loadMovie(values.get(0).getCoordinateSystemID());
+						initInnerlife(data.getComputer(1), values.get(0).getCoordinateSystemID());
+						*/
+						
+						// Case 2
+						//showStorageLine(11);
+						
+						// Case 3
+						//showMBTags(values.get(0).getCoordinateSystemID());

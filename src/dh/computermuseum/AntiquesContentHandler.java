@@ -156,8 +156,23 @@ public class AntiquesContentHandler implements ContentHandler {
 			if (localName.equals("comp")) {
 				component.setProducer(currentValue);
 			}
-			if (localName.equals("special")) {
-				component.setSpecial(currentValue);
+			if (localName.equals("ftype")) {
+				component.setFunctionType(currentValue);
+			}
+			if (localName.equals("frequency")) {
+				component.setFrequency(currentValue);
+			}
+			if (localName.equals("memory")) {
+				component.setMemory(currentValue);
+			}
+			if (localName.equals("cpu")) {
+				component.setCPU(currentValue);
+			}
+			if (localName.equals("register")) {
+				component.setRegister(currentValue);
+			}
+			if (localName.equals("interfaces")) {
+				component.setInterfaces(currentValue);
 			}
 			if (localName.equals("img")) {
 				component.setImg(currentValue);
@@ -182,6 +197,9 @@ public class AntiquesContentHandler implements ContentHandler {
 			}
 			if (localName.equals("tagz")) {
 				temptag.setZ(Float.parseFloat(currentValue));
+			}
+			if (localName.equals("tagdesc")) {
+				temptag.setDesc(currentValue);
 			}
 			if (localName.equals("tag")) {
 				component.addTag(temptag);

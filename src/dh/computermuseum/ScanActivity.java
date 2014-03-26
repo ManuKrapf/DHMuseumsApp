@@ -93,11 +93,15 @@ public class ScanActivity extends ARViewActivity {
 	private TextView innerlifeElementDesc;
 	
 	// Component View
+	private LinearLayout componentView;
 	private LinearLayout componentInfo;
+	private LinearLayout componentDetailInfo;
+	
+	private TextView componentName;
+	private TextView componentProducer;
+	private ImageView componentDetailButton;
 	
 	private TextView componentElementName;
-	private TextView componentElementDev;
-	private TextView componentElementDate;
 	private TextView componentElementDesc;
 	
 	// Geometrys
@@ -256,6 +260,7 @@ public class ScanActivity extends ARViewActivity {
 							
 							Intent i = new Intent(ScanActivity.this, DetailActivity.class);
 							i.putExtra("id", id);
+							i.putExtra("type", "computer");
 						    startActivity(i);
 							
 						}
@@ -384,11 +389,31 @@ public class ScanActivity extends ARViewActivity {
 					closeInnerlife = (ImageView) findViewById(R.id.close_innerlife);
 					
 					// Component information view
+					
+					componentView = (LinearLayout) findViewById(R.id.componentView);
 					componentInfo = (LinearLayout) findViewById(R.id.componentOverview);
+					componentDetailInfo = (LinearLayout) findViewById(R.id.componentDetailView);
+					
+					componentName = (TextView) findViewById(R.id.component_name);
+					componentProducer = (TextView) findViewById(R.id.component_producer);
+					
 					componentElementName = (TextView) findViewById(R.id.actual_name_component);
-					componentElementDev = (TextView) findViewById(R.id.actual_dev_component);
-					componentElementDate = (TextView) findViewById(R.id.actual_date_component);
 					componentElementDesc = (TextView) findViewById(R.id.actual_desc_component);
+					
+					componentDetailButton = (ImageView) findViewById(R.id.showDetailsButtonComponent);
+					
+					componentDetailButton.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							Intent i = new Intent(ScanActivity.this, DetailActivity.class);
+							i.putExtra("id", id);
+							i.putExtra("type", "component");
+						    startActivity(i);
+						}
+					});
+					
+					// TODO sortieren !!!!!
 					
 					closeInnerlife.setOnClickListener(new OnClickListener() {
 						
@@ -471,30 +496,30 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_3")) {
 						Log.d("dhdebug", "CosID yellowbook: "+values.get(0).getCoordinateSystemID());
+						id = 1;
+						showCase(1, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("mensacard_4")) {
+						Log.d("dhdebug", "CosID mensacard: "+values.get(0).getCoordinateSystemID());
+						id = 11;
+						showCase(2, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("haselnussschnitte_5")) {
+						Log.d("dhdebug", "CosID hanuta: "+values.get(0).getCoordinateSystemID());
 						id = 5;
 						showCase(3, values.get(0).getCoordinateSystemID());
-						
-						// Case 1
-						/*
-						showComputerTimeline(data.getComputer(1));
-						loadMovie(values.get(0).getCoordinateSystemID());
-						initInnerlife(data.getComputer(1), values.get(0).getCoordinateSystemID());
-						*/
-						
-						// Case 2
-						//showStorageLine(11);
-						
-						// Case 3
-						//showMBTags(values.get(0).getCoordinateSystemID());
-						
 					}
+					
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					id = 0;
 					// TODO überprüfen was alles entfernt werden muss wenn objekt nicht mehr getrackt wird
-					//metaioSDK.unloadGeometry(movie);
+					if(movie != null) {
+						//metaioSDK.unloadGeometry(movie);
+					}
 					hideComputerTimeline();
-					hideComponentView(); // TODO soll das wirklich ausgeblendet werden???
+					hideComponentInfo();
+					hideComponentTagView(); // TODO soll das wirklich ausgeblendet werden???
 					if(!findcomputer) {
 						hideOtherView();
 					}
@@ -521,6 +546,7 @@ public class ScanActivity extends ARViewActivity {
 			case 2: showStorageLine(id);
 				break;
 			case 3: showMBTags(cosid);
+				showComponentInfo();
 				break;
 			default:
 		}
@@ -859,9 +885,39 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void showComponentTagView() {
+	private void showComponentInfo() {
 		
-		Log.d("dhdebug", "showing CView");
+		final Component c = data.getComponent(id);
+		
+		runOnUiThread(new Runnable()
+		{
+			@Override
+			public void run() 
+			{
+				componentView.setVisibility(View.VISIBLE);
+				
+				componentName.setText(c.getName());
+				componentProducer.setText(c.getProducer());
+				
+			}
+		});
+		
+	}
+	
+	private void hideComponentInfo() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				componentView.setVisibility(View.GONE);
+			}
+		});
+		
+	}
+	
+	private void showComponentTagView() {
 		
 		final Component c = data.getComponent(id);
 		final Tag t = c.getTag(tagid);
@@ -871,29 +927,24 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
-				componentInfo.setVisibility(View.VISIBLE);
+				componentDetailInfo.setVisibility(View.VISIBLE);
 				
 				componentElementName.setText(t.getName());
-				componentElementDev.setText(c.getProducer());
-				componentElementDate.setText(c.getReleaseDate());
-				componentElementDesc.setText(c.getDescription());
+				componentElementDesc.setText(t.getDesc());
 				
-				Log.d("dhdebug", "CView Vis: "+componentInfo.getVisibility());
 			}
 		});
 		
 	}
 	
-	private void hideComponentView() {
-		
-		Log.d("dhdebug", "hiding CView");
+	private void hideComponentTagView() {
 		
 		runOnUiThread(new Runnable() 
 		{
 			@Override
 			public void run() 
 			{
-				componentInfo.setVisibility(View.GONE);
+				componentDetailInfo.setVisibility(View.GONE);
 			}
 		});
 		

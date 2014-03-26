@@ -6,7 +6,12 @@ public class Component extends Antique {
 
 	private String producer;
 	private String comp;
-	private String special;
+	private String ftype;
+	private String frequency;
+	private String memory;
+	private String cpu;
+	private String register;
+	private String interfaces;
 	private String description;
 	private ArrayList<Tag> tags;
 
@@ -31,12 +36,52 @@ public class Component extends Antique {
 		return comp;
 	}
 
-	public void setSpecial(String special) {
-		this.special = special;
+	public void setFunctionType(String ftype) {
+		this.ftype = ftype;
 	}
 
-	public String getSpecial() {
-		return special;
+	public String getFunctionType() {
+		return ftype;
+	}
+	
+	public void setFrequency(String freq) {
+		this.frequency = freq;
+	}
+	
+	public String getFrequency() {
+		return frequency;
+	}
+	
+	public void setMemory(String memory) {
+		this.memory = memory;
+	}
+	
+	public String getMemory() {
+		return memory;
+	}
+	
+	public void setCPU(String cpu) {
+		this.cpu = cpu;
+	}
+	
+	public String getCPU() {
+		return cpu;
+	}
+	
+	public void setRegister(String register) {
+		this.register = register;
+	}
+	
+	public String getRegister() {
+		return register;
+	}
+	
+	public void setInterfaces(String interfaces) {
+		this.interfaces = interfaces;
+	}
+	
+	public String getInterfaces() {
+		return interfaces;
 	}
 
 	public void setDescription(String description) {
@@ -67,6 +112,7 @@ public class Component extends Antique {
 		private float x;
 		private float y;
 		private float z;
+		private String desc;
 		
 		public Tag() {
 			
@@ -109,6 +155,10 @@ public class Component extends Antique {
 			this.z = val;
 		}
 		
+		public void setDesc(String d) {
+			this.desc = d;
+		}
+		
 		public int getId() {
 			return id;
 		}
@@ -123,6 +173,10 @@ public class Component extends Antique {
 		
 		public float[] getPos() {
 			return new float[] {x, y, z};
+		}
+		
+		public String getDesc() {
+			return desc;
 		}
 		
 	}

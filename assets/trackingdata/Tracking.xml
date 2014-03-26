@@ -42,6 +42,30 @@
                     <NumExtensibleFeatures>250</NumExtensibleFeatures>
                 </parameters>
             </SensorCOS>
+            <SensorCOS>
+                <SensorCosID>9f8a0526a4296f2b15b089ad02af8275</SensorCosID>
+                <parameters>
+                    <minmatches>0</minmatches>
+                    <numextensiblefeatures>0</numextensiblefeatures>
+                    <mintriangulationangle>6</mintriangulationangle>
+                    <map>mensacard.f3b</map>
+                    <MinMatches>15</MinMatches>
+                    <DesiredMatchesRatioExtensible>0.35</DesiredMatchesRatioExtensible>
+                    <NumExtensibleFeatures>250</NumExtensibleFeatures>
+                </parameters>
+            </SensorCOS>
+            <SensorCOS>
+                <SensorCosID>13166f08e882ce5633ddcf5d5bcd5d5b</SensorCosID>
+                <parameters>
+                    <minmatches>0</minmatches>
+                    <numextensiblefeatures>0</numextensiblefeatures>
+                    <mintriangulationangle>6</mintriangulationangle>
+                    <map>haselnussschnitte.f3b</map>
+                    <MinMatches>15</MinMatches>
+                    <DesiredMatchesRatioExtensible>0.35</DesiredMatchesRatioExtensible>
+                    <NumExtensibleFeatures>250</NumExtensibleFeatures>
+                </parameters>
+            </SensorCOS>
         </Sensor>
     </Sensors>
     <Connections>
@@ -143,6 +167,90 @@
             <SensorSource trigger="1">
                 <SensorID>FeatureBasedSensorSource_0</SensorID>
                 <SensorCosID>e86d8538d366f97135ad851a4d59de3e</SensorCosID>
+                <HandEyeCalibration>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </HandEyeCalibration>
+                <COSOffset>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </COSOffset>
+            </SensorSource>
+        </COS>
+        <COS>
+            <Name>mensacard_4</Name>
+            <Fuser type="SmoothingFuser">
+                <Parameters>
+                    <AlphaRotation>0.5</AlphaRotation>
+                    <AlphaTranslation>0.8</AlphaTranslation>
+                    <GammaRotation>0.5</GammaRotation>
+                    <GammaTranslation>0.8</GammaTranslation>
+                    <KeepPoseForNumberOfFrames>0</KeepPoseForNumberOfFrames>
+                </Parameters>
+            </Fuser>
+            <SensorSource trigger="1">
+                <SensorID>FeatureBasedSensorSource_0</SensorID>
+                <SensorCosID>9f8a0526a4296f2b15b089ad02af8275</SensorCosID>
+                <HandEyeCalibration>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </HandEyeCalibration>
+                <COSOffset>
+                    <TranslationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                    </TranslationOffset>
+                    <RotationOffset>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <w>1</w>
+                    </RotationOffset>
+                </COSOffset>
+            </SensorSource>
+        </COS>
+        <COS>
+            <Name>haselnussschnitte_5</Name>
+            <Fuser type="SmoothingFuser">
+                <Parameters>
+                    <AlphaRotation>0.5</AlphaRotation>
+                    <AlphaTranslation>0.8</AlphaTranslation>
+                    <GammaRotation>0.5</GammaRotation>
+                    <GammaTranslation>0.8</GammaTranslation>
+                    <KeepPoseForNumberOfFrames>0</KeepPoseForNumberOfFrames>
+                </Parameters>
+            </Fuser>
+            <SensorSource trigger="1">
+                <SensorID>FeatureBasedSensorSource_0</SensorID>
+                <SensorCosID>13166f08e882ce5633ddcf5d5bcd5d5b</SensorCosID>
                 <HandEyeCalibration>
                     <TranslationOffset>
                         <x>0</x>

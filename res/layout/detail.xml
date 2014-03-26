@@ -142,7 +142,7 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView_os"
+                    android:id="@+id/detailtag_pos1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_os"
@@ -150,7 +150,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/textView_os_name"
+                    android:id="@+id/detailval_pos1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -167,7 +167,7 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView_memory"
+                    android:id="@+id/detailtag_pos2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_memory"
@@ -175,7 +175,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/textView_memory_name"
+                    android:id="@+id/detailval_pos2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -192,7 +192,7 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView_ram"
+                    android:id="@+id/detailtag_pos3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_ram"
@@ -200,7 +200,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/textView_ram_name"
+                    android:id="@+id/detailval_pos3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -217,7 +217,7 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView_cpu"
+                    android:id="@+id/detailtag_pos4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_cpu"
@@ -225,7 +225,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/textView_cpu_name"
+                    android:id="@+id/detailval_pos4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -242,7 +242,7 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView_special"
+                    android:id="@+id/detailtag_pos5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_special"
@@ -250,7 +250,32 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/textView_special_name"
+                    android:id="@+id/detailval_pos5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#fff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/detailtag_pos6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_special"
+                    android:textColor="#fff"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/detailval_pos6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"

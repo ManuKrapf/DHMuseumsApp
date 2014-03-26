@@ -57,18 +57,23 @@
 			<ram>128 KByte</ram>
 			<processor>MOS Technologies 8502, 2.0 MHz/Zilog Z80, 4.0 MHz</processor>
 			<special>Kein Diskettenlaufwerk, drei Betriebsarten (C128, C64, CP/M)</special>
-			<img>Commodore_128</img>
+			<img>commodore_128</img>
 			<note><value>Der Commodore 128 war der Nachfolger des C64, dem meistverkauften Desktop Computer der 1980er Jahre, der zu seiner Zeit vorwiegend als Spiele- und Softwareprogrammierkonsole genutzt wurde. Allerdings konnte der Commodore 128 nicht an den Erfolg seines Vorgängers anknüpfen, da die marginalen Neuerungen im Vergleich zum C64 den hohen Preis nach Meinung der Kundschaft nicht rechtfertigten. Gründe sah man auch in der mangelnden Innovation und den bereits aufkeimenden Gerüchten über die "Wundermaschine" Amiga. Besondere Bedeutung erfuhr der C128 aufgrund seiner Abwärtskompatibilität zu seinem Vorgängermodell, des C64-Computers, und dessen Software. Die Tastatur des C128 war – im Gegensatz zu seinem späteren Nachfolger C128D – fest in das Gehäuse integriert.</value></note>
 		</item>
 	</computer>
 	<components>
 	    <item>
 	        <id>5</id>
-			<name>Motherboard</name>
-			<date>1995</date>
-			<comp>ASRock</comp>
-			<special>nothing</special>
-			<img>noimg</img>
+			<name>Sun SPARC Classic Board</name>
+			<date>1993</date>
+			<comp>Sun Microsystems</comp>
+			<ftype>Mikroprozessor</ftype>
+			<frequency>50 MHz</frequency>
+			<memory>16.000 KByte</memory>
+			<cpu>MicroSPARC</cpu>
+			<register>32 Bit</register>
+			<interfaces>Ethernet, 2x SCSI, 2x RS232, parallel, Audio, 2x SBus</interfaces>
+			<img>commodore_128</img>
 			<note>Ein Motherboard ist bla bla bla...</note>
 			<tags>
 			    <tag>
@@ -80,6 +85,7 @@
 			            <tagz>2</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_southbridge.png</tagimg>
+			        <tagdesc>Eine Southbridges ist bla bla bla...</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>2</tagid>
@@ -90,6 +96,7 @@
 			            <tagz>10</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_northbridge.png</tagimg>
+			        <tagdesc>Eine Nothbridgebridges ist bla bla bla...</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>3</tagid>
@@ -100,6 +107,7 @@
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_ram.png</tagimg>
+			        <tagdesc>Eine RAM ist bla bla bla...</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>4</tagid>
@@ -110,6 +118,7 @@
 			            <tagz>-20</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
+			        <tagdesc>Eine CPU ist bla bla bla...</tagdesc>
 			    </tag>
 			</tags>
 	    </item>

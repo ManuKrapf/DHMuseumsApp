@@ -19,7 +19,8 @@
     <string name="breadcrumbs_scan">Scan</string> 
     <string name="breadcrumbs_detail">Detail</string>
     <string name="breadcrumbs_help">Help</string>
-    <string name="help_text">Mit Hilfe dieser App sollen einige ausgewählte Ausstellungsstücke der Regensburger IT-Sammlung augmentiert werden, das heißt die Realität soll digital erweitert werden. Augmentiert werden relevante Informationsmaterial zu einzelnen Objekten, sobald diese von der Kamera des Smartphones erfasst werden. Anhand dieses weiterführenden Daten sollen die informationstechnischen Antiquitäten in Szene gesetzt werden, sodass das Interesse der Museumsbesucher steigt.</string>
+    <string name="help_text1">Mit Hilfe dieser App sollen einige ausgewählte Ausstellungsstücke der Regensburger IT-Sammlung augmentiert werden, das heißt die Realität soll digital erweitert werden.</string>
+    <string name="help_text2">Augmentiert werden relevante Informationsmaterial zu einzelnen Objekten, sobald diese von der Kamera des Smartphones erfasst werden. Anhand dieses weiterführenden Daten sollen die informationstechnischen Antiquitäten in Szene gesetzt werden, sodass das Interesse der Museumsbesucher steigt.</string>
     <string name="detail_date">erschienen </string> 
     <string name="detail_company">von </string>
     <string name="detail_description">Beschreibung: </string>
@@ -27,7 +28,14 @@
     <string name="detail_memory">Hauptspeicher: </string>
     <string name="detail_ram">Arbeitsspeicher: </string>  
     <string name="detail_cpu">Prozessor: </string>  
-    <string name="detail_special">Besonderheiten: </string>  
+    <string name="detail_special">Besonderheiten: </string>
+    
+    <string name="detailcomp_type">Typ: </string>  
+    <string name="detailcomp_freq">Taktzahl: </string>
+    <string name="detailcomp_memory">Speicher RAM: </string>  
+    <string name="detailcomp_cpu">Prozessor: </string>  
+    <string name="detailcomp_register">Register: </string>
+    <string name="detailcomp_interfaces">Schnittstellen: </string>
     
     <string name="scan_storages_earlier">Früher:</string>  
     <string name="scan_storages_later">Später:</string>
