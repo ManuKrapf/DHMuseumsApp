@@ -39,9 +39,14 @@ public class ScanActivity extends ARViewActivity {
 	private int actinner = 0;
 	private int[] innerIds = null;
 	private int tagid = 0;
+	private int storageid = 0;
+	private int actCase = 0;
+	private int tempCosId;
 	
-	private boolean beforeactive = false;
-	private boolean afteractive = false;
+	private boolean beforeActive = false;
+	private boolean beforeEmpty = false;
+	private boolean afterActive = false;
+	private boolean afterEmpty = false;
 	private boolean findcomputer = false;
 	
 	// Timeline View
@@ -125,8 +130,6 @@ public class ScanActivity extends ARViewActivity {
 		mCallbackHandler = new MetaioSDKCallbackHandler();
 		
 	}
-	
-	// TODO LifeCycle Methoden ausbauen das kein unnötiger speicher verbraucht wird
 
 	@Override
 	public void onResume() {
@@ -270,8 +273,14 @@ public class ScanActivity extends ARViewActivity {
 						
 						@Override
 						public void onClick(View v) {
-							movie.setVisible(true);
-							movie.startMovieTexture(true);
+							if(movie.isVisible()) {
+								movie.setVisible(false);
+								movie.startMovieTexture(false);
+							}
+							else {
+								movie.setVisible(true);
+								movie.startMovieTexture(true);
+							}
 						}
 					});
 					
@@ -280,6 +289,7 @@ public class ScanActivity extends ARViewActivity {
 						@Override
 						public void onClick(View v) {
 							hideComputerTimeline();
+							hideTimelineContainer();
 							movie.setVisible(false);
 							showInnerlifeComponents(id, 18);
 						}
@@ -292,19 +302,22 @@ public class ScanActivity extends ARViewActivity {
 					timelineDate = (TextView) findViewById(R.id.tl_datetag2);
 					timelineDateafter = (TextView) findViewById(R.id.tl_datetagafter);
 					
-					// TODO Bei Click auf leeres Element nicht ausblenden
 					timelineDatebefore.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
-							if(timelineOtherView.getVisibility() == View.GONE || afteractive) {
-								showOtherView(id-1, "Früher: ");
-								beforeactive = true;
-								afteractive = false;
+							if(timelineOtherView.getVisibility() == View.GONE || afterActive) {
+								if(!beforeEmpty) {
+									showOtherView(id-1, "Früher: ");
+									beforeActive = true;
+									afterActive = false;
+								}
 							}
 							else {
-								hideOtherView();
-								beforeactive = false;
+								if(!beforeEmpty) {
+									hideOtherView();
+									beforeActive = false;
+								}
 							}
 						}
 					});
@@ -313,14 +326,18 @@ public class ScanActivity extends ARViewActivity {
 						
 						@Override
 						public void onClick(View v) {
-							if(timelineOtherView.getVisibility() == View.GONE || beforeactive) {
-								showOtherView(id+1, "Später: ");
-								afteractive = true;
-								beforeactive = false;
+							if(timelineOtherView.getVisibility() == View.GONE || beforeActive) {
+								if(!afterEmpty) {
+									showOtherView(id+1, "Später: ");
+									afterActive = true;
+									beforeActive = false;
+								}
 							}
 							else {
-								hideOtherView();
-								afteractive = false;
+								if(!afterEmpty) {
+									hideOtherView();
+									afterActive = false;
+								}
 							}
 						}
 					});
@@ -380,6 +397,48 @@ public class ScanActivity extends ARViewActivity {
 					final Animation fadeInAnim = AnimationUtils.loadAnimation(context, R.anim.fadein);
 					final Animation fadeOutAnim = AnimationUtils.loadAnimation(context, R.anim.fadeout);
 					
+					closesl.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							hideStorageLine();
+							storageid = 0;
+						}
+					});
+					
+					gobefore.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							
+							storageid = storageid-1;
+							showStorageLine();
+							
+							// animation fading
+							gobefore.startAnimation(fadeOutAnim);
+							if(storageid > 7) {
+								gobefore.startAnimation(fadeInAnim);
+							}
+							
+						}
+					});
+					
+					goafter.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							
+							storageid = storageid+1;
+							showStorageLine();
+							
+							// animation fading
+							goafter.startAnimation(fadeOutAnim);
+							if(storageid < 17) {
+								goafter.startAnimation(fadeInAnim);
+							}
+						}
+					});
+					
 					// Innerlife information view
 					innerlifeInfo = (LinearLayout) findViewById(R.id.innerlifeOverview);
 					innerlifeElementName = (TextView) findViewById(R.id.actual_name_innerlife);
@@ -387,6 +446,15 @@ public class ScanActivity extends ARViewActivity {
 					innerlifeElementDate = (TextView) findViewById(R.id.actual_date_innerlife);
 					innerlifeElementDesc = (TextView) findViewById(R.id.actual_desc_innerlife);
 					closeInnerlife = (ImageView) findViewById(R.id.close_innerlife);
+					
+					closeInnerlife.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							hideInnerlifeComponents();
+							showComputerTimeline();
+						}
+					});
 					
 					// Component information view
 					
@@ -410,61 +478,6 @@ public class ScanActivity extends ARViewActivity {
 							i.putExtra("id", id);
 							i.putExtra("type", "component");
 						    startActivity(i);
-						}
-					});
-					
-					// TODO sortieren !!!!!
-					
-					closeInnerlife.setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							innerlifeInfo.setVisibility(View.GONE);
-							inner1.setVisible(false);
-							inner2.setVisible(false);
-							inner3.setVisible(false);
-							inner4.setVisible(false);
-						}
-					});
-					
-					closesl.setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							storageline.setVisibility(View.GONE);
-						}
-					});
-					
-					gobefore.setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							
-							showStorageLine(id-1);
-							id = id-1;
-							
-							// animation fading
-							gobefore.startAnimation(fadeOutAnim);
-							if(id > 7) {
-								gobefore.startAnimation(fadeInAnim);
-							}
-							
-						}
-					});
-					
-					goafter.setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							
-							showStorageLine(id+1);
-							id = id+1;
-							
-							// animation fading
-							goafter.startAnimation(fadeOutAnim);
-							if(id < 17) {
-								goafter.startAnimation(fadeInAnim);
-							}
 						}
 					});
 					
@@ -513,16 +526,8 @@ public class ScanActivity extends ARViewActivity {
 				}
 				else if(values.get(0).getState() == ETRACKING_STATE.ETS_LOST) {
 					id = 0;
-					// TODO überprüfen was alles entfernt werden muss wenn objekt nicht mehr getrackt wird
-					if(movie != null) {
-						//metaioSDK.unloadGeometry(movie);
-					}
-					hideComputerTimeline();
-					hideComponentInfo();
-					hideComponentTagView(); // TODO soll das wirklich ausgeblendet werden???
-					if(!findcomputer) {
-						hideOtherView();
-					}
+					Log.d("dhdebug", values.get(0).getCosName()+" is lost");
+					unloadWhenLost();
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
@@ -535,17 +540,24 @@ public class ScanActivity extends ARViewActivity {
 	
 	private void showCase(int ocase, int cosid) {
 		
+		actCase = ocase;
+		tempCosId = cosid;
+		
 		switch(ocase) {
-			case 1: hideOtherView();
+			case 1: unloadForCase(1);
+				hideOtherView();
 				findcomputer = false;
-				showComputerTimeline(data.getComputer(id));
+				showComputerTimeline();
 				innerIds = data.getInnerlifeComponentsIDs(id);
 				loadMovie(cosid);
-				initInnerlife(data.getComputer(id), cosid);
+				initInnerlife(cosid);
 				break;
-			case 2: showStorageLine(id);
+			case 2: unloadForCase(2);
+				showStorageLine();
 				break;
-			case 3: showMBTags(cosid);
+			case 3: 
+				unloadForCase(3);
+				showMBTags(cosid);
 				showComponentInfo();
 				break;
 			default:
@@ -553,25 +565,87 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void unloadCase(int ocase) {
+	private void unloadForCase(int ocase) {
 		
-		// TODO unload unused cases
+		switch(ocase) {
+			// Unload Case 2 und 3
+			case 1: hideStorageLine();
+				unloadMBTags();
+				hideComponentInfo();
+				hideComponentTagView();
+				break;
+			// Unload Case 1 und 3
+			case 2: unloadMovie();
+				unloadInnerLife();
+				hideTimelineContainer();
+				unloadMBTags();
+				hideComponentInfo();
+				hideComponentTagView();
+				break;
+			// Unload Case 1 und 2
+			case 3: unloadMovie();
+				unloadInnerLife();
+				hideTimelineContainer();
+				hideStorageLine();
+				break;
+			default: 
+		}
 		
 	}
 	
-	// TODO Show und Hide timelineviewcontainer bei anderen Cases
+	private void unloadWhenLost() {
+		
+		switch(actCase) {
+			case 1: unloadMovie();
+				unloadInnerLife();
+				hideComputerTimeline();
+				if(!findcomputer){
+					hideOtherView();
+					hideTimelineContainer();
+				}
+				break;
+			case 2: //hideStorageLine();
+				break;
+			case 3: unloadMBTags();
+				hideComponentInfo();
+				hideComponentTagView();
+				break;
+			default:
+		}
+		
+	}
+	
+	private void unloadAllCases() {
+		
+		// Unload Case 1
+		unloadMovie();
+		unloadInnerLife();
+		hideTimelineContainer();
+		hideComputerTimeline();
+		hideOtherView();
+		
+		// Unload Case 2
+		hideStorageLine();
+		
+		// Unload Case 3
+		unloadMBTags();
+		hideComponentInfo();
+		hideComponentTagView();
+		
+	}
+	
 	// Case 1: Timeline for computers
 	
-	private void showComputerTimeline(Computer temp) {
+	private void showComputerTimeline() {
 		
 		final Computer cbefore = data.getComputer(id-1);
- 		final Computer c = temp;
+ 		final Computer c = data.getComputer(id);
  		final Computer cafter = data.getComputer(id+1);
 		
 		runOnUiThread(new Runnable() 
 		{
 			@Override
-			public void run() 
+			public void run()
 			{
 				timelinecontainer.setVisibility(View.VISIBLE);
 				timeline.setVisibility(View.VISIBLE);
@@ -581,16 +655,20 @@ public class ScanActivity extends ARViewActivity {
 				
 				if(cbefore != null) {
 					timelineDatebefore.setText(cbefore.getReleaseDate());
+					beforeEmpty = false;
 				}
 				else {
 					timelineDatebefore.setText("");
+					beforeEmpty = true;
 				}
 				
 				if(cafter != null) {
 					timelineDateafter.setText(cafter.getReleaseDate());
+					afterEmpty = false;
 				}
 				else {
 					timelineDateafter.setText("");
+					afterEmpty = true;
 				}
 			}
 		});
@@ -602,10 +680,22 @@ public class ScanActivity extends ARViewActivity {
 		runOnUiThread(new Runnable() 
 		{
 			@Override
-			public void run() 
+			public void run()
+			{
+				timeline.setVisibility(View.GONE);
+			}
+		});
+		
+	}
+	
+	private void hideTimelineContainer() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run()
 			{
 				timelinecontainer.setVisibility(View.GONE);
-				timeline.setVisibility(View.GONE);
 			}
 		});
 		
@@ -648,7 +738,6 @@ public class ScanActivity extends ARViewActivity {
 			@Override
 			public void run() 
 			{
-				timelinecontainer.setVisibility(View.GONE);
 				timelineOtherView.setVisibility(View.GONE);
 			}
 		});
@@ -686,9 +775,20 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	private void unloadMovie() {
+		
+		if(movie != null) {
+			metaioSDK.unloadGeometry(movie);
+			movie = null;
+		}
+		
+	}
+	
 	// Case 1.2: show the innerlife components of the computer
 	
-	private void initInnerlife(Computer c, int cosid) {
+	private void initInnerlife(int cosid) {
+		
+		Computer c = data.getComputer(id);
 		
 		final String innerfile1 = AssetsManager.getAssetPath("Assets/"+c.getComponent(1).getImg());
 		final String innerfile2 = AssetsManager.getAssetPath("Assets/"+c.getComponent(2).getImg());
@@ -716,7 +816,30 @@ public class ScanActivity extends ARViewActivity {
 			actinner = innerIds[0];
 		}
 		
-		//showInnerlifeComponents(id, actinner);
+	}
+	
+	private void unloadInnerLife() {
+		
+		if(inner1 != null) {
+			metaioSDK.unloadGeometry(inner1);
+			inner1 = null;
+		}
+		
+		if(inner2 != null) {
+			metaioSDK.unloadGeometry(inner2);
+			inner2 = null;
+		}
+		
+		if(inner3 != null) {
+			metaioSDK.unloadGeometry(inner3);
+			inner3 = null;
+		}
+		
+		if(inner4 != null) {
+			metaioSDK.unloadGeometry(inner4);
+			inner4 = null;
+		}
+		
 	}
 	
 	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
@@ -760,68 +883,111 @@ public class ScanActivity extends ARViewActivity {
 		});
 	}
 	
-	// Case 2: Storages in chronological order
-	
-	private void showStorageLine(int id) {
+	private void hideInnerlifeComponents() {
 		
-		Storage before = null;
-		if(id > 7) {
-			before = data.getStorage(id-1);
-		}
-		
-		Storage after = null;
-		if(id < 17) {
-			after = data.getStorage(id+1);
-		}
-		
-		final Storage sbefore = before;
-		final Storage s = data.getStorage(id);
-		final Storage safter = after;
+		inner1.setVisible(false);
+		inner2.setVisible(false);
+		inner3.setVisible(false);
+		inner4.setVisible(false);
 		
 		runOnUiThread(new Runnable() 
 		{
 			@Override
 			public void run() 
 			{
-				storageline.setVisibility(View.VISIBLE);
-				
-				if(sbefore != null) {
-					gobefore.setVisibility(View.VISIBLE);
-					beforetext.setText(sbefore.getName());
+				innerlifeInfo.setVisibility(View.GONE);
+			}
+		});
+		
+	}
+	
+	// Case 2: Storages in chronological order
+	
+	private void showStorageLine() {
+		
+		try {
+			
+			if(storageid == 0) {
+				storageid = id;
+			}
+			
+			Storage before = null;
+			if(storageid > 7) {
+				before = data.getStorage(storageid-1);
+			}
+			
+			Storage after = null;
+			if(storageid < 17) {
+				after = data.getStorage(storageid+1);
+			}
+			
+			final Storage sbefore = before;
+			final Storage s = data.getStorage(storageid);
+			final Storage safter = after;
+			
+			runOnUiThread(new Runnable()
+			{
+				@Override
+				public void run() 
+				{
+					storageline.setVisibility(View.VISIBLE);
 					
-					Resources res = getResources();
-					String tempImgName = sbefore.getImg();
-					int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
-					Drawable tempImg = res.getDrawable(tempResId);
-					beforeimage.setImageDrawable(tempImg);
-				}
-				else {
-					gobefore.setVisibility(View.INVISIBLE);
-				}
-				
-				storageName.setText(s.getName());
-				storageDev.setText(s.getDeveloper());
-				storageDate.setText(s.getReleaseDate());
-				storageType.setText(s.getType());
-				storageCapa.setText(s.getCapacity());
-				storageMat.setText(s.getMaterial());
-				storageLife.setText(s.getEndurance());
-				storageSize.setText(s.getSize());
-				
-				if(safter != null) {
-					goafter.setVisibility(View.VISIBLE);
-					aftertext.setText(safter.getName());
+					if(sbefore != null) {
+						gobefore.setVisibility(View.VISIBLE);
+						beforetext.setText(sbefore.getName());
+						
+						Resources res = getResources();
+						String tempImgName = sbefore.getImg();
+						int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
+						Drawable tempImg = res.getDrawable(tempResId);
+						beforeimage.setImageDrawable(tempImg);
+					}
+					else {
+						gobefore.setVisibility(View.INVISIBLE);
+					}
 					
-					Resources res = getResources();
-					String tempImgName = safter.getImg();
-					int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
-					Drawable tempImg = res.getDrawable(tempResId);
-					afterimage.setImageDrawable(tempImg);
+					storageName.setText(s.getName());
+					storageDev.setText(s.getDeveloper());
+					storageDate.setText(s.getReleaseDate());
+					storageType.setText(s.getType());
+					storageCapa.setText(s.getCapacity());
+					storageMat.setText(s.getMaterial());
+					storageLife.setText(s.getEndurance());
+					storageSize.setText(s.getSize());
+					
+					if(safter != null) {
+						goafter.setVisibility(View.VISIBLE);
+						aftertext.setText(safter.getName());
+						
+						Resources res = getResources();
+						String tempImgName = safter.getImg();
+						int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
+						Drawable tempImg = res.getDrawable(tempResId);
+						afterimage.setImageDrawable(tempImg);
+					}
+					else {
+						goafter.setVisibility(View.INVISIBLE);
+					}
+					
 				}
-				else {
-					goafter.setVisibility(View.INVISIBLE);
-				}
-				
+			});
+		
+		}
+		catch(Exception e) {
+			Log.e("dhdebug", "Fehler beim Anzeigen der Storageline!");
+			Log.e("dhdebug", "Fehler: "+e.getMessage());
+		}
+		
+	}
+	
+	private void hideStorageLine() {
+		
+		runOnUiThread(new Runnable() 
+		{
+			@Override
+			public void run() 
+			{
+				storageline.setVisibility(View.GONE);
 			}
 		});
 		
@@ -865,6 +1031,30 @@ public class ScanActivity extends ARViewActivity {
 			pos = tags.get(3).getPos();
 			g_tag4 = metaioSDK.createGeometryFromImage(tag4, true, true);
 			setMBTag(g_tag4, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(-120,0,-20)
+		}
+		
+	}
+	
+	private void unloadMBTags() {
+		
+		if(g_tag1 != null) {
+			metaioSDK.unloadGeometry(g_tag1);
+			g_tag1 = null;
+		}
+		
+		if(g_tag2 != null) {
+			metaioSDK.unloadGeometry(g_tag2);
+			g_tag2 = null;
+		}
+		
+		if(g_tag3 != null) {
+			metaioSDK.unloadGeometry(g_tag3);
+			g_tag3 = null;
+		}
+		
+		if(g_tag4 != null) {
+			metaioSDK.unloadGeometry(g_tag4);
+			g_tag4 = null;
 		}
 		
 	}
