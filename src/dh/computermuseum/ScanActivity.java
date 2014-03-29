@@ -41,7 +41,6 @@ public class ScanActivity extends ARViewActivity {
 	private int tagid = 0;
 	private int storageid = 0;
 	private int actCase = 0;
-	private int tempCosId;
 	
 	private boolean beforeActive = false;
 	private boolean beforeEmpty = false;
@@ -99,7 +98,7 @@ public class ScanActivity extends ARViewActivity {
 	
 	// Component View
 	private LinearLayout componentView;
-	private LinearLayout componentInfo;
+	//private LinearLayout componentInfo;
 	private LinearLayout componentDetailInfo;
 	
 	private TextView componentName;
@@ -121,7 +120,10 @@ public class ScanActivity extends ARViewActivity {
 	private IGeometry inner4;
 	
 	private MetaioSDKCallbackHandler mCallbackHandler;
-
+	
+	/**
+	 * Called on Activity start
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -140,29 +142,40 @@ public class ScanActivity extends ARViewActivity {
 	public void onPause() {
 		super.onPause();
 	}
-
+	/**
+	 * MetaioSDK Method
+	 * returns the android Layout
+	 */
 	@Override
 	protected int getGUILayout() {
 		return R.layout.scan;
 	}
-
+	
+	/**
+	 * MetaioSDK Method
+	 * returns the MetaioSDKCallback
+	 */
 	@Override
 	protected IMetaioSDKCallback getMetaioSDKCallbackHandler() {
 		return mCallbackHandler;
 	}
-
+	
+	/**
+	 * MetaioSDK Method
+	 * Load the needed content for tracking with the MetaioSDK
+	 */
 	@Override
 	protected void loadContents() {
 		try
 		{
 			AssetsManager.extractAllAssets(getApplicationContext(), BuildConfig.DEBUG);
+			
 			// Getting a file path for tracking configuration XML file
 			String trackingConfigFile = AssetsManager.getAssetPath("trackingdata/Tracking.xml");
 			
-			//Log.d("DEBUG", trackingConfigFile);
-			
 			// Assigning tracking configuration
-			boolean result = metaioSDK.setTrackingConfiguration(trackingConfigFile); 
+			boolean result = metaioSDK.setTrackingConfiguration(trackingConfigFile);
+			
 			MetaioDebug.log("Tracking data loaded: " + result);
 		}
 		catch (Exception e)
@@ -171,6 +184,12 @@ public class ScanActivity extends ARViewActivity {
 		}
 	}
 	
+	// TODO check for try catch setting
+	
+	/**
+	 * MetaioSDK Method
+	 * CallbackHandler for clicks on a Geometry
+	 */
 	@Override
 	protected void onGeometryTouched(IGeometry geometry) {
 		
@@ -235,9 +254,19 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * MetaioSDK Class
+	 * 
+	 * Class for Metaio CallbackHandler
+	 */
 	final class MetaioSDKCallbackHandler extends IMetaioSDKCallback 
 	{
-		
+		/**
+		 * MetaioSDK Method
+		 * 
+		 * called when SDK is loaded
+		 * used to load all used UI content
+		 */
 		@Override
 		public void onSDKReady()
 		{
@@ -459,7 +488,7 @@ public class ScanActivity extends ARViewActivity {
 					// Component information view
 					
 					componentView = (LinearLayout) findViewById(R.id.componentView);
-					componentInfo = (LinearLayout) findViewById(R.id.componentOverview);
+					//componentInfo = (LinearLayout) findViewById(R.id.componentOverview);
 					componentDetailInfo = (LinearLayout) findViewById(R.id.componentDetailView);
 					
 					componentName = (TextView) findViewById(R.id.component_name);
@@ -486,6 +515,11 @@ public class ScanActivity extends ARViewActivity {
 			
 		}
 		
+		/**
+		 * MetaioSDK Method
+		 * 
+		 * called if the tracking state changes
+		 */
 		@Override
 		public void onTrackingEvent(TrackingValuesVector values) {
 			
@@ -494,6 +528,9 @@ public class ScanActivity extends ARViewActivity {
 			if (values.size() > 0) {
 				// TODO Tracking Objekte noch austauschen
 				
+				/**
+				 * An Object is tracked
+				 */
 				if(values.get(0).getState() == ETRACKING_STATE.ETS_FOUND) {
 					Log.d("dhdebug", values.get(0).getCosName()+" is found");
 					
@@ -538,10 +575,15 @@ public class ScanActivity extends ARViewActivity {
 		}
 	}
 	
+	/**
+	 * Show one of the three cases for the tracked object
+	 * 
+	 * @param int ocase the ID of the case to load
+	 * @param int cosid the CoordinateSystemID of the tracked object
+	 */
 	private void showCase(int ocase, int cosid) {
 		
 		actCase = ocase;
-		tempCosId = cosid;
 		
 		switch(ocase) {
 			case 1: unloadForCase(1);
@@ -557,29 +599,34 @@ public class ScanActivity extends ARViewActivity {
 				break;
 			case 3: 
 				unloadForCase(3);
-				showMBTags(cosid);
-				showComponentInfo();
+				showBoardTags(cosid);
+				showBoardInfo();
 				break;
 			default:
 		}
 		
 	}
 	
+	/**
+	 * Unload the other cases when a new case is loaded
+	 * 
+	 * @param int ocase the case for that the other cases must be unloaded, eg. if ocase = 1 case 2 and 3 will be unloaded 
+	 */
 	private void unloadForCase(int ocase) {
 		
 		switch(ocase) {
 			// Unload Case 2 und 3
 			case 1: hideStorageLine();
-				unloadMBTags();
-				hideComponentInfo();
+				unloadBoardTags();
+				hideBoardInfo();
 				hideComponentTagView();
 				break;
 			// Unload Case 1 und 3
 			case 2: unloadMovie();
 				unloadInnerLife();
 				hideTimelineContainer();
-				unloadMBTags();
-				hideComponentInfo();
+				unloadBoardTags();
+				hideBoardInfo();
 				hideComponentTagView();
 				break;
 			// Unload Case 1 und 2
@@ -588,11 +635,14 @@ public class ScanActivity extends ARViewActivity {
 				hideTimelineContainer();
 				hideStorageLine();
 				break;
-			default: 
+			default: unloadAllCases();
 		}
 		
 	}
 	
+	/**
+	 * unloads the actual case that is shown when the tracking object is lost
+	 */
 	private void unloadWhenLost() {
 		
 		switch(actCase) {
@@ -606,15 +656,18 @@ public class ScanActivity extends ARViewActivity {
 				break;
 			case 2: //hideStorageLine();
 				break;
-			case 3: unloadMBTags();
-				hideComponentInfo();
+			case 3: unloadBoardTags();
+				hideBoardInfo();
 				hideComponentTagView();
 				break;
-			default:
+			default: unloadAllCases();
 		}
 		
 	}
 	
+	/**
+	 * unload all cases
+	 */
 	private void unloadAllCases() {
 		
 		// Unload Case 1
@@ -628,14 +681,24 @@ public class ScanActivity extends ARViewActivity {
 		hideStorageLine();
 		
 		// Unload Case 3
-		unloadMBTags();
-		hideComponentInfo();
+		unloadBoardTags();
+		hideBoardInfo();
 		hideComponentTagView();
 		
 	}
 	
-	// Case 1: Timeline for computers
+	/** 
+	 * Case 1
+	 * Timeline for computers
+	 * 
+	 * Shows a timeline for a computer with general infos to the computer and the ancestor and
+	 * the successor in the timeline. Furthermore it provides 3 Buttons to get a detailscreen and
+	 * go to the 2 subcases, showing a video or showing the interior
+	 */
 	
+	/**
+	 * Shows the Timeline for the computer when the object is trakced
+	 */
 	private void showComputerTimeline() {
 		
 		final Computer cbefore = data.getComputer(id-1);
@@ -675,6 +738,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Hides the Timeline when the computer is lost
+	 */
 	private void hideComputerTimeline() {
 		
 		runOnUiThread(new Runnable() 
@@ -688,6 +754,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Hides the container View in which all Timeline UI Elements are
+	 */
 	private void hideTimelineContainer() {
 		
 		runOnUiThread(new Runnable() 
@@ -701,6 +770,13 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Shows the View with a picture for a ancestor or successor in the timeline
+	 * to find this object
+	 * 
+	 * @param int id ID of the Computer shown in the View
+	 * @param String s Tag before the name, used Values are "Früher: " or "Später: "
+	 */
 	private void showOtherView(int id, String s) {
 		
 		final Computer c = data.getComputer(id);
@@ -732,6 +808,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Hides the View for ancestor or successor
+	 */
 	private void hideOtherView() {
 		runOnUiThread(new Runnable() 
 		{
@@ -743,8 +822,18 @@ public class ScanActivity extends ARViewActivity {
 		});
 	}
 	
-	// Case 1.1: show a movie on the screen of the computer
+	/** 
+	 * Case 1.1
+	 * Shows a movie on the screen of the computer
+	 * 
+	 * 
+	 */
 	
+	/**
+	 * loads a video, eg. to show an operating system on the screen
+	 * 
+	 * @param int cosid the CoordinateSystemID of the tracked object
+	 */
 	private void loadMovie(int cosid) {
 		// TODO Position des Videos noch besser anpassen
 		
@@ -775,6 +864,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * unloads the movie when it is not used anymore
+	 */
 	private void unloadMovie() {
 		
 		if(movie != null) {
@@ -784,8 +876,16 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	// Case 1.2: show the innerlife components of the computer
+	/**
+	 * Case 1.2
+	 * show the interior components of the computer
+	 */
 	
+	/**
+	 * Inits the interior Geometrys of the computer
+	 * 
+	 * @param int cosid the CoordinateSystemID of the tracked object
+	 */
 	private void initInnerlife(int cosid) {
 		
 		Computer c = data.getComputer(id);
@@ -818,6 +918,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * unloads the interior objects when unused
+	 */
 	private void unloadInnerLife() {
 		
 		if(inner1 != null) {
@@ -842,6 +945,14 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Edits a single Geometry for an interior item
+	 * 
+	 * @param IGeometry ig the geometry to edit
+	 * @param float scale a value to scale the object
+	 * @param Vector3d v a 3D vector to move the object
+	 * @param int cosid the CoordinateSystemID of the tracked object
+	 */
 	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
 		
 		if (ig != null)
@@ -859,6 +970,12 @@ public class ScanActivity extends ARViewActivity {
 		}
 	}
 	
+	/**
+	 * Shows a View with infos to the interior object
+	 * 
+	 * @param int parentid the ID of the parent computer
+	 * @param int id the ID of the interior object
+	 */
 	private void showInnerlifeComponents(int parentid, int id) {
 		
 		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, id);
@@ -883,6 +1000,9 @@ public class ScanActivity extends ARViewActivity {
 		});
 	}
 	
+	/**
+	 * Hides the iterior objects
+	 */
 	private void hideInnerlifeComponents() {
 		
 		inner1.setVisible(false);
@@ -901,8 +1021,18 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	// Case 2: Storages in chronological order
+	/** 
+	 * Case 2
+	 * Storages in chronological order
+	 * 
+	 * Shows a View for a set of storage objects in a chronological order. Once can go through the whole
+	 * set by getting to the ancesctors or successors of the tracked object of the set.
+	 * Stays also visible if the tracked object is lost.
+	 */
 	
+	/**
+	 * Shows the View for the storage set
+	 */
 	private void showStorageLine() {
 		
 		try {
@@ -980,6 +1110,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Hides the View if the user close it
+	 */
 	private void hideStorageLine() {
 		
 		runOnUiThread(new Runnable() 
@@ -993,9 +1126,20 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	// Case 3: Tags for components of a board
+	/**
+	 * Case 3
+	 * Infos and component-tags for a board
+	 * 
+	 * Shows a View with general Infos to the board and tags which locates interesting compontents
+	 * of a board. By clicking the tags it provides further informations to the tags.
+	 */
 	
-	private void showMBTags(int cosid) {
+	/**
+	 * Init and show the Geometry for the tags
+	 * 
+	 * @param cosid
+	 */
+	private void showBoardTags(int cosid) {
 		
 		ArrayList<Tag> tags = data.getTags(id);
 		float [] pos = null;
@@ -1009,33 +1153,36 @@ public class ScanActivity extends ARViewActivity {
 		{
 			pos = tags.get(0).getPos();
 			g_tag1 = metaioSDK.createGeometryFromImage(tag1, true, true);
-			setMBTag(g_tag1, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(100,0,2)
+			setBoardTag(g_tag1, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(100,0,2)
 		}
 		
 		if (tag2 != null && g_tag2 == null)
 		{
 			pos = tags.get(1).getPos();
 			g_tag2 = metaioSDK.createGeometryFromImage(tag2, true, true);
-			setMBTag(g_tag2, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(150,0,10)
+			setBoardTag(g_tag2, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(150,0,10)
 		}
 		
 		if (tag3 != null && g_tag3 == null)
 		{
 			pos = tags.get(2).getPos();
 			g_tag3 = metaioSDK.createGeometryFromImage(tag3, true, true);
-			setMBTag(g_tag3, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(0,0,0)
+			setBoardTag(g_tag3, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(0,0,0)
 		}
 		
 		if (tag4 != null  && g_tag4 == null)
 		{
 			pos = tags.get(3).getPos();
 			g_tag4 = metaioSDK.createGeometryFromImage(tag4, true, true);
-			setMBTag(g_tag4, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(-120,0,-20)
+			setBoardTag(g_tag4, new Vector3d(pos[0],pos[1],pos[2]), cosid); // new Vector3d(-120,0,-20)
 		}
 		
 	}
 	
-	private void unloadMBTags() {
+	/**
+	 * Unload the component-tags for the board
+	 */
+	private void unloadBoardTags() {
 		
 		if(g_tag1 != null) {
 			metaioSDK.unloadGeometry(g_tag1);
@@ -1059,7 +1206,14 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void setMBTag(IGeometry ig, Vector3d v, int cosid) {
+	/**
+	 * Edits a Geometry for a board tag
+	 * 
+	 * @param IGeometry ig the geometry to edit
+	 * @param Vector3d v a 3D vector to move the geometry
+	 * @param int cosid the CoordinateSystemID of the tracked object
+	 */
+	private void setBoardTag(IGeometry ig, Vector3d v, int cosid) {
 		
 		if (ig != null)
 		{
@@ -1075,7 +1229,10 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void showComponentInfo() {
+	/**
+	 * Shows a View with the general board info
+	 */
+	private void showBoardInfo() {
 		
 		final Component c = data.getComponent(id);
 		
@@ -1094,7 +1251,10 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
-	private void hideComponentInfo() {
+	/**
+	 * Hides the View with the board infos
+	 */
+	private void hideBoardInfo() {
 		
 		runOnUiThread(new Runnable() 
 		{
@@ -1107,6 +1267,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Shows a View with infos to a component-tag
+	 */
 	private void showComponentTagView() {
 		
 		final Component c = data.getComponent(id);
@@ -1127,6 +1290,9 @@ public class ScanActivity extends ARViewActivity {
 		
 	}
 	
+	/**
+	 * Hides the View with the infos to a component-tag
+	 */
 	private void hideComponentTagView() {
 		
 		runOnUiThread(new Runnable() 

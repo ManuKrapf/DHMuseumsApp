@@ -3,7 +3,6 @@ package dh.computermuseum;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +48,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	switch (view.getId()) {
 			case  R.id.startScanningButton1:
 				Intent intentScan = new Intent(MainActivity.this, ScanActivity.class);
-				Drawable d = buttonScan.getBackground();
 				buttonScan.setBackgroundColor(Color.CYAN);
 				buttonScan.setTextColor(Color.BLACK);
 			    startActivity(intentScan);

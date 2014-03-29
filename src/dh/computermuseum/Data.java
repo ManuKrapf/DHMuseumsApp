@@ -14,9 +14,8 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import dh.computermuseum.Component.Tag;
 import android.content.Context;
-import android.util.Log;
+import dh.computermuseum.Component.Tag;
 
 public class Data {
 	

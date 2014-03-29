@@ -9,10 +9,9 @@ import dh.computermuseum.Component.Tag;
 
 public class AntiquesContentHandler implements ContentHandler {
 	
-	//private ArrayList<Antique> antiques = new ArrayList<Antique>();
-	Data data;
+	private Data data;
+	
 	private String currentValue;
-	private Antique antique;
 	private Computer computer;
 	private Component component;
 	private Storage storage;
@@ -26,11 +25,6 @@ public class AntiquesContentHandler implements ContentHandler {
 		data = d;
 		type = "";
 	}
-	
-	/*
-	public List<Antique> getAntiques() {
-        return antiques;
-    }*/
 
 	@Override
 	public void characters(char[] ch, int start, int length)
@@ -81,7 +75,7 @@ public class AntiquesContentHandler implements ContentHandler {
 					break;
 				case 4: inner = new InnerlifeComponent();
 					break;
-				default: antique = new Antique("unknown");
+				default:
 			}
 		}
 		

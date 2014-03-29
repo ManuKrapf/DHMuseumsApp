@@ -3,7 +3,6 @@ package dh.computermuseum;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Movie;
-import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -42,10 +41,10 @@ public class GIFView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(0x00000000);
-
+        /*
         Paint p = new Paint();
         p.setAntiAlias(true);
-
+		*/
         long now = android.os.SystemClock.uptimeMillis();
         if (mMovieStart == 0) { // first time
             mMovieStart = now;
