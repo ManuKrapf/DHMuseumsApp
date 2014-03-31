@@ -319,8 +319,10 @@ public class ScanActivity extends ARViewActivity {
 						public void onClick(View v) {
 							hideComputerTimeline();
 							hideTimelineContainer();
-							movie.setVisible(false);
-							showInnerlifeComponents(id, 18);
+							if(movie != null) {
+								movie.setVisible(false);
+							}
+							showInnerlifeComponents(id, actinner);
 						}
 					});
 					
@@ -534,27 +536,59 @@ public class ScanActivity extends ARViewActivity {
 				if(values.get(0).getState() == ETRACKING_STATE.ETS_FOUND) {
 					Log.d("dhdebug", values.get(0).getCosName()+" is found");
 					
-					if(values.get(0).getCosName().equals("overhead_1")) {
+					if(values.get(0).getCosName().equals("commodorecbm4032_1")) {
+						Log.d("dhdebug", "CosID cbm4032: "+values.get(0).getCoordinateSystemID());
+						id = 1;
+						showCase(1, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("toshibat3200sx_2")) {
+						Log.d("dhdebug", "CosID toshiba: "+values.get(0).getCoordinateSystemID());
+						id = 2;
+						showCase(1, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("ibml40_3")) {
+						Log.d("dhdebug", "CosID ibm: "+values.get(0).getCoordinateSystemID());
+						id = 3;
+						showCase(1, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("Diskette_4")) {
+						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
+						id = 11;
+						showCase(2, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("platine1-80386_5")) {
+						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
+						id = 5;
+						showCase(3, values.get(0).getCoordinateSystemID());
+					}
+					else if(values.get(0).getCosName().equals("platine2_80586_6")) {
+						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
+						id = 5;
+						showCase(3, values.get(0).getCoordinateSystemID());
+					}
+					
+					// Test Objekte
+					else if(values.get(0).getCosName().equals("overhead_7")) {
 						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
 						id = 1;
 						showCase(1, values.get(0).getCoordinateSystemID());
 					}
-					else if(values.get(0).getCosName().equals("book_2")) {
+					else if(values.get(0).getCosName().equals("book_8")) {
 						Log.d("dhdebug", "CosID book: "+values.get(0).getCoordinateSystemID());
 						id = 1;
 						showCase(1, values.get(0).getCoordinateSystemID());
 					}
-					else if(values.get(0).getCosName().equals("yellow_book_3")) {
+					else if(values.get(0).getCosName().equals("yellow_book_9")) {
 						Log.d("dhdebug", "CosID yellowbook: "+values.get(0).getCoordinateSystemID());
 						id = 1;
 						showCase(1, values.get(0).getCoordinateSystemID());
 					}
-					else if(values.get(0).getCosName().equals("mensacard_4")) {
+					else if(values.get(0).getCosName().equals("mensacard_10")) {
 						Log.d("dhdebug", "CosID mensacard: "+values.get(0).getCoordinateSystemID());
 						id = 11;
 						showCase(2, values.get(0).getCoordinateSystemID());
 					}
-					else if(values.get(0).getCosName().equals("haselnussschnitte_5")) {
+					else if(values.get(0).getCosName().equals("haselnussschnitte_11")) {
 						Log.d("dhdebug", "CosID hanuta: "+values.get(0).getCoordinateSystemID());
 						id = 5;
 						showCase(3, values.get(0).getCoordinateSystemID());
@@ -591,8 +625,8 @@ public class ScanActivity extends ARViewActivity {
 				findcomputer = false;
 				showComputerTimeline();
 				innerIds = data.getInnerlifeComponentsIDs(id);
-				loadMovie(cosid);
 				initInnerlife(cosid);
+				//loadMovie(cosid);
 				break;
 			case 2: unloadForCase(2);
 				showStorageLine();
@@ -635,7 +669,7 @@ public class ScanActivity extends ARViewActivity {
 				hideTimelineContainer();
 				hideStorageLine();
 				break;
-			default: unloadAllCases();
+			default: //unloadAllCases();
 		}
 		
 	}
@@ -660,7 +694,7 @@ public class ScanActivity extends ARViewActivity {
 				hideBoardInfo();
 				hideComponentTagView();
 				break;
-			default: unloadAllCases();
+			default: //unloadAllCases();
 		}
 		
 	}
@@ -888,9 +922,13 @@ public class ScanActivity extends ARViewActivity {
 	 */
 	private void initInnerlife(int cosid) {
 		
+		Log.d("dhdebug", "initInnerlife called!");
+		
 		Computer c = data.getComputer(id);
 		
-		final String innerfile1 = AssetsManager.getAssetPath("Assets/"+c.getComponent(1).getImg());
+		Log.d("dhdebug", "IMG: "+c.getComponent(1).getImg());
+		
+		final String innerfile1 = AssetsManager.getAssetPath("Assets/intel386.jpg");//+c.getComponent(1).getImg());
 		final String innerfile2 = AssetsManager.getAssetPath("Assets/"+c.getComponent(2).getImg());
 		final String innerfile3 = AssetsManager.getAssetPath("Assets/"+c.getComponent(3).getImg());
 		final String innerfile4 = AssetsManager.getAssetPath("Assets/"+c.getComponent(4).getImg());
@@ -1004,7 +1042,7 @@ public class ScanActivity extends ARViewActivity {
 	 * Hides the iterior objects
 	 */
 	private void hideInnerlifeComponents() {
-		
+		//TODO abfangen wenn element is lost ...
 		inner1.setVisible(false);
 		inner2.setVisible(false);
 		inner3.setVisible(false);

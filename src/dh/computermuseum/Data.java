@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import android.content.Context;
+import android.util.Log;
 import dh.computermuseum.Component.Tag;
 
 public class Data {
@@ -35,6 +36,7 @@ public class Data {
 	}
 	
 	private void initXMLParser() {
+		Log.d("dhdebug", "initXML is called!");
 		try {
 			SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			SAXParser newSAXParser = saxParserFactory.newSAXParser();
@@ -47,17 +49,22 @@ public class Data {
 			xmlReader.setContentHandler(ach);
 			xmlReader.parse(inputSource);
 			
-			//antiques = ach.getAntiques();
-			//Log.d("XML", ach.getAntiques().toString());
+			Log.d("dhdebug", "Computer: "+computers.size());
+			Log.d("dhdebug", "Components: "+components.size());
+			Log.d("dhdebug", "Storages: "+storages.size());
 
 		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
+			Log.e("dhdebug", "Error parsing xml: "+fnfe.getMessage());
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
+			Log.e("dhdebug", "Error parsing xml: "+ioe.getMessage());
 		} catch (SAXException saxe) {
 			saxe.printStackTrace();
+			Log.e("dhdebug", "Error parsing xml: "+saxe.getMessage());
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
+			Log.e("dhdebug", "Error parsing xml: "+pce.getMessage());
 		}
 	}
 	
@@ -76,6 +83,7 @@ public class Data {
 	public void addInnerlifeComponent(InnerlifeComponent ic) {
 		Computer c = getComputer(ic.getParentId());
 		c.addComponent(ic);
+		Log.d("dhdebug", "IC added: ID: "+ic.getId()+", PID: "+ic.getParentId()+", CID: "+c.getId());
 	}
 	
 	public Computer getComputer(String name) {

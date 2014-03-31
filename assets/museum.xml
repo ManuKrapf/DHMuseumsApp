@@ -36,34 +36,82 @@
 		</item>
 		<item>
 			<id>3</id>
-			<name>Mac I</name>
-			<date>1983</date>
-			<comp><value>Apple Inc.</value></comp>
-			<os>Lisa OS</os>
-			<memory></memory>
-			<ram>128 KByte</ram>
-			<processor>Motorola 68000</processor>
-			<special>Mikroprozessor, Schnittstellen (Drucker, Modem, Maus, Tastatur, FDD, Audio)</special>
-			<img>Mac_I</img>
-			<note><value>Nach dem Erfolg des Apple I und II seit 1976 wurde 1984 der erste Macintosh Mac I als Billigrechner der öffentlichkeit vorgestellt. Sein Herzstück ist ein MC68000-Prozessor von der Firma Motorola. Die Datenverarbeitung läuft dank des Motorola MC68000 Hauptprozessors bereits mit 32 bit, während externe Zugriffe (zum Beispiel auf Speicher und Medien) mit 16 bit durchgeführt werden. Der Mac I arbeitet mit einer Taktzahl von umgerechnet 8 MHz und bietet als Speicherkapazität 128 KByte RAM, sowie 64 KByte ROM. Zudem verfügt er über 2 serielle Schnittstellen und 2 Anschlüsse zur Bild- und Tonausgabe. Aufgrund fehlender Harddisk und dem geringen Arbeitsspeicher konnte der Mac I zu einem äußerst niedrigen Preis von 2495 US-Dollar angeboten werden. Ein halbes Jahr nach seiner Einführung wurde dem Gerät mehr RAM spendiert, worauf man den "UR-Mac" 128k und den aufgerüsteten Macintosh 512k nannte. Auf der hier ausgestellten Platine ist eine Speichererweiterung aufgesteckt, die den Speicher von den damals üblichen 512k Standard auf 640k erweiterte. Der Prozessor wurde bis 1986 produziert.</value></note>
+			<name>PS/2 Model L40 SX</name>
+			<date>1992</date>
+			<comp><value>IBM</value></comp>
+			<os>Windows 3.1</os>
+			<memory>80 MB</memory>
+			<ram>2 MB</ram>
+			<processor>80386SX, 20.0 MHZ</processor>
+			<special>Notebook, tragbar</special>
+			<img>ibm_ps2</img>
+			<note><value>Die Personal System/2-Reihe ist die dritte Generation von IBM Computern und wurde 1987 eingeführt. Sie sollte das bisherige System des IBM-PCs ablösen. Der Intel-80386-Prozessor, der 32-bittige Systembus und neue grafische Möglichkeiten sind beispielsweise einige der Merkmale der neuen PS/2-Reihe. Nachteilig bei dieser Reihe ist, dass sie nicht kompatibel zu alten Erweiterungskarten oder Disketten ist. Zudem war sie sehr teuer und konnte sich so auf dem Markt nur mit mäßigem Erfolg durchsetzen. Der zu dieser Reihe gehörende L40 SX ist das erste von IBM produzierte Notebook und war für einen Preis von 5000 DM zu erwerben. Das Gerät ist mit seinem üppigen Gehäuse zwar sehr robust, die Grundausstattung mit 80 MB Harddiskspeicher, 3,5“-HD-Disklaufwerk und 2 MB RAM ist für einen tragbaren Computer Anfang der 90er Jahre allerdings durchaus vorzeigbar. Die direkten Nachfolger dieses Modells sind schon wesentlich kompakter und mündeten in die Thinkpad-Baureihe, die bis heute noch produziert wird. Mit dem Textverarbeitungsprogramm Word 6.0 ausgestattet hat man bei dem Modell L40 schon eine relativ große Auswahl an verschiedenen Schriften und Farben. Allerdings sind auch hier die Farbunterschiede, wie schon beim Compaq Portabel III, auf dem Bildschirm selber nicht erkennbar, da alles in Graustufen dargestellt wird.</value></note>
 		</item>
-		<item>
-			<id>4</id>
-			<name>Commodore 128D, DA400866</name>
-			<date>1985</date>
-			<comp><value>Commodore</value></comp>
-			<os>Commodore Basic 7.0</os>
-			<memory>80 KByte</memory>
-			<ram>128 KByte</ram>
-			<processor>MOS Technologies 8502, 2.0 MHz/Zilog Z80, 4.0 MHz</processor>
-			<special>Kein Diskettenlaufwerk, drei Betriebsarten (C128, C64, CP/M)</special>
-			<img>commodore_128</img>
-			<note><value>Der Commodore 128 war der Nachfolger des C64, dem meistverkauften Desktop Computer der 1980er Jahre, der zu seiner Zeit vorwiegend als Spiele- und Softwareprogrammierkonsole genutzt wurde. Allerdings konnte der Commodore 128 nicht an den Erfolg seines Vorgängers anknüpfen, da die marginalen Neuerungen im Vergleich zum C64 den hohen Preis nach Meinung der Kundschaft nicht rechtfertigten. Gründe sah man auch in der mangelnden Innovation und den bereits aufkeimenden Gerüchten über die "Wundermaschine" Amiga. Besondere Bedeutung erfuhr der C128 aufgrund seiner Abwärtskompatibilität zu seinem Vorgängermodell, des C64-Computers, und dessen Software. Die Tastatur des C128 war – im Gegensatz zu seinem späteren Nachfolger C128D – fest in das Gehäuse integriert.</value></note>
-		</item>
+	
 	</computer>
 	<components>
 	    <item>
 	        <id>5</id>
+			<name>Sun SPARC Classic Board</name>
+			<date>1993</date>
+			<comp>Sun Microsystems</comp>
+			<ftype>Mikroprozessor</ftype>
+			<frequency>50 MHz</frequency>
+			<memory>16.000 KByte</memory>
+			<cpu>MicroSPARC</cpu>
+			<register>32 Bit</register>
+			<interfaces>Ethernet, 2x SCSI, 2x RS232, parallel, Audio, 2x SBus</interfaces>
+			<img>commodore_128</img>
+			<note>Ein Motherboard ist bla bla bla...</note>
+			<tags>
+			    <tag>
+			        <tagid>1</tagid>
+			        <tagname>Southbridge</tagname>
+			        <tagpos>
+			            <tagx>100</tagx>
+			            <tagy>0</tagy>
+			            <tagz>2</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_southbridge.png</tagimg>
+			        <tagdesc>Eine Southbridges ist bla bla bla...</tagdesc>
+			    </tag>
+			    <tag>
+			        <tagid>2</tagid>
+			        <tagname>Northbridge</tagname>
+			        <tagpos>
+			            <tagx>150</tagx>
+			            <tagy>0</tagy>
+			            <tagz>10</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_northbridge.png</tagimg>
+			        <tagdesc>Eine Nothbridgebridges ist bla bla bla...</tagdesc>
+			    </tag>
+			    <tag>
+			        <tagid>3</tagid>
+			        <tagname>RAM</tagname>
+			        <tagpos>
+			            <tagx>0</tagx>
+			            <tagy>0</tagy>
+			            <tagz>0</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_ram.png</tagimg>
+			        <tagdesc>Eine RAM ist bla bla bla...</tagdesc>
+			    </tag>
+			    <tag>
+			        <tagid>4</tagid>
+			        <tagname>CPU</tagname>
+			        <tagpos>
+			            <tagx>-120</tagx>
+			            <tagy>0</tagy>
+			            <tagz>-20</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_cpu.png</tagimg>
+			        <tagdesc>Eine CPU ist bla bla bla...</tagdesc>
+			    </tag>
+			</tags>
+	    </item>
+	    <item>
+	        <id>6</id>
 			<name>Sun SPARC Classic Board</name>
 			<date>1993</date>
 			<comp>Sun Microsystems</comp>
@@ -271,39 +319,111 @@
 	<innerlifecomponents>
 	    <item>
 	        <id>18</id>
-	        <parentid>1</parentid>
-	        <name>RAM</name>
-	        <date>1978</date>
-	        <developer>Kingston</developer>
-	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img>sd.jpg</img>
+	        <parentid>2</parentid>
+	        <name>16 MHz Intel 80386SX</name>
+	        <date>1988</date>
+	        <developer>Intel</developer>
+	        <desc>Der 80386 (frühe Bezeichnung iAPX 386) ist eine x86-CPU, die von Intel unter dem Markennamen i386 als Nachfolger des 80286 entwickelt und von 1985 bis September 2007 produziert wurde. Der 386er – wie der 80386 häufig auch genannt wird – wurde später von AMD kopiert und als Am386 verkauft, während Chips und Technologies eine kompatible eigene Version entwickelte. IBM lizenzierte den i386SX und entwickelte daraus den verbesserten IBM 386SLC. Mit dem 80386 vollzog Intel den Wechsel zur 32-Bit-Architektur, deren Funktionen auch in allen Nachfolgemodellen bis zum Core i7 immer noch vorhanden sind und die gleichzeitig anderen Herstellern als Vorlage für eigene Prozessoren diente. Die Register dieser Prozessorfamilie sowie der Adressraum der Architektur sind 32 Bit breit. Auch heute noch wird der 80386 für Steuerungsaufgaben (z. B. Telefonvermittlungsanlagen) und in der Raumfahrt eingesetzt.</desc>
+	        <img>intel386.jpg</img>
 	    </item>
 	    <item>
 	        <id>19</id>
-	        <parentid>1</parentid>
-	        <name>Motherboard</name>
-	        <date>1979</date>
-	        <developer>IBM</developer>
-	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img>cdrom.jpg</img>
+	        <parentid>2</parentid>
+	        <name>Diskettenlaufwerk</name>
+	        <date>1985</date>
+	        <developer>Toshiba</developer>
+	        <desc>Das integrierte Diskettenlaufwerk des T3200SX hat eine Größe Einbaugröße von 3,5" und ist geeignet für Disketten der Größen 720 KB bis 1,44 MB. Dazu konnte noch ein externes 5,25" Diskettenlaufwerk angeschlossen werden mit dem ältere 360 KB Disketten ausgelesen werden konnten.</desc>
+	        <img>laufwerk.jpg</img>
 	    </item>
 	    <item>
 	        <id>20</id>
-	        <parentid>1</parentid>
-	        <name>Laufwerk</name>
-	        <date>1980</date>
-	        <developer>Western Digital</developer>
-	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img>dvd.jpg</img>
+	        <parentid>2</parentid>
+	        <name>Display</name>
+	        <date>1989</date>
+	        <developer>Toshiba</developer>
+	        <desc>Der T3200SX hat ein eingebautes Gas-Plasma-Display mit hohem Kontrast und unterstützt eine Auflösung von 640x480 Pixeln. Zusätzlich konnte es 16 Grau-Abstufungen darstellen. Außerdem konnte zu dem eingebauten Display noch ein externer Monitor betrieben werden.</desc>
+	        <img>monitor.jpg</img>
 	    </item>
 	    <item>
 	        <id>21</id>
-	        <parentid>1</parentid>
-	        <name>CPU</name>
-	        <date>1855</date>
+	        <parentid>2</parentid>
+	        <name>RAM</name>
+	        <date>1989</date>
+	        <developer>Toshiba</developer>
+	        <desc>Der T3200SX hat standardmäßig einen Arbeitsspeicher von 1 MB und unterstützte LIM-EMS 4.0 und XMS 2.0. Optional konnte der Arbeitsspeicher mit Erweiterungsmodulen der Größen 2 oder 4 MB erweitert werden. Bis zu 3 Module konnten auf dem Motherboard angebracht werden, so dass der Arbeitsspeicher auf bis zu 13MB erweitert werden konnte.</desc>
+	        <img>ram.jpg</img>
+	    </item>
+	    <item>
+	        <id>22</id>
+	        <parentid>3</parentid>
+	        <name>20 MHz Intel 80386SX</name>
+	        <date>1988</date>
 	        <developer>Intel</developer>
-	        <desc>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</desc>
-	        <img>usb.jpg</img>
+	        <desc>Der 80386 (frühe Bezeichnung iAPX 386) ist eine x86-CPU, die von Intel unter dem Markennamen i386 als Nachfolger des 80286 entwickelt und von 1985 bis September 2007 produziert wurde. Der 386er – wie der 80386 häufig auch genannt wird – wurde später von AMD kopiert und als Am386 verkauft, während Chips und Technologies eine kompatible eigene Version entwickelte. IBM lizenzierte den i386SX und entwickelte daraus den verbesserten IBM 386SLC. Mit dem 80386 vollzog Intel den Wechsel zur 32-Bit-Architektur, deren Funktionen auch in allen Nachfolgemodellen bis zum Core i7 immer noch vorhanden sind und die gleichzeitig anderen Herstellern als Vorlage für eigene Prozessoren diente. Die Register dieser Prozessorfamilie sowie der Adressraum der Architektur sind 32 Bit breit. Auch heute noch wird der 80386 für Steuerungsaufgaben (z. B. Telefonvermittlungsanlagen) und in der Raumfahrt eingesetzt.</desc>
+	        <img>intel386.jpg</img>
+	    </item>
+	    <item>
+	        <id>23</id>
+	        <parentid>3</parentid>
+	        <name>Diskettenlaufwerk</name>
+	        <date>1990</date>
+	        <developer>IBM</developer>
+	        <desc>Der PS/2 hat ein 3,5" Diskettenlaufwerk.</desc>
+	        <img>laufwerk.jpg</img>
+	    </item>
+	    <item>
+	        <id>24</id>
+	        <parentid>3</parentid>
+	        <name>Display</name>
+	        <date>1992</date>
+	        <developer>IBM</developer>
+	        <desc>Der PS/2 hat ein eingebautes STN-Display mit 32 Graustufen und unterstützt eine Auflösung von 640x480 Pixeln.</desc>
+	        <img>monitor.jpg</img>
+	    </item>
+	    <item>
+	        <id>25</id>
+	        <parentid>3</parentid>
+	        <name>RAM</name>
+	        <date>1992</date>
+	        <developer>IBM</developer>
+	        <desc>Der PS/2 hat standardmäßig einen Arbeitsspeicher von 2 MB. Optional konnte der Arbeitsspeicher mit SIMM 80ns mit Parity auf 18 MB (2 Steckplätze à max. 8 MB). Dabei waren 1, 4 und 8 MB Module erhältlich.</desc>
+	        <img>ram.jpg</img>
+	    </item>
+	    <item>
+	        <id>26</id>
+	        <parentid>1</parentid>
+	        <name>1 MHz MOS 6502</name>
+	        <date>1975</date>
+	        <developer>MOS Technology, Inc.</developer>
+	        <desc>Der MOS Technology 6502 ist ein 8-Bit-Mikroprozessor von MOS Technology, Inc., der 1975 auf den Markt kam. Aufgrund seiner Unkompliziertheit und vor allem des im Vergleich zu den etablierten Intel- und Motorola-Prozessoren sehr niedrigen Preises bei großer Leistungsfähigkeit wurde er in vielen Heimcomputern (z. B. dem Commodore VC-20 und seinem Vorgänger PET 2001, dem Atari 800 XL, Apple I, Apple II und BBC Micro), zahlreichen Schachcomputern (z. B. dem Mephisto Polgar mit 5 oder 10 MHz) und Peripherie-Geräten verbaut.</desc>
+	        <img>mos6510.jpg</img>
+	    </item>
+	    <item>
+	        <id>25</id>
+	        <parentid>1</parentid>
+	        <name>kein internes Laufwerk</name>
+	        <date>----</date>
+	        <developer>-</developer>
+	        <desc>Der CBM4032 hatte kein internes Laufwerk verbaut. Es konnte aber ein externes Laufwerk angeschlossen werden.</desc>
+	        <img>laufwerk.jpg</img>
+	    </item>
+	    <item>
+	        <id>26</id>
+	        <parentid>1</parentid>
+	        <name>Monitor</name>
+	        <date>1979</date>
+	        <developer>Commodore</developer>
+	        <desc>Der CBM4032 hatte einen eingebauten Monitor mit 9" welcher in der Farbe grün war. Das Modell CBM4032-N hatte ein hellblaues Display.</desc>
+	        <img>monitor.jpg</img>
+	    </item>
+	    <item>
+	        <id>27</id>
+	        <parentid>1</parentid>
+	        <name>RAM</name>
+	        <date>1979</date>
+	        <developer>Commodore</developer>
+	        <desc>Der CBM4032 hat einen Arbeitsspeicher von 32 KB.</desc>
+	        <img>ram.jpg</img>
 	    </item>
 	</innerlifecomponents>
 </museum>
