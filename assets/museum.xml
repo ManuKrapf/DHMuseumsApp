@@ -32,6 +32,12 @@
 			<processor>16 MHz Intel 386 SX</processor>
 			<special>Eingebauter S/W-Monitor und Tastatur, tragbar</special>
 			<img>toshiba_t3200sx</img>
+			<video>
+			    <path>videoc128.3g2</path>
+			    <xpos>0</xpos>
+			    <ypos>0</ypos>
+			    <zpos>0</zpos>
+			</video>
 			<note><value>Der T3200SX von Toshiba war der Versuch, einen tragbaren Computer ohne Leistungseinbußen gegenüber einem Desktop-PC zu bauen. Neben einer hohen Mobilität sollte der T3200SX die Möglichkeiten der 386er-Technologie voll ausschöpfen und selbst anspruchsvollen Programmen genügend Leistung bieten. Der mobile Bürocomputer von Toshiba stellte hohe Ansprüche an seine Ingenieure: Er sollte dieselbe Leistung wie ein sperriger Desktop-PC besitzen und doch ein kompaktes, leicht transportierbares Gerät darstellen, mit dem das Arbeiten unabhängig vom gewählten Standort möglich war. Auch sollte das Gerät über entsprechende Anschlüsse verfügen, um das System um Einrichtungen wie ein Fax oder Modem erweitern zu können. Schon in den 1980er Jahren war die Zukunftssicherheit ein entscheidender Aspekt. So musste der Computer nicht nur für die momentan anspruchsvolleren Programme genügend "Power" besitzen, sondern auch für die Zukunft einsetzbar bleiben. Toshiba schaffte es, all diese Anforderungen im T3200SX zu vereinen und einen wichtigen Schritt in Richtung des heutigen Notebooks zu unternehmen. Ein Vorteil gegenüber anderen Geräten war auch die freie Wahl des Betriebssystems. Alle gängigen Systeme wie MS-DOS, OS/2 oder UNIX konnten zum Einsatz kommen. Dieser Rechner wurde anlässlich der Eröffnung des Toshiba Werkes in Regensburg 1990 der Stadt Regensburg geschenkt. Ende 2007 wurde die Produktion im Werk eingestellt.</value></note>
 		</item>
 		<item>
@@ -45,6 +51,12 @@
 			<processor>80386SX, 20.0 MHZ</processor>
 			<special>Notebook, tragbar</special>
 			<img>ibm_ps2</img>
+			<video>
+			    <path>videoc128.3g2</path>
+			    <xpos>0</xpos>
+			    <ypos>0</ypos>
+			    <zpos>0</zpos>
+			</video>
 			<note><value>Die Personal System/2-Reihe ist die dritte Generation von IBM Computern und wurde 1987 eingeführt. Sie sollte das bisherige System des IBM-PCs ablösen. Der Intel-80386-Prozessor, der 32-bittige Systembus und neue grafische Möglichkeiten sind beispielsweise einige der Merkmale der neuen PS/2-Reihe. Nachteilig bei dieser Reihe ist, dass sie nicht kompatibel zu alten Erweiterungskarten oder Disketten ist. Zudem war sie sehr teuer und konnte sich so auf dem Markt nur mit mäßigem Erfolg durchsetzen. Der zu dieser Reihe gehörende L40 SX ist das erste von IBM produzierte Notebook und war für einen Preis von 5000 DM zu erwerben. Das Gerät ist mit seinem üppigen Gehäuse zwar sehr robust, die Grundausstattung mit 80 MB Harddiskspeicher, 3,5“-HD-Disklaufwerk und 2 MB RAM ist für einen tragbaren Computer Anfang der 90er Jahre allerdings durchaus vorzeigbar. Die direkten Nachfolger dieses Modells sind schon wesentlich kompakter und mündeten in die Thinkpad-Baureihe, die bis heute noch produziert wird. Mit dem Textverarbeitungsprogramm Word 6.0 ausgestattet hat man bei dem Modell L40 schon eine relativ große Auswahl an verschiedenen Schriften und Farben. Allerdings sind auch hier die Farbunterschiede, wie schon beim Compaq Portabel III, auf dem Bildschirm selber nicht erkennbar, da alles in Graustufen dargestellt wird.</value></note>
 		</item>
 	
@@ -66,47 +78,47 @@
 			<tags>
 			    <tag>
 			        <tagid>1</tagid>
-			        <tagname>Southbridge</tagname>
-			        <tagpos>
-			            <tagx>100</tagx>
-			            <tagy>0</tagy>
-			            <tagz>2</tagz>
-			        </tagpos>
-			        <tagimg>mbtag_southbridge.png</tagimg>
-			        <tagdesc>Eine Southbridges ist bla bla bla...</tagdesc>
-			    </tag>
-			    <tag>
-			        <tagid>2</tagid>
-			        <tagname>Northbridge</tagname>
-			        <tagpos>
-			            <tagx>150</tagx>
-			            <tagy>0</tagy>
-			            <tagz>10</tagz>
-			        </tagpos>
-			        <tagimg>mbtag_northbridge.png</tagimg>
-			        <tagdesc>Eine Nothbridgebridges ist bla bla bla...</tagdesc>
-			    </tag>
-			    <tag>
-			        <tagid>3</tagid>
-			        <tagname>RAM</tagname>
-			        <tagpos>
-			            <tagx>0</tagx>
-			            <tagy>0</tagy>
-			            <tagz>0</tagz>
-			        </tagpos>
-			        <tagimg>mbtag_ram.png</tagimg>
-			        <tagdesc>Eine RAM ist bla bla bla...</tagdesc>
-			    </tag>
-			    <tag>
-			        <tagid>4</tagid>
 			        <tagname>CPU</tagname>
 			        <tagpos>
-			            <tagx>-120</tagx>
-			            <tagy>0</tagy>
-			            <tagz>-20</tagz>
+			            <tagx>40</tagx>
+			            <tagy>-30</tagy>
+			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
 			        <tagdesc>Eine CPU ist bla bla bla...</tagdesc>
+			    </tag>
+			    <tag>
+			        <tagid>2</tagid>
+			        <tagname>RAM</tagname>
+			        <tagpos>
+			            <tagx>50</tagx>
+			            <tagy>10</tagy>
+			            <tagz>0</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_ram.png</tagimg>
+			        <tagdesc>Ein RAM ist bla bla bla...</tagdesc>
+			    </tag>
+			    <tag>
+			        <tagid>3</tagid>
+			        <tagname>BIOS</tagname>
+			        <tagpos>
+			            <tagx>-60</tagx>
+			            <tagy>20</tagy>
+			            <tagz>0</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_southbridge.png</tagimg>
+			        <tagdesc>Ein Bios ist bla bla bla...</tagdesc>
+			    </tag>
+			    <tag>
+			        <tagid>4</tagid>
+			        <tagname>Steckplätze</tagname>
+			        <tagpos>
+			            <tagx>-50</tagx>
+			            <tagy>-10</tagy>
+			            <tagz>0</tagz>
+			        </tagpos>
+			        <tagimg>mbtag_northbridge.png</tagimg>
+			        <tagdesc>Ein Steckplatz ist bla bla bla...</tagdesc>
 			    </tag>
 			</tags>
 	    </item>

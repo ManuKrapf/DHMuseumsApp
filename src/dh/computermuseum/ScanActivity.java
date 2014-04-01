@@ -119,6 +119,13 @@ public class ScanActivity extends ARViewActivity {
 	private IGeometry inner3;
 	private IGeometry inner4;
 	
+	float xrot = 1.8f;
+	float yrot = -0.5f;
+	float zrot = 1.1f;
+	float xtrans = -100f;
+	float ytrans = 0f;
+	float ztrans = 0f;
+	
 	private MetaioSDKCallbackHandler mCallbackHandler;
 	
 	/**
@@ -250,6 +257,21 @@ public class ScanActivity extends ARViewActivity {
 			Log.d("dhdebug", "geometry is g_tag4");
 			tagid = 4;
 			showComponentTagView();
+		}
+		else if(geometry.equals(movie)) {
+			
+			//xrot += 0.1;
+			//yrot -= 0.1;
+			zrot += 0.1;
+			Log.d("dhdebug", "Rotation: x="+xrot+", y="+yrot+", z="+zrot);
+			//geometry.setRotation(new Rotation(xrot, yrot, zrot));
+			
+			//xtrans += 10; // Auf Handy zu
+			//ytrans += 10; // nach recht und links
+			//ztrans += 10; // oben und unten
+			Log.d("dhdebug", "Translation: x="+xtrans+", y="+ytrans+", z="+ztrans);
+			geometry.setTranslation(new Vector3d(xtrans, ytrans, ztrans));
+			
 		}
 		
 	}
@@ -483,7 +505,9 @@ public class ScanActivity extends ARViewActivity {
 						@Override
 						public void onClick(View v) {
 							hideInnerlifeComponents();
-							showComputerTimeline();
+							if(id != 0) {
+								showComputerTimeline();
+							}
 						}
 					});
 					
@@ -548,6 +572,19 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("ibml40_3")) {
 						Log.d("dhdebug", "CosID ibm: "+values.get(0).getCoordinateSystemID());
+						Rotation rot = values.get(0).getRotation();
+						Vector3d vrot1 = rot.getEulerAngleDegrees();
+						Vector3d vrot2 = rot.getEulerAngleRadians();
+						Vector3d trans = values.get(0).getTranslation();
+						Log.d("dhdebug", "ibm Rotation1: x="+vrot1.getX()+", y="+vrot1.getY()+", z="+vrot1.getZ());
+						Log.d("dhdebug", "ibm Rotation2: x="+vrot2.getX()+", y="+vrot2.getY()+", z="+vrot2.getZ());
+						Log.d("dhdebug", "ibm Translation: x="+trans.getX()+", y="+trans.getY()+", z="+trans.getZ());
+						/*xrot = (vrot.getX());
+						yrot = (vrot.getY());
+						zrot = (vrot.getZ());
+						xtrans = (trans.getX());
+						ytrans = (trans.getY());
+						ztrans = (trans.getZ());*/
 						id = 3;
 						showCase(1, values.get(0).getCoordinateSystemID());
 					}
@@ -626,7 +663,7 @@ public class ScanActivity extends ARViewActivity {
 				showComputerTimeline();
 				innerIds = data.getInnerlifeComponentsIDs(id);
 				initInnerlife(cosid);
-				//loadMovie(cosid);
+				loadMovie(cosid);
 				break;
 			case 2: unloadForCase(2);
 				showStorageLine();
@@ -882,7 +919,7 @@ public class ScanActivity extends ARViewActivity {
 			if (movie != null)
 			{
 				movie.setScale(1.5f);
-				movie.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
+				movie.setRotation(new Rotation(1.8f, -0.4f, 1.1f)); // (float) Math.PI/2 , 1.8f, -0.4f, 1.1f
 				movie.setTransparency(0.1f);
 				movie.setTranslation(new Vector3d(pos[0],pos[1],pos[2]));
 				movie.setCoordinateSystemID(cosid);
@@ -922,13 +959,9 @@ public class ScanActivity extends ARViewActivity {
 	 */
 	private void initInnerlife(int cosid) {
 		
-		Log.d("dhdebug", "initInnerlife called!");
-		
 		Computer c = data.getComputer(id);
 		
-		Log.d("dhdebug", "IMG: "+c.getComponent(1).getImg());
-		
-		final String innerfile1 = AssetsManager.getAssetPath("Assets/intel386.jpg");//+c.getComponent(1).getImg());
+		final String innerfile1 = AssetsManager.getAssetPath("Assets/"+c.getComponent(1).getImg());
 		final String innerfile2 = AssetsManager.getAssetPath("Assets/"+c.getComponent(2).getImg());
 		final String innerfile3 = AssetsManager.getAssetPath("Assets/"+c.getComponent(3).getImg());
 		final String innerfile4 = AssetsManager.getAssetPath("Assets/"+c.getComponent(4).getImg());
@@ -1043,10 +1076,18 @@ public class ScanActivity extends ARViewActivity {
 	 */
 	private void hideInnerlifeComponents() {
 		//TODO abfangen wenn element is lost ...
-		inner1.setVisible(false);
-		inner2.setVisible(false);
-		inner3.setVisible(false);
-		inner4.setVisible(false);
+		if(inner1 != null) {
+			inner1.setVisible(false);
+		}
+		if(inner2 != null) {
+			inner2.setVisible(false);
+		}
+		if(inner3 != null) {
+			inner3.setVisible(false);
+		}
+		if(inner4 != null) {
+			inner4.setVisible(false);
+		}
 		
 		runOnUiThread(new Runnable() 
 		{
