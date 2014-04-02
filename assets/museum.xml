@@ -64,15 +64,15 @@
 	<components>
 	    <item>
 	        <id>5</id>
-			<name>Sun SPARC Classic Board</name>
-			<date>1993</date>
-			<comp>Sun Microsystems</comp>
-			<ftype>Mikroprozessor</ftype>
-			<frequency>50 MHz</frequency>
-			<memory>16.000 KByte</memory>
-			<cpu>MicroSPARC</cpu>
+			<name>80386 Board Familie</name>
+			<date>1985</date>
+			<comp>Verschiedene</comp>
+			<ftype>Mainboard</ftype>
+			<frequency>12 - 40 MHz</frequency>
+			<memory>Verschieden</memory>
+			<cpu>Intel i386</cpu>
 			<register>32 Bit</register>
-			<interfaces>Ethernet, 2x SCSI, 2x RS232, parallel, Audio, 2x SBus</interfaces>
+			<interfaces>Verschieden</interfaces>
 			<img>commodore_128</img>
 			<note>Ein Motherboard ist bla bla bla...</note>
 			<tags>
@@ -85,18 +85,18 @@
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
-			        <tagdesc>Eine CPU ist bla bla bla...</tagdesc>
+			        <tagdesc>Auf dem Board war ein Sockel auf dem der Intel i386 platz fand.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>2</tagid>
-			        <tagname>RAM</tagname>
+			        <tagname>RAM-Steckplätze</tagname>
 			        <tagpos>
 			            <tagx>50</tagx>
 			            <tagy>10</tagy>
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_ram.png</tagimg>
-			        <tagdesc>Ein RAM ist bla bla bla...</tagdesc>
+			        <tagdesc>In die RAM-Steckplätze wurden die Speicherriegel eingesteckt. Auf diesem Board konnten bis zu 4 Riegel platziert werden.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>3</tagid>
@@ -106,79 +106,79 @@
 			            <tagy>20</tagy>
 			            <tagz>0</tagz>
 			        </tagpos>
-			        <tagimg>mbtag_southbridge.png</tagimg>
+			        <tagimg>mbtag_bios.png</tagimg>
 			        <tagdesc>Ein Bios ist bla bla bla...</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>4</tagid>
-			        <tagname>Steckplätze</tagname>
+			        <tagname>Modul-Steckplätze</tagname>
 			        <tagpos>
 			            <tagx>-50</tagx>
 			            <tagy>-10</tagy>
 			            <tagz>0</tagz>
 			        </tagpos>
-			        <tagimg>mbtag_northbridge.png</tagimg>
-			        <tagdesc>Ein Steckplatz ist bla bla bla...</tagdesc>
+			        <tagimg>mbtag_moduls.png</tagimg>
+			        <tagdesc>In diesen ISA-Steckplätzen konnten weitere Module zum Board ergänzt werden.</tagdesc>
 			    </tag>
 			</tags>
 	    </item>
 	    <item>
 	        <id>6</id>
-			<name>Sun SPARC Classic Board</name>
-			<date>1993</date>
-			<comp>Sun Microsystems</comp>
-			<ftype>Mikroprozessor</ftype>
-			<frequency>50 MHz</frequency>
-			<memory>16.000 KByte</memory>
-			<cpu>MicroSPARC</cpu>
+			<name>Pentium Board Familie (80586)</name>
+			<date>ab 1993</date>
+			<comp>Verschiedene</comp>
+			<ftype>MainBoard</ftype>
+			<frequency>60-300 MHz</frequency>
+			<memory>Variabel</memory>
+			<cpu>Pentium (i586)</cpu>
 			<register>32 Bit</register>
-			<interfaces>Ethernet, 2x SCSI, 2x RS232, parallel, Audio, 2x SBus</interfaces>
+			<interfaces>Verschiedene</interfaces>
 			<img>commodore_128</img>
-			<note>Ein Motherboard ist bla bla bla...</note>
+			<note>Die Pentium Familie und so</note>
 			<tags>
 			    <tag>
 			        <tagid>1</tagid>
-			        <tagname>Southbridge</tagname>
+			        <tagname>CPU</tagname>
 			        <tagpos>
 			            <tagx>100</tagx>
 			            <tagy>0</tagy>
 			            <tagz>2</tagz>
 			        </tagpos>
-			        <tagimg>mbtag_southbridge.png</tagimg>
-			        <tagdesc>Eine Southbridges ist bla bla bla...</tagdesc>
+			        <tagimg>mbtag_cpu.png</tagimg>
+			        <tagdesc>Der Pentium, auch als i586 bekannt, kam 1993 und konnte hier platziert werden.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>2</tagid>
-			        <tagname>Northbridge</tagname>
+			        <tagname>RAM-Steckplätze</tagname>
 			        <tagpos>
 			            <tagx>150</tagx>
 			            <tagy>0</tagy>
 			            <tagz>10</tagz>
 			        </tagpos>
-			        <tagimg>mbtag_northbridge.png</tagimg>
-			        <tagdesc>Eine Nothbridgebridges ist bla bla bla...</tagdesc>
+			        <tagimg>mbtag_ram.png</tagimg>
+			        <tagdesc>Hier konnten die RAM-Module eingesteckt werden.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>3</tagid>
-			        <tagname>RAM</tagname>
+			        <tagname>BIOS</tagname>
 			        <tagpos>
 			            <tagx>0</tagx>
 			            <tagy>0</tagy>
 			            <tagz>0</tagz>
 			        </tagpos>
-			        <tagimg>mbtag_ram.png</tagimg>
-			        <tagdesc>Eine RAM ist bla bla bla...</tagdesc>
+			        <tagimg>mbtag_bios.png</tagimg>
+			        <tagdesc>Hier ist das BIOS.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>4</tagid>
-			        <tagname>CPU</tagname>
+			        <tagname>Modul-Steckplätze</tagname>
 			        <tagpos>
 			            <tagx>-120</tagx>
 			            <tagy>0</tagy>
 			            <tagz>-20</tagz>
 			        </tagpos>
-			        <tagimg>mbtag_cpu.png</tagimg>
-			        <tagdesc>Eine CPU ist bla bla bla...</tagdesc>
+			        <tagimg>mbtag_moduls.png</tagimg>
+			        <tagdesc>Hier können auf einem AGP-Steckplätz und mehreren PCI-Steckplätzen weitere Module ergänzt werden.</tagdesc>
 			    </tag>
 			</tags>
 	    </item>

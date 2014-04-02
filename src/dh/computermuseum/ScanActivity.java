@@ -1077,7 +1077,6 @@ public class ScanActivity extends ARViewActivity {
 	 * Hides the iterior objects
 	 */
 	private void hideInnerlifeComponents() {
-		//TODO abfangen wenn element is lost ...
 		if(inner1 != null) {
 			inner1.setVisible(false);
 		}
