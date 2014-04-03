@@ -114,6 +114,7 @@ public class Data {
 	 * @param ic the InnerlifeComponent object to add
 	 */
 	public void addInnerlifeComponent(InnerlifeComponent ic) {
+		Log.d("dhdebug", "IC with ID: "+ic.getId()+"und Name: "+ic.getName()+" added!");
 		Computer c = getComputer(ic.getParentId());
 		c.addComponent(ic);
 	}

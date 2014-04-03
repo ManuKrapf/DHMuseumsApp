@@ -15,9 +15,9 @@
 			<img>commodore_cbm_4032</img>
 			<video>
 			    <path>videoc128.3g2</path>
-			    <xpos>100</xpos>
-			    <ypos>100</ypos>
-			    <zpos>-100</zpos>
+			    <xpos>10</xpos>
+			    <ypos>300</ypos>
+			    <zpos>-300</zpos>
 			</video>
 			<note><value>Nach dem PET 2001 (1977) brachte Commodore mehrere Serien von Büromaschinen auf den Markt. Vor der CBM 4000er-Serie erschienen die sog. 2000er- und 3000er-Serien, welche allesamt mit verschiedenen Spezifikationen erhältlich waren. Der CBM 4032 war etwa mit einem 32 KByte Speicher gegenüber dem CBM 4016 (16KByte) ausgestattet. Mit den genannten Serien von Büromaschinen verließ Commodore immer mehr den Bereich der Heimcomputer und stieg in den Bereich der professionellen Nutzung ein. Die 4000er-Serie war Teil der dritten Generation von Commodore-Bürocomputern. Der CBM 4032 war sowohl in einer "THIN"- als auch einer "FAT"-Version erhältlich. Die "THIN"-Version hatte ähnlich dem Vorgängermodell CBM 3032 einen 9-Zoll-Monitor, welcher 40 Zeichen anzeigen konnte. Die "FAT"-Version hingegen besaß wie das spätere Modell CBM 8032 einen 12-Zoll-Monitor und konnte so bis zu 80 Zeichen darstellen. Als Betriebssystem diente in beiden Versionen Commodore Basic 4.0.</value></note>
 		</item>
@@ -33,7 +33,7 @@
 			<special>Eingebauter S/W-Monitor und Tastatur, tragbar</special>
 			<img>toshiba_t3200sx</img>
 			<video>
-			    <path>videoc128.3g2</path>
+			    <path>videodos.3g2</path>
 			    <xpos>100</xpos>
 			    <ypos>300</ypos>
 			    <zpos>-20</zpos>
@@ -52,9 +52,9 @@
 			<special>Notebook, tragbar</special>
 			<img>ibm_ps2</img>
 			<video>
-			    <path>videoc128.3g2</path>
-			    <xpos>100</xpos>
-			    <ypos>100</ypos>
+			    <path>videowin3.3g2</path>
+			    <xpos>50</xpos>
+			    <ypos>300</ypos>
 			    <zpos>-100</zpos>
 			</video>
 			<note><value>Die Personal System/2-Reihe ist die dritte Generation von IBM Computern und wurde 1987 eingeführt. Sie sollte das bisherige System des IBM-PCs ablösen. Der Intel-80386-Prozessor, der 32-bittige Systembus und neue grafische Möglichkeiten sind beispielsweise einige der Merkmale der neuen PS/2-Reihe. Nachteilig bei dieser Reihe ist, dass sie nicht kompatibel zu alten Erweiterungskarten oder Disketten ist. Zudem war sie sehr teuer und konnte sich so auf dem Markt nur mit mäßigem Erfolg durchsetzen. Der zu dieser Reihe gehörende L40 SX ist das erste von IBM produzierte Notebook und war für einen Preis von 5000 DM zu erwerben. Das Gerät ist mit seinem üppigen Gehäuse zwar sehr robust, die Grundausstattung mit 80 MB Harddiskspeicher, 3,5“-HD-Disklaufwerk und 2 MB RAM ist für einen tragbaren Computer Anfang der 90er Jahre allerdings durchaus vorzeigbar. Die direkten Nachfolger dieses Modells sind schon wesentlich kompakter und mündeten in die Thinkpad-Baureihe, die bis heute noch produziert wird. Mit dem Textverarbeitungsprogramm Word 6.0 ausgestattet hat man bei dem Modell L40 schon eine relativ große Auswahl an verschiedenen Schriften und Farben. Allerdings sind auch hier die Farbunterschiede, wie schon beim Compaq Portabel III, auf dem Bildschirm selber nicht erkennbar, da alles in Graustufen dargestellt wird.</value></note>
@@ -80,9 +80,9 @@
 			        <tagid>1</tagid>
 			        <tagname>CPU</tagname>
 			        <tagpos>
-			            <tagx>40</tagx>
+			            <tagx>200</tagx>
 			            <tagy>-30</tagy>
-			            <tagz>0</tagz>
+			            <tagz>-100</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
 			        <tagdesc>Auf dem Board war ein Sockel auf dem der Intel i386 Platz fand. Es gab insgesamt vier Varianten dieser CPU (Intel386 SX, Intel386 SL, RapidCAD1, RapidCAD2), welche sich im Datenbus und im Einsatzzweck unterschieden. Die Produktion des i386EX als Embedded-Version des i386SX wurde erst im Jahr 2007 eingestellt.</tagdesc>
@@ -91,9 +91,9 @@
 			        <tagid>2</tagid>
 			        <tagname>RAM-Steckplätze</tagname>
 			        <tagpos>
-			            <tagx>50</tagx>
-			            <tagy>10</tagy>
-			            <tagz>0</tagz>
+			            <tagx>230</tagx>
+			            <tagy>80</tagy>
+			            <tagz>-100</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_ram.png</tagimg>
 			        <tagdesc>In die RAM-Steckplätze wurden die Speicherriegel eingesteckt. Auf diesem Board konnten bis zu 4 Riegel platziert werden.</tagdesc>
@@ -102,9 +102,9 @@
 			        <tagid>3</tagid>
 			        <tagname>BIOS</tagname>
 			        <tagpos>
-			            <tagx>-60</tagx>
-			            <tagy>20</tagy>
-			            <tagz>0</tagz>
+			            <tagx>40</tagx>
+			            <tagy>200</tagy>
+			            <tagz>-100</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_bios.png</tagimg>
 			        <tagdesc>Das BIOS (englisches Akronym: Basic Input/Output System) ist die Firmware bei x86-PCs. Aufgabe des BIOS ist es unter anderem, den PC zunächst funktionsfähig zu machen und im Anschluss das Starten eines Betriebssystems einzuleiten (Bootstrapping, Treibersoftware + Konfigurationen, Initialisierung der Hardwarekomponenten). Im flüchtigen Sprachgebrauch wird der Ausdruck BIOS heute manchmal auch in der Bedeutung BIOS-Einstellungen verwendet. Unterschiedliche BIOS-Hersteller sind beispielweise American Megatrends, Phoenix/Awards, MR BIOS, ATI Technologies, IBM, Insyde H20 BIOS.</tagdesc>
@@ -113,9 +113,9 @@
 			        <tagid>4</tagid>
 			        <tagname>Modul-Steckplätze</tagname>
 			        <tagpos>
-			            <tagx>-50</tagx>
-			            <tagy>-10</tagy>
-			            <tagz>0</tagz>
+			            <tagx>-30</tagx>
+			            <tagy>40</tagy>
+			            <tagz>-100</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_moduls.png</tagimg>
 			        <tagdesc>In diesen ISA-Steckplätzen (Industry Standard Architecture) konnten weitere Module zum Board ergänzt werden. IBM-kompatible PCs mit der XT-Bus-Architektur konnten somit beispielsweise von 8 Bit auf 16 Bit erweitert werden.</tagdesc>
@@ -140,9 +140,9 @@
 			        <tagid>1</tagid>
 			        <tagname>CPU</tagname>
 			        <tagpos>
-			            <tagx>100</tagx>
-			            <tagy>0</tagy>
-			            <tagz>2</tagz>
+			            <tagx>160</tagx>
+			            <tagy>290</tagy>
+			            <tagz>-120</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
 			        <tagdesc>Der Pentium, auch als i586 bekannt, kam 1993 auf den Markt und konnte hier platziert werden. Pente – das griechische Wort für fünf – sollte nun der fünften x86-Generation aus dem Hause Intel den Namen geben. Pentium sollte dann aber nicht nur die fünfte, sondern auch die sechste und siebte x86-Generation aus dem Hause Intel heißen. Heute trägt eine ganze Prozessor-Dynastie diesen Namen. Dem Pentium folgten der Pentium Pro, der Pentium II, Pentium III, Pentium 4, Pentium M, Pentium D und der Intel Pentium Dual-Core. Obwohl diese Prozessoren außer dem Befehlssatz kaum Gemeinsamkeiten mit dem ersten Pentium haben, tragen sie seinen Namen.</tagdesc>
@@ -151,9 +151,9 @@
 			        <tagid>2</tagid>
 			        <tagname>RAM-Steckplätze</tagname>
 			        <tagpos>
-			            <tagx>150</tagx>
-			            <tagy>0</tagy>
-			            <tagz>10</tagz>
+			            <tagx>160</tagx>
+			            <tagy>20</tagy>
+			            <tagz>-120</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_ram.png</tagimg>
 			        <tagdesc>In die RAM-Steckplätze wurden die Speicherriegel eingesteckt. Auf diesem Board konnten bis zu 3 Riegel platziert werden.</tagdesc>
@@ -162,9 +162,9 @@
 			        <tagid>3</tagid>
 			        <tagname>BIOS</tagname>
 			        <tagpos>
-			            <tagx>0</tagx>
-			            <tagy>0</tagy>
-			            <tagz>0</tagz>
+			            <tagx>-100</tagx>
+			            <tagy>50</tagy>
+			            <tagz>-120</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_bios.png</tagimg>
 			        <tagdesc>Das BIOS (englisches Akronym: Basic Input/Output System) ist die Firmware bei x86-PCs. Aufgabe des BIOS ist es unter anderem, den PC zunächst funktionsfähig zu machen und im Anschluss das Starten eines Betriebssystems einzuleiten (Bootstrapping, Treibersoftware + Konfigurationen, Initialisierung der Hardwarekomponenten). Im flüchtigen Sprachgebrauch wird der Ausdruck BIOS heute manchmal auch in der Bedeutung BIOS-Einstellungen verwendet. Unterschiedliche BIOS-Hersteller sind beispielweise American Megatrends, Phoenix/Awards, MR BIOS, ATI Technologies, IBM, Insyde H20 BIOS.</tagdesc>
@@ -173,9 +173,9 @@
 			        <tagid>4</tagid>
 			        <tagname>Modul-Steckplätze</tagname>
 			        <tagpos>
-			            <tagx>-120</tagx>
-			            <tagy>0</tagy>
-			            <tagz>-20</tagz>
+			            <tagx>-130</tagx>
+			            <tagy>300</tagy>
+			            <tagz>-120</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_moduls.png</tagimg>
 			        <tagdesc>Hier können auf einem AGP-Steckplatz (Accelerated Graphics Port) und mehreren PCI-Steckplätzen (Peripheral Component Interconnect) weitere Module ergänzt werden. Der AGP ist eine Anschlussnorm auf PC-Mainboards zur direkten Verbindung der Grafikkarte mit dem Chipsatz/Northbridge. Er basiert technologisch auf dem PCI-Bus. Der PCI ist ein Bus-Standard zur Verbindung von Peripheriegeräten mit dem Chipsatz eines Prozessors.</tagdesc>
@@ -411,7 +411,7 @@
 	        <img>mos6510.jpg</img>
 	    </item>
 	    <item>
-	        <id>25</id>
+	        <id>27</id>
 	        <parentid>1</parentid>
 	        <name>kein internes Laufwerk</name>
 	        <date>----</date>
@@ -420,7 +420,7 @@
 	        <img>laufwerk.jpg</img>
 	    </item>
 	    <item>
-	        <id>26</id>
+	        <id>28</id>
 	        <parentid>1</parentid>
 	        <name>Monitor</name>
 	        <date>1979</date>
@@ -429,7 +429,7 @@
 	        <img>monitor.jpg</img>
 	    </item>
 	    <item>
-	        <id>27</id>
+	        <id>29</id>
 	        <parentid>1</parentid>
 	        <name>RAM</name>
 	        <date>1979</date>

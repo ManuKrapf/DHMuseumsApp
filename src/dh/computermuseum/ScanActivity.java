@@ -50,6 +50,7 @@ public class ScanActivity extends ARViewActivity {
 	private int storageid = 0;
 	private int actCase = 0;
 	
+	private boolean sdkReady = false;
 	private boolean beforeActive = false;
 	private boolean beforeEmpty = false;
 	private boolean afterActive = false;
@@ -209,37 +210,37 @@ public class ScanActivity extends ARViewActivity {
 		
 		if(geometry.equals(inner1)) {
 			Log.d("dhdebug", "geometry is inner 1");
-			setInner(inner1, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
-			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
-			setInner(inner3, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
-			setInner(inner4, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner1, 1.3f, new Vector3d(100,100,0), geometry.getCoordinateSystemID());
+			setInner(inner2, 0.8f, new Vector3d(-50,100,-20), geometry.getCoordinateSystemID());
+			setInner(inner3, 0.5f, new Vector3d(100,50,-100), geometry.getCoordinateSystemID());
+			setInner(inner4, 0.8f, new Vector3d(250,100,-20), geometry.getCoordinateSystemID());
 			actinner = innerIds[0];
 			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(inner2)) {
 			Log.d("dhdebug", "geometry is inner 2");
-			setInner(inner2, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
-			setInner(inner3, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
-			setInner(inner4, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
-			setInner(inner1, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner2, 1.3f, new Vector3d(100,100,0), geometry.getCoordinateSystemID());
+			setInner(inner3, 0.8f, new Vector3d(-50,100,-20), geometry.getCoordinateSystemID());
+			setInner(inner4, 0.5f, new Vector3d(100,50,-100), geometry.getCoordinateSystemID());
+			setInner(inner1, 0.8f, new Vector3d(250,100,-20), geometry.getCoordinateSystemID());
 			actinner = innerIds[1];
 			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(inner3)) {
 			Log.d("dhdebug", "geometry is inner 3");
-			setInner(inner3, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
-			setInner(inner4, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
-			setInner(inner1, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
-			setInner(inner2, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner3, 1.3f, new Vector3d(100,100,0), geometry.getCoordinateSystemID());
+			setInner(inner4, 0.8f, new Vector3d(-50,100,-20), geometry.getCoordinateSystemID());
+			setInner(inner1, 0.5f, new Vector3d(100,50,-100), geometry.getCoordinateSystemID());
+			setInner(inner2, 0.8f, new Vector3d(250,100,-20), geometry.getCoordinateSystemID());
 			actinner = innerIds[2];
 			showInnerlifeComponents(id, actinner);
 		}
 		else if(geometry.equals(inner4)) {
 			Log.d("dhdebug", "geometry is inner 4");
-			setInner(inner4, 1.3f, new Vector3d(0,0,0), geometry.getCoordinateSystemID());
-			setInner(inner1, 0.8f, new Vector3d(-200,0,-20), geometry.getCoordinateSystemID());
-			setInner(inner2, 0.5f, new Vector3d(0,0,-100), geometry.getCoordinateSystemID());
-			setInner(inner3, 0.8f, new Vector3d(200,0,-20), geometry.getCoordinateSystemID());
+			setInner(inner4, 1.3f, new Vector3d(100,100,0), geometry.getCoordinateSystemID());
+			setInner(inner1, 0.8f, new Vector3d(-50,100,-20), geometry.getCoordinateSystemID());
+			setInner(inner2, 0.5f, new Vector3d(100,50,-100), geometry.getCoordinateSystemID());
+			setInner(inner3, 0.8f, new Vector3d(250,100,-20), geometry.getCoordinateSystemID());
 			actinner = innerIds[3];
 			showInnerlifeComponents(id, actinner);
 		}
@@ -541,6 +542,8 @@ public class ScanActivity extends ARViewActivity {
 						}
 					});
 					
+					sdkReady = true;
+					
 				}
 			});
 			
@@ -563,7 +566,6 @@ public class ScanActivity extends ARViewActivity {
 				 */
 				if(values.get(0).getState() == ETRACKING_STATE.ETS_FOUND) {
 					Log.d("dhdebug", values.get(0).getCosName()+" is found");
-					initcoordSystem(values.get(0).getCoordinateSystemID());
 					
 					if(values.get(0).getCosName().equals("commodorecbm4032_1")) {
 						Log.d("dhdebug", "CosID cbm4032: "+values.get(0).getCoordinateSystemID());
@@ -641,7 +643,6 @@ public class ScanActivity extends ARViewActivity {
 					id = 0;
 					Log.d("dhdebug", values.get(0).getCosName()+" is lost");
 					unloadWhenLost();
-					unloadCoordSys();
 				}
 				else {
 					Log.d("dhdebug", "nothing is registered or found");
@@ -662,24 +663,26 @@ public class ScanActivity extends ARViewActivity {
 		
 		actCase = ocase;
 		
-		switch(ocase) {
-			case 1: unloadForCase(1);
-				hideOtherView();
-				findcomputer = false;
-				showComputerTimeline();
-				innerIds = data.getInnerlifeComponentsIDs(id);
-				initInnerlife(cosid);
-				loadMovie(cosid);
-				break;
-			case 2: unloadForCase(2);
-				showStorageLine();
-				break;
-			case 3: 
-				unloadForCase(3);
-				showBoardTags(cosid);
-				showBoardInfo();
-				break;
-			default:
+		if(sdkReady) {
+			switch(ocase) {
+				case 1: unloadForCase(1);
+					hideOtherView();
+					findcomputer = false;
+					showComputerTimeline();
+					innerIds = data.getInnerlifeComponentsIDs(id);
+					initInnerlife(cosid);
+					loadMovie(cosid);
+					break;
+				case 2: unloadForCase(2);
+					showStorageLine();
+					break;
+				case 3: 
+					unloadForCase(3);
+					showBoardTags(cosid);
+					showBoardInfo();
+					break;
+				default:
+			}
 		}
 		
 	}
@@ -726,6 +729,8 @@ public class ScanActivity extends ARViewActivity {
 			case 1: unloadMovie();
 				unloadInnerLife();
 				hideComputerTimeline();
+				hideInnerlifeComponents();
+				actinner = 0;
 				if(!findcomputer){
 					hideOtherView();
 					hideTimelineContainer();
@@ -921,10 +926,9 @@ public class ScanActivity extends ARViewActivity {
 		
 		if (moviePath != null)
 		{
-			movie = metaioSDK.createGeometryFromMovie(moviePath, false);
+			movie = metaioSDK.createGeometryFromMovie(moviePath, false, true);
 			if (movie != null)
 			{
-				movie.setRelativeToScreen(IGeometry.ANCHOR_CC);
 				movie.setScale(3f);
 				movie.setRotation(new Rotation(1.01f, 0.01f, 0.07f)); // (float) Math.PI/2 , 1.8f, -0.4f, 1.1f
 				movie.setTransparency(0.1f);
@@ -975,19 +979,19 @@ public class ScanActivity extends ARViewActivity {
 		
 		if(innerfile1 != null && inner1 == null) {
 			inner1 = metaioSDK.createGeometryFromImage(innerfile1, true);
-			setInner(inner1, 1.3f, new Vector3d(0,0,0), cosid);
+			setInner(inner1, 1.3f, new Vector3d(100,100,0), cosid);
 		}
 		if(innerfile2 != null && inner2 == null) {
 			inner2 = metaioSDK.createGeometryFromImage(innerfile2, true);
-			setInner(inner2, 0.8f, new Vector3d(-200,0,-20), cosid);
+			setInner(inner2, 0.8f, new Vector3d(-50,100,-20), cosid);
 		}
 		if(innerfile3 != null && inner3 == null) {
 			inner3 = metaioSDK.createGeometryFromImage(innerfile3, true);
-			setInner(inner3, 0.5f, new Vector3d(0,0,-100), cosid);
+			setInner(inner3, 0.5f, new Vector3d(100,50,-100), cosid);
 		}
 		if(innerfile4 != null && inner4 == null) {
 			inner4 = metaioSDK.createGeometryFromImage(innerfile4, true);
-			setInner(inner4, 0.8f, new Vector3d(200,0,-20), cosid);
+			setInner(inner4, 0.8f, new Vector3d(250,100,-20), cosid);
 		}
 		
 		if(actinner == 0) {
@@ -1054,9 +1058,9 @@ public class ScanActivity extends ARViewActivity {
 	 * @param parentid the ID of the parent computer
 	 * @param id the ID of the interior object
 	 */
-	private void showInnerlifeComponents(int parentid, int id) {
+	private void showInnerlifeComponents(int parentid, int icid) {
 		
-		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, id);
+		final InnerlifeComponent iC = data.getInnerlifeComponent(parentid, icid);
 		
 		inner1.setVisible(true);
 		inner2.setVisible(true);
@@ -1302,6 +1306,7 @@ public class ScanActivity extends ARViewActivity {
 		
 		if (ig != null)
 		{
+			ig.setScale(1.5f);
 			ig.setRotation(new Rotation((float) Math.PI/2, 0f, 0f));
 			ig.setTranslation(v);
 			ig.setCoordinateSystemID(cosid);
@@ -1388,129 +1393,6 @@ public class ScanActivity extends ARViewActivity {
 				componentDetailInfo.setVisibility(View.GONE);
 			}
 		});
-		
-	}
-	
-	/*
-	 * Test methods for positioning
-	 */
-	
-	private void initcoordSystem(int cosid) {
-		
-		try{
-			final String np = AssetsManager.getAssetPath("Assets/cos/np.png");
-			
-			final String xp100 = AssetsManager.getAssetPath("Assets/cos/xp100.png");
-			final String xp200 = AssetsManager.getAssetPath("Assets/cos/xp200.png");
-			final String xp300 = AssetsManager.getAssetPath("Assets/cos/xp300.png");
-			final String xm100 = AssetsManager.getAssetPath("Assets/cos/xm100.png");
-			final String xm200 = AssetsManager.getAssetPath("Assets/cos/xm200.png");
-			final String xm300 = AssetsManager.getAssetPath("Assets/cos/xm300.png");
-			
-			final String yp100 = AssetsManager.getAssetPath("Assets/cos/yp100.png");
-			final String yp200 = AssetsManager.getAssetPath("Assets/cos/yp200.png");
-			final String yp300 = AssetsManager.getAssetPath("Assets/cos/yp300.png");
-			final String ym100 = AssetsManager.getAssetPath("Assets/cos/ym100.png");
-			final String ym200 = AssetsManager.getAssetPath("Assets/cos/ym200.png");
-			final String ym300 = AssetsManager.getAssetPath("Assets/cos/ym300.png");
-			
-			final String zp100 = AssetsManager.getAssetPath("Assets/cos/zp100.png");
-			final String zp200 = AssetsManager.getAssetPath("Assets/cos/zp200.png");
-			final String zp300 = AssetsManager.getAssetPath("Assets/cos/zp300.png");
-			final String zm100 = AssetsManager.getAssetPath("Assets/cos/zm100.png");
-			final String zm200 = AssetsManager.getAssetPath("Assets/cos/zm200.png");
-			final String zm300 = AssetsManager.getAssetPath("Assets/cos/zm300.png");
-			
-			buildCoTag(np, new Vector3d(0,0,0), cosid);
-			
-			buildCoTag(xp100, new Vector3d(100,0,0), cosid);
-			buildCoTag(xp200, new Vector3d(200,0,0), cosid);
-			buildCoTag(xp300, new Vector3d(300,0,0), cosid);
-			buildCoTag(xm100, new Vector3d(-100,0,0), cosid);
-			buildCoTag(xm200, new Vector3d(-200,0,0), cosid);
-			buildCoTag(xm300, new Vector3d(-300,0,0), cosid);
-			
-			buildCoTag(yp100, new Vector3d(0,100,0), cosid);
-			buildCoTag(yp200, new Vector3d(0,200,0), cosid);
-			buildCoTag(yp300, new Vector3d(0,300,0), cosid);
-			buildCoTag(ym100, new Vector3d(0,-100,0), cosid);
-			buildCoTag(ym200, new Vector3d(0,-200,0), cosid);
-			buildCoTag(ym300, new Vector3d(0,-300,0), cosid);
-			
-			buildCoTag(zp100, new Vector3d(0,0,100), cosid);
-			buildCoTag(zp200, new Vector3d(0,0,200), cosid);
-			buildCoTag(zp300, new Vector3d(0,0,300), cosid);
-			buildCoTag(zm100, new Vector3d(0,0,-100), cosid);
-			buildCoTag(zm200, new Vector3d(0,0,-200), cosid);
-			buildCoTag(zm300, new Vector3d(0,0,-300), cosid);
-			
-			Log.d("dhdebug", "Coord init!");
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			Log.e("dhdebug", "Error building cos: "+e.getMessage());
-		}
-		
-	}
-	
-	private void buildCoTag(String file, Vector3d v, int cosid) {
-		
-		Log.d("dhdebug", "buildCoTag!");
-		IGeometry ig = null;
-		
-		if(file != null) {
-			ig = metaioSDK.createGeometryFromImage(file);
-		}
-		
-		if(ig != null) {
-			ig.setScale(0.5f);
-			ig.setTranslation(v);
-			ig.setRotation(new Rotation(0f,0f,0f));
-			ig.setCoordinateSystemID(cosid);
-		}
-		
-	}
-	
-	private void unloadCoordSys() {
-		
-		IGeometry g = null;
-		
-		try{
-			
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(100, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(200, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(300, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(-100, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(-200, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(-300, 0));
-			
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 100));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 200));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 300));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, -100));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, -200));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, -300));
-			
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 0));
-			unloadCoGeo(metaioSDK.getGeometryFromScreenCoordinates(0, 0));
-			
-		}
-		catch(NullPointerException npe) {
-			npe.printStackTrace();
-			Log.e("dhdebug", "Error unloading CoordSys: "+npe.getMessage());
-		}
-		
-	}
-	
-	private void unloadCoGeo(IGeometry g) {
-		
-		if(g != null) {
-			metaioSDK.unloadGeometry(g);
-		}
 		
 	}
 	
