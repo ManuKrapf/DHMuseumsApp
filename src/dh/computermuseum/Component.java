@@ -223,7 +223,7 @@ public class Component extends Antique {
 	 * Represents a tag on a board
 	 */
 	public class Tag {
-		// TODO Javadoc!
+		
 		private int id;
 		private String name;
 		private String img;
@@ -232,10 +232,23 @@ public class Component extends Antique {
 		private float z;
 		private String desc;
 		
+		/**
+		 * Constructor
+		 */
 		public Tag() {
 			
 		}
 		
+		/**
+		 * Constructor to set all Values at creating
+		 * 
+		 * @param id the id of the tag
+		 * @param n the name of the tag
+		 * @param i the imagepath of the tag
+		 * @param _x the x position of the tag
+		 * @param _y the y position of the tag
+		 * @param _z the z position of the tag
+		 */
 		public Tag(int id, String n, String i, float _x, float _y, float _z) {
 			this.id = id;
 			this.name = n;
@@ -245,54 +258,119 @@ public class Component extends Antique {
 			this.z = _z;
 		}
 		
+		/**
+		 * Constructor to set the name at creating
+		 * 
+		 * @param n the name of the tag
+		 */
 		public Tag(String n) {
 			this.name = n;
 		}
 		
+		/**
+		 * Set the ID of the tag
+		 * 
+		 * @param id the id of the tag
+		 */
 		public void setId(int id) {
 			this.id = id;
 		}
 		
+		/**
+		 * Set the name of the tag
+		 * 
+		 * @param n the name of the tag
+		 */
 		public void setName(String n) {
 			this.name = n;
 		}
 		
+		/**
+		 * Set the imagepath of the tag
+		 * 
+		 * @param i the imagepath of the tag
+		 */
 		public void setImg(String i) {
 			this.img = i;
 		}
 		
+		/**
+		 * Set the x position of the tag
+		 * 
+		 * @param val the x position of the tag
+		 */
 		public void setX(float val) {
 			this.x = val;
 		}
 		
+		/**
+		 * Set the y position of the tag
+		 * 
+		 * @param val the y position of the tag
+		 */
 		public void setY(float val) {
 			this.y = val;
 		}
 		
+		/**
+		 * Set the z position of the tag
+		 * 
+		 * @param val the z position of the tag
+		 */
 		public void setZ(float val) {
 			this.z = val;
 		}
 		
+		/**
+		 * Set the description of the tag
+		 * 
+		 * @param d the description of the tag
+		 */
 		public void setDesc(String d) {
 			this.desc = d;
 		}
 		
+		/**
+		 * Returns the ID of the tag
+		 * 
+		 * @return the id of the tag
+		 */
 		public int getId() {
 			return id;
 		}
 		
+		/**
+		 * Returns the Name of the tag
+		 * 
+		 * @return the name of the tag
+		 */
 		public String getName() {
 			return name;
 		}
 		
+		/**
+		 * Returns the imagepath of the tag
+		 * 
+		 * @return the imagepath of the tag
+		 */
 		public String getImg() {
 			return img;
 		}
 		
+		/**
+		 * Returns the Position of the tag
+		 * 
+		 * @return an array with x, y and z position of the tag
+		 */
 		public float[] getPos() {
 			return new float[] {x, y, z};
 		}
 		
+		/**
+		 * Returns the description of the tag
+		 * 
+		 * @return the description of the tag
+		 */
 		public String getDesc() {
 			return desc;
 		}

@@ -15,9 +15,9 @@
 			<img>commodore_cbm_4032</img>
 			<video>
 			    <path>videoc128.3g2</path>
-			    <xpos>0</xpos>
-			    <ypos>0</ypos>
-			    <zpos>0</zpos>
+			    <xpos>100</xpos>
+			    <ypos>100</ypos>
+			    <zpos>-100</zpos>
 			</video>
 			<note><value>Nach dem PET 2001 (1977) brachte Commodore mehrere Serien von Büromaschinen auf den Markt. Vor der CBM 4000er-Serie erschienen die sog. 2000er- und 3000er-Serien, welche allesamt mit verschiedenen Spezifikationen erhältlich waren. Der CBM 4032 war etwa mit einem 32 KByte Speicher gegenüber dem CBM 4016 (16KByte) ausgestattet. Mit den genannten Serien von Büromaschinen verließ Commodore immer mehr den Bereich der Heimcomputer und stieg in den Bereich der professionellen Nutzung ein. Die 4000er-Serie war Teil der dritten Generation von Commodore-Bürocomputern. Der CBM 4032 war sowohl in einer "THIN"- als auch einer "FAT"-Version erhältlich. Die "THIN"-Version hatte ähnlich dem Vorgängermodell CBM 3032 einen 9-Zoll-Monitor, welcher 40 Zeichen anzeigen konnte. Die "FAT"-Version hingegen besaß wie das spätere Modell CBM 8032 einen 12-Zoll-Monitor und konnte so bis zu 80 Zeichen darstellen. Als Betriebssystem diente in beiden Versionen Commodore Basic 4.0.</value></note>
 		</item>
@@ -34,9 +34,9 @@
 			<img>toshiba_t3200sx</img>
 			<video>
 			    <path>videoc128.3g2</path>
-			    <xpos>0</xpos>
-			    <ypos>0</ypos>
-			    <zpos>0</zpos>
+			    <xpos>100</xpos>
+			    <ypos>300</ypos>
+			    <zpos>-20</zpos>
 			</video>
 			<note><value>Der T3200SX von Toshiba war der Versuch, einen tragbaren Computer ohne Leistungseinbußen gegenüber einem Desktop-PC zu bauen. Neben einer hohen Mobilität sollte der T3200SX die Möglichkeiten der 386er-Technologie voll ausschöpfen und selbst anspruchsvollen Programmen genügend Leistung bieten. Der mobile Bürocomputer von Toshiba stellte hohe Ansprüche an seine Ingenieure: Er sollte dieselbe Leistung wie ein sperriger Desktop-PC besitzen und doch ein kompaktes, leicht transportierbares Gerät darstellen, mit dem das Arbeiten unabhängig vom gewählten Standort möglich war. Auch sollte das Gerät über entsprechende Anschlüsse verfügen, um das System um Einrichtungen wie ein Fax oder Modem erweitern zu können. Schon in den 1980er Jahren war die Zukunftssicherheit ein entscheidender Aspekt. So musste der Computer nicht nur für die momentan anspruchsvolleren Programme genügend "Power" besitzen, sondern auch für die Zukunft einsetzbar bleiben. Toshiba schaffte es, all diese Anforderungen im T3200SX zu vereinen und einen wichtigen Schritt in Richtung des heutigen Notebooks zu unternehmen. Ein Vorteil gegenüber anderen Geräten war auch die freie Wahl des Betriebssystems. Alle gängigen Systeme wie MS-DOS, OS/2 oder UNIX konnten zum Einsatz kommen. Dieser Rechner wurde anlässlich der Eröffnung des Toshiba Werkes in Regensburg 1990 der Stadt Regensburg geschenkt. Ende 2007 wurde die Produktion im Werk eingestellt.</value></note>
 		</item>
@@ -53,9 +53,9 @@
 			<img>ibm_ps2</img>
 			<video>
 			    <path>videoc128.3g2</path>
-			    <xpos>0</xpos>
-			    <ypos>0</ypos>
-			    <zpos>0</zpos>
+			    <xpos>100</xpos>
+			    <ypos>100</ypos>
+			    <zpos>-100</zpos>
 			</video>
 			<note><value>Die Personal System/2-Reihe ist die dritte Generation von IBM Computern und wurde 1987 eingeführt. Sie sollte das bisherige System des IBM-PCs ablösen. Der Intel-80386-Prozessor, der 32-bittige Systembus und neue grafische Möglichkeiten sind beispielsweise einige der Merkmale der neuen PS/2-Reihe. Nachteilig bei dieser Reihe ist, dass sie nicht kompatibel zu alten Erweiterungskarten oder Disketten ist. Zudem war sie sehr teuer und konnte sich so auf dem Markt nur mit mäßigem Erfolg durchsetzen. Der zu dieser Reihe gehörende L40 SX ist das erste von IBM produzierte Notebook und war für einen Preis von 5000 DM zu erwerben. Das Gerät ist mit seinem üppigen Gehäuse zwar sehr robust, die Grundausstattung mit 80 MB Harddiskspeicher, 3,5“-HD-Disklaufwerk und 2 MB RAM ist für einen tragbaren Computer Anfang der 90er Jahre allerdings durchaus vorzeigbar. Die direkten Nachfolger dieses Modells sind schon wesentlich kompakter und mündeten in die Thinkpad-Baureihe, die bis heute noch produziert wird. Mit dem Textverarbeitungsprogramm Word 6.0 ausgestattet hat man bei dem Modell L40 schon eine relativ große Auswahl an verschiedenen Schriften und Farben. Allerdings sind auch hier die Farbunterschiede, wie schon beim Compaq Portabel III, auf dem Bildschirm selber nicht erkennbar, da alles in Graustufen dargestellt wird.</value></note>
 		</item>

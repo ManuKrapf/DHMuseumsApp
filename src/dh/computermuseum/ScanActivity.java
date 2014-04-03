@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.*;
+import com.metaio.sdk.jni.EDEBUG_VISIBILITY;
 import com.metaio.sdk.jni.ETRACKING_STATE;
 import com.metaio.sdk.jni.IGeometry;
 import com.metaio.sdk.jni.Rotation;
@@ -556,7 +557,6 @@ public class ScanActivity extends ARViewActivity {
 			super.onTrackingEvent(values);
 			
 			if (values.size() > 0) {
-				// TODO Tracking Objekte noch austauschen
 				
 				/**
 				 * An Object is tracked
@@ -599,13 +599,13 @@ public class ScanActivity extends ARViewActivity {
 						showCase(2, values.get(0).getCoordinateSystemID());
 					}
 					else if(values.get(0).getCosName().equals("platine1-80386_5")) {
-						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
+						Log.d("dhdebug", "CosID platine1-80386: "+values.get(0).getCoordinateSystemID());
 						id = 5;
 						showCase(3, values.get(0).getCoordinateSystemID());
 					}
 					else if(values.get(0).getCosName().equals("platine2_80586_6")) {
-						Log.d("dhdebug", "CosID overhead: "+values.get(0).getCoordinateSystemID());
-						id = 5;
+						Log.d("dhdebug", "CosID platine2_80586: "+values.get(0).getCoordinateSystemID());
+						id = 6;
 						showCase(3, values.get(0).getCoordinateSystemID());
 					}
 					
@@ -921,11 +921,12 @@ public class ScanActivity extends ARViewActivity {
 		
 		if (moviePath != null)
 		{
-			movie = metaioSDK.createGeometryFromMovie(moviePath, false, true);
+			movie = metaioSDK.createGeometryFromMovie(moviePath, false);
 			if (movie != null)
 			{
-				movie.setScale(1.5f);
-				movie.setRotation(new Rotation(1.8f, -0.4f, 1.1f)); // (float) Math.PI/2 , 1.8f, -0.4f, 1.1f
+				movie.setRelativeToScreen(IGeometry.ANCHOR_CC);
+				movie.setScale(3f);
+				movie.setRotation(new Rotation(1.01f, 0.01f, 0.07f)); // (float) Math.PI/2 , 1.8f, -0.4f, 1.1f
 				movie.setTransparency(0.1f);
 				movie.setTranslation(new Vector3d(pos[0],pos[1],pos[2]));
 				movie.setCoordinateSystemID(cosid);
@@ -1396,8 +1397,6 @@ public class ScanActivity extends ARViewActivity {
 	
 	private void initcoordSystem(int cosid) {
 		
-		Log.d("dhdebug", "initcoordsystem called!");
-		
 		try{
 			final String np = AssetsManager.getAssetPath("Assets/cos/np.png");
 			
@@ -1460,12 +1459,10 @@ public class ScanActivity extends ARViewActivity {
 		IGeometry ig = null;
 		
 		if(file != null) {
-			Log.d("dhdebug", "file: "+file+" not null!");
 			ig = metaioSDK.createGeometryFromImage(file);
 		}
 		
 		if(ig != null) {
-			Log.d("dhdebug", "ig for "+file+" not null!");
 			ig.setScale(0.5f);
 			ig.setTranslation(v);
 			ig.setRotation(new Rotation(0f,0f,0f));
