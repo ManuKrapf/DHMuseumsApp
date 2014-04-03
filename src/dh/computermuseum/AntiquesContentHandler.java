@@ -7,6 +7,12 @@ import org.xml.sax.SAXException;
 
 import dh.computermuseum.Component.Tag;
 
+/**
+ * Parse an xml-file and store the data to the given {@link Data} object.
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class AntiquesContentHandler implements ContentHandler {
 	
 	private Data data;
@@ -21,11 +27,16 @@ public class AntiquesContentHandler implements ContentHandler {
 	private boolean element;
 	private Tag temptag;
 	
+	/**
+	 * Constructor of the content handler
+	 * 
+	 * @param d the Data object to store the parsed data
+	 */
 	public AntiquesContentHandler(Data d) {
 		data = d;
 		type = "";
 	}
-
+	
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
@@ -35,7 +46,9 @@ public class AntiquesContentHandler implements ContentHandler {
 		}
 	}
 
-	// searching for main tag
+	/**
+	 * Searching for xml start tag
+	 */
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes atts) throws SAXException {
@@ -81,7 +94,9 @@ public class AntiquesContentHandler implements ContentHandler {
 		
 	}
 
-	// searching for tags and setting Antiques' values in the testfile.xml
+	/**
+	 * Searching for xml end tags and storing xml-data to Data object
+	 */
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
@@ -268,7 +283,7 @@ public class AntiquesContentHandler implements ContentHandler {
 			}
 		}
 	}
-
+	
 	@Override
 	public void endDocument() throws SAXException {
 	}

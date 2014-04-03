@@ -8,6 +8,12 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Shows a Detail Screen to a computer or a component/board
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class DetailActivity extends Activity {
 	
 	private Data data;
@@ -53,6 +59,9 @@ public class DetailActivity extends Activity {
 		
 	}
 	
+	/**
+	 * Initialize the UI and decides if a computer or a component is shown
+	 */
 	private void init() {
 		
 		initUI();
@@ -68,6 +77,9 @@ public class DetailActivity extends Activity {
 		
 	}
 	
+	/**
+	 * Initialize the UI Views
+	 */
 	private void initUI() {
 		
 		name = (TextView) findViewById(R.id.textView_named);
@@ -92,6 +104,9 @@ public class DetailActivity extends Activity {
 		img = (ImageView) findViewById(R.id.imageView_pic);
 	}
 	
+	/**
+	 * Sets the data for a computer to the different Views
+	 */
 	private void initComputer() {
 		
 		name.setText(computer.getName());
@@ -120,6 +135,9 @@ public class DetailActivity extends Activity {
 		img.setImageDrawable(tempImg);
 	}
 	
+	/**
+	 * Sets the data of a component to the different Views
+	 */
 	private void initComponent() {
 		
 		name.setText(component.getName());

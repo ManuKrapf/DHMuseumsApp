@@ -1,5 +1,11 @@
 package dh.computermuseum;
 
+/**
+ * 
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class Storage extends Antique {
 	
 	private String stype;

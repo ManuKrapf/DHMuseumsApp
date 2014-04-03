@@ -2,6 +2,12 @@ package dh.computermuseum;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class Computer extends Antique {
 	
 	private String producer;

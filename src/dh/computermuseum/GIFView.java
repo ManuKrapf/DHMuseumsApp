@@ -6,11 +6,22 @@ import android.graphics.Movie;
 import android.util.AttributeSet;
 import android.view.View;
 
+/**
+ * Custom View class to show an animated gif image
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class GIFView extends View {
 
     private Movie mMovie;
     private long mMovieStart;
-
+    
+    /**
+     * Constructor
+     * 
+     * @param context the context of the creating Activity
+     */
     public GIFView(Context context) {
         super(context);
         setFocusable(true);
@@ -19,7 +30,13 @@ public class GIFView extends View {
         is = context.getResources().openRawResource(R.drawable.help_scan);
         mMovie = Movie.decodeStream(is); 
     }
-
+    
+    /**
+     * Constructor
+     * 
+     * @param context the context of the creating Activity
+     * @param attrSet
+     */
     public GIFView(Context context, AttributeSet attrSet) {
         super(context, attrSet);
         setFocusable(true);
@@ -28,7 +45,13 @@ public class GIFView extends View {
         is = context.getResources().openRawResource(R.drawable.help_scan);
         mMovie = Movie.decodeStream(is);
     }
-
+    /**
+     * Constructor
+     * 
+     * @param context the context of the creating Activity
+     * @param attrSet
+     * @param defStyle
+     */
     public GIFView(Context context, AttributeSet attrSet, int defStyle) {
         super(context, attrSet, defStyle);
         setFocusable(true);
@@ -37,7 +60,10 @@ public class GIFView extends View {
         is = context.getResources().openRawResource(R.drawable.help_scan);
         mMovie = Movie.decodeStream(is);
     }
-
+    
+    /**
+     * Draws gif and shows animation
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(0x00000000);

@@ -30,6 +30,13 @@ import com.metaio.tools.io.AssetsManager;
 import dh.computermuseum.Component.Tag;
 import dh.computermuseum.Computer.CompVideo;
 
+/**
+ * The Screen to Track Objects and get Informations.
+ * In this Screen can objects be tracked with help of the Metaio SDK.
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class ScanActivity extends ARViewActivity {
 	
 	Context context = this;
@@ -128,9 +135,6 @@ public class ScanActivity extends ARViewActivity {
 	
 	private MetaioSDKCallbackHandler mCallbackHandler;
 	
-	/**
-	 * Called on Activity start
-	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -139,7 +143,7 @@ public class ScanActivity extends ARViewActivity {
 		mCallbackHandler = new MetaioSDKCallbackHandler();
 		
 	}
-
+	
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -651,8 +655,8 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * Show one of the three cases for the tracked object
 	 * 
-	 * @param int ocase the ID of the case to load
-	 * @param int cosid the CoordinateSystemID of the tracked object
+	 * @param ocase the ID of the case to load
+	 * @param cosid the CoordinateSystemID of the tracked object
 	 */
 	private void showCase(int ocase, int cosid) {
 		
@@ -683,7 +687,7 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * Unload the other cases when a new case is loaded
 	 * 
-	 * @param int ocase the case for that the other cases must be unloaded, eg. if ocase = 1 case 2 and 3 will be unloaded 
+	 * @param ocase the case for that the other cases must be unloaded, eg. if ocase = 1 case 2 and 3 will be unloaded 
 	 */
 	private void unloadForCase(int ocase) {
 		
@@ -847,8 +851,8 @@ public class ScanActivity extends ARViewActivity {
 	 * Shows the View with a picture for a ancestor or successor in the timeline
 	 * to find this object
 	 * 
-	 * @param int id ID of the Computer shown in the View
-	 * @param String s Tag before the name, used Values are "Früher: " or "Später: "
+	 * @param id ID of the Computer shown in the View
+	 * @param s Tag before the name, used Values are "Früher: " or "Später: "
 	 */
 	private void showOtherView(int id, String s) {
 		
@@ -905,7 +909,7 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * loads a video, eg. to show an operating system on the screen
 	 * 
-	 * @param int cosid the CoordinateSystemID of the tracked object
+	 * @param cosid the CoordinateSystemID of the tracked object
 	 */
 	private void loadMovie(int cosid) {
 		// TODO Position des Videos noch besser anpassen
@@ -957,7 +961,7 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * Inits the interior Geometrys of the computer
 	 * 
-	 * @param int cosid the CoordinateSystemID of the tracked object
+	 * @param cosid the CoordinateSystemID of the tracked object
 	 */
 	private void initInnerlife(int cosid) {
 		
@@ -1021,10 +1025,10 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * Edits a single Geometry for an interior item
 	 * 
-	 * @param IGeometry ig the geometry to edit
-	 * @param float scale a value to scale the object
-	 * @param Vector3d v a 3D vector to move the object
-	 * @param int cosid the CoordinateSystemID of the tracked object
+	 * @param ig the geometry to edit
+	 * @param scale a value to scale the object
+	 * @param v a 3D vector to move the object
+	 * @param cosid the CoordinateSystemID of the tracked object
 	 */
 	private void setInner(IGeometry ig, float scale, Vector3d v, int cosid) {
 		
@@ -1046,8 +1050,8 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * Shows a View with infos to the interior object
 	 * 
-	 * @param int parentid the ID of the parent computer
-	 * @param int id the ID of the interior object
+	 * @param parentid the ID of the parent computer
+	 * @param id the ID of the interior object
 	 */
 	private void showInnerlifeComponents(int parentid, int id) {
 		
@@ -1074,7 +1078,7 @@ public class ScanActivity extends ARViewActivity {
 	}
 	
 	/**
-	 * Hides the iterior objects
+	 * Hides the interior objects
 	 */
 	private void hideInnerlifeComponents() {
 		if(inner1 != null) {
@@ -1289,9 +1293,9 @@ public class ScanActivity extends ARViewActivity {
 	/**
 	 * Edits a Geometry for a board tag
 	 * 
-	 * @param IGeometry ig the geometry to edit
-	 * @param Vector3d v a 3D vector to move the geometry
-	 * @param int cosid the CoordinateSystemID of the tracked object
+	 * @param ig the geometry to edit
+	 * @param v a 3D vector to move the geometry
+	 * @param cosid the CoordinateSystemID of the tracked object
 	 */
 	private void setBoardTag(IGeometry ig, Vector3d v, int cosid) {
 		
@@ -1385,6 +1389,10 @@ public class ScanActivity extends ARViewActivity {
 		});
 		
 	}
+	
+	/*
+	 * Test methods for positioning
+	 */
 	
 	private void initcoordSystem(int cosid) {
 		

@@ -10,6 +10,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * The First Screen of the application with general infos
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class MainActivity extends Activity implements View.OnClickListener {
     /** Called when the activity is first created. */
 	private Button buttonScan;
@@ -31,12 +37,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		buttonHelp.setBackgroundColor(Color.parseColor("#525252"));
     }
     
+    /**
+     * Initialises the UI
+     */
     private void initUI() {
     	buttonScan = (Button) findViewById(R.id.startScanningButton1);
     	textGoto = (TextView) findViewById(R.id.textMuseumGoto);
     	buttonHelp = (ImageView) findViewById(R.id.helpButton);
     }
     
+    /**
+     * Initializes the click listener
+     */
     private void setupClickListener() {
     	buttonScan.setOnClickListener(this);
     	textGoto.setOnClickListener(this);   	

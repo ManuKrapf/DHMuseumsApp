@@ -18,6 +18,12 @@ import android.content.Context;
 import android.util.Log;
 import dh.computermuseum.Component.Tag;
 
+/**
+ * Start parsing xml-data with a content handler and stores the parsed data
+ * 
+ * @author Johannes Lengdobler, Simon Provinsky, Timo Schaschek, Manuel Krapf
+ * @version 1.0
+ */
 public class Data {
 	
 	Context context; 
@@ -27,6 +33,11 @@ public class Data {
 	private ArrayList<Storage> storages;
 	private AntiquesContentHandler ach;
 	
+	/**
+	 * Constructor for initialisation of the Data object
+	 * 
+	 * @param c the Context of the Activity that creates the object
+	 */
 	public Data(Context c) {
 		context = c;
 		computers = new ArrayList<Computer>();
@@ -35,8 +46,10 @@ public class Data {
 		initXMLParser();
 	}
 	
+	/**
+	 * starts parsing the xml-file with the content handler
+	 */
 	private void initXMLParser() {
-		Log.d("dhdebug", "initXML is called!");
 		try {
 			SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			SAXParser newSAXParser = saxParserFactory.newSAXParser();
@@ -68,24 +81,49 @@ public class Data {
 		}
 	}
 	
+	/**
+	 * Adds a Computer object to the list of computers
+	 * 
+	 * @param c the Computer object to add
+	 */
 	public void addComupter(Computer c) {
 		computers.add(c);
 	}
 	
+	/**
+	 * Adds a Component object to the list of components
+	 * 
+	 * @param c the Component object to add
+	 */
 	public void addComponents(Component c) {
 		components.add(c);
 	}
 	
+	/**
+	 * Adds a Storage object to the list of storages
+	 * 
+	 * @param s the Storage object to add
+	 */
 	public void addStorage(Storage s) {
 		storages.add(s);
 	}
 	
+	/**
+	 * Adds a InnerlifeComponent to the list of innerlifecomponents
+	 * 
+	 * @param ic the InnerlifeComponent object to add
+	 */
 	public void addInnerlifeComponent(InnerlifeComponent ic) {
 		Computer c = getComputer(ic.getParentId());
 		c.addComponent(ic);
-		Log.d("dhdebug", "IC added: ID: "+ic.getId()+", PID: "+ic.getParentId()+", CID: "+c.getId());
 	}
 	
+	/**
+	 * Returns a Computer object with the given name
+	 * 
+	 * @param name the name of the computer
+	 * @return a Computer object or null if nothing is found
+	 */
 	public Computer getComputer(String name) {
 		for(Computer c : computers) {
 			if(c.getName().equals(name)) {
@@ -95,6 +133,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns a Computer object with the given id
+	 * 
+	 * @param id the id of the computer
+	 * @return a Computer object or null if nothing is found
+	 */
 	public Computer getComputer(int id) {
 		for(Computer c : computers) {
 			if(c.getId() == id) {
@@ -104,6 +148,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns a Component object with the given name
+	 * 
+	 * @param name the name of the component
+	 * @return a Component object or null if nothing is found
+	 */
 	public Component getComponent(String name) {
 		for(Component c : components) {
 			if(c.getName().equals(name)) {
@@ -113,6 +163,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns a Component object with the given id
+	 * 
+	 * @param id the id of the component
+	 * @return a Component object or null if nothing is found
+	 */
 	public Component getComponent(int id) {
 		for(Component c : components) {
 			if(c.getId() == id) {
@@ -122,6 +178,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns the list with the tags of an Component object wit hthe given id
+	 * 
+	 * @param id the id of the component
+	 * @return an ArrayList with the Tags or null if nothing is found
+	 */
 	public ArrayList<Tag> getTags(int id) {
 		for(Component c : components) {
 			if(c.getId() == id) {
@@ -131,6 +193,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns a Storage object with the given name
+	 * 
+	 * @param name the name of the storage
+	 * @return a Storage object or null if nothing is found
+	 */
 	public Storage getStorage(String name) {
 		for(Storage s : storages) {
 			if(s.getName().equals(name)) {
@@ -140,6 +208,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns a Storage object with the given id
+	 * 
+	 * @param id the id of the storage
+	 * @return a Storage object or null if nothing is found
+	 */
 	public Storage getStorage(int id) {
 		for(Storage s : storages) {
 			if(s.getId() == id) {
@@ -149,6 +223,12 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns the ids of the InnerlifeComponents of a computer
+	 * 
+	 * @param parentid the id of the parent computer
+	 * @return an  integer array with the ids or null if nothing is found
+	 */
 	public int[] getInnerlifeComponentsIDs(int parentid) {
 		ArrayList<InnerlifeComponent> iC = null;
 		for(Computer c : computers) {
@@ -165,6 +245,13 @@ public class Data {
 		
 	}
 	
+	/**
+	 * Returns a InnerlifeComponent object with the given name and parentid
+	 * 
+	 * @param parentid the id of the parent computer
+	 * @param name the name of the innerlifecomponent
+	 * @return a InnerlifeComponent object or null if nothing is found
+	 */
 	public InnerlifeComponent getInnerlifeComponent(int parentid, String name) {
 		
 		Computer c = getComputer(parentid);
@@ -177,6 +264,13 @@ public class Data {
 		return null;
 	}
 	
+	/**
+	 * Returns a InnerlifeComponent object with the given id and parentid
+	 * 
+	 * @param parentid the id of the parent computer
+	 * @param id the id of the innerlifecomponent
+	 * @return a InnerlifeComponent object or null if nothing is found
+	 */
 	public InnerlifeComponent getInnerlifeComponent(int parentid, int id) {
 		
 		Computer c = getComputer(parentid);
