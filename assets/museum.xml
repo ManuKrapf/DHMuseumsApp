@@ -74,7 +74,7 @@
 			<register>32 Bit</register>
 			<interfaces>Verschieden</interfaces>
 			<img>commodore_128</img>
-			<note>Ein Motherboard ist bla bla bla...</note>
+			<note>Mit der Einführung des Intel 80386-Prozessors wurde der Entwicklung des modular aufgebauten Personal Computers ein richtiger Schub versetzt. Die große Neuerung hierbei war die EInführung von Erweiterungsspeicher und der 32-Bit-Architektur. Es gab zwar schon in der 286-Reiche einige Modelle mit SPeicherbänken, dies wurde allerdings erst mit dem 386 zum Standard. Die vier SPeicherbänke konnten mittels Arbeitsspeicherbausteinen, so genannten RAM-Modulen, aufgefüllt und der PC somit aufgerüstet werden. Diese wurden, bezogen auf ihre genormte Form als PS2-RAM bezeichnet. Eine weitere Neuerung war der vorhandene Sockel für die Installation eines Co-Prozessors, der der 32 Bit und 16 MHz schnellen CPU Arbeit abnahm und somit die Leistungsfähigkeit des Systems steigerte. Später gab es noch 20, 25 und 33 MHz CPUs für diese Board-Serie.</note>
 			<tags>
 			    <tag>
 			        <tagid>1</tagid>
@@ -85,7 +85,7 @@
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
-			        <tagdesc>Auf dem Board war ein Sockel auf dem der Intel i386 platz fand.</tagdesc>
+			        <tagdesc>Auf dem Board war ein Sockel auf dem der Intel i386 Platz fand. Es gab insgesamt vier Varianten dieser CPU (Intel386 SX, Intel386 SL, RapidCAD1, RapidCAD2), welche sich im Datenbus und im Einsatzzweck unterschieden. Die Produktion des i386EX als Embedded-Version des i386SX wurde erst im Jahr 2007 eingestellt.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>2</tagid>
@@ -107,7 +107,7 @@
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_bios.png</tagimg>
-			        <tagdesc>Ein Bios ist bla bla bla...</tagdesc>
+			        <tagdesc>Das BIOS (englisches Akronym: Basic Input/Output System) ist die Firmware bei x86-PCs. Aufgabe des BIOS ist es unter anderem, den PC zunächst funktionsfähig zu machen und im Anschluss das Starten eines Betriebssystems einzuleiten (Bootstrapping, Treibersoftware + Konfigurationen, Initialisierung der Hardwarekomponenten). Im flüchtigen Sprachgebrauch wird der Ausdruck BIOS heute manchmal auch in der Bedeutung BIOS-Einstellungen verwendet. Unterschiedliche BIOS-Hersteller sind beispielweise American Megatrends, Phoenix/Awards, MR BIOS, ATI Technologies, IBM, Insyde H20 BIOS.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>4</tagid>
@@ -118,7 +118,7 @@
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_moduls.png</tagimg>
-			        <tagdesc>In diesen ISA-Steckplätzen konnten weitere Module zum Board ergänzt werden.</tagdesc>
+			        <tagdesc>In diesen ISA-Steckplätzen (Industry Standard Architecture) konnten weitere Module zum Board ergänzt werden. IBM-kompatible PCs mit der XT-Bus-Architektur konnten somit beispielsweise von 8 Bit auf 16 Bit erweitert werden.</tagdesc>
 			    </tag>
 			</tags>
 	    </item>
@@ -134,7 +134,7 @@
 			<register>32 Bit</register>
 			<interfaces>Verschiedene</interfaces>
 			<img>commodore_128</img>
-			<note>Die Pentium Familie und so</note>
+			<note>Die Pentium-Boards hatten in den Heimbereichen einen leistungsstarken Bus spendiert bekommen: den 32 Bit PCI-Bus. Dieser neue Standard brachte die Möglichkeit mit sich, den PC mit Steckkarten aufzurüsten, die eine schnellere Durchsatzrate brauchten. Somit konnte das Nadelöhr des PCs, der 8- bzw. 16 Bit Bus dem schnelleren Bussystem weichen. Auch kam erstmals der für Grafikkarten entwickelte AGP hinzu (Accelerated Graphics Port). Die Taktung des Arbeitsspeichers erhöhte sich, und es kamen Pentium-Boards mit 100 MHz getaktetem Frontside-Bus hinzu (hierzu zählen alle primären I/O-Elemente). Nachdem der Pentium von vielen nur als 586 angesehen wurde, also als technische Weiterentwicklung des 486, kamen mit dem Pentium II und III die ersten echten Leistungsboliden aus dem Hause Intel ins Spiel. Sie überzeugten mit Taktfrequenzen bis 1300 MHz und überschritten, allerdings erst nach AMD, die 1000 MHz Grenze.</note>
 			<tags>
 			    <tag>
 			        <tagid>1</tagid>
@@ -145,7 +145,7 @@
 			            <tagz>2</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_cpu.png</tagimg>
-			        <tagdesc>Der Pentium, auch als i586 bekannt, kam 1993 und konnte hier platziert werden.</tagdesc>
+			        <tagdesc>Der Pentium, auch als i586 bekannt, kam 1993 auf den Markt und konnte hier platziert werden. Pente – das griechische Wort für fünf – sollte nun der fünften x86-Generation aus dem Hause Intel den Namen geben. Pentium sollte dann aber nicht nur die fünfte, sondern auch die sechste und siebte x86-Generation aus dem Hause Intel heißen. Heute trägt eine ganze Prozessor-Dynastie diesen Namen. Dem Pentium folgten der Pentium Pro, der Pentium II, Pentium III, Pentium 4, Pentium M, Pentium D und der Intel Pentium Dual-Core. Obwohl diese Prozessoren außer dem Befehlssatz kaum Gemeinsamkeiten mit dem ersten Pentium haben, tragen sie seinen Namen.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>2</tagid>
@@ -156,7 +156,7 @@
 			            <tagz>10</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_ram.png</tagimg>
-			        <tagdesc>Hier konnten die RAM-Module eingesteckt werden.</tagdesc>
+			        <tagdesc>In die RAM-Steckplätze wurden die Speicherriegel eingesteckt. Auf diesem Board konnten bis zu 3 Riegel platziert werden.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>3</tagid>
@@ -167,7 +167,7 @@
 			            <tagz>0</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_bios.png</tagimg>
-			        <tagdesc>Hier ist das BIOS.</tagdesc>
+			        <tagdesc>Das BIOS (englisches Akronym: Basic Input/Output System) ist die Firmware bei x86-PCs. Aufgabe des BIOS ist es unter anderem, den PC zunächst funktionsfähig zu machen und im Anschluss das Starten eines Betriebssystems einzuleiten (Bootstrapping, Treibersoftware + Konfigurationen, Initialisierung der Hardwarekomponenten). Im flüchtigen Sprachgebrauch wird der Ausdruck BIOS heute manchmal auch in der Bedeutung BIOS-Einstellungen verwendet. Unterschiedliche BIOS-Hersteller sind beispielweise American Megatrends, Phoenix/Awards, MR BIOS, ATI Technologies, IBM, Insyde H20 BIOS.</tagdesc>
 			    </tag>
 			    <tag>
 			        <tagid>4</tagid>
@@ -178,7 +178,7 @@
 			            <tagz>-20</tagz>
 			        </tagpos>
 			        <tagimg>mbtag_moduls.png</tagimg>
-			        <tagdesc>Hier können auf einem AGP-Steckplätz und mehreren PCI-Steckplätzen weitere Module ergänzt werden.</tagdesc>
+			        <tagdesc>Hier können auf einem AGP-Steckplatz (Accelerated Graphics Port) und mehreren PCI-Steckplätzen (Peripheral Component Interconnect) weitere Module ergänzt werden. Der AGP ist eine Anschlussnorm auf PC-Mainboards zur direkten Verbindung der Grafikkarte mit dem Chipsatz/Northbridge. Er basiert technologisch auf dem PCI-Bus. Der PCI ist ein Bus-Standard zur Verbindung von Peripheriegeräten mit dem Chipsatz eines Prozessors.</tagdesc>
 			    </tag>
 			</tags>
 	    </item>
