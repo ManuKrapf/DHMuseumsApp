@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.metaio.sdk.jni.IMetaioSDKCallback;
 import com.metaio.sdk.*;
-import com.metaio.sdk.jni.EDEBUG_VISIBILITY;
 import com.metaio.sdk.jni.ETRACKING_STATE;
 import com.metaio.sdk.jni.IGeometry;
 import com.metaio.sdk.jni.Rotation;
@@ -1168,7 +1167,7 @@ public class ScanActivity extends ARViewActivity {
 					storageName.setText(s.getName());
 					storageDev.setText(s.getDeveloper());
 					storageDate.setText(s.getReleaseDate());
-					storageType.setText(s.getType());
+					storageType.setText(s.getSType());
 					storageCapa.setText(s.getCapacity());
 					storageMat.setText(s.getMaterial());
 					storageLife.setText(s.getEndurance());
