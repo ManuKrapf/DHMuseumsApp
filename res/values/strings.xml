@@ -37,8 +37,8 @@
     <string name="detailcomp_register">Register: </string>
     <string name="detailcomp_interfaces">Schnittstellen: </string>
     
-    <string name="scan_storages_earlier">Früher:</string>  
-    <string name="scan_storages_later">Später:</string>
+    <string name="scan_storages_earlier">Früher: </string>  
+    <string name="scan_storages_later">Später: </string>
     <string name="scan_storages_date">erschienen </string> 
     <string name="scan_storages_developer">entwickelt von </string>
     <string name="scan_storages_type">Typ: </string>

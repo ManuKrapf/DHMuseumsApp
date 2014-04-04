@@ -8,7 +8,7 @@
 			<date>1979</date>
 			<comp><value>Commodore</value></comp>
 			<os>Commodore Basic 4.0</os>
-			<memory>0</memory>
+			<memory>unbekannt</memory>
 			<ram>32 KByte</ram>
 			<processor>1 MHz MOS 6502</processor>
 			<special>Eingebauter Grünmonitor und Tastatur</special>
@@ -73,7 +73,7 @@
 			<cpu>Intel i386</cpu>
 			<register>32 Bit</register>
 			<interfaces>Verschieden</interfaces>
-			<img>commodore_128</img>
+			<img>noimg</img>
 			<note>Mit der Einführung des Intel 80386-Prozessors wurde der Entwicklung des modular aufgebauten Personal Computers ein richtiger Schub versetzt. Die große Neuerung hierbei war die EInführung von Erweiterungsspeicher und der 32-Bit-Architektur. Es gab zwar schon in der 286-Reiche einige Modelle mit SPeicherbänken, dies wurde allerdings erst mit dem 386 zum Standard. Die vier SPeicherbänke konnten mittels Arbeitsspeicherbausteinen, so genannten RAM-Modulen, aufgefüllt und der PC somit aufgerüstet werden. Diese wurden, bezogen auf ihre genormte Form als PS2-RAM bezeichnet. Eine weitere Neuerung war der vorhandene Sockel für die Installation eines Co-Prozessors, der der 32 Bit und 16 MHz schnellen CPU Arbeit abnahm und somit die Leistungsfähigkeit des Systems steigerte. Später gab es noch 20, 25 und 33 MHz CPUs für diese Board-Serie.</note>
 			<tags>
 			    <tag>
@@ -133,7 +133,7 @@
 			<cpu>Pentium (i586)</cpu>
 			<register>32 Bit</register>
 			<interfaces>Verschiedene</interfaces>
-			<img>commodore_128</img>
+			<img>noimg</img>
 			<note>Die Pentium-Boards hatten in den Heimbereichen einen leistungsstarken Bus spendiert bekommen: den 32 Bit PCI-Bus. Dieser neue Standard brachte die Möglichkeit mit sich, den PC mit Steckkarten aufzurüsten, die eine schnellere Durchsatzrate brauchten. Somit konnte das Nadelöhr des PCs, der 8- bzw. 16 Bit Bus dem schnelleren Bussystem weichen. Auch kam erstmals der für Grafikkarten entwickelte AGP hinzu (Accelerated Graphics Port). Die Taktung des Arbeitsspeichers erhöhte sich, und es kamen Pentium-Boards mit 100 MHz getaktetem Frontside-Bus hinzu (hierzu zählen alle primären I/O-Elemente). Nachdem der Pentium von vielen nur als 586 angesehen wurde, also als technische Weiterentwicklung des 486, kamen mit dem Pentium II und III die ersten echten Leistungsboliden aus dem Hause Intel ins Spiel. Sie überzeugten mit Taktfrequenzen bis 1300 MHz und überschritten, allerdings erst nach AMD, die 1000 MHz Grenze.</note>
 			<tags>
 			    <tag>

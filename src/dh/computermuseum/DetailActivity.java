@@ -114,6 +114,8 @@ public class DetailActivity extends Activity {
 		comp.setText(computer.getProducer());
 		desc.setText(computer.getDescription());
 		
+		Log.d("dhdebug", "Desc: "+computer.getDescription());
+		
 		pos1tag.setText(R.string.detail_os);
 		pos2tag.setText(R.string.detail_memory);
 		pos3tag.setText(R.string.detail_ram);
@@ -159,13 +161,13 @@ public class DetailActivity extends Activity {
 		pos5val.setText(component.getRegister());
 		pos6val.setText(component.getInterfaces());
 		
-		Log.d("dhdebug", component.getImg());
-		
+		//Log.d("dhdebug", component.getImg());
+		/*
 		Resources res = getResources();
 		String tempImgName = component.getImg();
 		int tempResId = res.getIdentifier(tempImgName, "drawable", getPackageName());
 		Drawable tempImg = res.getDrawable(tempResId);
-		img.setImageDrawable(tempImg);
+		img.setImageDrawable(tempImg);*/
 	}
 	
 }

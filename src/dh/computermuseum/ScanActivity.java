@@ -127,13 +127,6 @@ public class ScanActivity extends ARViewActivity {
 	private IGeometry inner3;
 	private IGeometry inner4;
 	
-	float xrot = 1.8f;
-	float yrot = -0.5f;
-	float zrot = 1.1f;
-	float xtrans = -100f;
-	float ytrans = 0f;
-	float ztrans = 0f;
-	
 	private MetaioSDKCallbackHandler mCallbackHandler;
 	
 	@Override
@@ -262,21 +255,6 @@ public class ScanActivity extends ARViewActivity {
 			Log.d("dhdebug", "geometry is g_tag4");
 			tagid = 4;
 			showComponentTagView();
-		}
-		else if(geometry.equals(movie)) {
-			
-			//xrot += 0.1;
-			//yrot -= 0.1;
-			//zrot += 0.1;
-			Log.d("dhdebug", "Rotation: x="+xrot+", y="+yrot+", z="+zrot);
-			//geometry.setRotation(new Rotation(xrot, yrot, zrot));
-			
-			//xtrans += 10; // Auf Handy zu
-			//ytrans += 10; // nach recht und links
-			//ztrans += 10; // oben und unten
-			Log.d("dhdebug", "Translation: x="+xtrans+", y="+ytrans+", z="+ztrans);
-			geometry.setTranslation(new Vector3d(xtrans, ytrans, ztrans));
-			
 		}
 		
 	}
