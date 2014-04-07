@@ -556,19 +556,6 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("ibml40_3")) {
 						Log.d("dhdebug", "CosID ibm: "+values.get(0).getCoordinateSystemID());
-						Rotation rot = values.get(0).getRotation();
-						Vector3d vrot1 = rot.getEulerAngleDegrees();
-						Vector3d vrot2 = rot.getEulerAngleRadians();
-						Vector3d trans = values.get(0).getTranslation();
-						Log.d("dhdebug", "ibm Rotation1: x="+vrot1.getX()+", y="+vrot1.getY()+", z="+vrot1.getZ());
-						Log.d("dhdebug", "ibm Rotation2: x="+vrot2.getX()+", y="+vrot2.getY()+", z="+vrot2.getZ());
-						Log.d("dhdebug", "ibm Translation: x="+trans.getX()+", y="+trans.getY()+", z="+trans.getZ());
-						/*xrot = (vrot.getX());
-						yrot = (vrot.getY());
-						zrot = (vrot.getZ());
-						xtrans = (trans.getX());
-						ytrans = (trans.getY());
-						ztrans = (trans.getZ());*/
 						id = 3;
 						showCase(1, values.get(0).getCoordinateSystemID());
 					}
@@ -601,7 +588,7 @@ public class ScanActivity extends ARViewActivity {
 					}
 					else if(values.get(0).getCosName().equals("yellow_book_9")) {
 						Log.d("dhdebug", "CosID yellowbook: "+values.get(0).getCoordinateSystemID());
-						id = 1;
+						id = 2;
 						showCase(1, values.get(0).getCoordinateSystemID());
 					}
 					else if(values.get(0).getCosName().equals("mensacard_10")) {

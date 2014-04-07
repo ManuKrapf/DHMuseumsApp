@@ -2,6 +2,8 @@ package dh.computermuseum;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 /**
  * Object that represents a computer
  * 
@@ -152,6 +154,7 @@ public class Computer extends Antique {
 	 * @param description the description of the computer
 	 */
 	public void setDescription(String description) {
+		Log.d("dhdebug", "Comp Desc: "+description);
 		this.description = description;
 	}
 	

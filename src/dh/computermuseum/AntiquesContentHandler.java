@@ -5,6 +5,7 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 
+import android.util.Log;
 import dh.computermuseum.Component.Tag;
 
 /**
@@ -110,6 +111,7 @@ public class AntiquesContentHandler implements ContentHandler {
 				computer.setId(Integer.parseInt(currentValue));
 			}
 			if (localName.equals("note")) {
+				Log.d("dhdebug", "XML CH Desc: "+currentValue);
 				computer.setDescription(currentValue);
 			}
 			if (localName.equals("date")) {
